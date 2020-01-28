@@ -1,12 +1,13 @@
 VERSION 5.00
 Begin VB.Form frmAbout 
    BorderStyle     =   3  '크기 고정 대화 상자
-   Caption         =   "정보 일정표"
+   Caption         =   "정보"
    ClientHeight    =   3525
    ClientLeft      =   45
    ClientTop       =   435
    ClientWidth     =   5865
    ClipControls    =   0   'False
+   Icon            =   "frmAbout.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
@@ -17,18 +18,18 @@ Begin VB.Form frmAbout
    Tag             =   "정보 일정표"
    Begin VB.PictureBox picIcon 
       AutoSize        =   -1  'True
-      BackColor       =   &H00C0C0C0&
+      BorderStyle     =   0  '없음
       ClipControls    =   0   'False
-      Height          =   540
+      Height          =   480
       Left            =   240
-      Picture         =   "frmAbout.frx":0000
+      Picture         =   "frmAbout.frx":000C
       ScaleHeight     =   480
       ScaleMode       =   0  '사용자
       ScaleWidth      =   480
       TabIndex        =   2
       TabStop         =   0   'False
       Top             =   240
-      Width           =   540
+      Width           =   480
    End
    Begin VB.CommandButton cmdOK 
       Cancel          =   -1  'True
@@ -51,7 +52,7 @@ Begin VB.Form frmAbout
       Width           =   1452
    End
    Begin VB.Label lblDescription 
-      Caption         =   "응용 프로그램 설명"
+      Caption         =   "일정, 연락처와 당신의 할 일을 한 곳에서 관리할 수 있습니다."
       ForeColor       =   &H00000000&
       Height          =   1170
       Left            =   1050
@@ -137,6 +138,7 @@ Private Declare Function RegCloseKey Lib "advapi32" (ByVal hKey As Long) As Long
 Private Sub Form_Load()
     lblVersion.Caption = "버전 " & App.Major & "." & App.Minor & "." & App.Revision
     lblTitle.Caption = App.Title
+    Me.Caption = App.Title & " 정보"
 End Sub
 
 

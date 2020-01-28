@@ -13,16 +13,28 @@ Begin VB.Form frmAddPlan
    ScaleHeight     =   3510
    ScaleWidth      =   6030
    ShowInTaskbar   =   0   'False
+   Begin VB.FileListBox lvCateFiles 
+      Height          =   270
+      Left            =   5160
+      TabIndex        =   14
+      Top             =   1920
+      Visible         =   0   'False
+      Width           =   495
+   End
    Begin VB.TextBox txtContent 
       Height          =   975
       Left            =   120
+      MultiLine       =   -1  'True
+      ScrollBars      =   2  '수직
       TabIndex        =   13
       Top             =   2400
       Width           =   3975
    End
    Begin VB.ComboBox txtCategory 
       Height          =   300
+      ItemData        =   "frmAddPlan.frx":0442
       Left            =   120
+      List            =   "frmAddPlan.frx":044F
       TabIndex        =   11
       Top             =   1680
       Width           =   3975
@@ -135,6 +147,7 @@ Dim Year As Integer
 Dim Month As Integer
 Dim Day As Integer
 Dim txtTime As String
+Dim Category As Integer
 
 Private Sub CancelButton_Click()
     If MsgBox("일정 추가를 취소하시겠습니까? 임시 저장되지 않습니다.", vbQuestion + vbOKCancel, "일정 추가") = vbOK Then
@@ -147,10 +160,22 @@ Private Sub Form_Load()
     Month = Split(CurrentDate, "-")(1)
     Day = Split(CurrentDate, "-")(2)
     Me.Caption = "일정 추가 - " & Year & "년 " & Month & "월 " & Day & "일"
+    
+    On Error Resume Next
+    MkDir "C:\CALPLANS\CTGORIES"
+    
+    lvCateFiles.Path = "C:\CALPLANS\CTGORIES"
+    
+    For Category = 0 To lvCateFiles.ListCount - 1
+        txtCategory.AddItem lvCateFiles.List(Category)
+    Next Category
 End Sub
 
 Private Sub OKButton_Click()
     '입력값을 검사한다.
+    If InStr(1, txtTitle.Text, "?") > 0 Or InStr(1, txtTitle.Text, "\") > 0 Or InStr(1, txtTitle.Text, "|") > 0 Or InStr(1, txtTitle.Text, ".") > 0 Or InStr(1, txtTitle.Text, "/") > 0 Or InStr(1, txtTitle.Text, "*") > 0 Or InStr(1, txtTitle.Text, ":") > 0 Or InStr(1, txtTitle.Text, ChrW$(34)) > 0 Then
+        MsgBox "제목의 값이 올바르지 않습니다.", 16, "입력 값 오류:"
+    End If
     If IsNumeric(txtTimeHrs.Text) = False Or IsNumeric(txtTimeMin.Text) = False Then
         MsgBox "시간의 값이 올바르지 않습니다.", 16, "입력 값 오류"
         Exit Sub
@@ -191,16 +216,37 @@ Private Sub OKButton_Click()
     
     '레지스트리에 일정의 기타 정보를 저장한다.
     If txtTimeHrs.Text < 9 Then
-        txtTime = "0" & txtTimeHrs.Text & ":" & txtTimeMin.Text
+        If txtTimeMin.Text < 9 Then
+            txtTime = "0" & txtTimeHrs.Text & ":0" & txtTimeMin.Text
+        Else
+            txtTime = "0" & txtTimeHrs.Text & ":" & txtTimeMin.Text
+        End If
     Else
-        txtTime = txtTimeHrs.Text & ":" & txtTimeMin.Text
+        If txtTimeMin.Text < 9 Then
+            txtTime = txtTimeHrs.Text & ":0" & txtTimeMin.Text
+        Else
+            txtTime = txtTimeHrs.Text & ":" & txtTimeMin.Text
+        End If
     End If
     
     SaveSetting "Calendar", Year & "\" & Month & "\" & Day, txtTitle.Text & "Time", txtTime
     SaveSetting "Calendar", Year & "\" & Month & "\" & Day, txtTitle.Text & "Location", txtLocation.Text
     SaveSetting "Calendar", Year & "\" & Month & "\" & Day, txtTitle.Text & "Cate", txtCategory.Text
+    SaveSetting "Calendar", Year & "\" & Month & "\" & Day, txtTitle.Text & "Cont", txtContent.Text
     
     frmPlans.LoadPlans
+    
+    '분류를 추가한다.
+    'https://stackoverflow.com/questions/21108664/how-to-create-txt-file
+    iFileNo = FreeFile
+    '파일을 연다.
+    Open "C:\CALPLANS\CTGORIES\" & txtCategory.Text For Output As #iFileNo
+    
+    '파일의 내용은 보지 않으므로 빈 칸으로...
+    Print #iFileNo, ""
+    
+    '파일을 닫는다.
+    Close #iFileNo
     
     Unload Me
 End Sub
@@ -216,3 +262,4 @@ Private Sub txtTimeHrs_Change()
 errln:
     MsgBox "시간의 값은 숫자이여야 합니다.", 16, "입력 값 오류"
 End Sub
+

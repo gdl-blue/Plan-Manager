@@ -14,7 +14,7 @@ Begin VB.Form frmPlans
    ScaleHeight     =   3615
    ScaleWidth      =   4515
    ShowInTaskbar   =   0   'False
-   Begin VB.FileListBox lvPlanFIles 
+   Begin VB.FileListBox lvPlanFiles 
       Height          =   450
       Left            =   2400
       TabIndex        =   4
@@ -55,6 +55,7 @@ Begin VB.Form frmPlans
       _ExtentX        =   7435
       _ExtentY        =   5106
       View            =   3
+      LabelEdit       =   1
       LabelWrap       =   -1  'True
       HideSelection   =   -1  'True
       _Version        =   327682
@@ -98,6 +99,7 @@ Private Sub cmdDelBtn_Click()
         DeleteSetting "Calendar", Year & "\" & Month & "\" & Day, lstPlanList.SelectedItem.Text & "Cate"
         DeleteSetting "Calendar", Year & "\" & Month & "\" & Day, lstPlanList.SelectedItem.Text & "Time"
         DeleteSetting "Calendar", Year & "\" & Month & "\" & Day, lstPlanList.SelectedItem.Text & "Location"
+        DeleteSetting "Calendar", Year & "\" & Month & "\" & Day, lstPlanList.SelectedItem.Text & "Cont"
     End If
     
     LoadPlans
@@ -106,26 +108,42 @@ End Sub
 Sub LoadPlans()
     On Error Resume Next
     lstPlanList.ListItems.Clear
-    lvPlanFIles.Refresh
+    lvPlanFiles.Refresh
     
     MkDir "C:\CALPLANS"
     MkDir "C:\CALPLANS\" & Year
     MkDir "C:\CALPLANS\" & Year & "\" & Month
     MkDir "C:\CALPLANS\" & Year & "\" & Month & "\" & Day
     
-    lvPlanFIles.Path = "C:\CALPLANS\" & Year & "\" & Month & "\" & Day & "\"
+    lvPlanFiles.Path = "C:\CALPLANS\" & Year & "\" & Month & "\" & Day & "\"
     
-    For Plan = 0 To lvPlanFIles.ListCount - 1
+    For Plan = 0 To lvPlanFiles.ListCount - 1
         'PlanData = GetSetting("Calendar", Year & "\" & Month & "\" & Day, lvPlanFIles.List(Plan), "(지정되지 않음)")
     
-        Title = lvPlanFIles.List(Plan)
-        Time = GetSetting("Calendar", Year & "\" & Month & "\" & Day, lvPlanFIles.List(Plan) & "Time", "(지정되지 않음)")
-        Category = GetSetting("Calendar", Year & "\" & Month & "\" & Day, lvPlanFIles.List(Plan) & "Cate", "(지정되지 않음)")
+        Title = lvPlanFiles.List(Plan)
+        Time = GetSetting("Calendar", Year & "\" & Month & "\" & Day, lvPlanFiles.List(Plan) & "Time", "(지정되지 않음)")
+        Category = GetSetting("Calendar", Year & "\" & Month & "\" & Day, lvPlanFiles.List(Plan) & "Cate", "(지정되지 않음)")
         
         lstPlanList.ListItems.Add , , Title
         lstPlanList.ListItems(Plan + 1).SubItems(1) = Left$(Time, 2) & ":" & Right$(Time, 2)
         lstPlanList.ListItems(Plan + 1).SubItems(2) = Category
     Next Plan
+End Sub
+
+Private Sub cmdViewPlan_Click()
+    On Error GoTo exitsub
+    frmPlanView.CurrentDate = CurrentDate
+    frmPlanView.Caption = lstPlanList.SelectedItem.SubItems(2) & " 일정 - " & lstPlanList.SelectedItem.Text
+    frmPlanView.Category = lstPlanList.SelectedItem.SubItems(2)
+    frmPlanView.Title = lstPlanList.SelectedItem.Text
+    frmPlanView.lblTimeHrs.Caption = Split(lstPlanList.SelectedItem.SubItems(1), ":")(0) & "시"
+    frmPlanView.lblTimeMin.Caption = Split(lstPlanList.SelectedItem.SubItems(1), ":")(1) & "분"
+    frmPlanView.lblLocation.Caption = GetSetting("Calendar", Year & "\" & Month & "\" & Day, lstPlanList.SelectedItem.Text & "Location", "알 수 없음")
+    frmPlanView.txtContent.Text = GetSetting("Calendar", Year & "\" & Month & "\" & Day, lstPlanList.SelectedItem.Text & "Cont", "자세한 내용 없음")
+    frmPlanView.Show vbModal, Me
+    
+exitsub:
+    Exit Sub
 End Sub
 
 Private Sub Form_Load()
@@ -139,4 +157,9 @@ Private Sub Form_Load()
     lstPlanList.ColumnHeaders.Add , , "분류", 850
     
     LoadPlans
+End Sub
+
+Private Sub lstPlanList_DblClick()
+    On Error Resume Next
+    cmdViewPlan_Click
 End Sub
