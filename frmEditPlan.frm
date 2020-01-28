@@ -15,6 +15,7 @@ Begin VB.Form frmEditPlan
    ShowInTaskbar   =   0   'False
    Begin VB.CommandButton OKButton 
       Caption         =   "확인"
+      Default         =   -1  'True
       Height          =   375
       Left            =   4680
       TabIndex        =   8
@@ -22,6 +23,7 @@ Begin VB.Form frmEditPlan
       Width           =   1215
    End
    Begin VB.CommandButton CancelButton 
+      Cancel          =   -1  'True
       Caption         =   "취소"
       Height          =   375
       Left            =   4680
@@ -238,7 +240,15 @@ Private Sub txtTimeHrs_Change()
     If Len(txtTimeHrs.Text) = 2 Or (txtTimeHrs.Text >= 3 And txtTimeHrs.Text <= 9) Then
         txtTimeMin.SetFocus '시 입력 칸을 채우면 다음 칸을 활성화한다.
     End If
-    
-    Exit Sub
+End Sub
+
+Private Sub txtTimeMin_Change()
+    If txtTimeMin.Text = "" Then txtTimeHrs.SetFocus
+End Sub
+
+Private Sub txtTimeMin_KeyDown(KeyCode As Integer, Shift As Integer)
+    If KeyCode = 8 Then
+        If txtTimeMin.Text = "" Then txtTimeHrs.SetFocus
+    End If
 End Sub
 

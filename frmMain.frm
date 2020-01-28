@@ -37,22 +37,22 @@ Begin VB.Form frmMain
       TabCaption(1)   =   "주소록"
       TabPicture(1)   =   "frmMain.frx":045E
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "cmdDelContact"
-      Tab(1).Control(1)=   "lvContactFiles"
-      Tab(1).Control(2)=   "Frame3"
+      Tab(1).Control(0)=   "lvContacts"
+      Tab(1).Control(1)=   "Frame1"
+      Tab(1).Control(2)=   "Frame2"
       Tab(1).Control(3)=   "cmdSaveContact"
-      Tab(1).Control(4)=   "Frame2"
-      Tab(1).Control(5)=   "Frame1"
-      Tab(1).Control(6)=   "lvContacts"
+      Tab(1).Control(4)=   "Frame3"
+      Tab(1).Control(5)=   "lvContactFiles"
+      Tab(1).Control(6)=   "cmdDelContact"
       Tab(1).ControlCount=   7
       TabCaption(2)   =   "할 일"
       TabPicture(2)   =   "frmMain.frx":047A
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "lvTaskFiles"
-      Tab(2).Control(1)=   "Frame4"
+      Tab(2).Control(0)=   "lvTasks"
+      Tab(2).Control(1)=   "cmdSaveTask"
       Tab(2).Control(2)=   "cmdDelTask"
-      Tab(2).Control(3)=   "cmdSaveTask"
-      Tab(2).Control(4)=   "lvTasks"
+      Tab(2).Control(3)=   "Frame4"
+      Tab(2).Control(4)=   "lvTaskFiles"
       Tab(2).ControlCount=   5
       Begin VB.FileListBox lvTaskFiles 
          Height          =   450
@@ -230,10 +230,10 @@ Begin VB.Form frmMain
       End
       Begin VB.Frame Frame2 
          Caption         =   "전화번호"
-         Height          =   1095
+         Height          =   975
          Left            =   -73080
          TabIndex        =   8
-         Top             =   1440
+         Top             =   1560
          Width           =   4935
          Begin VB.TextBox txtOtherNumber 
             Height          =   270
@@ -298,18 +298,25 @@ Begin VB.Form frmMain
       End
       Begin VB.Frame Frame1 
          Caption         =   "기본 정보"
-         Height          =   1215
+         Height          =   1335
          Left            =   -73080
          TabIndex        =   4
          Top             =   120
          Width           =   4935
+         Begin VB.TextBox txtAddress 
+            Height          =   270
+            Left            =   2520
+            TabIndex        =   42
+            Top             =   900
+            Width           =   2295
+         End
          Begin VB.TextBox txtPostalCode 
             Height          =   270
             Left            =   1080
             TabIndex        =   39
             Text            =   "000-000"
             Top             =   900
-            Width           =   3735
+            Width           =   735
          End
          Begin VB.TextBox txtCellPhone 
             Height          =   270
@@ -331,6 +338,14 @@ Begin VB.Form frmMain
             TabIndex        =   15
             Top             =   550
             Width           =   3735
+         End
+         Begin VB.Label Label13 
+            Caption         =   "주소:"
+            Height          =   255
+            Left            =   2040
+            TabIndex        =   41
+            Top             =   960
+            Width           =   495
          End
          Begin VB.Label Label12 
             Caption         =   "우편번호:"
@@ -419,7 +434,7 @@ Begin VB.Form frmMain
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             AutoSize        =   2
-            TextSave        =   "오후 8:22"
+            TextSave        =   "오후 10:09"
          EndProperty
       EndProperty
    End
@@ -486,6 +501,7 @@ Dim Task As Integer
 
 Sub LoadContacts()
     On Error Resume Next
+    MkDir "C:\CALPLANS"
     MkDir "C:\CALPLANS\CONTACTS"
     
     lvContacts.Clear
@@ -511,6 +527,7 @@ Private Sub cmdDelContact_Click()
         DeleteSetting "Calendar", "Contacts", lvContacts.List(lvContacts.ListIndex) & "Company"
         DeleteSetting "Calendar", "Contacts", lvContacts.List(lvContacts.ListIndex) & "OtherNum"
         DeleteSetting "Calendar", "Contacts", lvContacts.List(lvContacts.ListIndex) & "Content"
+        DeleteSetting "Calendar", "Contacts", lvContacts.List(lvContacts.ListIndex) & "Addr"
         DeleteSetting "Calendar", "Contacts", lvContacts.List(lvContacts.ListIndex) & "Postal"
         LoadContacts
     End If
@@ -543,6 +560,7 @@ Private Sub cmdSaveContact_Click()
     SaveSetting "Calendar", "Contacts", txtName.Text & "Content", txtContent.Text
     
     SaveSetting "Calendar", "Contacts", txtName.Text & "Postal", txtPostalCode.Text
+    SaveSetting "Calendar", "Contacts", txtName.Text & "Addr", txtAddress.Text
     
     If lvContacts.List(lvContacts.ListIndex) = "새 연락처 추가..." Then
         '해당 연락처가 존재함을 알리는 파일을 만든다.
@@ -577,6 +595,7 @@ End Sub
 
 Sub LoadTasks()
     On Error Resume Next
+    MkDir "C:\CALPLANS"
     MkDir "C:\CALPLANS\TASKS"
     
     lvTaskFiles.Path = "C:\CALPLANS\TASKS"
@@ -680,6 +699,9 @@ Private Sub lvContacts_Click()
         txtFax.Text = ""
         txtOtherNumber.Text = ""
         
+        txtAddress.Text = ""
+        txtPostalCode.Text = ""
+        
         txtContent.Text = ""
         
         cmdDelContact.Enabled = False
@@ -698,6 +720,9 @@ Private Sub lvContacts_Click()
         txtCompany.Text = GetSetting("Calendar", "Contacts", lvContacts.List(lvContacts.ListIndex) & "Company", "")
         txtFax.Text = GetSetting("Calendar", "Contacts", lvContacts.List(lvContacts.ListIndex) & "Fax", "")
         txtOtherNumber.Text = GetSetting("Calendar", "Contacts", lvContacts.List(lvContacts.ListIndex) & "OtherNum", "")
+        
+        txtPostalCode.Text = GetSetting("Calendar", "Contacts", lvContacts.List(lvContacts.ListIndex) & "Postal", "")
+        txtAddress.Text = GetSetting("Calendar", "Contacts", lvContacts.List(lvContacts.ListIndex) & "Addr", "")
         
         txtContent.Text = GetSetting("Calendar", "Contacts", lvContacts.List(lvContacts.ListIndex) & "Content", "")
         

@@ -23,7 +23,9 @@ Begin VB.Form frmPlanView
       Width           =   1215
    End
    Begin VB.CommandButton cmdClose 
+      Cancel          =   -1  'True
       Caption         =   "»Æ¿Œ"
+      Default         =   -1  'True
       Height          =   375
       Left            =   4920
       TabIndex        =   7
