@@ -33,7 +33,9 @@ Begin VB.Form frmMain
       Tab(0).ControlEnabled=   -1  'True
       Tab(0).Control(0)=   "MonthView1"
       Tab(0).Control(0).Enabled=   0   'False
-      Tab(0).ControlCount=   1
+      Tab(0).Control(1)=   "Dir1"
+      Tab(0).Control(1).Enabled=   0   'False
+      Tab(0).ControlCount=   2
       TabCaption(1)   =   "주소록"
       TabPicture(1)   =   "frmMain.frx":045E
       Tab(1).ControlEnabled=   0   'False
@@ -54,6 +56,14 @@ Begin VB.Form frmMain
       Tab(2).Control(3)=   "Frame4"
       Tab(2).Control(4)=   "lvTaskFiles"
       Tab(2).ControlCount=   5
+      Begin VB.DirListBox Dir1 
+         Height          =   300
+         Left            =   7440
+         TabIndex        =   43
+         Top             =   1320
+         Visible         =   0   'False
+         Width           =   375
+      End
       Begin VB.FileListBox lvTaskFiles 
          Height          =   450
          Left            =   -74760
@@ -404,7 +414,7 @@ Begin VB.Form frmMain
          MonthColumns    =   3
          MonthRows       =   2
          ShowToday       =   0   'False
-         StartOfWeek     =   20250625
+         StartOfWeek     =   20119553
          CurrentDate     =   43858
       End
    End
@@ -434,7 +444,7 @@ Begin VB.Form frmMain
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             AutoSize        =   2
-            TextSave        =   "오후 10:09"
+            TextSave        =   "오후 11:12"
          EndProperty
       EndProperty
    End
@@ -648,6 +658,20 @@ Private Sub cmdSaveTask_Click()
 End Sub
 
 Private Sub Form_Load()
+    Select Case Command
+        Case "/?"
+            MsgBox "일정관리자 풀그림을 시작합니다." & vbCrLf & vbCrLf & _
+                   "    PLANMGR.EXE [/R]" & vbCrLf & vbCrLf & _
+                   "    /R  알리미 프로그램만 시작합니다.", _
+                   vbInformation, "일정관리자 도움말"
+            End
+        Case "/R"
+            frmNotifyMgr.Show
+            Exit Sub
+    End Select
+    
+    frmNotifyMgr.Show
+
     Me.Left = GetSetting("Calendar", "Settings", "MainLeft", 1000)
     Me.Top = GetSetting("Calendar", "Settings", "MainTop", 1000)
     If SSTab1.Tab = 0 Then
@@ -660,6 +684,13 @@ Private Sub Form_Load()
     
     Me.Caption = App.Title & " - " & SSTab1.TabCaption(SSTab1.Tab)
     Me.Caption = Me.Caption & " (" & MonthView1.Year & "년 " & MonthView1.Month & "월)"
+    
+    If GetSetting("Calendar", "Config", "FirstRun", "0") = "0" Then
+        SaveSetting "Calendar", "Config", "FirstRun", "1"
+        MsgBox "이 풀그림이 종료된 상태에서도 알림을 받으려면 " & ChrW$(34) & Dir1.Path & "\PLANMGR.EXE /R" & ChrW$(34) & _
+               "(경로 복사됨) 바로가기를 시작프로그램에 추가하십시오.", vbInformation, "알리미 활성화"
+        Clipboard.SetText ChrW$(34) & Dir1.Path & "\PLANMGR.EXE /R" & ChrW$(34)
+    End If
     
     LoadContacts
     LoadTasks
@@ -678,6 +709,9 @@ Private Sub Form_Unload(Cancel As Integer)
         SaveSetting "Calendar", "Settings", "MainLeft", Me.Left
         SaveSetting "Calendar", "Settings", "MainTop", Me.Top
     End If
+    
+    Cancel = 1
+    Me.Hide
 End Sub
 
 Private Sub Frame5_DragDrop(Source As Control, X As Single, Y As Single)
@@ -873,9 +907,9 @@ Private Sub mnuEditUndo_Click()
 End Sub
 
 Private Sub mnuFileExit_Click()
-    '폼을 언로드합니다.
-    Unload Me
-
+    '알리미는 남아야 하므로 폼을 숨기기만 한다.
+    'Unload Me
+    Me.Hide
 End Sub
 
 Private Sub mnuFileSend_Click()

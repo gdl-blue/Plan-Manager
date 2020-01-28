@@ -100,6 +100,7 @@ Private Sub cmdDelBtn_Click()
         DeleteSetting "Calendar", Year & "\" & Month & "\" & Day, lstPlanList.SelectedItem.Text & "Time"
         DeleteSetting "Calendar", Year & "\" & Month & "\" & Day, lstPlanList.SelectedItem.Text & "Location"
         DeleteSetting "Calendar", Year & "\" & Month & "\" & Day, lstPlanList.SelectedItem.Text & "Cont"
+        DeleteSetting "Calendar", "NotifiedPlans\" & Year & "\" & Month & "\" & Day, lstPlanList.SelectedItem.Text
     End If
     
     LoadPlans
