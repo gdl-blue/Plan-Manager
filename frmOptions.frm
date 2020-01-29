@@ -1,8 +1,8 @@
 VERSION 5.00
 Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.Form frmOptions 
-   BorderStyle     =   3  'Å©±â °íÁ¤ ´ëÈ­ »óÀÚ
-   Caption         =   "¿É¼Ç"
+   BorderStyle     =   3  'í¬ê¸° ê³ ì • ëŒ€í™” ìƒì
+   Caption         =   "ì˜µì…˜"
    ClientHeight    =   5400
    ClientLeft      =   45
    ClientTop       =   435
@@ -14,10 +14,10 @@ Begin VB.Form frmOptions
    ScaleHeight     =   5400
    ScaleWidth      =   6780
    ShowInTaskbar   =   0   'False
-   StartUpPosition =   2  'È­¸é °¡¿îµ¥
+   StartUpPosition =   2  'í™”ë©´ ê°€ìš´ë°
    Begin VB.CommandButton Command2 
       Cancel          =   -1  'True
-      Caption         =   "Ãë¼Ò"
+      Caption         =   "ì·¨ì†Œ"
       Height          =   375
       Left            =   5280
       TabIndex        =   2
@@ -25,7 +25,7 @@ Begin VB.Form frmOptions
       Width           =   1335
    End
    Begin VB.CommandButton Command1 
-      Caption         =   "È®ÀÎ"
+      Caption         =   "í™•ì¸"
       Default         =   -1  'True
       Height          =   375
       Left            =   3840
@@ -45,7 +45,7 @@ Begin VB.Form frmOptions
       Tabs            =   1
       TabHeight       =   520
       TabMaxWidth     =   1764
-      TabCaption(0)   =   "ÀÏ¹İ"
+      TabCaption(0)   =   "ì¼ë°˜"
       TabPicture(0)   =   "frmOptions.frx":0442
       Tab(0).ControlEnabled=   -1  'True
       Tab(0).Control(0)=   "Frame1"
@@ -54,7 +54,7 @@ Begin VB.Form frmOptions
       Tab(0).Control(1).Enabled=   0   'False
       Tab(0).ControlCount=   2
       Begin VB.Frame Frame2 
-         Caption         =   "³» µ¥ÀÌÅ¸"
+         Caption         =   "ë‚´ ë°ì´íƒ€"
          Height          =   1695
          Left            =   240
          TabIndex        =   5
@@ -85,7 +85,7 @@ Begin VB.Form frmOptions
             Width           =   1095
          End
          Begin VB.CommandButton cmdDelTasks 
-            Caption         =   "¸ğµÎ »èÁ¦(&L)"
+            Caption         =   "ëª¨ë‘ ì‚­ì œ(&L)"
             Height          =   375
             Left            =   4560
             TabIndex        =   11
@@ -93,7 +93,7 @@ Begin VB.Form frmOptions
             Width           =   1335
          End
          Begin VB.CommandButton cmdDelContacts 
-            Caption         =   "¸ğµÎ »èÁ¦(&E)"
+            Caption         =   "ëª¨ë‘ ì‚­ì œ(&E)"
             Height          =   375
             Left            =   4560
             TabIndex        =   9
@@ -101,7 +101,7 @@ Begin VB.Form frmOptions
             Width           =   1335
          End
          Begin VB.CommandButton cmdDelPlans 
-            Caption         =   "¸ğµÎ »èÁ¦(&D)"
+            Caption         =   "ëª¨ë‘ ì‚­ì œ(&D)"
             Height          =   375
             Left            =   4560
             TabIndex        =   7
@@ -109,7 +109,7 @@ Begin VB.Form frmOptions
             Width           =   1335
          End
          Begin VB.Label Label3 
-            Caption         =   "³» ÀÛ¾÷¸ñ·Ï:"
+            Caption         =   "ë‚´ ì‘ì—…ëª©ë¡:"
             Height          =   255
             Left            =   240
             TabIndex        =   10
@@ -117,7 +117,7 @@ Begin VB.Form frmOptions
             Width           =   2655
          End
          Begin VB.Label Label2 
-            Caption         =   "³» ÁÖ¼Ò·Ï:"
+            Caption         =   "ë‚´ ì£¼ì†Œë¡:"
             Height          =   255
             Left            =   240
             TabIndex        =   8
@@ -125,7 +125,7 @@ Begin VB.Form frmOptions
             Width           =   2655
          End
          Begin VB.Label Label1 
-            Caption         =   "³» ÀÏÁ¤:"
+            Caption         =   "ë‚´ ì¼ì •:"
             Height          =   255
             Left            =   240
             TabIndex        =   6
@@ -134,14 +134,14 @@ Begin VB.Form frmOptions
          End
       End
       Begin VB.Frame Frame1 
-         Caption         =   "º¸±â"
+         Caption         =   "ë³´ê¸°"
          Height          =   855
          Left            =   240
          TabIndex        =   3
          Top             =   480
          Width           =   6015
          Begin VB.CheckBox chkNoResize 
-            Caption         =   "[ÀÏÁ¤] ÅÇ¿¡¼­ Ã¢ Å©±â Á¶Á¤ÇÏÁö ¾Ê±â"
+            Caption         =   "[ì¼ì •] íƒ­ì—ì„œ ì°½ í¬ê¸° ì¡°ì •í•˜ì§€ ì•Šê¸°"
             Height          =   255
             Left            =   240
             TabIndex        =   4
@@ -159,8 +159,8 @@ Attribute VB_Exposed = False
 
 
 Private Sub cmdDelContacts_Click()
-    If MsgBox("Á¤¸»·Î »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?", vbQuestion + vbOKCancel, "»èÁ¦") = vbOK Then
-        If MsgBox("º¹±¸ *ºÒ°¡´É*ÇÕ´Ï´Ù. Áõ¸»·Î ¸ğµç ÀÛ¾÷À» »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?", vbOKCancel + vbExclamation, "»èÁ¦") = vbOK Then
+    If MsgBox("ì •ë§ë¡œ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?", vbQuestion + vbOKCancel, "ì‚­ì œ") = vbOK Then
+        If MsgBox("ë³µêµ¬ *ë¶ˆê°€ëŠ¥*í•©ë‹ˆë‹¤. ì¦ë§ë¡œ ëª¨ë“  ì£¼ì†Œë¡ì„ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?", vbOKCancel + vbExclamation, "ì‚­ì œ") = vbOK Then
             On Error Resume Next
             lvTaskFiles.Path = "C:\CALPLANS\CONTACTS"
             
@@ -187,16 +187,16 @@ End Sub
 
 Private Sub cmdDelPlans_Click()
     Dim DelYear As String
-    DelYear = InputBox("»èÁ¦ÇÒ ¿¬µµ¸¦ ÀÔ·ÂÇÏ½Ê½Ã¿À.", "ÀÏÁ¤ ¸ğµÎ Áö¿ì±â")
+    DelYear = InputBox("ì‚­ì œí•  ì—°ë„ë¥¼ ì…ë ¥í•˜ì‹­ì‹œì˜¤.", "ì¼ì • ëª¨ë‘ ì§€ìš°ê¸°")
     If DelYear <> "" Then
         If IsNumeric(DelYear) = False Then
-            MsgBox "¿¬µµÀÇ °ªÀÌ ¿Ã¹Ù¸£Áö ¾Ê½À´Ï´Ù.", 16, "¿¬µµ"
+            MsgBox "ì—°ë„ì˜ ê°’ì´ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤.", 16, "ì—°ë„"
             Exit Sub
         End If
     
         On Error Resume Next
-        If MsgBox("Á¤¸»·Î »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?", vbQuestion + vbOKCancel, "»èÁ¦") = vbOK Then
-            If MsgBox("º¹±¸ *ºÒ°¡´É*ÇÕ´Ï´Ù. Áõ¸»·Î ÀÔ·ÂÇÑ ÇØÀÇ ¸ğµç ÀÏÁ¤À» »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?", vbOKCancel + vbExclamation, "»èÁ¦") = vbOK Then
+        If MsgBox("ì •ë§ë¡œ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?", vbQuestion + vbOKCancel, "ì‚­ì œ") = vbOK Then
+            If MsgBox("ë³µêµ¬ *ë¶ˆê°€ëŠ¥*í•©ë‹ˆë‹¤. ì¦ë§ë¡œ ì…ë ¥í•œ í•´ì˜ ëª¨ë“  ì¼ì •ì„ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?", vbOKCancel + vbExclamation, "ì‚­ì œ") = vbOK Then
                 On Error Resume Next
                 Shell "CMD /C RD /S /Q " & ChrW$(34) & "C:\CALPLANS\" & DelYear & ChrW$(34)
                 Shell "COMMAND /C DELTREE /Y " & ChrW$(34) & "C:\CALPLANS\" & DelYear & ChrW$(34)
@@ -206,8 +206,8 @@ Private Sub cmdDelPlans_Click()
 End Sub
 
 Private Sub cmdDelTasks_Click()
-    If MsgBox("Á¤¸»·Î »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?", vbQuestion + vbOKCancel, "»èÁ¦") = vbOK Then
-        If MsgBox("º¹±¸ *ºÒ°¡´É*ÇÕ´Ï´Ù. Áõ¸»·Î ¸ğµç ÀÛ¾÷À» »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?", vbOKCancel + vbExclamation, "»èÁ¦") = vbOK Then
+    If MsgBox("ì •ë§ë¡œ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?", vbQuestion + vbOKCancel, "ì‚­ì œ") = vbOK Then
+        If MsgBox("ë³µêµ¬ *ë¶ˆê°€ëŠ¥*í•©ë‹ˆë‹¤. ì¦ë§ë¡œ ëª¨ë“  ì‘ì—…ì„ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?", vbOKCancel + vbExclamation, "ì‚­ì œ") = vbOK Then
             On Error Resume Next
             lvTaskFiles.Path = "C:\CALPLANS\TASKS"
             
