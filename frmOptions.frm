@@ -185,6 +185,26 @@ Private Sub cmdDelContacts_Click()
     End If
 End Sub
 
+Private Sub cmdDelPlans_Click()
+    Dim DelYear As String
+    DelYear = InputBox("삭제할 연도를 입력하십시오.", "일정 모두 지우기")
+    If DelYear <> "" Then
+        If IsNumeric(DelYear) = False Then
+            MsgBox "연도의 값이 올바르지 않습니다.", 16, "연도"
+            Exit Sub
+        End If
+    
+        On Error Resume Next
+        If MsgBox("정말로 삭제하시겠습니까?", vbQuestion + vbOKCancel, "삭제") = vbOK Then
+            If MsgBox("복구 *불가능*합니다. 증말로 입력한 해의 모든 일정을 삭제하시겠습니까?", vbOKCancel + vbExclamation, "삭제") = vbOK Then
+                On Error Resume Next
+                Shell "CMD /C RD /S /Q " & ChrW$(34) & "C:\CALPLANS\" & DelYear & ChrW$(34)
+                Shell "COMMAND /C DELTREE /Y " & ChrW$(34) & "C:\CALPLANS\" & DelYear & ChrW$(34)
+            End If
+        End If
+    End If
+End Sub
+
 Private Sub cmdDelTasks_Click()
     If MsgBox("정말로 삭제하시겠습니까?", vbQuestion + vbOKCancel, "삭제") = vbOK Then
         If MsgBox("복구 *불가능*합니다. 증말로 모든 작업을 삭제하시겠습니까?", vbOKCancel + vbExclamation, "삭제") = vbOK Then

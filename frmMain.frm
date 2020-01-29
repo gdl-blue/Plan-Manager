@@ -444,7 +444,7 @@ Begin VB.Form frmMain
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             AutoSize        =   2
-            TextSave        =   "오전 6:39"
+            TextSave        =   "오전 8:05"
          EndProperty
       EndProperty
    End
@@ -506,7 +506,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Private Declare Function OSWinHelp% Lib "user32" Alias "WinHelpA" (ByVal hwnd&, ByVal HelpFile$, ByVal wCommand%, dwData As Any)
 Dim Contact As Integer
-Dim iFileNo As Integer
+Dim iFIleNo As Integer
 Dim Task As Integer
 
 Sub LoadContacts()
@@ -575,15 +575,15 @@ Private Sub cmdSaveContact_Click()
     If lvContacts.List(lvContacts.ListIndex) = "새 연락처 추가..." Then
         '해당 연락처가 존재함을 알리는 파일을 만든다.
         'https://stackoverflow.com/questions/21108664/how-to-create-txt-file
-        iFileNo = FreeFile
+        iFIleNo = FreeFile
         '파일을 연다.
-        Open "C:\CALPLANS\CONTACTS\" & txtName.Text For Output As #iFileNo
+        Open "C:\CALPLANS\CONTACTS\" & txtName.Text For Output As #iFIleNo
         
         '파일의 내용은 보지 않으므로 빈 칸으로...
-        Print #iFileNo, ""
+        Print #iFIleNo, ""
         
         '파일을 닫는다.
-        Close #iFileNo
+        Close #iFIleNo
         
         txtName.Text = ""
         
@@ -639,15 +639,15 @@ Private Sub cmdSaveTask_Click()
     If lvTasks.List(lvTasks.ListIndex) = "새 작업 추가..." Then
         '해당 작업이 존재함을 알리는 파일을 만든다.
         'https://stackoverflow.com/questions/21108664/how-to-create-txt-file
-        iFileNo = FreeFile
+        iFIleNo = FreeFile
         '파일을 연다.
-        Open "C:\CALPLANS\TASKS\" & txtTaskTitle.Text For Output As #iFileNo
+        Open "C:\CALPLANS\TASKS\" & txtTaskTitle.Text For Output As #iFIleNo
         
         '파일의 내용은 보지 않으므로 빈 칸으로...
-        Print #iFileNo, ""
+        Print #iFIleNo, ""
         
         '파일을 닫는다.
-        Close #iFileNo
+        Close #iFIleNo
         
         txtTaskTitle.Text = ""
         txtPercentage.Text = ""

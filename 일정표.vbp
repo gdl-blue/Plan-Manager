@@ -27,8 +27,8 @@ Name="일정관리자"
 HelpContextID="0"
 CompatibleMode="0"
 MajorVer=1
-MinorVer=4
-RevisionVer=0
+MinorVer=5
+RevisionVer=1
 AutoIncrementVer=0
 ServerSupportFiles=0
 VersionComments="사용자의 일정, 주소록, 할 일을 한 곳에서 관리할 수 있습니다."
@@ -51,6 +51,7 @@ Unattended=0
 Retained=0
 ThreadPerObject=0
 MaxNumberOfThreads=1
+DebugStartupOption=0
 
 [MS Transaction Server]
 AutoRefresh=1
