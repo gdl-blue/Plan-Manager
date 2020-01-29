@@ -153,6 +153,7 @@ Public CurrentDate As Date
 Public Year As Integer
 Public Month As Integer
 Public Day As Integer
+Dim iFIleNo As Integer
 
 Private Sub CancelButton_Click()
     If MsgBox("일정 수정를 취소하시겠습니까? 임시 저장되지 않습니다.", vbQuestion + vbOKCancel, "일정 추가") = vbOK Then
@@ -165,6 +166,12 @@ Private Sub Form_Load()
     
     On Error Resume Next
     MkDir "C:\CALPLANS\CTGORIES"
+    
+    txtCategory.Clear
+    txtCategory.AddItem "업무"
+    txtCategory.AddItem "여가생활"
+    txtCategory.AddItem "약속"
+    txtCategory.AddItem "취미"
     
     lvCateFiles.Path = "C:\CALPLANS\CTGORIES"
     
@@ -219,17 +226,19 @@ Private Sub OKButton_Click()
     
     '분류를 추가한다.
     If FileExists("C:\CALPLANS\CTGORIES\" & txtCategory.Text) = False Then
-        'https://stackoverflow.com/questions/21108664/how-to-create-txt-file
-        Dim iFileNo As Integer
-        iFileNo = FreeFile
-        '파일을 연다.
-        Open "C:\CALPLANS\CTGORIES\" & txtCategory.Text For Output As #iFileNo
-        
-        '파일의 내용은 보지 않으므로 빈 칸으로...
-        Print #iFileNo, ""
-        
-        '파일을 닫는다.
-        Close #iFileNo
+        If txtCategory.Text <> "업무" And txtCategory.Text <> "여가생활" And txtCategory.Text <> "약속" And txtCategory.Text <> "취미" And txtCategory.Text <> "(지정되지 않음)" Then
+            'https://stackoverflow.com/questions/21108664/how-to-create-txt-file
+            iFIleNo = FreeFile
+            '파일을 연다.
+            
+            Open "C:\CALPLANS\CTGORIES\" & txtCategory.Text For Output As #iFIleNo
+            
+            '파일의 내용은 보지 않으므로 빈 칸으로...
+            Print #iFIleNo, ""
+            
+            '파일을 닫는다.
+            Close #iFIleNo
+        End If
     End If
     
     Unload Me

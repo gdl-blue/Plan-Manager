@@ -52,7 +52,7 @@ Begin VB.Form frmAbout
       Width           =   1452
    End
    Begin VB.Label lblDescription 
-      Caption         =   "일정, 연락처와 당신의 할 일을 한 곳에서 관리할 수 있습니다."
+      Caption         =   "응용 프로그램 설명"
       ForeColor       =   &H00000000&
       Height          =   1170
       Left            =   1050
@@ -139,6 +139,7 @@ Private Sub Form_Load()
     lblVersion.Caption = "버전 " & App.Major & "." & App.Minor & "." & App.Revision
     lblTitle.Caption = App.Title
     Me.Caption = App.Title & " 정보"
+    lblDescription.Caption = App.FileDescription
 End Sub
 
 
@@ -185,7 +186,7 @@ Public Sub StartSysInfo()
 
         Exit Sub
 SysInfoErr:
-        MsgBox "지금은 시스템 정보를 사용할 수 없습니다.", vbOKOnly
+        MsgBox "지금은 시스템 정보를 사용할 수 없습니다. SYSTEM32 디렉토리에 MSINFO32.EXE이(가) 있는지 확인하십시오. 없으면 다시 설치하십시오.", vbOKOnly + 16, "시스템 정보"
 End Sub
 
 

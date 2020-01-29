@@ -31,7 +31,7 @@ Begin VB.Form frmPlans
       Width           =   1335
    End
    Begin VB.CommandButton cmdDelBtn 
-      Caption         =   "삭제(&D)..."
+      Caption         =   "삭제(&D)"
       Height          =   375
       Left            =   1560
       TabIndex        =   2
@@ -163,4 +163,10 @@ End Sub
 Private Sub lstPlanList_DblClick()
     On Error Resume Next
     cmdViewPlan_Click
+End Sub
+
+Private Sub lstPlanList_KeyDown(KeyCode As Integer, Shift As Integer)
+    If KeyCode = 46 Then
+        cmdDelBtn_Click
+    End If
 End Sub

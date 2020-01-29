@@ -39,22 +39,22 @@ Begin VB.Form frmMain
       TabCaption(1)   =   "주소록"
       TabPicture(1)   =   "frmMain.frx":045E
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "lvContacts"
-      Tab(1).Control(1)=   "Frame1"
-      Tab(1).Control(2)=   "Frame2"
+      Tab(1).Control(0)=   "cmdDelContact"
+      Tab(1).Control(1)=   "lvContactFiles"
+      Tab(1).Control(2)=   "Frame3"
       Tab(1).Control(3)=   "cmdSaveContact"
-      Tab(1).Control(4)=   "Frame3"
-      Tab(1).Control(5)=   "lvContactFiles"
-      Tab(1).Control(6)=   "cmdDelContact"
+      Tab(1).Control(4)=   "Frame2"
+      Tab(1).Control(5)=   "Frame1"
+      Tab(1).Control(6)=   "lvContacts"
       Tab(1).ControlCount=   7
       TabCaption(2)   =   "할 일"
       TabPicture(2)   =   "frmMain.frx":047A
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "lvTasks"
-      Tab(2).Control(1)=   "cmdSaveTask"
+      Tab(2).Control(0)=   "lvTaskFiles"
+      Tab(2).Control(1)=   "Frame4"
       Tab(2).Control(2)=   "cmdDelTask"
-      Tab(2).Control(3)=   "Frame4"
-      Tab(2).Control(4)=   "lvTaskFiles"
+      Tab(2).Control(3)=   "cmdSaveTask"
+      Tab(2).Control(4)=   "lvTasks"
       Tab(2).ControlCount=   5
       Begin VB.DirListBox Dir1 
          Height          =   300
@@ -89,7 +89,7 @@ Begin VB.Form frmMain
             _ExtentY        =   476
             _Version        =   327681
             BuddyControl    =   "txtPercentage"
-            BuddyDispid     =   196613
+            BuddyDispid     =   196614
             OrigLeft        =   3850
             OrigTop         =   1200
             OrigRight       =   4105
@@ -414,7 +414,7 @@ Begin VB.Form frmMain
          MonthColumns    =   3
          MonthRows       =   2
          ShowToday       =   0   'False
-         StartOfWeek     =   20119553
+         StartOfWeek     =   20185089
          CurrentDate     =   43858
       End
    End
@@ -439,12 +439,12 @@ Begin VB.Form frmMain
          BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
             AutoSize        =   2
-            TextSave        =   "2020-01-28"
+            TextSave        =   "2020-01-29"
          EndProperty
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             AutoSize        =   2
-            TextSave        =   "오후 11:12"
+            TextSave        =   "오전 6:39"
          EndProperty
       EndProperty
    End
@@ -670,13 +670,21 @@ Private Sub Form_Load()
             Exit Sub
     End Select
     
+    mnuHelpAbout.Caption = App.Title & " 정보(&A)"
+    
     frmNotifyMgr.Show
 
     Me.Left = GetSetting("Calendar", "Settings", "MainLeft", 1000)
     Me.Top = GetSetting("Calendar", "Settings", "MainTop", 1000)
-    If SSTab1.Tab = 0 Then
-        SSTab1.Width = 8775
-        Me.Width = 9150
+    
+    If GetSetting("Calendar", "Options", "NoResize", "0") = "0" Then
+        If SSTab1.Tab = 0 Then
+            SSTab1.Width = 8775
+            Me.Width = 9150
+        Else
+            SSTab1.Width = 7095
+            Me.Width = 7440
+        End If
     Else
         SSTab1.Width = 7095
         Me.Width = 7440
@@ -820,7 +828,7 @@ Private Sub mnuHelpSearchForHelpOn_Click()
     '사용자는 [프로젝트 속성] 대화 상자에서 응용 프로그램에 대한
     '도움말 파일을 설정할 수 있습니다.
     If Len(App.HelpFile) = 0 Then
-        MsgBox "도움말 목차를 표시할 수 없습니다. 이 프로젝트와 연관된 도움말이 없습니다.", vbInformation, Me.Caption
+        MsgBox "도움말 목차를 표시할 수 없습니다. 이 프로젝트와 연관된 도움말이 없습니다.", vbInformation, App.Title
     Else
         On Error Resume Next
         nRet = OSWinHelp(Me.hwnd, App.HelpFile, 261, 0)
@@ -839,7 +847,7 @@ Private Sub mnuHelpContents_Click()
     '사용자는 [프로젝트 속성] 대화 상자에서 응용 프로그램에 대한
     '도움말 파일을 설정할 수 있습니다.
     If Len(App.HelpFile) = 0 Then
-        MsgBox "도움말 목차를 표시할 수 없습니다. 이 프로젝트와 연관된 도움말이 없습니다.", vbInformation, Me.Caption
+        MsgBox "도움말 목차를 표시할 수 없습니다. 이 프로젝트와 연관된 도움말이 없습니다.", vbInformation, App.Title
     Else
         On Error Resume Next
         nRet = OSWinHelp(Me.hwnd, App.HelpFile, 3, 0)
@@ -863,7 +871,7 @@ End Sub
 
 Private Sub mnuViewOptions_Click()
     '작업: 'mnuViewOptions_Click' 코드를 추가하십시오.
-    MsgBox "사용 가능한 설정이 없습니다."
+    frmOptions.Show vbModal, Me
 End Sub
 
 Private Sub mnuViewRefresh_Click()
@@ -1000,9 +1008,14 @@ Private Sub SSTab1_Click(PreviousTab As Integer)
         Me.Caption = App.Title & " - " & SSTab1.TabCaption(SSTab1.Tab) & " (새 작업 추가)"
     End If
     
-    If SSTab1.Tab = 0 Then
-        SSTab1.Width = 8775
-        Me.Width = 9150
+    If GetSetting("Calendar", "Options", "NoResize", "0") = "0" Then
+        If SSTab1.Tab = 0 Then
+            SSTab1.Width = 8775
+            Me.Width = 9150
+        Else
+            SSTab1.Width = 7095
+            Me.Width = 7440
+        End If
     Else
         SSTab1.Width = 7095
         Me.Width = 7440

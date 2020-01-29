@@ -1,9 +1,9 @@
 VERSION 5.00
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Begin VB.Form frmNotifyMgr 
-   BorderStyle     =   1  '단일 고정
+   BorderStyle     =   3  '크기 고정 대화 상자
    Caption         =   "일정 알리미"
-   ClientHeight    =   75
+   ClientHeight    =   30
    ClientLeft      =   45
    ClientTop       =   435
    ClientWidth     =   2220
@@ -12,8 +12,9 @@ Begin VB.Form frmNotifyMgr
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   75
+   ScaleHeight     =   30
    ScaleWidth      =   2220
+   ShowInTaskbar   =   0   'False
    StartUpPosition =   3  'Windows 기본값
    Visible         =   0   'False
    WindowState     =   1  '최소화
@@ -37,7 +38,7 @@ Begin VB.Form frmNotifyMgr
       ForeColor       =   -2147483630
       BackColor       =   -2147483633
       Appearance      =   1
-      StartOfWeek     =   20119553
+      StartOfWeek     =   80347137
       CurrentDate     =   43858
    End
    Begin VB.Timer Timer1 

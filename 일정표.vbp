@@ -15,6 +15,7 @@ Form=frmAddPlan.frm
 Form=frmPlanView.frm
 Form=frmEditPlan.frm
 Form=frmNotifyMgr.frm
+Form=frmOptions.frm
 IconForm="frmMain"
 Startup="Sub Main"
 HelpFile=""

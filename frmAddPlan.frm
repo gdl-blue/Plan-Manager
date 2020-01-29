@@ -168,6 +168,12 @@ Private Sub Form_Load()
     
     lvCateFiles.Path = "C:\CALPLANS\CTGORIES"
     
+    txtCategory.Clear
+    txtCategory.AddItem "업무"
+    txtCategory.AddItem "여가생활"
+    txtCategory.AddItem "약속"
+    txtCategory.AddItem "취미"
+    
     For Category = 0 To lvCateFiles.ListCount - 1
         txtCategory.AddItem lvCateFiles.List(Category)
     Next Category
@@ -239,16 +245,20 @@ Private Sub OKButton_Click()
     frmPlans.LoadPlans
     
     '분류를 추가한다.
-    'https://stackoverflow.com/questions/21108664/how-to-create-txt-file
-    iFileNo = FreeFile
-    '파일을 연다.
-    Open "C:\CALPLANS\CTGORIES\" & txtCategory.Text For Output As #iFileNo
     
-    '파일의 내용은 보지 않으므로 빈 칸으로...
-    Print #iFileNo, ""
-    
-    '파일을 닫는다.
-    Close #iFileNo
+    If txtCategory.Text <> "업무" And txtCategory.Text <> "여가생활" And txtCategory.Text <> "약속" And txtCategory.Text <> "취미" And txtCategory.Text <> "(지정되지 않음)" Then
+        'https://stackoverflow.com/questions/21108664/how-to-create-txt-file
+        iFileNo = FreeFile
+        '파일을 연다.
+        
+        Open "C:\CALPLANS\CTGORIES\" & txtCategory.Text For Output As #iFileNo
+        
+        '파일의 내용은 보지 않으므로 빈 칸으로...
+        Print #iFileNo, ""
+        
+        '파일을 닫는다.
+        Close #iFileNo
+    End If
     
     Unload Me
 End Sub
