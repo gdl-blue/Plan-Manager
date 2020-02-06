@@ -13,6 +13,7 @@ Begin VB.Form frmEditPlan
    ScaleHeight     =   3510
    ScaleWidth      =   6030
    ShowInTaskbar   =   0   'False
+   StartUpPosition =   1  '소유자 가운데
    Begin VB.CommandButton OKButton 
       Caption         =   "확인"
       Default         =   -1  'True
@@ -183,19 +184,19 @@ End Sub
 Private Sub OKButton_Click()
     '입력값을 검사한다.
     If IsNumeric(txtTimeHrs.Text) = False Or IsNumeric(txtTimeMin.Text) = False Then
-        MsgBox "시간의 값이 올바르지 않습니다.", 16, "입력 값 오류"
+        MessageBox "시간의 값이 올바르지 않습니다.", "입력 값 오류", Me, 16
         Exit Sub
     End If
     If txtTimeHrs.Text = "24" Then
-        MsgBox "24시 대신 0시로 입력해주십시오.", 16, "입력 값 오류"
+        MessageBox "24시 대신 0시로 입력해주십시오.", "입력 값 오류", Me, 16
         Exit Sub
     End If
     If txtTimeHrs.Text > 24 Or txtTimeMin.Text > 59 Or txtTimeHrs.Text < 0 Or txtTimeMin.Text < 0 Then
-        MsgBox "여기는 외계가 아닙니다...", 16, "입력 값 오류"
+        MessageBox "시간에서 시는 0부터 24, 분은 0부터 59까지의 정수이여야 합니다.", "입력 값 오류", Me, 16
         Exit Sub
     End If
     If txtTitle.Text = "" Then
-        MsgBox "제목의 값은 필수입니다.", 16, "입력 값 오류"
+        MessageBox "제목의 값은 필수입니다.", "입력 값 오류", Me, 16
         Exit Sub
     End If
     If txtCategory.Text = "" Then

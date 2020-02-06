@@ -414,7 +414,7 @@ Begin VB.Form frmMain
          MonthColumns    =   3
          MonthRows       =   2
          ShowToday       =   0   'False
-         StartOfWeek     =   20185089
+         StartOfWeek     =   20250625
          CurrentDate     =   43858
       End
    End
@@ -439,20 +439,23 @@ Begin VB.Form frmMain
          BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
             AutoSize        =   2
-            TextSave        =   "2020-01-29"
+            TextSave        =   "2020-02-06"
          EndProperty
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             AutoSize        =   2
-            TextSave        =   "오전 8:05"
+            TextSave        =   "오후 10:34"
          EndProperty
       EndProperty
    End
    Begin VB.Menu mnuFile 
       Caption         =   "파일(&F)"
       Begin VB.Menu mnuFileProperties 
-         Caption         =   "일정 목록(&I)"
+         Caption         =   "일정 목록(&I)..."
          Shortcut        =   ^L
+      End
+      Begin VB.Menu mnuFilePlanBrowser 
+         Caption         =   "모든 일정/데이터 색인(&B)..."
       End
       Begin VB.Menu mnuFileBar0 
          Caption         =   "-"
@@ -658,12 +661,16 @@ Private Sub cmdSaveTask_Click()
 End Sub
 
 Private Sub Form_Load()
+    On Error Resume Next
+    MkDir "C:\CALPLANS"
+    MkDir "C:\CALPLANS\CONTACTS"
+
     Select Case Command
         Case "/?"
-            MsgBox "일정관리자 풀그림을 시작합니다." & vbCrLf & vbCrLf & _
+            MessageBox "일정관리자 풀그림을 시작합니다." & vbCrLf & vbCrLf & _
                    "    PLANMGR.EXE [/R]" & vbCrLf & vbCrLf & _
                    "    /R  알리미 프로그램만 시작합니다.", _
-                   vbInformation, "일정관리자 도움말"
+                   "일정관리자 도움말", Me
             End
         Case "/R"
             frmNotifyMgr.Show
@@ -695,8 +702,8 @@ Private Sub Form_Load()
     
     If GetSetting("Calendar", "Config", "FirstRun", "0") = "0" Then
         SaveSetting "Calendar", "Config", "FirstRun", "1"
-        MsgBox "이 풀그림이 종료된 상태에서도 알림을 받으려면 " & ChrW$(34) & Dir1.Path & "\PLANMGR.EXE /R" & ChrW$(34) & _
-               "(경로 복사됨) 바로가기를 시작프로그램에 추가하십시오.", vbInformation, "알리미 활성화"
+        MessageBox "이 풀그림이 종료된 상태에서도 알림을 받으려면 " & ChrW$(34) & Dir1.Path & "\PLNMGR32.EXE /R" & ChrW$(34) & _
+               "(경로 복사됨) 바로가기를 시작프로그램에 추가하십시오.", "알리미 활성화", Me
         Clipboard.SetText ChrW$(34) & Dir1.Path & "\PLANMGR.EXE /R" & ChrW$(34)
     End If
     
@@ -811,6 +818,10 @@ Private Sub lvTasks_ItemCheck(Item As Integer)
     lvTasks.ListIndex = Item
 End Sub
 
+Private Sub mnuFilePlanBrowser_Click()
+    frmDataBrowser.Show vbModal, Me
+End Sub
+
 Private Sub MonthView1_DateClick(ByVal DateClicked As Date)
     frmPlans.CurrentDate = DateClicked
     frmPlans.Show vbModal, Me
@@ -828,7 +839,7 @@ Private Sub mnuHelpSearchForHelpOn_Click()
     '사용자는 [프로젝트 속성] 대화 상자에서 응용 프로그램에 대한
     '도움말 파일을 설정할 수 있습니다.
     If Len(App.HelpFile) = 0 Then
-        MsgBox "도움말 목차를 표시할 수 없습니다. 이 프로젝트와 연관된 도움말이 없습니다.", vbInformation, App.Title
+        MessageBox "도움말 목차를 표시할 수 없습니다. 이 프로그램과 연관된 도움말이 없습니다.", App.Title, Me, 16
     Else
         On Error Resume Next
         nRet = OSWinHelp(Me.hwnd, App.HelpFile, 261, 0)
@@ -839,6 +850,8 @@ Private Sub mnuHelpSearchForHelpOn_Click()
 
 End Sub
 
+
+
 Private Sub mnuHelpContents_Click()
     Dim nRet As Integer
 
@@ -847,7 +860,7 @@ Private Sub mnuHelpContents_Click()
     '사용자는 [프로젝트 속성] 대화 상자에서 응용 프로그램에 대한
     '도움말 파일을 설정할 수 있습니다.
     If Len(App.HelpFile) = 0 Then
-        MsgBox "도움말 목차를 표시할 수 없습니다. 이 프로젝트와 연관된 도움말이 없습니다.", vbInformation, App.Title
+        MessageBox "도움말 목차를 표시할 수 없습니다. 이 프로그램과 연관된 도움말이 없습니다.", App.Title, Me, 16
     Else
         On Error Resume Next
         nRet = OSWinHelp(Me.hwnd, App.HelpFile, 3, 0)

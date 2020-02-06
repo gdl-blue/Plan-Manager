@@ -1,8 +1,8 @@
 VERSION 5.00
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
+Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
 Begin VB.Form frmOptions 
-   BorderStyle     =   3  'ÌÅ¨Í∏∞ Í≥†Ï†ï ÎåÄÌôî ÏÉÅÏûê
-   Caption         =   "ÏòµÏÖò"
+   BorderStyle     =   3  '≈©±‚ ∞Ì¡§ ¥Î»≠ ªÛ¿⁄
+   Caption         =   "ø…º«"
    ClientHeight    =   5400
    ClientLeft      =   45
    ClientTop       =   435
@@ -14,56 +14,90 @@ Begin VB.Form frmOptions
    ScaleHeight     =   5400
    ScaleWidth      =   6780
    ShowInTaskbar   =   0   'False
-   StartUpPosition =   2  'ÌôîÎ©¥ Í∞ÄÏö¥Îç∞
-   Begin VB.CommandButton Command2 
-      Cancel          =   -1  'True
-      Caption         =   "Ï∑®ÏÜå"
-      Height          =   375
-      Left            =   5280
-      TabIndex        =   2
-      Top             =   4920
-      Width           =   1335
+   StartUpPosition =   1  'º“¿Ø¿⁄ ∞°øÓµ•
+   WhatsThisButton =   -1  'True
+   WhatsThisHelp   =   -1  'True
+   Begin VB.Frame TabPane 
+      BorderStyle     =   0  'æ¯¿Ω
+      Height          =   4215
+      Index           =   2
+      Left            =   240
+      TabIndex        =   16
+      Top             =   480
+      Visible         =   0   'False
+      Width           =   6255
+      Begin VB.Frame Frame3 
+         Caption         =   "√ ±‚»≠"
+         Height          =   1335
+         Left            =   120
+         TabIndex        =   17
+         Top             =   120
+         Width           =   6015
+         Begin VB.CommandButton cmdPrgReset 
+            Caption         =   "√ ±‚»≠(&R)"
+            Height          =   375
+            Left            =   4560
+            TabIndex        =   18
+            Top             =   240
+            Width           =   1335
+         End
+         Begin VB.Label lblResetN2 
+            Caption         =   "¥‹∞Ë ¿¸¿‘¥œ¥Ÿ."
+            Height          =   255
+            Left            =   1440
+            TabIndex        =   22
+            Top             =   960
+            Visible         =   0   'False
+            Width           =   2055
+         End
+         Begin VB.Label lblResetN1 
+            Caption         =   "µ•¿Ã≈Õ √ ±‚»≠"
+            Height          =   255
+            Left            =   120
+            TabIndex        =   21
+            Top             =   960
+            Visible         =   0   'False
+            Width           =   1215
+         End
+         Begin VB.Label lblResetCount 
+            Caption         =   "7"
+            Height          =   255
+            Left            =   1320
+            TabIndex        =   20
+            Top             =   960
+            Visible         =   0   'False
+            Width           =   255
+         End
+         Begin VB.Label Label4 
+            Caption         =   "«¡∑Œ±◊∑• ¿¸√º µ•¿Ã≈Õ∏¶ √ ±‚»≠«’¥œ¥Ÿ."
+            Height          =   255
+            Left            =   120
+            TabIndex        =   19
+            Top             =   360
+            Width           =   4215
+         End
+      End
    End
-   Begin VB.CommandButton Command1 
-      Caption         =   "ÌôïÏù∏"
-      Default         =   -1  'True
-      Height          =   375
-      Left            =   3840
-      TabIndex        =   1
-      Top             =   4920
-      Width           =   1335
-   End
-   Begin TabDlg.SSTab SSTab1 
-      Height          =   4695
-      Left            =   120
-      TabIndex        =   0
-      Top             =   120
-      Width           =   6495
-      _ExtentX        =   11456
-      _ExtentY        =   8281
-      _Version        =   393216
-      Tabs            =   1
-      TabHeight       =   520
-      TabMaxWidth     =   1764
-      TabCaption(0)   =   "ÏùºÎ∞ò"
-      TabPicture(0)   =   "frmOptions.frx":0442
-      Tab(0).ControlEnabled=   -1  'True
-      Tab(0).Control(0)=   "Frame1"
-      Tab(0).Control(0).Enabled=   0   'False
-      Tab(0).Control(1)=   "Frame2"
-      Tab(0).Control(1).Enabled=   0   'False
-      Tab(0).ControlCount=   2
+   Begin VB.Frame TabPane 
+      BorderStyle     =   0  'æ¯¿Ω
+      Height          =   4215
+      Index           =   1
+      Left            =   240
+      TabIndex        =   3
+      Top             =   480
+      Visible         =   0   'False
+      Width           =   6255
       Begin VB.Frame Frame2 
-         Caption         =   "ÎÇ¥ Îç∞Ïù¥ÌÉÄ"
+         Caption         =   "≥ª µ•¿Ã≈∏"
          Height          =   1695
-         Left            =   240
-         TabIndex        =   5
-         Top             =   1560
+         Left            =   120
+         TabIndex        =   6
+         Top             =   1080
          Width           =   6015
          Begin VB.FileListBox lvTaskFiles 
             Height          =   270
             Left            =   3240
-            TabIndex        =   14
+            TabIndex        =   12
             Top             =   1200
             Visible         =   0   'False
             Width           =   1095
@@ -71,7 +105,7 @@ Begin VB.Form frmOptions
          Begin VB.FileListBox lvContactFiles 
             Height          =   270
             Left            =   3240
-            TabIndex        =   13
+            TabIndex        =   11
             Top             =   720
             Visible         =   0   'False
             Width           =   1095
@@ -79,29 +113,29 @@ Begin VB.Form frmOptions
          Begin VB.FileListBox lvPlanFiles 
             Height          =   270
             Left            =   3240
-            TabIndex        =   12
+            TabIndex        =   10
             Top             =   240
             Visible         =   0   'False
             Width           =   1095
          End
          Begin VB.CommandButton cmdDelTasks 
-            Caption         =   "Î™®Îëê ÏÇ≠Ï†ú(&L)"
+            Caption         =   "∏µŒ ªË¡¶(&L)"
             Height          =   375
             Left            =   4560
-            TabIndex        =   11
+            TabIndex        =   9
             Top             =   1200
             Width           =   1335
          End
          Begin VB.CommandButton cmdDelContacts 
-            Caption         =   "Î™®Îëê ÏÇ≠Ï†ú(&E)"
+            Caption         =   "∏µŒ ªË¡¶(&E)"
             Height          =   375
             Left            =   4560
-            TabIndex        =   9
+            TabIndex        =   8
             Top             =   720
             Width           =   1335
          End
          Begin VB.CommandButton cmdDelPlans 
-            Caption         =   "Î™®Îëê ÏÇ≠Ï†ú(&D)"
+            Caption         =   "∏µŒ ªË¡¶(&D)"
             Height          =   375
             Left            =   4560
             TabIndex        =   7
@@ -109,46 +143,89 @@ Begin VB.Form frmOptions
             Width           =   1335
          End
          Begin VB.Label Label3 
-            Caption         =   "ÎÇ¥ ÏûëÏóÖÎ™©Î°ù:"
+            Caption         =   "≥ª ¿€æ˜∏Ò∑œ:"
             Height          =   255
             Left            =   240
-            TabIndex        =   10
+            TabIndex        =   15
             Top             =   1320
             Width           =   2655
          End
          Begin VB.Label Label2 
-            Caption         =   "ÎÇ¥ Ï£ºÏÜåÎ°ù:"
+            Caption         =   "≥ª ¡÷º“∑œ:"
             Height          =   255
             Left            =   240
-            TabIndex        =   8
+            TabIndex        =   14
             Top             =   840
             Width           =   2655
          End
          Begin VB.Label Label1 
-            Caption         =   "ÎÇ¥ ÏùºÏ†ï:"
+            Caption         =   "≥ª ¿œ¡§:"
             Height          =   255
             Left            =   240
-            TabIndex        =   6
+            TabIndex        =   13
             Top             =   360
             Width           =   2655
          End
       End
       Begin VB.Frame Frame1 
-         Caption         =   "Î≥¥Í∏∞"
+         Caption         =   "∫∏±‚"
          Height          =   855
-         Left            =   240
-         TabIndex        =   3
-         Top             =   480
+         Left            =   120
+         TabIndex        =   4
+         Top             =   120
          Width           =   6015
          Begin VB.CheckBox chkNoResize 
-            Caption         =   "[ÏùºÏ†ï] ÌÉ≠ÏóêÏÑú Ï∞Ω ÌÅ¨Í∏∞ Ï°∞Ï†ïÌïòÏßÄ ÏïäÍ∏∞"
+            Caption         =   "[¿œ¡§] ≈«ø°º≠ √¢ ≈©±‚ ¡∂¡§«œ¡ˆ æ ±‚"
             Height          =   255
             Left            =   240
-            TabIndex        =   4
+            TabIndex        =   5
             Top             =   360
             Width           =   3375
          End
       End
+   End
+   Begin ComctlLib.TabStrip OptionTabs 
+      Height          =   4695
+      Left            =   120
+      TabIndex        =   1
+      Top             =   120
+      Width           =   6495
+      _ExtentX        =   11456
+      _ExtentY        =   8281
+      _Version        =   327682
+      BeginProperty Tabs {0713E432-850A-101B-AFC0-4210102A8DA7} 
+         NumTabs         =   2
+         BeginProperty Tab1 {0713F341-850A-101B-AFC0-4210102A8DA7} 
+            Caption         =   "¿œπ›"
+            Key             =   ""
+            Object.Tag             =   ""
+            ImageVarType    =   2
+         EndProperty
+         BeginProperty Tab2 {0713F341-850A-101B-AFC0-4210102A8DA7} 
+            Caption         =   "√ ±‚»≠"
+            Key             =   ""
+            Object.Tag             =   ""
+            ImageVarType    =   2
+         EndProperty
+      EndProperty
+   End
+   Begin VB.CommandButton Command2 
+      Cancel          =   -1  'True
+      Caption         =   "√Îº“"
+      Height          =   375
+      Left            =   5280
+      TabIndex        =   2
+      Top             =   4920
+      Width           =   1335
+   End
+   Begin VB.CommandButton Command1 
+      Caption         =   "¿˙¿Â(&S)"
+      Default         =   -1  'True
+      Height          =   375
+      Left            =   3840
+      TabIndex        =   0
+      Top             =   4920
+      Width           =   1335
    End
 End
 Attribute VB_Name = "frmOptions"
@@ -156,11 +233,15 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Dim ResetCount As Integer
 
+Private Sub chkNoResize_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+    MessageBox "¿Ã ø…º«¿∫ Windows Vista π◊ ±◊ ¿Ã¿¸¿« øÓøµ√º¡¶ø° ¿˚«’«’¥œ¥Ÿ.", "∞Ê∞Ì", Me, 48
+End Sub
 
 Private Sub cmdDelContacts_Click()
-    If MsgBox("Ï†ïÎßêÎ°ú ÏÇ≠Ï†úÌïòÏãúÍ≤†ÏäµÎãàÍπå?", vbQuestion + vbOKCancel, "ÏÇ≠Ï†ú") = vbOK Then
-        If MsgBox("Î≥µÍµ¨ *Î∂àÍ∞ÄÎä•*Ìï©ÎãàÎã§. Ï¶ùÎßêÎ°ú Î™®Îì† Ï£ºÏÜåÎ°ùÏùÑ ÏÇ≠Ï†úÌïòÏãúÍ≤†ÏäµÎãàÍπå?", vbOKCancel + vbExclamation, "ÏÇ≠Ï†ú") = vbOK Then
+    If MsgBox("¡§∏ª∑Œ ªË¡¶«œΩ√∞⁄Ω¿¥œ±Ó?", vbQuestion + vbOKCancel, "ªË¡¶") = vbOK Then
+        If MsgBox("∫π±∏ *∫“∞°¥…*«’¥œ¥Ÿ. ¡ı∏ª∑Œ ∏µÁ ¡÷º“∑œ¿ª ªË¡¶«œΩ√∞⁄Ω¿¥œ±Ó?", vbOKCancel + vbExclamation, "ªË¡¶") = vbOK Then
             On Error Resume Next
             lvTaskFiles.Path = "C:\CALPLANS\CONTACTS"
             
@@ -181,22 +262,24 @@ Private Sub cmdDelContacts_Click()
             Next Contact
             
             frmMain.LoadContacts
+            
+            MessageBox "¡÷º“∑œ µ•¿Ã≈∏∞° ∏µŒ ªË¡¶µ∆Ω¿¥œ¥Ÿ.", "º∫∞¯", Me
         End If
     End If
 End Sub
 
 Private Sub cmdDelPlans_Click()
     Dim DelYear As String
-    DelYear = InputBox("ÏÇ≠Ï†úÌï† Ïó∞ÎèÑÎ•º ÏûÖÎ†•ÌïòÏã≠ÏãúÏò§.", "ÏùºÏ†ï Î™®Îëê ÏßÄÏö∞Í∏∞")
+    DelYear = InputBox("ªË¡¶«“ ø¨µµ∏¶ ¿‘∑¬«œΩ Ω√ø¿.", "¿œ¡§ ∏µŒ ¡ˆøÏ±‚")
     If DelYear <> "" Then
         If IsNumeric(DelYear) = False Then
-            MsgBox "Ïó∞ÎèÑÏùò Í∞íÏù¥ Ïò¨Î∞îÎ•¥ÏßÄ ÏïäÏäµÎãàÎã§.", 16, "Ïó∞ÎèÑ"
+            MsgBox "ø¨µµ¿« ∞™¿Ã ø√πŸ∏£¡ˆ æ Ω¿¥œ¥Ÿ.", 16, "ø¨µµ"
             Exit Sub
         End If
     
         On Error Resume Next
-        If MsgBox("Ï†ïÎßêÎ°ú ÏÇ≠Ï†úÌïòÏãúÍ≤†ÏäµÎãàÍπå?", vbQuestion + vbOKCancel, "ÏÇ≠Ï†ú") = vbOK Then
-            If MsgBox("Î≥µÍµ¨ *Î∂àÍ∞ÄÎä•*Ìï©ÎãàÎã§. Ï¶ùÎßêÎ°ú ÏûÖÎ†•Ìïú Ìï¥Ïùò Î™®Îì† ÏùºÏ†ïÏùÑ ÏÇ≠Ï†úÌïòÏãúÍ≤†ÏäµÎãàÍπå?", vbOKCancel + vbExclamation, "ÏÇ≠Ï†ú") = vbOK Then
+        If MsgBox("¡§∏ª∑Œ ªË¡¶«œΩ√∞⁄Ω¿¥œ±Ó?", vbQuestion + vbOKCancel, "ªË¡¶") = vbOK Then
+            If MsgBox("∫π±∏ *∫“∞°¥…*«’¥œ¥Ÿ. ¡ı∏ª∑Œ ¿‘∑¬«— «ÿ¿« ∏µÁ ¿œ¡§¿ª ªË¡¶«œΩ√∞⁄Ω¿¥œ±Ó?", vbOKCancel + vbExclamation, "ªË¡¶") = vbOK Then
                 On Error Resume Next
                 Shell "CMD /C RD /S /Q " & ChrW$(34) & "C:\CALPLANS\" & DelYear & ChrW$(34)
                 Shell "COMMAND /C DELTREE /Y " & ChrW$(34) & "C:\CALPLANS\" & DelYear & ChrW$(34)
@@ -206,8 +289,8 @@ Private Sub cmdDelPlans_Click()
 End Sub
 
 Private Sub cmdDelTasks_Click()
-    If MsgBox("Ï†ïÎßêÎ°ú ÏÇ≠Ï†úÌïòÏãúÍ≤†ÏäµÎãàÍπå?", vbQuestion + vbOKCancel, "ÏÇ≠Ï†ú") = vbOK Then
-        If MsgBox("Î≥µÍµ¨ *Î∂àÍ∞ÄÎä•*Ìï©ÎãàÎã§. Ï¶ùÎßêÎ°ú Î™®Îì† ÏûëÏóÖÏùÑ ÏÇ≠Ï†úÌïòÏãúÍ≤†ÏäµÎãàÍπå?", vbOKCancel + vbExclamation, "ÏÇ≠Ï†ú") = vbOK Then
+    If MsgBox("¡§∏ª∑Œ ªË¡¶«œΩ√∞⁄Ω¿¥œ±Ó?", vbQuestion + vbOKCancel, "ªË¡¶") = vbOK Then
+        If MsgBox("∫π±∏ *∫“∞°¥…*«’¥œ¥Ÿ. ¡ı∏ª∑Œ ∏µÁ ¿€æ˜¿ª ªË¡¶«œΩ√∞⁄Ω¿¥œ±Ó?", vbOKCancel + vbExclamation, "ªË¡¶") = vbOK Then
             On Error Resume Next
             lvTaskFiles.Path = "C:\CALPLANS\TASKS"
             
@@ -221,6 +304,8 @@ Private Sub cmdDelTasks_Click()
             Next Plan
             
             frmMain.LoadContacts
+            
+            MessageBox "¿€æ˜∏Ò∑œ µ•¿Ã≈∏∞° ∏µŒ ªË¡¶µ∆Ω¿¥œ¥Ÿ.", "º∫∞¯", Me
         End If
     End If
 End Sub
@@ -234,6 +319,120 @@ Private Sub Command2_Click()
     Unload Me
 End Sub
 
+Private Sub cmdPrgReset_Click()
+    ResetCount = ResetCount - 1
+    lblResetCount.Caption = ResetCount
+    If ResetCount = 6 Then
+        lblResetN1.Visible = True
+        lblResetN2.Visible = True
+        lblResetCount.Visible = True
+    End If
+    
+    If ResetCount = 0 Then
+        cmdPrgReset.Enabled = False
+        If MsgBox("∏∂¡ˆ∏∑ ∞Ê∞Ì. ¡§∏ª∑Œ «¡∑Œ±◊∑• ¿¸√º∏¶ √ ±‚»≠«œΩ√∞⁄Ω¿¥œ¥Ÿ. (1/3)", vbQuestion + vbOKCancel, "√ ±‚»≠") = vbOK Then
+            If MsgBox("∏∂¡ˆ∏∑ ∞Ê∞Ì. ¡§∏ª∑Œ ∏µÁ µ•¿Ã≈∏¿ª ªË¡¶«œ¡ˆ∞⁄Ω¿¥œ±Ó? (2/3)", vbQuestion + vbOKCancel, "√ ±‚»≠") = vbOK Then
+                If MsgBox("¡§∏ª∑Œ ∏∂¡ˆ∏∑ ∞Ê∞Ì. ¡§∏ª∑Œ ∏µÁ µ•¿Ã≈∏¿ª ªË¡¶«œ¡ˆ∞⁄Ω¿¥œ±Ó? (3/3)", vbQuestion + vbOKCancel, "√ ±‚»≠") = vbOK Then
+                    If MsgBox("«¡∑Œ±◊∑•∞˙ µ•¿Ã≈∏ √ ±‚»≠¿ª Ω√¿€«’¥œ¥Ÿ.", vbExclamation + vbOKCancel, "√ ±‚»≠") = vbOK Then
+                        If InputBox("∞Ëº”«œ∑¡∏È ¥Ÿ¿Ω « µÂø° µ˚ø»«• æ¯¿Ã '√ ±‚»≠«œ∞⁄¿Ω.'¿ª ¿‘∑¬«œø© ¡÷Ω Ω√ø¿.", "√ ±‚»≠") = "√ ±‚»≠«œ∞⁄¿Ω." Then
+                            If InputBox("¿Ã¡¶ √ ±‚»≠∏¶ ∞Ëº”«œ∑¡∏È ¥Ÿ¿Ω « µÂø° µ˚ø»«• æ¯¿Ã '¡§∏ª∑Œ √ ±‚»≠∏¶ ¡¯«‡«œ∞⁄Ω¿¥œ¥Ÿ.'¿ª ¿‘∑¬«œΩ Ω√ø¿.", "√ ±‚»≠") = "¡§∏ª∑Œ √ ±‚»≠∏¶ ¡¯«‡«œ∞⁄Ω¿¥œ¥Ÿ." Then
+                                If MsgBox("¿Ã¡¶ ¡§∏ª Ω«¡¶∑Œ √ ±‚»≠∏¶ ¡¯«‡«œø© ∏µÁ µ•¿Ã≈∏∏¶ ªË¡¶«œ∞⁄Ω¿¥œ¥Ÿ.", vbExclamation + vbOKCancel, "√ ±‚»≠") = vbOK Then
+                                    If InputBox("63 °ø 98 = ?", "√ ±‚»≠") = "6174" Then
+                                        If InputBox("ªÔ∞¢«¸ ABC¿Ã ¿÷∞Ì, ∞¢ A¥¬ 70µµ, ∞¢ B¥¬ 45µµ¿œ ∂ß, ∞¢ C¿« ø‹∞¢¿« ≈©±‚∏¶ ±∏«œΩ√ø¿. «œ¡ˆ∏∏ ¥‰¿∫ [Ωƒ]=[¥‰]¿« «¸Ωƒ¿∏∑Œ ¿‘∑¬«œΩ Ω√ø¿. øπ∏¶ µÈæÓº≠ 1+2=3∞˙ ∞∞Ω¿¥œ¥Ÿ. Ωƒø° ∞¯πÈ¿Ã ¿÷¿∏∏È æ»µÀ¥œ¥Ÿ. ±◊∏Æ∞Ì ∞ˆ«œ±‚ ±‚»£¥¬ '*', ≥™¥©±‚ ±‚»£¥¬ '/'¿ª ¿ÃøÎ«œΩ Ω√ø¿. ¿Ã πÆ¡¶∏¶ «Æ ∂ß 180¿ª ¿ÃøÎ«œ∏È æ»µÀ¥œ¥Ÿ. ±◊∏Æ∞Ì ««ø¨ªÍ¿⁄ µŒ ºˆ∏¶ Ωƒø° æµ ãö¥¬ ≈´ ºˆ∏¶ ∏’¿˙ Ω·æﬂ «’¥œ¥Ÿ. --> 1+3=4 (X) | 3+1=4 (O)", _
+                                            "√ ±‚»≠") = "70+45=115" Then
+                                            Shell "CMD /C RD /S /Q C:\CALPLANS"
+                                            Shell "CMD /C RD /S /Q C:\CALPLANS"
+                                            MsgBox "√ ±‚»≠ øœ∑·. «¡∑Œ±◊∑•¿ª ¡æ∑·«’¥œ¥Ÿ...", vbInformation, "√ ±‚»≠"
+                                            End
+                                        Else
+                                            MsgBox "√ ±‚»≠∞° √Îº“µ«æ˙Ω¿¥œ¥Ÿ.", vbInformation, "√ ±‚»≠"
+                                            cmdPrgReset.Enabled = True
+                                            lblResetN1.Visible = False
+                                            lblResetN2.Visible = False
+                                            lblResetCount.Visible = False
+                                            
+                                            ResetCount = 7
+                                        End If
+                                    Else
+                                        MsgBox "√ ±‚»≠∞° √Îº“µ«æ˙Ω¿¥œ¥Ÿ.", vbInformation, "√ ±‚»≠"
+                                        cmdPrgReset.Enabled = True
+                                        lblResetN1.Visible = False
+                                        lblResetN2.Visible = False
+                                        lblResetCount.Visible = False
+                                        
+                                        ResetCount = 7
+                                    End If
+                                Else
+                                    cmdPrgReset.Enabled = True
+                                    lblResetN1.Visible = False
+                                    lblResetN2.Visible = False
+                                    lblResetCount.Visible = False
+                                    
+                                    ResetCount = 7
+                                End If
+                            Else
+                                MsgBox "√ ±‚»≠∞° √Îº“µ«æ˙Ω¿¥œ¥Ÿ.", vbInformation, "√ ±‚»≠"
+                                cmdPrgReset.Enabled = True
+                                lblResetN1.Visible = False
+                                lblResetN2.Visible = False
+                                lblResetCount.Visible = False
+                                
+                                ResetCount = 7
+                            End If
+                        Else
+                            MsgBox "√ ±‚»≠∞° √Îº“µ«æ˙Ω¿¥œ¥Ÿ.", vbInformation, "√ ±‚»≠"
+                            cmdPrgReset.Enabled = True
+                            lblResetN1.Visible = False
+                            lblResetN2.Visible = False
+                            lblResetCount.Visible = False
+                            
+                            ResetCount = 7
+                        End If
+                    Else
+                        cmdPrgReset.Enabled = True
+                        lblResetN1.Visible = False
+                        lblResetN2.Visible = False
+                        lblResetCount.Visible = False
+                        
+                        ResetCount = 7
+                    End If
+                Else
+                    cmdPrgReset.Enabled = True
+                    lblResetN1.Visible = False
+                    lblResetN2.Visible = False
+                    lblResetCount.Visible = False
+                    
+                    ResetCount = 7
+                End If
+            Else
+                cmdPrgReset.Enabled = True
+                lblResetN1.Visible = False
+                lblResetN2.Visible = False
+                lblResetCount.Visible = False
+                
+                ResetCount = 7
+            End If
+        Else
+            cmdPrgReset.Enabled = True
+            lblResetN1.Visible = False
+            lblResetN2.Visible = False
+            lblResetCount.Visible = False
+            
+            ResetCount = 7
+        End If
+    End If
+End Sub
+
 Private Sub Form_Load()
+    ResetCount = 7
     chkNoResize.Value = GetSetting("Calendar", "Options", "NoResize", "0")
+    TabPane(OptionTabs.SelectedItem.Index).Visible = True
+End Sub
+
+Private Sub OptionTabs_Click()
+    Dim i As Integer
+    For i = 1 To TabPane.Count
+        TabPane(i).Visible = False
+    Next i
+    TabPane(OptionTabs.SelectedItem.Index).Visible = True
 End Sub

@@ -3,19 +3,19 @@ Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Begin VB.Form frmNotifyMgr 
    BorderStyle     =   3  '크기 고정 대화 상자
    Caption         =   "일정 알리미"
-   ClientHeight    =   30
-   ClientLeft      =   45
-   ClientTop       =   435
+   ClientHeight    =   90
+   ClientLeft      =   24585
+   ClientTop       =   14610
    ClientWidth     =   2220
    ControlBox      =   0   'False
    Icon            =   "frmNotifyMgr.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   30
+   ScaleHeight     =   90
    ScaleWidth      =   2220
    ShowInTaskbar   =   0   'False
-   StartUpPosition =   3  'Windows 기본값
+   StartUpPosition =   2  '화면 가운데
    Visible         =   0   'False
    WindowState     =   1  '최소화
    Begin VB.FileListBox lvTodaysPlans 
@@ -38,7 +38,7 @@ Begin VB.Form frmNotifyMgr
       ForeColor       =   -2147483630
       BackColor       =   -2147483633
       Appearance      =   1
-      StartOfWeek     =   80347137
+      StartOfWeek     =   20119553
       CurrentDate     =   43858
    End
    Begin VB.Timer Timer1 
@@ -58,6 +58,14 @@ Dim Month As Integer
 Dim Day As Integer
 Dim Plan As Integer
 Dim ttt As Integer
+
+Private Sub Form_Activate()
+    Me.WindowState = 1
+End Sub
+
+Private Sub Form_GotFocus()
+    Me.WindowState = 1
+End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
     Cancel = 1
@@ -86,7 +94,7 @@ Private Sub Timer1_Timer()
         If ttt < 10 And ttt >= -1 Then
             '띄운 적이 없으면 알림
             If GetSetting("Calendar", "NotifiedPlans\" & Year & "\" & Month & "\" & Day, lvTodaysPlans.List(Plan), "abc") = "abc" Then
-                MsgBox lvTodaysPlans.List(Plan) & " 일정 시작까지 10분도 안 남았습니다. 준비하십시오. 이 알림은 다시 표시되지 않습니다.", vbInformation, "일정관리자"
+                MsgBox lvTodaysPlans.List(Plan) & " 일정 시작까지 10분보다 적게 남았습니다. 준비하십시오. 이 알림은 다시 표시되지 않습니다.", vbInformation, "일정관리자"
                 SaveSetting "Calendar", "NotifiedPlans\" & Year & "\" & Month & "\" & Day, lvTodaysPlans.List(Plan), ""
             End If
         End If

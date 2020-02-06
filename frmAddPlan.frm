@@ -13,6 +13,7 @@ Begin VB.Form frmAddPlan
    ScaleHeight     =   3510
    ScaleWidth      =   6030
    ShowInTaskbar   =   0   'False
+   StartUpPosition =   1  '소유자 가운데
    Begin VB.FileListBox lvCateFiles 
       Height          =   270
       Left            =   5160
@@ -182,22 +183,22 @@ End Sub
 Private Sub OKButton_Click()
     '입력값을 검사한다.
     If InStr(1, txtTitle.Text, "?") > 0 Or InStr(1, txtTitle.Text, "\") > 0 Or InStr(1, txtTitle.Text, "|") > 0 Or InStr(1, txtTitle.Text, ".") > 0 Or InStr(1, txtTitle.Text, "/") > 0 Or InStr(1, txtTitle.Text, "*") > 0 Or InStr(1, txtTitle.Text, ":") > 0 Or InStr(1, txtTitle.Text, ChrW$(34)) > 0 Then
-        MsgBox "제목의 값이 올바르지 않습니다.", 16, "입력 값 오류:"
+        MessageBox "제목의 값이 올바르지 않습니다.", "입력 값 오류", Me, 16
     End If
     If IsNumeric(txtTimeHrs.Text) = False Or IsNumeric(txtTimeMin.Text) = False Then
-        MsgBox "시간의 값이 올바르지 않습니다.", 16, "입력 값 오류"
+        MessageBox "시간의 값이 올바르지 않습니다.", "입력 값 오류", Me, 16
         Exit Sub
     End If
     If txtTimeHrs.Text = "24" Then
-        MsgBox "24시 대신 0시로 입력해주십시오.", 16, "입력 값 오류"
+        MessageBox "24시 대신 0시로 입력해주십시오.", "입력 값 오류", Me, 16
         Exit Sub
     End If
     If txtTimeHrs.Text > 24 Or txtTimeMin.Text > 59 Or txtTimeHrs.Text < 0 Or txtTimeMin.Text < 0 Then
-        MsgBox "여기는 외계가 아닙니다...", 16, "입력 값 오류"
+        MessageBox "시간에서 시는 0부터 24, 분은 0부터 59까지의 정수이여야 합니다.", "입력 값 오류", Me, 16
         Exit Sub
     End If
     If txtTitle.Text = "" Then
-        MsgBox "제목의 값은 필수입니다.", 16, "입력 값 오류"
+        MessageBox "제목의 값은 필수입니다.", "입력 값 오류", Me, 16
         Exit Sub
     End If
     If txtCategory.Text = "" Then
@@ -206,21 +207,21 @@ Private Sub OKButton_Click()
     
     '일정을 추가하기 전에 해당 제목의 일정이 존재하는지 확인한다.
     If FileExists("C:\CALPLANS\" & Year & "\" & Month & "\" & Day & "\" & txtTitle.Text) = True Then
-        MsgBox "해당 제목의 일정이 이미 존재합니다...", 16, "처리 중 오류"
+        MessageBox "해당 제목의 일정이 이미 존재합니다...", "처리 중 오류", Me, 16
     End If
     
     '해당 일정이 존재함을 알리는 파일을 만든다.
     'https://stackoverflow.com/questions/21108664/how-to-create-txt-file
-    Dim iFileNo As Integer
-    iFileNo = FreeFile
+    Dim iFIleNo As Integer
+    iFIleNo = FreeFile
     '파일을 연다.
-    Open "C:\CALPLANS\" & Year & "\" & Month & "\" & Day & "\" & txtTitle.Text For Output As #iFileNo
+    Open "C:\CALPLANS\" & Year & "\" & Month & "\" & Day & "\" & txtTitle.Text For Output As #iFIleNo
     
     '파일의 내용은 보지 않으므로 빈 칸으로...
-    Print #iFileNo, ""
+    Print #iFIleNo, ""
     
     '파일을 닫는다.
-    Close #iFileNo
+    Close #iFIleNo
     
     '레지스트리에 일정의 기타 정보를 저장한다.
     If txtTimeHrs.Text < 9 Then
@@ -248,16 +249,16 @@ Private Sub OKButton_Click()
     
     If txtCategory.Text <> "업무" And txtCategory.Text <> "여가생활" And txtCategory.Text <> "약속" And txtCategory.Text <> "취미" And txtCategory.Text <> "(지정되지 않음)" Then
         'https://stackoverflow.com/questions/21108664/how-to-create-txt-file
-        iFileNo = FreeFile
+        iFIleNo = FreeFile
         '파일을 연다.
         
-        Open "C:\CALPLANS\CTGORIES\" & txtCategory.Text For Output As #iFileNo
+        Open "C:\CALPLANS\CTGORIES\" & txtCategory.Text For Output As #iFIleNo
         
         '파일의 내용은 보지 않으므로 빈 칸으로...
-        Print #iFileNo, ""
+        Print #iFIleNo, ""
         
         '파일을 닫는다.
-        Close #iFileNo
+        Close #iFIleNo
     End If
     
     Unload Me

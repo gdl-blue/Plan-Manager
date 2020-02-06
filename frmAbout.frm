@@ -106,6 +106,7 @@ Begin VB.Form frmAbout
       TabIndex        =   3
       Tag             =   "경고: ..."
       Top             =   2625
+      Visible         =   0   'False
       Width           =   3870
    End
 End
@@ -136,7 +137,8 @@ Private Declare Function RegQueryValueEx Lib "advapi32" Alias "RegQueryValueExA"
 Private Declare Function RegCloseKey Lib "advapi32" (ByVal hKey As Long) As Long
 
 Private Sub Form_Load()
-    lblVersion.Caption = "버전 " & App.Major & "." & App.Minor & "." & App.Revision
+    'lblVersion.Caption = "버전 " & App.Major & "." & App.Minor & "." & App.Revision
+    lblVersion.Caption = "버전 2.0.0 (베타 2)"
     lblTitle.Caption = App.Title
     Me.Caption = App.Title & " 정보"
     lblDescription.Caption = App.FileDescription
@@ -156,7 +158,6 @@ End Sub
 
 Public Sub StartSysInfo()
     On Error GoTo SysInfoErr
-
 
         Dim rc As Long
         Dim SysInfoPath As String
@@ -186,7 +187,7 @@ Public Sub StartSysInfo()
 
         Exit Sub
 SysInfoErr:
-        MsgBox "지금은 시스템 정보를 사용할 수 없습니다. SYSTEM32 디렉토리에 MSINFO32.EXE이(가) 있는지 확인하십시오. 없으면 다시 설치하십시오.", vbOKOnly + 16, "시스템 정보"
+        MessageBox "지금은 시스템 정보를 사용할 수 없습니다. 시스템에 MS Info 구성요소가 설치됐는지 확인하십시오. 없으면 다시 설치하십시오.", "시스템 정보", Me, 16
 End Sub
 
 

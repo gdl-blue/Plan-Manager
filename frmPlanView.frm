@@ -13,7 +13,7 @@ Begin VB.Form frmPlanView
    ScaleHeight     =   2895
    ScaleWidth      =   6285
    ShowInTaskbar   =   0   'False
-   StartUpPosition =   3  'Windows 기본값
+   StartUpPosition =   1  '소유자 가운데
    Begin VB.CommandButton cmdEditPlan 
       Caption         =   "수정(&E)..."
       Height          =   375

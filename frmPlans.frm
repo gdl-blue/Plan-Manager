@@ -14,6 +14,16 @@ Begin VB.Form frmPlans
    ScaleHeight     =   3615
    ScaleWidth      =   4515
    ShowInTaskbar   =   0   'False
+   StartUpPosition =   1  '소유자 가운데
+   Begin VB.CommandButton cmdClose 
+      Cancel          =   -1  'True
+      Caption         =   "Command1"
+      Height          =   180
+      Left            =   2760
+      TabIndex        =   5
+      Top             =   3840
+      Width           =   255
+   End
    Begin VB.FileListBox lvPlanFiles 
       Height          =   450
       Left            =   2400
@@ -56,6 +66,7 @@ Begin VB.Form frmPlans
       _ExtentY        =   5106
       View            =   3
       LabelEdit       =   1
+      Sorted          =   -1  'True
       LabelWrap       =   -1  'True
       HideSelection   =   -1  'True
       _Version        =   327682
@@ -90,6 +101,10 @@ Dim PlanItem As ListItem
 Private Sub cmdAddBtn_Click()
     frmAddPlan.CurrentDate = CurrentDate
     frmAddPlan.Show vbModal, Me
+End Sub
+
+Private Sub cmdClose_Click()
+    Unload Me
 End Sub
 
 Private Sub cmdDelBtn_Click()
@@ -158,6 +173,18 @@ Private Sub Form_Load()
     lstPlanList.ColumnHeaders.Add , , "분류", 850
     
     LoadPlans
+    
+    lstPlanList.SortKey = 1
+End Sub
+
+Private Sub lstPlanList_ColumnClick(ByVal ColumnHeader As ComctlLib.ColumnHeader)
+    lstPlanList.SortKey = ColumnHeader.SubItemIndex
+    
+    If lstPlanList.SortOrder = lvwAscending Then
+        lstPlanList.SortOrder = lvwDescending
+    Else
+        lstPlanList.SortOrder = lvwAscending
+    End If
 End Sub
 
 Private Sub lstPlanList_DblClick()
