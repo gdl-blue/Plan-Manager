@@ -1,0 +1,8 @@
+:Base plnmgr32.hlp
+:Title 일정관리자
+:Index dummy=dummy.hlp ;(This is necessary when using KLinks - because of a bug in the help
+:Link dummy.hlp        ; compiler. Without this only the first keyword would be looked up!)
+1 개요=SHM_contents0001@plnmgr32.hlp
+1 일정 관리
+2 일정 추가=SHM_contents0002@plnmgr32.hlp
+2 일정 수정=SHM_contents0003@plnmgr32.hlp

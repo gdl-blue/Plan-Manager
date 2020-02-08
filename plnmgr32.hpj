@@ -1,0 +1,24 @@
+[OPTIONS]
+CNT=plnmgr32.cnt
+ERRORLOG=C:\Users\Dev\Desktop\plnmgr32.log
+NOTES=yes
+REPORT=yes
+TITLE=老沥包府磊
+COMPRESS=1
+OLDKEYPHRASE=NO
+CONTENTS=SHM_contents0001
+COPYRIGHT=Made with Shalom Help Maker www.danish-shareware.dk/soft/shelpm/
+
+[FILES]
+C:\Users\Dev\Desktop\plnmgr32.rtf
+
+[CONFIG]
+BrowseButtons()
+
+[WINDOWS]
+main="老沥包府磊",(26,34,384,375),52228,(r14876671),(r12845056),f2
+
+[MAP]
+SHM_contents0001 1
+SHM_contents0002 2
+SHM_contents0003 3

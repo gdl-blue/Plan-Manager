@@ -181,11 +181,13 @@ Begin VB.Form frmOptions
          NumTabs         =   2
          BeginProperty Tab1 {0713F341-850A-101B-AFC0-4210102A8DA7} 
             Caption         =   "일반"
+            Key             =   ""
             Object.Tag             =   ""
             ImageVarType    =   2
          EndProperty
          BeginProperty Tab2 {0713F341-850A-101B-AFC0-4210102A8DA7} 
             Caption         =   "초기화"
+            Key             =   ""
             Object.Tag             =   ""
             ImageVarType    =   2
          EndProperty
@@ -225,13 +227,13 @@ Sub cmdDelContacts_Click()
     If MsgBox("정말로 삭제하시겠습니까?", vbQuestion + vbOKCancel, "삭제") = vbOK Then
         If MsgBox("복구 *불가능*합니다. 정말로 모든 주소록을 삭제하시겠습니까?", vbOKCancel + vbExclamation, "삭제") = vbOK Then
             On Error Resume Next
-            lvTaskFiles.Path = "C:\CALPLANS\CONTACTS"
+            lvContactFiles.Path = "C:\CALPLANS\CONTACTS"
             
             Dim Contact As Integer
             Dim ContactName As String
-            For Contact = 0 To lvTaskFiles.ListCount - 1
+            For Contact = 0 To lvContactFiles.ListCount - 1
                 ContactName = lvContactFiles.List(Contact)
-                Kill "C:\CALPLANS\CONTACTS\" & TaskName
+                Kill "C:\CALPLANS\CONTACTS\" & ContactName
                 DeleteSetting "Calendar", "Contacts", ContactName & "OtherNum"
                 DeleteSetting "Calendar", "Contacts", ContactName & "Postal"
                 DeleteSetting "Calendar", "Contacts", ContactName & "Home"
@@ -245,7 +247,7 @@ Sub cmdDelContacts_Click()
             
             frmMain.LoadContacts
             
-            MessageBox "주소록 데이타가 모두 삭제됐습니다.", "성공", Me
+            MessageBox "주소록 데이타가 모두 삭제됐습니다.", "성공", Me, 64
         End If
     End If
 End Sub
@@ -290,6 +292,8 @@ Sub cmdDelTasks_Click()
             MessageBox "작업목록 데이타가 모두 삭제됐습니다.", "성공", Me
         End If
     End If
+    
+    frmMain.LoadTasks
 End Sub
 
 Private Sub Command1_Click()

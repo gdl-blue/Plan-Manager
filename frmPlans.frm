@@ -68,7 +68,7 @@ Begin VB.Form frmPlans
       LabelEdit       =   1
       Sorted          =   -1  'True
       LabelWrap       =   -1  'True
-      HideSelection   =   -1  'True
+      HideSelection   =   0   'False
       _Version        =   327682
       ForeColor       =   -2147483640
       BackColor       =   -2147483643
