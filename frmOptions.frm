@@ -22,22 +22,22 @@ Begin VB.Form frmOptions
       Height          =   4215
       Index           =   2
       Left            =   240
-      TabIndex        =   16
+      TabIndex        =   14
       Top             =   480
       Visible         =   0   'False
       Width           =   6255
       Begin VB.Frame Frame3 
-         Caption         =   "초기화"
+         Caption         =   "초기화    "
          Height          =   1335
          Left            =   120
-         TabIndex        =   17
+         TabIndex        =   15
          Top             =   120
          Width           =   6015
          Begin VB.CommandButton cmdPrgReset 
             Caption         =   "초기화(&R)"
             Height          =   375
             Left            =   4560
-            TabIndex        =   18
+            TabIndex        =   16
             Top             =   240
             Width           =   1335
          End
@@ -45,7 +45,7 @@ Begin VB.Form frmOptions
             Caption         =   "단계 전입니다."
             Height          =   255
             Left            =   1440
-            TabIndex        =   22
+            TabIndex        =   20
             Top             =   960
             Visible         =   0   'False
             Width           =   2055
@@ -54,7 +54,7 @@ Begin VB.Form frmOptions
             Caption         =   "데이터 초기화"
             Height          =   255
             Left            =   120
-            TabIndex        =   21
+            TabIndex        =   19
             Top             =   960
             Visible         =   0   'False
             Width           =   1215
@@ -63,7 +63,7 @@ Begin VB.Form frmOptions
             Caption         =   "7"
             Height          =   255
             Left            =   1320
-            TabIndex        =   20
+            TabIndex        =   18
             Top             =   960
             Visible         =   0   'False
             Width           =   255
@@ -72,7 +72,7 @@ Begin VB.Form frmOptions
             Caption         =   "프로그램 전체 데이터를 초기화합니다."
             Height          =   255
             Left            =   120
-            TabIndex        =   19
+            TabIndex        =   17
             Top             =   360
             Width           =   4215
          End
@@ -88,16 +88,16 @@ Begin VB.Form frmOptions
       Visible         =   0   'False
       Width           =   6255
       Begin VB.Frame Frame2 
-         Caption         =   "내 데이타"
+         Caption         =   "내 데이터    "
          Height          =   1695
          Left            =   120
-         TabIndex        =   6
-         Top             =   1080
+         TabIndex        =   4
+         Top             =   120
          Width           =   6015
          Begin VB.FileListBox lvTaskFiles 
             Height          =   270
             Left            =   3240
-            TabIndex        =   12
+            TabIndex        =   10
             Top             =   1200
             Visible         =   0   'False
             Width           =   1095
@@ -105,7 +105,7 @@ Begin VB.Form frmOptions
          Begin VB.FileListBox lvContactFiles 
             Height          =   270
             Left            =   3240
-            TabIndex        =   11
+            TabIndex        =   9
             Top             =   720
             Visible         =   0   'False
             Width           =   1095
@@ -113,7 +113,7 @@ Begin VB.Form frmOptions
          Begin VB.FileListBox lvPlanFiles 
             Height          =   270
             Left            =   3240
-            TabIndex        =   10
+            TabIndex        =   8
             Top             =   240
             Visible         =   0   'False
             Width           =   1095
@@ -122,7 +122,7 @@ Begin VB.Form frmOptions
             Caption         =   "모두 삭제(&L)"
             Height          =   375
             Left            =   4560
-            TabIndex        =   9
+            TabIndex        =   7
             Top             =   1200
             Width           =   1335
          End
@@ -130,7 +130,7 @@ Begin VB.Form frmOptions
             Caption         =   "모두 삭제(&E)"
             Height          =   375
             Left            =   4560
-            TabIndex        =   8
+            TabIndex        =   6
             Top             =   720
             Width           =   1335
          End
@@ -138,7 +138,7 @@ Begin VB.Form frmOptions
             Caption         =   "모두 삭제(&D)"
             Height          =   375
             Left            =   4560
-            TabIndex        =   7
+            TabIndex        =   5
             Top             =   240
             Width           =   1335
          End
@@ -146,7 +146,7 @@ Begin VB.Form frmOptions
             Caption         =   "내 작업목록:"
             Height          =   255
             Left            =   240
-            TabIndex        =   15
+            TabIndex        =   13
             Top             =   1320
             Width           =   2655
          End
@@ -154,7 +154,7 @@ Begin VB.Form frmOptions
             Caption         =   "내 주소록:"
             Height          =   255
             Left            =   240
-            TabIndex        =   14
+            TabIndex        =   12
             Top             =   840
             Width           =   2655
          End
@@ -162,25 +162,9 @@ Begin VB.Form frmOptions
             Caption         =   "내 일정:"
             Height          =   255
             Left            =   240
-            TabIndex        =   13
+            TabIndex        =   11
             Top             =   360
             Width           =   2655
-         End
-      End
-      Begin VB.Frame Frame1 
-         Caption         =   "보기"
-         Height          =   855
-         Left            =   120
-         TabIndex        =   4
-         Top             =   120
-         Width           =   6015
-         Begin VB.CheckBox chkNoResize 
-            Caption         =   "[일정] 탭에서 창 크기 조정하지 않기"
-            Height          =   255
-            Left            =   240
-            TabIndex        =   5
-            Top             =   360
-            Width           =   3375
          End
       End
    End
@@ -197,13 +181,11 @@ Begin VB.Form frmOptions
          NumTabs         =   2
          BeginProperty Tab1 {0713F341-850A-101B-AFC0-4210102A8DA7} 
             Caption         =   "일반"
-            Key             =   ""
             Object.Tag             =   ""
             ImageVarType    =   2
          EndProperty
          BeginProperty Tab2 {0713F341-850A-101B-AFC0-4210102A8DA7} 
             Caption         =   "초기화"
-            Key             =   ""
             Object.Tag             =   ""
             ImageVarType    =   2
          EndProperty
@@ -239,9 +221,9 @@ Private Sub chkNoResize_MouseUp(Button As Integer, Shift As Integer, X As Single
     MessageBox "이 옵션은 Windows Vista 및 그 이전의 운영체제에 적합합니다.", "경고", Me, 48
 End Sub
 
-Private Sub cmdDelContacts_Click()
+Sub cmdDelContacts_Click()
     If MsgBox("정말로 삭제하시겠습니까?", vbQuestion + vbOKCancel, "삭제") = vbOK Then
-        If MsgBox("복구 *불가능*합니다. 증말로 모든 주소록을 삭제하시겠습니까?", vbOKCancel + vbExclamation, "삭제") = vbOK Then
+        If MsgBox("복구 *불가능*합니다. 정말로 모든 주소록을 삭제하시겠습니까?", vbOKCancel + vbExclamation, "삭제") = vbOK Then
             On Error Resume Next
             lvTaskFiles.Path = "C:\CALPLANS\CONTACTS"
             
@@ -279,7 +261,7 @@ Private Sub cmdDelPlans_Click()
     
         On Error Resume Next
         If MsgBox("정말로 삭제하시겠습니까?", vbQuestion + vbOKCancel, "삭제") = vbOK Then
-            If MsgBox("복구 *불가능*합니다. 증말로 입력한 해의 모든 일정을 삭제하시겠습니까?", vbOKCancel + vbExclamation, "삭제") = vbOK Then
+            If MsgBox("복구 *불가능*합니다. 정말로 " & DelYear & "년의 모든 일정을 삭제하시겠습니까?", vbOKCancel + vbExclamation, "삭제") = vbOK Then
                 On Error Resume Next
                 Shell "CMD /C RD /S /Q " & ChrW$(34) & "C:\CALPLANS\" & DelYear & ChrW$(34)
                 Shell "COMMAND /C DELTREE /Y " & ChrW$(34) & "C:\CALPLANS\" & DelYear & ChrW$(34)
@@ -288,9 +270,9 @@ Private Sub cmdDelPlans_Click()
     End If
 End Sub
 
-Private Sub cmdDelTasks_Click()
+Sub cmdDelTasks_Click()
     If MsgBox("정말로 삭제하시겠습니까?", vbQuestion + vbOKCancel, "삭제") = vbOK Then
-        If MsgBox("복구 *불가능*합니다. 증말로 모든 작업을 삭제하시겠습니까?", vbOKCancel + vbExclamation, "삭제") = vbOK Then
+        If MsgBox("복구 *불가능*합니다. 정말로 모든 작업을 삭제하시겠습니까?", vbOKCancel + vbExclamation, "삭제") = vbOK Then
             On Error Resume Next
             lvTaskFiles.Path = "C:\CALPLANS\TASKS"
             
@@ -330,88 +312,11 @@ Private Sub cmdPrgReset_Click()
     
     If ResetCount = 0 Then
         cmdPrgReset.Enabled = False
-        If MsgBox("마지막 경고. 정말로 프로그램 전체를 초기화하시겠습니다. (1/3)", vbQuestion + vbOKCancel, "초기화") = vbOK Then
-            If MsgBox("마지막 경고. 정말로 모든 데이타을 삭제하지겠습니까? (2/3)", vbQuestion + vbOKCancel, "초기화") = vbOK Then
-                If MsgBox("정말로 마지막 경고. 정말로 모든 데이타을 삭제하지겠습니까? (3/3)", vbQuestion + vbOKCancel, "초기화") = vbOK Then
-                    If MsgBox("프로그램과 데이타 초기화을 시작합니다.", vbExclamation + vbOKCancel, "초기화") = vbOK Then
-                        If InputBox("계속하려면 다음 필드에 따옴표 없이 '초기화하겠음.'을 입력하여 주십시오.", "초기화") = "초기화하겠음." Then
-                            If InputBox("이제 초기화를 계속하려면 다음 필드에 따옴표 없이 '정말로 초기화를 진행하겠습니다.'을 입력하십시오.", "초기화") = "정말로 초기화를 진행하겠습니다." Then
-                                If MsgBox("이제 정말 실제로 초기화를 진행하여 모든 데이타를 삭제하겠습니다.", vbExclamation + vbOKCancel, "초기화") = vbOK Then
-                                    If InputBox("63 × 98 = ?", "초기화") = "6174" Then
-                                        If InputBox("삼각형 ABC이 있고, 각 A는 70도, 각 B는 45도일 때, 각 C의 외각의 크기를 구하시오. 하지만 답은 [식]=[답]의 형식으로 입력하십시오. 예를 들어서 1+2=3과 같습니다. 식에 공백이 있으면 안됩니다. 그리고 곱하기 기호는 '*', 나누기 기호는 '/'을 이용하십시오. 이 문제를 풀 때 180을 이용하면 안됩니다. 그리고 피연산자 두 수를 식에 쓸 떄는 큰 수를 먼저 써야 합니다. --> 1+3=4 (X) | 3+1=4 (O)", _
-                                            "초기화") = "70+45=115" Then
-                                            Shell "CMD /C RD /S /Q C:\CALPLANS"
-                                            Shell "CMD /C RD /S /Q C:\CALPLANS"
-                                            MsgBox "초기화 완료. 프로그램을 종료합니다...", vbInformation, "초기화"
-                                            End
-                                        Else
-                                            MsgBox "초기화가 취소되었습니다.", vbInformation, "초기화"
-                                            cmdPrgReset.Enabled = True
-                                            lblResetN1.Visible = False
-                                            lblResetN2.Visible = False
-                                            lblResetCount.Visible = False
-                                            
-                                            ResetCount = 7
-                                        End If
-                                    Else
-                                        MsgBox "초기화가 취소되었습니다.", vbInformation, "초기화"
-                                        cmdPrgReset.Enabled = True
-                                        lblResetN1.Visible = False
-                                        lblResetN2.Visible = False
-                                        lblResetCount.Visible = False
-                                        
-                                        ResetCount = 7
-                                    End If
-                                Else
-                                    cmdPrgReset.Enabled = True
-                                    lblResetN1.Visible = False
-                                    lblResetN2.Visible = False
-                                    lblResetCount.Visible = False
-                                    
-                                    ResetCount = 7
-                                End If
-                            Else
-                                MsgBox "초기화가 취소되었습니다.", vbInformation, "초기화"
-                                cmdPrgReset.Enabled = True
-                                lblResetN1.Visible = False
-                                lblResetN2.Visible = False
-                                lblResetCount.Visible = False
-                                
-                                ResetCount = 7
-                            End If
-                        Else
-                            MsgBox "초기화가 취소되었습니다.", vbInformation, "초기화"
-                            cmdPrgReset.Enabled = True
-                            lblResetN1.Visible = False
-                            lblResetN2.Visible = False
-                            lblResetCount.Visible = False
-                            
-                            ResetCount = 7
-                        End If
-                    Else
-                        cmdPrgReset.Enabled = True
-                        lblResetN1.Visible = False
-                        lblResetN2.Visible = False
-                        lblResetCount.Visible = False
-                        
-                        ResetCount = 7
-                    End If
-                Else
-                    cmdPrgReset.Enabled = True
-                    lblResetN1.Visible = False
-                    lblResetN2.Visible = False
-                    lblResetCount.Visible = False
-                    
-                    ResetCount = 7
-                End If
-            Else
-                cmdPrgReset.Enabled = True
-                lblResetN1.Visible = False
-                lblResetN2.Visible = False
-                lblResetCount.Visible = False
-                
-                ResetCount = 7
-            End If
+        If MsgBox("마지막 경고. 정말로 프로그램 전체를 초기화하시겠습니까?", vbQuestion + vbOKCancel, "초기화") = vbOK Then
+            Shell "CMD /C RD /S /Q C:\CALPLANS"
+            Shell "CMD /C RD /S /Q C:\CALPLANS"
+            MessageBox "초기화 완료. 프로그램을 종료합니다...", "초기화", Me
+            End
         Else
             cmdPrgReset.Enabled = True
             lblResetN1.Visible = False
@@ -425,7 +330,7 @@ End Sub
 
 Private Sub Form_Load()
     ResetCount = 7
-    chkNoResize.Value = GetSetting("Calendar", "Options", "NoResize", "0")
+    'chkNoResize.Value = GetSetting("Calendar", "Options", "NoResize", "0")
     TabPane(OptionTabs.SelectedItem.Index).Visible = True
 End Sub
 

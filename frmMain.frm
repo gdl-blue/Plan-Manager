@@ -4,32 +4,135 @@ Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Object = "{FE0065C0-1B7B-11CF-9D53-00AA003C9CB6}#1.1#0"; "COMCT232.OCX"
 Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
 Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
+Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Begin VB.Form frmMain 
+   BackColor       =   &H8000000C&
    BorderStyle     =   1  '단일 고정
    Caption         =   "일정관리자"
-   ClientHeight    =   5190
+   ClientHeight    =   6645
    ClientLeft      =   150
-   ClientTop       =   840
-   ClientWidth     =   9060
+   ClientTop       =   480
+   ClientWidth     =   8610
    Icon            =   "frmMain.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
-   ScaleHeight     =   5190
-   ScaleWidth      =   9060
+   ScaleHeight     =   6645
+   ScaleWidth      =   8610
    StartUpPosition =   3  'Windows 기본값
+   Begin VB.CommandButton cmdHelp 
+      BackColor       =   &H8000000C&
+      Caption         =   "도움말 ▼"
+      Height          =   300
+      Left            =   7440
+      TabIndex        =   52
+      Top             =   120
+      Width           =   1095
+   End
+   Begin TabDlg.SSTab ssRibbonMenu 
+      Height          =   1335
+      Left            =   120
+      TabIndex        =   44
+      Top             =   120
+      Width           =   8415
+      _ExtentX        =   14843
+      _ExtentY        =   2355
+      _Version        =   393216
+      Tabs            =   2
+      TabHeight       =   520
+      TabMaxWidth     =   1587
+      ShowFocusRect   =   0   'False
+      BackColor       =   -2147483636
+      TabCaption(0)   =   "홈"
+      TabPicture(0)   =   "frmMain.frx":0442
+      Tab(0).ControlEnabled=   -1  'True
+      Tab(0).Control(0)=   "cmdPlanList"
+      Tab(0).Control(0).Enabled=   0   'False
+      Tab(0).Control(1)=   "cmdPlanIndex"
+      Tab(0).Control(1).Enabled=   0   'False
+      Tab(0).Control(2)=   "cmdEndPrg"
+      Tab(0).Control(2).Enabled=   0   'False
+      Tab(0).ControlCount=   3
+      TabCaption(1)   =   "보기"
+      TabPicture(1)   =   "frmMain.frx":045E
+      Tab(1).ControlEnabled=   0   'False
+      Tab(1).Control(0)=   "tglStatusBar"
+      Tab(1).Control(1)=   "cmdOptions"
+      Tab(1).ControlCount=   2
+      Begin VB.CommandButton cmdEndPrg 
+         Caption         =   "끝내기"
+         Height          =   855
+         Left            =   2760
+         Picture         =   "frmMain.frx":047A
+         Style           =   1  '그래픽
+         TabIndex        =   51
+         Top             =   360
+         Width           =   1215
+      End
+      Begin VB.CommandButton cmdPlanIndex 
+         Caption         =   "데이터 색인"
+         Height          =   855
+         Left            =   1200
+         Picture         =   "frmMain.frx":08BC
+         Style           =   1  '그래픽
+         TabIndex        =   50
+         Top             =   360
+         Width           =   1215
+      End
+      Begin VB.CommandButton cmdPlanList 
+         Caption         =   "일정 목록"
+         Height          =   855
+         Left            =   120
+         Picture         =   "frmMain.frx":0CFE
+         Style           =   1  '그래픽
+         TabIndex        =   49
+         Top             =   360
+         Width           =   975
+      End
+      Begin VB.CommandButton cmdOptions 
+         Caption         =   "옵션"
+         Height          =   855
+         Left            =   -73680
+         Picture         =   "frmMain.frx":1140
+         Style           =   1  '그래픽
+         TabIndex        =   48
+         Top             =   360
+         Width           =   1095
+      End
+      Begin MSForms.ToggleButton tglStatusBar 
+         Height          =   855
+         Left            =   -74880
+         TabIndex        =   47
+         Top             =   360
+         Width           =   1095
+         BackColor       =   -2147483633
+         ForeColor       =   -2147483630
+         DisplayStyle    =   6
+         Size            =   "1931;1508"
+         Value           =   "1"
+         Caption         =   "상태표시줄"
+         Picture         =   "frmMain.frx":1582
+         FontName        =   "굴림"
+         FontHeight      =   180
+         FontCharSet     =   129
+         FontPitchAndFamily=   34
+         ParagraphAlign  =   3
+      End
+   End
    Begin TabDlg.SSTab SSTab1 
-      Height          =   4815
+      Height          =   4695
       Left            =   120
       TabIndex        =   1
-      Top             =   120
-      Width           =   8775
-      _ExtentX        =   15478
-      _ExtentY        =   8493
+      Top             =   1560
+      Width           =   8415
+      _ExtentX        =   14843
+      _ExtentY        =   8281
       _Version        =   393216
       TabOrientation  =   1
       TabHeight       =   520
+      ShowFocusRect   =   0   'False
+      BackColor       =   -2147483636
       TabCaption(0)   =   "일정"
-      TabPicture(0)   =   "frmMain.frx":0442
+      TabPicture(0)   =   "frmMain.frx":19D4
       Tab(0).ControlEnabled=   -1  'True
       Tab(0).Control(0)=   "MonthView1"
       Tab(0).Control(0).Enabled=   0   'False
@@ -37,25 +140,52 @@ Begin VB.Form frmMain
       Tab(0).Control(1).Enabled=   0   'False
       Tab(0).ControlCount=   2
       TabCaption(1)   =   "주소록"
-      TabPicture(1)   =   "frmMain.frx":045E
+      TabPicture(1)   =   "frmMain.frx":19F0
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "cmdDelContact"
-      Tab(1).Control(1)=   "lvContactFiles"
-      Tab(1).Control(2)=   "Frame3"
+      Tab(1).Control(0)=   "lvContacts"
+      Tab(1).Control(1)=   "Frame1"
+      Tab(1).Control(2)=   "Frame2"
       Tab(1).Control(3)=   "cmdSaveContact"
-      Tab(1).Control(4)=   "Frame2"
-      Tab(1).Control(5)=   "Frame1"
-      Tab(1).Control(6)=   "lvContacts"
-      Tab(1).ControlCount=   7
+      Tab(1).Control(4)=   "Frame3"
+      Tab(1).Control(5)=   "lvContactFiles"
+      Tab(1).Control(6)=   "cmdDelContact"
+      Tab(1).Control(7)=   "cmdDeleteAllContacts"
+      Tab(1).Control(8)=   "cmdResetFields"
+      Tab(1).ControlCount=   9
       TabCaption(2)   =   "할 일"
-      TabPicture(2)   =   "frmMain.frx":047A
+      TabPicture(2)   =   "frmMain.frx":1A0C
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "lvTaskFiles"
-      Tab(2).Control(1)=   "Frame4"
+      Tab(2).Control(0)=   "lvTasks"
+      Tab(2).Control(1)=   "cmdSaveTask"
       Tab(2).Control(2)=   "cmdDelTask"
-      Tab(2).Control(3)=   "cmdSaveTask"
-      Tab(2).Control(4)=   "lvTasks"
-      Tab(2).ControlCount=   5
+      Tab(2).Control(3)=   "Frame4"
+      Tab(2).Control(4)=   "lvTaskFiles"
+      Tab(2).Control(5)=   "cmdDeleteAllTasks"
+      Tab(2).ControlCount=   6
+      Begin VB.CommandButton cmdDeleteAllTasks 
+         Caption         =   "모두 삭제(&L)"
+         Height          =   615
+         Left            =   -67920
+         TabIndex        =   53
+         Top             =   3600
+         Width           =   1215
+      End
+      Begin VB.CommandButton cmdResetFields 
+         Caption         =   "내용 초기화(&R)"
+         Height          =   495
+         Left            =   -68040
+         TabIndex        =   46
+         Top             =   3720
+         Width           =   1335
+      End
+      Begin VB.CommandButton cmdDeleteAllContacts 
+         Caption         =   "모두 삭제(&E)"
+         Height          =   495
+         Left            =   -68040
+         TabIndex        =   45
+         Top             =   2520
+         Width           =   1335
+      End
       Begin VB.DirListBox Dir1 
          Height          =   300
          Left            =   7440
@@ -65,16 +195,16 @@ Begin VB.Form frmMain
          Width           =   375
       End
       Begin VB.FileListBox lvTaskFiles 
-         Height          =   450
-         Left            =   -74760
+         Height          =   270
+         Left            =   -72960
          TabIndex        =   40
-         Top             =   3960
+         Top             =   1560
          Visible         =   0   'False
-         Width           =   1935
+         Width           =   1095
       End
       Begin VB.Frame Frame4 
          Caption         =   "할 일 정보"
-         Height          =   3735
+         Height          =   4095
          Left            =   -72480
          TabIndex        =   28
          Top             =   120
@@ -101,7 +231,7 @@ Begin VB.Form frmMain
             Enabled         =   -1  'True
          End
          Begin VB.TextBox txtMemo 
-            Height          =   1695
+            Height          =   2055
             Left            =   120
             MultiLine       =   -1  'True
             ScrollBars      =   2  '수직
@@ -173,25 +303,25 @@ Begin VB.Form frmMain
       Begin VB.CommandButton cmdDelTask 
          Caption         =   "삭제(&D)"
          Enabled         =   0   'False
-         Height          =   375
-         Left            =   -70800
+         Height          =   615
+         Left            =   -67920
          TabIndex        =   27
-         Top             =   3960
-         Width           =   1335
+         Top             =   2880
+         Width           =   1215
       End
       Begin VB.CommandButton cmdSaveTask 
          Caption         =   "저장(&S)"
-         Height          =   375
-         Left            =   -69360
+         Height          =   615
+         Left            =   -67920
          TabIndex        =   26
-         Top             =   3960
-         Width           =   1335
+         Top             =   120
+         Width           =   1215
       End
       Begin VB.ListBox lvTasks 
-         Height          =   3630
-         ItemData        =   "frmMain.frx":0496
+         Height          =   4050
+         ItemData        =   "frmMain.frx":1A28
          Left            =   -74880
-         List            =   "frmMain.frx":049D
+         List            =   "frmMain.frx":1A2F
          Style           =   1  '확인란
          TabIndex        =   25
          Top             =   120
@@ -199,29 +329,29 @@ Begin VB.Form frmMain
       End
       Begin VB.CommandButton cmdDelContact 
          Caption         =   "삭제(&D)"
-         Height          =   375
-         Left            =   -71160
+         Height          =   495
+         Left            =   -68040
          TabIndex        =   24
-         Top             =   3960
-         Width           =   1455
+         Top             =   1440
+         Width           =   1335
       End
       Begin VB.FileListBox lvContactFiles 
          Height          =   270
-         Left            =   -74880
+         Left            =   -69240
          TabIndex        =   23
-         Top             =   4080
+         Top             =   120
          Visible         =   0   'False
-         Width           =   1695
+         Width           =   855
       End
       Begin VB.Frame Frame3 
          Caption         =   "메모"
-         Height          =   1215
+         Height          =   1575
          Left            =   -73080
          TabIndex        =   10
          Top             =   2640
          Width           =   4935
          Begin VB.TextBox txtContent 
-            Height          =   855
+            Height          =   1215
             Left            =   120
             MultiLine       =   -1  'True
             ScrollBars      =   2  '수직
@@ -232,11 +362,11 @@ Begin VB.Form frmMain
       End
       Begin VB.CommandButton cmdSaveContact 
          Caption         =   "저장(&S)"
-         Height          =   375
-         Left            =   -69600
+         Height          =   495
+         Left            =   -68040
          TabIndex        =   9
-         Top             =   3960
-         Width           =   1455
+         Top             =   240
+         Width           =   1335
       End
       Begin VB.Frame Frame2 
          Caption         =   "전화번호"
@@ -324,7 +454,6 @@ Begin VB.Form frmMain
             Height          =   270
             Left            =   1080
             TabIndex        =   39
-            Text            =   "000-000"
             Top             =   900
             Width           =   735
          End
@@ -391,10 +520,10 @@ Begin VB.Form frmMain
          End
       End
       Begin VB.ListBox lvContacts 
-         Height          =   3840
-         ItemData        =   "frmMain.frx":04B2
+         Height          =   4020
+         ItemData        =   "frmMain.frx":1A44
          Left            =   -74880
-         List            =   "frmMain.frx":04B9
+         List            =   "frmMain.frx":1A4B
          TabIndex        =   3
          Top             =   120
          Width           =   1695
@@ -404,8 +533,8 @@ Begin VB.Form frmMain
          Left            =   120
          TabIndex        =   2
          Top             =   120
-         Width           =   6840
-         _ExtentX        =   12065
+         Width           =   8145
+         _ExtentX        =   14367
          _ExtentY        =   7355
          _Version        =   393216
          ForeColor       =   -2147483630
@@ -413,8 +542,8 @@ Begin VB.Form frmMain
          Appearance      =   0
          MonthColumns    =   3
          MonthRows       =   2
-         ShowToday       =   0   'False
-         StartOfWeek     =   20250625
+         ShowWeekNumbers =   -1  'True
+         StartOfWeek     =   118751233
          CurrentDate     =   43858
       End
    End
@@ -423,33 +552,34 @@ Begin VB.Form frmMain
       Height          =   270
       Left            =   0
       TabIndex        =   0
-      Top             =   4920
-      Width           =   9060
-      _ExtentX        =   15981
+      Top             =   6375
+      Width           =   8610
+      _ExtentX        =   15187
       _ExtentY        =   476
       _Version        =   393216
       BeginProperty Panels {8E3867A5-8586-11D1-B16A-00C0F0283628} 
          NumPanels       =   3
          BeginProperty Panel1 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             AutoSize        =   1
-            Object.Width           =   10795
+            Object.Width           =   10001
             Text            =   "날짜를 누르십시오."
             TextSave        =   "날짜를 누르십시오."
          EndProperty
          BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
             AutoSize        =   2
-            TextSave        =   "2020-02-06"
+            TextSave        =   "2020-02-08"
          EndProperty
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             AutoSize        =   2
-            TextSave        =   "오후 10:34"
+            TextSave        =   "오후 7:03"
          EndProperty
       EndProperty
    End
    Begin VB.Menu mnuFile 
       Caption         =   "파일(&F)"
+      Visible         =   0   'False
       Begin VB.Menu mnuFileProperties 
          Caption         =   "일정 목록(&I)..."
          Shortcut        =   ^L
@@ -475,6 +605,7 @@ Begin VB.Form frmMain
    End
    Begin VB.Menu mnuView 
       Caption         =   "보기(&V)"
+      Visible         =   0   'False
       Begin VB.Menu mnuViewStatusBar 
          Caption         =   "상태 표시줄(&B)"
          Checked         =   -1  'True
@@ -488,6 +619,7 @@ Begin VB.Form frmMain
    End
    Begin VB.Menu mnuHelp 
       Caption         =   "도움말(&H)"
+      Visible         =   0   'False
       Begin VB.Menu mnuHelpContents 
          Caption         =   "목차(&C)"
       End
@@ -546,6 +678,14 @@ Private Sub cmdDelContact_Click()
     End If
 End Sub
 
+Private Sub cmdDeleteAllContacts_Click()
+    frmOptions.cmdDelContacts_Click
+End Sub
+
+Private Sub cmdDeleteAllTasks_Click()
+    frmOptions.cmdDelTasks_Click
+End Sub
+
 Private Sub cmdDelTask_Click()
     On Error Resume Next
     If MsgBox(txtTaskTitle.Text & " 작업을 삭제하시겠습니까?", vbOKCancel + vbQuestion, "작업 삭제") = vbOK Then
@@ -557,7 +697,41 @@ Private Sub cmdDelTask_Click()
     LoadTasks
 End Sub
 
+Private Sub cmdEndPrg_Click()
+    mnuFileExit_Click
+End Sub
+
+Private Sub cmdHelp_Click()
+    PopupMenu mnuHelp
+End Sub
+
+Private Sub cmdOptions_Click()
+    mnuViewOptions_Click
+End Sub
+
+Private Sub cmdPlanIndex_Click()
+    mnuFilePlanBrowser_Click
+End Sub
+
+Private Sub cmdPlanList_Click()
+    mnuFileProperties_Click
+End Sub
+
+Private Sub cmdResetFields_Click()
+    If MsgBox("계속하시겠습니까?", vbOKCancel + vbQuestion, "초기화") = vbOK Then
+        txtCellPhone.Text = ""
+        txtEmail.Text = ""
+        txtPostalCode.Text = ""
+        txtAddress.Text = ""
+        txtHome.Text = ""
+        txtCompany.Text = ""
+        txtFax.Text = ""
+        txtOtherNumber.Text = ""
+    End If
+End Sub
+
 Private Sub cmdSaveContact_Click()
+    On Error Resume Next
     If InStr(1, txtName.Text, "?") > 0 Or InStr(1, txtName.Text, "\") > 0 Or InStr(1, txtName.Text, "|") > 0 Or InStr(1, txtName.Text, "/") > 0 Or InStr(1, txtName.Text, "*") > 0 Or InStr(1, txtName.Text, ":") > 0 Or InStr(1, txtName.Text, ".") > 0 Or InStr(1, txtName.Text, ChrW$(34)) > 0 Then
         MsgBox "이름의 값이 올바르지 않습니다.", 16, "입력 값 오류:"
     End If
@@ -664,6 +838,7 @@ Private Sub Form_Load()
     On Error Resume Next
     MkDir "C:\CALPLANS"
     MkDir "C:\CALPLANS\CONTACTS"
+    MkDir "C:\CALPLANS\TASKS"
 
     Select Case Command
         Case "/?"
@@ -684,18 +859,7 @@ Private Sub Form_Load()
     Me.Left = GetSetting("Calendar", "Settings", "MainLeft", 1000)
     Me.Top = GetSetting("Calendar", "Settings", "MainTop", 1000)
     
-    If GetSetting("Calendar", "Options", "NoResize", "0") = "0" Then
-        If SSTab1.Tab = 0 Then
-            SSTab1.Width = 8775
-            Me.Width = 9150
-        Else
-            SSTab1.Width = 7095
-            Me.Width = 7440
-        End If
-    Else
-        SSTab1.Width = 7095
-        Me.Width = 7440
-    End If
+    Me.Width = 8850
     
     Me.Caption = App.Title & " - " & SSTab1.TabCaption(SSTab1.Tab)
     Me.Caption = Me.Caption & " (" & MonthView1.Year & "년 " & MonthView1.Month & "월)"
@@ -1021,18 +1185,7 @@ Private Sub SSTab1_Click(PreviousTab As Integer)
         Me.Caption = App.Title & " - " & SSTab1.TabCaption(SSTab1.Tab) & " (새 작업 추가)"
     End If
     
-    If GetSetting("Calendar", "Options", "NoResize", "0") = "0" Then
-        If SSTab1.Tab = 0 Then
-            SSTab1.Width = 8775
-            Me.Width = 9150
-        Else
-            SSTab1.Width = 7095
-            Me.Width = 7440
-        End If
-    Else
-        SSTab1.Width = 7095
-        Me.Width = 7440
-    End If
+    
     
     If SSTab1.Tab > 0 Then
         mnuFileBar0.Visible = True
@@ -1041,6 +1194,10 @@ Private Sub SSTab1_Click(PreviousTab As Integer)
         mnuFileBar0.Visible = False
         mnuFileSave.Visible = False
     End If
+End Sub
+
+Private Sub tglStatusBar_Click()
+    mnuViewStatusBar_Click
 End Sub
 
 Private Sub txtPercentage_Change()

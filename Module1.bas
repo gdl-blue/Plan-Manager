@@ -1,4 +1,4 @@
-Attribute VB_Name = "Module1"
+Attribute VB_Name = "default"
 Public fMainForm As frmMain
 
 '파일 존재 확인 함수
@@ -80,7 +80,7 @@ Sub MessageBox(Content As String, Title As String, OwnerForm As Form, Optional I
     
     LineCount = LineCount + 1
     msgXPMB.lblContent.Height = 240 * LineCount
-    msgXPMB.Height = 1575 + LineCount * 240 - 200
+    msgXPMB.Height = 1575 + LineCount * 240 - 300
     msgXPMB.Caption = Title
     msgXPMB.lblContent.Caption = Content
     msgXPMB.Width = 2040 + (LContent * 85)
