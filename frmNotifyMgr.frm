@@ -14,7 +14,6 @@ Begin VB.Form frmNotifyMgr
    MinButton       =   0   'False
    ScaleHeight     =   90
    ScaleWidth      =   2220
-   ShowInTaskbar   =   0   'False
    StartUpPosition =   2  '화면 가운데
    Visible         =   0   'False
    WindowState     =   1  '최소화
@@ -31,14 +30,14 @@ Begin VB.Form frmNotifyMgr
       TabIndex        =   0
       Top             =   2040
       Visible         =   0   'False
-      Width           =   2280
-      _ExtentX        =   4022
+      Width           =   2700
+      _ExtentX        =   4763
       _ExtentY        =   3916
       _Version        =   393216
       ForeColor       =   -2147483630
       BackColor       =   -2147483633
       Appearance      =   1
-      StartOfWeek     =   20119553
+      StartOfWeek     =   105447425
       CurrentDate     =   43858
    End
    Begin VB.Timer Timer1 

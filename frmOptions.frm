@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
 Begin VB.Form frmOptions 
    BorderStyle     =   3  '크기 고정 대화 상자
-   Caption         =   "옵션"
+   Caption         =   "환경설정"
    ClientHeight    =   5400
    ClientLeft      =   45
    ClientTop       =   435
@@ -18,8 +18,9 @@ Begin VB.Form frmOptions
    WhatsThisButton =   -1  'True
    WhatsThisHelp   =   -1  'True
    Begin VB.Frame TabPane 
+      BackColor       =   &H80000005&
       BorderStyle     =   0  '없음
-      Height          =   4215
+      Height          =   1575
       Index           =   2
       Left            =   240
       TabIndex        =   14
@@ -27,6 +28,7 @@ Begin VB.Form frmOptions
       Visible         =   0   'False
       Width           =   6255
       Begin VB.Frame Frame3 
+         BackColor       =   &H80000005&
          Caption         =   "초기화    "
          Height          =   1335
          Left            =   120
@@ -42,6 +44,7 @@ Begin VB.Form frmOptions
             Width           =   1335
          End
          Begin VB.Label lblResetN2 
+            BackColor       =   &H80000005&
             Caption         =   "단계 전입니다."
             Height          =   255
             Left            =   1440
@@ -51,6 +54,7 @@ Begin VB.Form frmOptions
             Width           =   2055
          End
          Begin VB.Label lblResetN1 
+            BackColor       =   &H80000005&
             Caption         =   "데이터 초기화"
             Height          =   255
             Left            =   120
@@ -60,6 +64,7 @@ Begin VB.Form frmOptions
             Width           =   1215
          End
          Begin VB.Label lblResetCount 
+            BackColor       =   &H80000005&
             Caption         =   "7"
             Height          =   255
             Left            =   1320
@@ -69,6 +74,7 @@ Begin VB.Form frmOptions
             Width           =   255
          End
          Begin VB.Label Label4 
+            BackColor       =   &H80000005&
             Caption         =   "프로그램 전체 데이터를 초기화합니다."
             Height          =   255
             Left            =   120
@@ -79,6 +85,7 @@ Begin VB.Form frmOptions
       End
    End
    Begin VB.Frame TabPane 
+      BackColor       =   &H80000005&
       BorderStyle     =   0  '없음
       Height          =   4215
       Index           =   1
@@ -87,7 +94,43 @@ Begin VB.Form frmOptions
       Top             =   480
       Visible         =   0   'False
       Width           =   6255
+      Begin VB.Frame Frame1 
+         BackColor       =   &H80000005&
+         Caption         =   "달력 설정    "
+         Height          =   1455
+         Left            =   120
+         TabIndex        =   21
+         Top             =   1920
+         Width           =   6015
+         Begin VB.ComboBox cmbWSD 
+            Height          =   300
+            Left            =   120
+            Style           =   2  '드롭다운 목록
+            TabIndex        =   23
+            Top             =   600
+            Width           =   5655
+         End
+         Begin VB.Label Label6 
+            BackStyle       =   0  '투명
+            Caption         =   "이 설정을 완전히 적용하려면 프로그램을 다시 시작해야 합니다."
+            Height          =   255
+            Left            =   120
+            TabIndex        =   24
+            Top             =   1080
+            Width           =   5295
+         End
+         Begin VB.Label Label5 
+            BackColor       =   &H80000005&
+            Caption         =   "주의 시작 요일:"
+            Height          =   255
+            Left            =   120
+            TabIndex        =   22
+            Top             =   360
+            Width           =   1455
+         End
+      End
       Begin VB.Frame Frame2 
+         BackColor       =   &H80000005&
          Caption         =   "내 데이터    "
          Height          =   1695
          Left            =   120
@@ -119,6 +162,7 @@ Begin VB.Form frmOptions
             Width           =   1095
          End
          Begin VB.CommandButton cmdDelTasks 
+            BackColor       =   &H80000005&
             Caption         =   "모두 삭제(&L)"
             Height          =   375
             Left            =   4560
@@ -127,6 +171,7 @@ Begin VB.Form frmOptions
             Width           =   1335
          End
          Begin VB.CommandButton cmdDelContacts 
+            BackColor       =   &H80000005&
             Caption         =   "모두 삭제(&E)"
             Height          =   375
             Left            =   4560
@@ -135,6 +180,7 @@ Begin VB.Form frmOptions
             Width           =   1335
          End
          Begin VB.CommandButton cmdDelPlans 
+            BackColor       =   &H80000005&
             Caption         =   "모두 삭제(&D)"
             Height          =   375
             Left            =   4560
@@ -143,6 +189,7 @@ Begin VB.Form frmOptions
             Width           =   1335
          End
          Begin VB.Label Label3 
+            BackColor       =   &H80000005&
             Caption         =   "내 작업목록:"
             Height          =   255
             Left            =   240
@@ -151,6 +198,7 @@ Begin VB.Form frmOptions
             Width           =   2655
          End
          Begin VB.Label Label2 
+            BackColor       =   &H80000005&
             Caption         =   "내 주소록:"
             Height          =   255
             Left            =   240
@@ -159,6 +207,7 @@ Begin VB.Form frmOptions
             Width           =   2655
          End
          Begin VB.Label Label1 
+            BackColor       =   &H80000005&
             Caption         =   "내 일정:"
             Height          =   255
             Left            =   240
@@ -218,10 +267,6 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Dim ResetCount As Integer
-
-Private Sub chkNoResize_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
-    MessageBox "이 옵션은 Windows Vista 및 그 이전의 운영체제에 적합합니다.", "경고", Me, 48
-End Sub
 
 Sub cmdDelContacts_Click()
     If MsgBox("정말로 삭제하시겠습니까?", vbQuestion + vbOKCancel, "삭제") = vbOK Then
@@ -297,7 +342,10 @@ Sub cmdDelTasks_Click()
 End Sub
 
 Private Sub Command1_Click()
-    SaveSetting "Calendar", "Options", "NoResize", chkNoResize.Value
+    'SaveSetting "Calendar", "Options", "NoResize", chkNoResize.Value
+    SaveSetting "Calendar", "Options", "WSD", cmbWSD.ListIndex
+    
+    frmMain.MonthView1.StartOfWeek = cmbWSD.ListIndex + 1
     Unload Me
 End Sub
 
@@ -336,6 +384,16 @@ Private Sub Form_Load()
     ResetCount = 7
     'chkNoResize.Value = GetSetting("Calendar", "Options", "NoResize", "0")
     TabPane(OptionTabs.SelectedItem.Index).Visible = True
+    
+    cmbWSD.AddItem "일요일"
+    cmbWSD.AddItem "월요일"
+    cmbWSD.AddItem "화요일"
+    cmbWSD.AddItem "수요일"
+    cmbWSD.AddItem "목요일"
+    cmbWSD.AddItem "금요일"
+    cmbWSD.AddItem "토요일"
+    
+    cmbWSD.ListIndex = GetSetting("Calendar", "Options", "WSD", 0)
 End Sub
 
 Private Sub OptionTabs_Click()
