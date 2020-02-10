@@ -1,0 +1,364 @@
+[Root]
+Most Recent Package=Standard Setup Package 2
+
+
+[Package|설치관리자|Root]
+SubWizProgID=PDWizard.DepPkgSubWiz
+BuildFolder=C:\Users\Dev\Downloads\Plan-Manager-1.9.9.1\Plan-Manager-1.9.9.1
+
+[Package|설치관리자|Configure DAO ISAMs]
+Applicable=No
+
+[Package|설치관리자|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|설치관리자|Files Found]
+
+[Package|설치관리자|Files Released]
+
+[Package|설치관리자|Missing Dependency Information]
+C:\Windows\SysWOW64\ieframe.dll=
+C:\Windows\SysWOW64\FM20.DLL=
+
+[Package|설치관리자|Out-of-Date Dependency Information]
+C:\Windows\SysWOW64\COMCT332.OCX=
+
+[Package|설치관리자|Files Added]
+
+[Package|설치관리자|Files Removed]
+
+[Package|설치관리자|Files In Project]
+C:\Users\Dev\Downloads\Plan-Manager-1.9.9.1\Plan-Manager-1.9.9.1\PLNMGR32.EXE=Yes
+C:\Windows\System32\msvbvm60.dll=Yes
+C:\Windows\System32\oleaut32.dll=Yes
+C:\Windows\System32\olepro32.dll=Yes
+C:\Windows\System32\asycfilt.dll=Yes
+C:\Windows\System32\stdole2.tlb=Yes
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\Windows\System32\VB6KO.DLL=Yes
+C:\Windows\SysWOW64\COMDLG32.OCX=Yes
+C:\Windows\SysWOW64\CMDLGKO.DLL=Yes
+C:\Windows\SysWOW64\MSCOMCTL.OCX=Yes
+C:\Windows\SysWOW64\MSCMCKO.DLL=Yes
+C:\Windows\SysWOW64\MSCOMCT2.OCX=Yes
+C:\Windows\SysWOW64\MSCC2KO.DLL=Yes
+C:\Windows\SysWOW64\COMCT232.OCX=Yes
+C:\Windows\SysWOW64\CMCT2KO.DLL=Yes
+C:\Windows\SysWOW64\COMCTL32.OCX=Yes
+C:\Windows\SysWOW64\CMCTLKO.DLL=Yes
+C:\Windows\SysWOW64\COMCT332.OCX=Yes
+C:\Windows\SysWOW64\CMCT3KO.DLL=Yes
+C:\Windows\SysWOW64\TABCTL32.OCX=Yes
+C:\Windows\SysWOW64\TABCTKO.DLL=Yes
+C:\Windows\SysWOW64\FM20.DLL=Yes
+C:\Windows\SysWOW64\ieframe.dll=Yes
+C:\Users\Dev\Desktop\PLNMGR32.HLP=Yes
+
+[Package|설치관리자|Configure Registry Files]
+Applicable=
+
+[Package|설치관리자|Configure Remote Servers]
+Applicable=
+
+[Package|설치관리자|Install Locations]
+C:\Users\Dev\Downloads\Plan-Manager-1.9.9.1\Plan-Manager-1.9.9.1\PLNMGR32.EXE=$(AppPath)
+C:\Windows\System32\msvbvm60.dll=$(WinSysPathSysFile)
+C:\Windows\System32\oleaut32.dll=$(WinSysPathSysFile)
+C:\Windows\System32\olepro32.dll=$(WinSysPathSysFile)
+C:\Windows\System32\asycfilt.dll=$(WinSysPathSysFile)
+C:\Windows\System32\stdole2.tlb=$(WinSysPathSysFile)
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\Windows\System32\VB6KO.DLL=$(WinSysPath)
+C:\Windows\SysWOW64\COMDLG32.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\CMDLGKO.DLL=$(WinSysPath)
+C:\Windows\SysWOW64\MSCOMCTL.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\MSCMCKO.DLL=$(WinSysPath)
+C:\Windows\SysWOW64\MSCOMCT2.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\MSCC2KO.DLL=$(WinSysPath)
+C:\Windows\SysWOW64\COMCT232.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\CMCT2KO.DLL=$(WinSysPath)
+C:\Windows\SysWOW64\COMCTL32.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\CMCTLKO.DLL=$(WinSysPath)
+C:\Windows\SysWOW64\COMCT332.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\CMCT3KO.DLL=$(WinSysPath)
+C:\Windows\SysWOW64\TABCTL32.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\TABCTKO.DLL=$(WinSysPath)
+C:\Windows\SysWOW64\FM20.DLL=$(WinSysPath)
+C:\Windows\SysWOW64\ieframe.dll=$(WinSysPath)
+C:\Users\Dev\Desktop\PLNMGR32.HLP=$(AppPath)
+
+[Package|설치관리자|Configure Shared Files]
+Applicable=
+
+[Package|설치관리자|DepFile]
+DepCabFile=PLNMGR32.CAB
+DepCabRun=PLNMGR32.INF
+
+[Package|설치관리자|Package]
+PackageFolder=C:\Users\Dev\Downloads\Plan-Manager-1.9.9.1\Plan-Manager-1.9.9.1
+ProjectFolder=C:\Users\Dev\Downloads\Plan-Manager-1.9.9.1\Plan-Manager-1.9.9.1
+ServerSideCab=
+File1=C:\Users\Dev\Downloads\Plan-Manager-1.9.9.1\Plan-Manager-1.9.9.1\PLNMGR32.DEP
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz
+
+
+[Package|Standard Setup Package 1|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=C:\Users\Dev\Downloads\Plan-Manager-1.9.9.1\Plan-Manager-1.9.9.1\SETUPMGR
+
+[Package|Standard Setup Package 1|Configure DAO ISAMs]
+Applicable=No
+
+[Package|Standard Setup Package 1|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Standard Setup Package 1|Files Found]
+
+[Package|Standard Setup Package 1|Files Released]
+
+[Package|Standard Setup Package 1|Missing Dependency Information]
+C:\Windows\SysWOW64\ieframe.dll=
+C:\Windows\SysWOW64\FM20.DLL=
+
+[Package|Standard Setup Package 1|Out-of-Date Dependency Information]
+C:\Windows\SysWOW64\COMCT332.OCX=
+
+[Package|Standard Setup Package 1|Files Added]
+
+[Package|Standard Setup Package 1|Files Removed]
+
+[Package|Standard Setup Package 1|Files In Project]
+C:\Users\Dev\Downloads\Plan-Manager-1.9.9.1\Plan-Manager-1.9.9.1\PLNMGR32.EXE=Yes
+C:\Windows\System32\msvbvm60.dll=Yes
+C:\Windows\System32\oleaut32.dll=Yes
+C:\Windows\System32\olepro32.dll=Yes
+C:\Windows\System32\asycfilt.dll=Yes
+C:\Windows\System32\stdole2.tlb=Yes
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\Windows\System32\VB6KO.DLL=Yes
+C:\Windows\SysWOW64\COMDLG32.OCX=Yes
+C:\Windows\SysWOW64\CMDLGKO.DLL=Yes
+C:\Windows\SysWOW64\MSCOMCTL.OCX=Yes
+C:\Windows\SysWOW64\MSCMCKO.DLL=Yes
+C:\Windows\SysWOW64\MSCOMCT2.OCX=Yes
+C:\Windows\SysWOW64\MSCC2KO.DLL=Yes
+C:\Windows\SysWOW64\COMCT232.OCX=Yes
+C:\Windows\SysWOW64\CMCT2KO.DLL=Yes
+C:\Windows\SysWOW64\COMCTL32.OCX=Yes
+C:\Windows\SysWOW64\CMCTLKO.DLL=Yes
+C:\Windows\SysWOW64\COMCT332.OCX=Yes
+C:\Windows\SysWOW64\CMCT3KO.DLL=Yes
+C:\Windows\SysWOW64\TABCTL32.OCX=Yes
+C:\Windows\SysWOW64\TABCTKO.DLL=Yes
+C:\Windows\SysWOW64\FM20.DLL=Yes
+C:\Windows\SysWOW64\ieframe.dll=Yes
+C:\Users\Dev\Desktop\PLNMGR32.HLP=Yes
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\Windows\System32\VB6STKIT.DLL=Yes
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+
+[Package|Standard Setup Package 1|Configure Registry Files]
+Applicable=No
+
+[Package|Standard Setup Package 1|Configure Remote Servers]
+Applicable=No
+
+[Package|Standard Setup Package 1|Install Locations]
+C:\Users\Dev\Downloads\Plan-Manager-1.9.9.1\Plan-Manager-1.9.9.1\PLNMGR32.EXE=$(AppPath)
+C:\Windows\System32\msvbvm60.dll=$(WinSysPathSysFile)
+C:\Windows\System32\oleaut32.dll=$(WinSysPathSysFile)
+C:\Windows\System32\olepro32.dll=$(WinSysPathSysFile)
+C:\Windows\System32\asycfilt.dll=$(WinSysPathSysFile)
+C:\Windows\System32\stdole2.tlb=$(WinSysPathSysFile)
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\Windows\System32\VB6KO.DLL=$(WinSysPath)
+C:\Windows\SysWOW64\COMDLG32.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\CMDLGKO.DLL=$(WinSysPath)
+C:\Windows\SysWOW64\MSCOMCTL.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\MSCMCKO.DLL=$(WinSysPath)
+C:\Windows\SysWOW64\MSCOMCT2.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\MSCC2KO.DLL=$(WinSysPath)
+C:\Windows\SysWOW64\COMCT232.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\CMCT2KO.DLL=$(WinSysPath)
+C:\Windows\SysWOW64\COMCTL32.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\CMCTLKO.DLL=$(WinSysPath)
+C:\Windows\SysWOW64\COMCT332.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\CMCT3KO.DLL=$(WinSysPath)
+C:\Windows\SysWOW64\TABCTL32.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\TABCTKO.DLL=$(WinSysPath)
+C:\Windows\SysWOW64\FM20.DLL=$(WinSysPath)
+C:\Windows\SysWOW64\ieframe.dll=$(WinSysPath)
+C:\Users\Dev\Desktop\PLNMGR32.HLP=$(AppPath)
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\Windows\System32\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+
+[Package|Standard Setup Package 1|Configure Shared Files]
+Applicable=Yes
+C:\Users\Dev\Downloads\Plan-Manager-1.9.9.1\Plan-Manager-1.9.9.1\PLNMGR32.EXE=No
+C:\Users\Dev\Desktop\PLNMGR32.HLP=No
+
+[Package|Standard Setup Package 1|DepFile]
+DepCabFile=PLNMGR32.CAB
+DepCabRun=PLNMGR32.INF
+
+[Package|Standard Setup Package 1|Distribution]
+Type=single
+Size=
+Title=일정관리자 2
+
+[Package|Standard Setup Package 1|IconGroups]
+Group0=일정관리자 2
+PrivateGroup0=True
+Parent0=$(Programs)
+
+[Package|Standard Setup Package 1|일정관리자 2]
+Icon1=PLNMGR32.EXE
+Title1=일정관리자
+StartIn1=$(AppPath)
+Key1=Icon1
+
+[Package|Standard Setup Package 1|Package]
+PackageFolder=C:\Users\Dev\Downloads\Plan-Manager-1.9.9.1\Plan-Manager-1.9.9.1\SETUPMGR
+ProjectFolder=C:\Users\Dev\Downloads\Plan-Manager-1.9.9.1\Plan-Manager-1.9.9.1
+ServerSideCab=
+File1=C:\Users\Dev\Downloads\Plan-Manager-1.9.9.1\Plan-Manager-1.9.9.1\SETUPMGR\setup.exe
+File2=C:\Users\Dev\Downloads\Plan-Manager-1.9.9.1\Plan-Manager-1.9.9.1\SETUPMGR\Setup.Lst
+File3=C:\Users\Dev\Downloads\Plan-Manager-1.9.9.1\Plan-Manager-1.9.9.1\SETUPMGR\PLNMGR32.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz
+
+
+[Package|Standard Setup Package 2|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=C:\Users\Dev\Desktop\Plan-Manager\Setup
+
+[Package|Standard Setup Package 2|Configure DAO ISAMs]
+Applicable=No
+
+[Package|Standard Setup Package 2|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Standard Setup Package 2|Files Found]
+
+[Package|Standard Setup Package 2|Files Released]
+
+[Package|Standard Setup Package 2|Missing Dependency Information]
+C:\Windows\SysWOW64\ieframe.dll=
+C:\Windows\SysWOW64\FM20.DLL=
+
+[Package|Standard Setup Package 2|Out-of-Date Dependency Information]
+C:\Windows\SysWOW64\COMCT332.OCX=
+
+[Package|Standard Setup Package 2|Files Added]
+C:\Users\Dev\Desktop\Plan-Manager\plnmgr32.cnt=
+
+[Package|Standard Setup Package 2|Files Removed]
+
+[Package|Standard Setup Package 2|Files In Project]
+C:\Users\Dev\Desktop\Plan-Manager\PLNMGR32.EXE=Yes
+C:\Windows\System32\msvbvm60.dll=Yes
+C:\Windows\System32\oleaut32.dll=Yes
+C:\Windows\System32\olepro32.dll=Yes
+C:\Windows\System32\asycfilt.dll=Yes
+C:\Windows\System32\stdole2.tlb=Yes
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\Windows\System32\VB6KO.DLL=Yes
+C:\Windows\SysWOW64\COMDLG32.OCX=Yes
+C:\Windows\SysWOW64\CMDLGKO.DLL=Yes
+C:\Windows\SysWOW64\MSCOMCTL.OCX=Yes
+C:\Windows\SysWOW64\MSCMCKO.DLL=Yes
+C:\Windows\SysWOW64\MSCOMCT2.OCX=Yes
+C:\Windows\SysWOW64\MSCC2KO.DLL=Yes
+C:\Windows\SysWOW64\COMCT232.OCX=Yes
+C:\Windows\SysWOW64\CMCT2KO.DLL=Yes
+C:\Windows\SysWOW64\COMCTL32.OCX=Yes
+C:\Windows\SysWOW64\CMCTLKO.DLL=Yes
+C:\Windows\SysWOW64\COMCT332.OCX=Yes
+C:\Windows\SysWOW64\CMCT3KO.DLL=Yes
+C:\Windows\SysWOW64\TABCTL32.OCX=Yes
+C:\Windows\SysWOW64\TABCTKO.DLL=Yes
+C:\Windows\SysWOW64\FM20.DLL=Yes
+C:\Windows\SysWOW64\ieframe.dll=Yes
+C:\Users\Dev\Desktop\PLNMGR32.HLP=Yes
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\Windows\System32\VB6STKIT.DLL=Yes
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+C:\Users\Dev\Desktop\Plan-Manager\plnmgr32.cnt=Yes
+
+[Package|Standard Setup Package 2|Configure Registry Files]
+Applicable=No
+
+[Package|Standard Setup Package 2|Configure Remote Servers]
+Applicable=No
+
+[Package|Standard Setup Package 2|Install Locations]
+C:\Users\Dev\Desktop\Plan-Manager\PLNMGR32.EXE=$(AppPath)
+C:\Windows\System32\msvbvm60.dll=$(WinSysPathSysFile)
+C:\Windows\System32\oleaut32.dll=$(WinSysPathSysFile)
+C:\Windows\System32\olepro32.dll=$(WinSysPathSysFile)
+C:\Windows\System32\asycfilt.dll=$(WinSysPathSysFile)
+C:\Windows\System32\stdole2.tlb=$(WinSysPathSysFile)
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\Windows\System32\VB6KO.DLL=$(WinSysPath)
+C:\Windows\SysWOW64\COMDLG32.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\CMDLGKO.DLL=$(WinSysPath)
+C:\Windows\SysWOW64\MSCOMCTL.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\MSCMCKO.DLL=$(WinSysPath)
+C:\Windows\SysWOW64\MSCOMCT2.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\MSCC2KO.DLL=$(WinSysPath)
+C:\Windows\SysWOW64\COMCT232.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\CMCT2KO.DLL=$(WinSysPath)
+C:\Windows\SysWOW64\COMCTL32.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\CMCTLKO.DLL=$(WinSysPath)
+C:\Windows\SysWOW64\COMCT332.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\CMCT3KO.DLL=$(WinSysPath)
+C:\Windows\SysWOW64\TABCTL32.OCX=$(WinSysPath)
+C:\Windows\SysWOW64\TABCTKO.DLL=$(WinSysPath)
+C:\Windows\SysWOW64\FM20.DLL=$(WinSysPath)
+C:\Windows\SysWOW64\ieframe.dll=$(WinSysPath)
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\Windows\System32\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Program Files (x86)\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+C:\Users\Dev\Desktop\Plan-Manager\plnmgr32.cnt=$(AppPath)
+C:\Users\Dev\Desktop\PLNMGR32.HLP=$(AppPath)
+
+[Package|Standard Setup Package 2|Configure Shared Files]
+Applicable=Yes
+C:\Users\Dev\Desktop\Plan-Manager\PLNMGR32.EXE=No
+C:\Users\Dev\Desktop\PLNMGR32.HLP=No
+C:\Users\Dev\Desktop\Plan-Manager\plnmgr32.cnt=No
+
+[Package|Standard Setup Package 2|Distribution]
+Type=single
+Size=
+Title=일정관리자 2
+
+[Package|Standard Setup Package 2|IconGroups]
+Group0=일정관리자 2
+PrivateGroup0=True
+Parent0=$(Programs)
+
+[Package|Standard Setup Package 2|일정관리자 2]
+Icon1=PLNMGR32.EXE
+Title1=일정관리자
+StartIn1=$(AppPath)
+Key1=Icon1
+
+[Package|Standard Setup Package 2|Package]
+PackageFolder=C:\Users\Dev\Desktop\Plan-Manager\Setup
+ProjectFolder=C:\Users\Dev\Desktop\Plan-Manager
+ServerSideCab=
+File1=C:\Users\Dev\Desktop\Plan-Manager\Setup\setup.exe
+File2=C:\Users\Dev\Desktop\Plan-Manager\Setup\Setup.Lst
+File3=C:\Users\Dev\Desktop\Plan-Manager\Setup\PLNMGR32.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz

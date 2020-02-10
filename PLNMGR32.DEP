@@ -1,0 +1,39 @@
+[Version]
+Version=2.1.0.0
+
+[PLNMGR32.EXE <0012>]
+Dest=$(AppPath)
+Date=2020-02-09
+Time=19:21
+Version=2.1.0.0
+CABFilename=PLNMGR32.CAB
+CABINFFile=PLNMGR32.INF
+Uses1=msvbvm60.dll
+Uses2=oleaut32.dll
+Uses3=olepro32.dll
+Uses4=asycfilt.dll
+Uses5=stdole2.tlb
+Uses6=COMCAT.DLL
+Uses7=VB6KO.DLL
+Uses8=COMDLG32.OCX
+Uses9=MSCOMCTL.OCX
+Uses10=MSCOMCT2.OCX
+Uses11=COMCT232.OCX
+Uses12=COMCTL32.OCX
+Uses13=COMCT332.OCX
+Uses14=TABCTL32.OCX
+Uses15=FM20.DLL
+Uses16=ieframe.dll
+Uses17=PLNMGR32.HLP
+
+[FM20.DLL <0012>]
+Dest=$(WinSysPath)
+Date=1998-06-02
+Time=00:00
+Version=2.1.3603.0
+
+[ieframe.dll <0012>]
+Dest=$(WinSysPath)
+Date=2011-12-27
+Time=17:22
+Version=9.0.8112.16440

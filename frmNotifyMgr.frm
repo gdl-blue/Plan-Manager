@@ -37,7 +37,7 @@ Begin VB.Form frmNotifyMgr
       ForeColor       =   -2147483630
       BackColor       =   -2147483633
       Appearance      =   1
-      StartOfWeek     =   105447425
+      StartOfWeek     =   120586241
       CurrentDate     =   43858
    End
    Begin VB.Timer Timer1 

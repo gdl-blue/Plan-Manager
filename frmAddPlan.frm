@@ -193,9 +193,11 @@ Private Sub OKButton_Click()
         MessageBox "24시 대신 0시로 입력해주십시오.", "입력 값 오류", Me, 16
         Exit Sub
     End If
-    If txtTimeHrs.Text > 24 Or txtTimeMin.Text > 59 Or txtTimeHrs.Text < 0 Or txtTimeMin.Text < 0 Then
-        MessageBox "시간에서 시는 0부터 24, 분은 0부터 59까지의 정수이여야 합니다.", "입력 값 오류", Me, 16
-        Exit Sub
+    If GetSetting("Calendar", "Options", "NoTimeCheck", 0) = 0 Then
+        If txtTimeHrs.Text > 24 Or txtTimeMin.Text > 59 Or txtTimeHrs.Text < 0 Or txtTimeMin.Text < 0 Then
+            MessageBox "시간에서 시는 0부터 24, 분은 0부터 59까지의 정수이여야 합니다.", "입력 값 오류", Me, 16
+            Exit Sub
+    End If
     End If
     If txtTitle.Text = "" Then
         MessageBox "제목의 값은 필수입니다.", "입력 값 오류", Me, 16
@@ -212,16 +214,16 @@ Private Sub OKButton_Click()
     
     '해당 일정이 존재함을 알리는 파일을 만든다.
     'https://stackoverflow.com/questions/21108664/how-to-create-txt-file
-    Dim iFIleNo As Integer
-    iFIleNo = FreeFile
+    Dim iFileNo As Integer
+    iFileNo = FreeFile
     '파일을 연다.
-    Open "C:\CALPLANS\" & Year & "\" & Month & "\" & Day & "\" & txtTitle.Text For Output As #iFIleNo
+    Open "C:\CALPLANS\" & Year & "\" & Month & "\" & Day & "\" & txtTitle.Text For Output As #iFileNo
     
     '파일의 내용은 보지 않으므로 빈 칸으로...
-    Print #iFIleNo, ""
+    Print #iFileNo, ""
     
     '파일을 닫는다.
-    Close #iFIleNo
+    Close #iFileNo
     
     '레지스트리에 일정의 기타 정보를 저장한다.
     If txtTimeHrs.Text < 9 Then
@@ -249,17 +251,19 @@ Private Sub OKButton_Click()
     
     If txtCategory.Text <> "업무" And txtCategory.Text <> "여가생활" And txtCategory.Text <> "약속" And txtCategory.Text <> "취미" And txtCategory.Text <> "(지정되지 않음)" Then
         'https://stackoverflow.com/questions/21108664/how-to-create-txt-file
-        iFIleNo = FreeFile
+        iFileNo = FreeFile
         '파일을 연다.
         
-        Open "C:\CALPLANS\CTGORIES\" & txtCategory.Text For Output As #iFIleNo
+        Open "C:\CALPLANS\CTGORIES\" & txtCategory.Text For Output As #iFileNo
         
         '파일의 내용은 보지 않으므로 빈 칸으로...
-        Print #iFIleNo, ""
+        Print #iFileNo, ""
         
         '파일을 닫는다.
-        Close #iFIleNo
+        Close #iFileNo
     End If
+    
+    frmMain.lvTodaysPlan.Refresh
     
     Unload Me
 End Sub

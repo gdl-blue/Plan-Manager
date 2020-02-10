@@ -9,16 +9,44 @@ Begin VB.Form frmMain
    BackColor       =   &H8000000C&
    BorderStyle     =   1  '단일 고정
    Caption         =   "일정관리자"
-   ClientHeight    =   6645
+   ClientHeight    =   6660
    ClientLeft      =   150
    ClientTop       =   480
-   ClientWidth     =   8610
+   ClientWidth     =   10950
    Icon            =   "frmMain.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
-   ScaleHeight     =   6645
-   ScaleWidth      =   8610
+   ScaleHeight     =   6660
+   ScaleWidth      =   10950
    StartUpPosition =   3  'Windows 기본값
+   Begin TabDlg.SSTab ssTodaysPlan 
+      Height          =   6135
+      Left            =   8640
+      TabIndex        =   59
+      Top             =   120
+      Width           =   2205
+      _ExtentX        =   3889
+      _ExtentY        =   10821
+      _Version        =   393216
+      Tabs            =   1
+      TabsPerRow      =   1
+      TabHeight       =   520
+      ShowFocusRect   =   0   'False
+      BackColor       =   -2147483636
+      TabCaption(0)   =   "오늘의 일정"
+      TabPicture(0)   =   "frmMain.frx":0442
+      Tab(0).ControlEnabled=   -1  'True
+      Tab(0).Control(0)=   "lvTodaysPlan"
+      Tab(0).Control(0).Enabled=   0   'False
+      Tab(0).ControlCount=   1
+      Begin VB.FileListBox lvTodaysPlan 
+         Height          =   5490
+         Left            =   120
+         TabIndex        =   60
+         Top             =   360
+         Width           =   1935
+      End
+   End
    Begin VB.CommandButton cmdHelp 
       BackColor       =   &H8000000C&
       Caption         =   "도움말 ▼"
@@ -44,9 +72,9 @@ Begin VB.Form frmMain
       TabMaxWidth     =   1940
       ShowFocusRect   =   0   'False
       BackColor       =   -2147483636
-      MouseIcon       =   "frmMain.frx":0442
+      MouseIcon       =   "frmMain.frx":045E
       TabCaption(0)   =   " 홈"
-      TabPicture(0)   =   "frmMain.frx":045E
+      TabPicture(0)   =   "frmMain.frx":047A
       Tab(0).ControlEnabled=   -1  'True
       Tab(0).Control(0)=   "cmdPlanList"
       Tab(0).Control(0).Enabled=   0   'False
@@ -56,29 +84,29 @@ Begin VB.Form frmMain
       Tab(0).Control(2).Enabled=   0   'False
       Tab(0).ControlCount=   3
       TabCaption(1)   =   " 보기"
-      TabPicture(1)   =   "frmMain.frx":08B0
+      TabPicture(1)   =   "frmMain.frx":08CC
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "tglCalWeekNum"
-      Tab(1).Control(1)=   "tglStatusBar"
+      Tab(1).Control(0)=   "tglStatusBar"
+      Tab(1).Control(1)=   "tglCalWeekNum"
       Tab(1).ControlCount=   2
       TabCaption(2)   =   " 일정"
-      TabPicture(2)   =   "frmMain.frx":0D02
+      TabPicture(2)   =   "frmMain.frx":0D1E
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "cmdPlanCategories"
+      Tab(2).Control(0)=   "cmdTodaysPlan"
       Tab(2).Control(1)=   "cmdDelAllTodaysPlan"
-      Tab(2).Control(2)=   "cmdTodaysPlan"
+      Tab(2).Control(2)=   "cmdPlanCategories"
       Tab(2).ControlCount=   3
       TabCaption(3)   =   " 도구"
-      TabPicture(3)   =   "frmMain.frx":1154
+      TabPicture(3)   =   "frmMain.frx":1170
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "cmdOptions"
-      Tab(3).Control(1)=   "cmdBrowser"
+      Tab(3).Control(0)=   "cmdBrowser"
+      Tab(3).Control(1)=   "cmdOptions"
       Tab(3).ControlCount=   2
       Begin VB.CommandButton cmdBrowser 
          Caption         =   "   GitHub      브라우저  "
          Height          =   855
          Left            =   -73440
-         Picture         =   "frmMain.frx":15A6
+         Picture         =   "frmMain.frx":15C2
          Style           =   1  '그래픽
          TabIndex        =   58
          ToolTipText     =   "깃허브 정보페이지를 엽니다."
@@ -89,7 +117,7 @@ Begin VB.Form frmMain
          Caption         =   "환경설정"
          Height          =   855
          Left            =   -74880
-         Picture         =   "frmMain.frx":19E8
+         Picture         =   "frmMain.frx":1A04
          Style           =   1  '그래픽
          TabIndex        =   57
          ToolTipText     =   "프로그램을 구성합니다."
@@ -100,7 +128,7 @@ Begin VB.Form frmMain
          Caption         =   "일정 분류"
          Height          =   855
          Left            =   -72240
-         Picture         =   "frmMain.frx":1E2A
+         Picture         =   "frmMain.frx":1E46
          Style           =   1  '그래픽
          TabIndex        =   56
          ToolTipText     =   "분류 목록을 표시합니다."
@@ -111,7 +139,7 @@ Begin VB.Form frmMain
          Caption         =   "이날의   일정 삭제"
          Height          =   855
          Left            =   -73680
-         Picture         =   "frmMain.frx":226C
+         Picture         =   "frmMain.frx":2288
          Style           =   1  '그래픽
          TabIndex        =   54
          ToolTipText     =   "선택한 날의 일정을 모두 삭제합니다."
@@ -123,7 +151,7 @@ Begin VB.Form frmMain
          Caption         =   "이날의 일정"
          Height          =   855
          Left            =   -74880
-         Picture         =   "frmMain.frx":26AE
+         Picture         =   "frmMain.frx":26CA
          Style           =   1  '그래픽
          TabIndex        =   53
          ToolTipText     =   "표시한 날짜의 일정 목록을 표시합니다."
@@ -134,7 +162,7 @@ Begin VB.Form frmMain
          Caption         =   "끝내기"
          Height          =   855
          Left            =   2760
-         Picture         =   "frmMain.frx":2AF0
+         Picture         =   "frmMain.frx":2B0C
          Style           =   1  '그래픽
          TabIndex        =   50
          ToolTipText     =   "프로그램을 끝냅니다."
@@ -145,7 +173,7 @@ Begin VB.Form frmMain
          Caption         =   "데이터 색인"
          Height          =   855
          Left            =   1200
-         Picture         =   "frmMain.frx":2F32
+         Picture         =   "frmMain.frx":2F4E
          Style           =   1  '그래픽
          TabIndex        =   49
          ToolTipText     =   "주소록, 일정 전체목록입니다."
@@ -156,7 +184,7 @@ Begin VB.Form frmMain
          Caption         =   "일정 목록"
          Height          =   855
          Left            =   120
-         Picture         =   "frmMain.frx":3374
+         Picture         =   "frmMain.frx":3390
          Style           =   1  '그래픽
          TabIndex        =   48
          ToolTipText     =   "표시한 날짜의 일정 목록을 표시합니다."
@@ -176,7 +204,7 @@ Begin VB.Form frmMain
          Size            =   "1931;1508"
          Value           =   "1"
          Caption         =   "주 번호"
-         Picture         =   "frmMain.frx":37B6
+         Picture         =   "frmMain.frx":37D2
          FontName        =   "굴림"
          FontHeight      =   180
          FontCharSet     =   129
@@ -196,7 +224,7 @@ Begin VB.Form frmMain
          Size            =   "1931;1508"
          Value           =   "1"
          Caption         =   "상태표시줄"
-         Picture         =   "frmMain.frx":3AD0
+         Picture         =   "frmMain.frx":3AEC
          FontName        =   "굴림"
          FontHeight      =   180
          FontCharSet     =   129
@@ -218,7 +246,7 @@ Begin VB.Form frmMain
       ShowFocusRect   =   0   'False
       BackColor       =   -2147483636
       TabCaption(0)   =   "일정"
-      TabPicture(0)   =   "frmMain.frx":3F22
+      TabPicture(0)   =   "frmMain.frx":3F3E
       Tab(0).ControlEnabled=   -1  'True
       Tab(0).Control(0)=   "MonthView1"
       Tab(0).Control(0).Enabled=   0   'False
@@ -226,27 +254,27 @@ Begin VB.Form frmMain
       Tab(0).Control(1).Enabled=   0   'False
       Tab(0).ControlCount=   2
       TabCaption(1)   =   "주소록"
-      TabPicture(1)   =   "frmMain.frx":4374
+      TabPicture(1)   =   "frmMain.frx":4390
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "lvContacts"
-      Tab(1).Control(1)=   "Frame1"
-      Tab(1).Control(2)=   "Frame2"
-      Tab(1).Control(3)=   "cmdSaveContact"
+      Tab(1).Control(0)=   "cmdResetFields"
+      Tab(1).Control(1)=   "cmdDeleteAllContacts"
+      Tab(1).Control(2)=   "cmdDelContact"
+      Tab(1).Control(3)=   "lvContactFiles"
       Tab(1).Control(4)=   "Frame3"
-      Tab(1).Control(5)=   "lvContactFiles"
-      Tab(1).Control(6)=   "cmdDelContact"
-      Tab(1).Control(7)=   "cmdDeleteAllContacts"
-      Tab(1).Control(8)=   "cmdResetFields"
+      Tab(1).Control(5)=   "cmdSaveContact"
+      Tab(1).Control(6)=   "Frame2"
+      Tab(1).Control(7)=   "Frame1"
+      Tab(1).Control(8)=   "lvContacts"
       Tab(1).ControlCount=   9
       TabCaption(2)   =   "할 일"
-      TabPicture(2)   =   "frmMain.frx":47C6
+      TabPicture(2)   =   "frmMain.frx":47E2
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "lvTasks"
-      Tab(2).Control(1)=   "cmdSaveTask"
-      Tab(2).Control(2)=   "cmdDelTask"
-      Tab(2).Control(3)=   "Frame4"
-      Tab(2).Control(4)=   "lvTaskFiles"
-      Tab(2).Control(5)=   "cmdDeleteAllTasks"
+      Tab(2).Control(0)=   "cmdDeleteAllTasks"
+      Tab(2).Control(1)=   "lvTaskFiles"
+      Tab(2).Control(2)=   "Frame4"
+      Tab(2).Control(3)=   "cmdDelTask"
+      Tab(2).Control(4)=   "cmdSaveTask"
+      Tab(2).Control(5)=   "lvTasks"
       Tab(2).ControlCount=   6
       Begin VB.CommandButton cmdDeleteAllTasks 
          Caption         =   "모두 삭제(&L)"
@@ -305,7 +333,7 @@ Begin VB.Form frmMain
             _ExtentY        =   476
             _Version        =   327681
             BuddyControl    =   "txtPercentage"
-            BuddyDispid     =   196625
+            BuddyDispid     =   196626
             OrigLeft        =   3850
             OrigTop         =   1200
             OrigRight       =   4105
@@ -405,9 +433,9 @@ Begin VB.Form frmMain
       End
       Begin VB.ListBox lvTasks 
          Height          =   4050
-         ItemData        =   "frmMain.frx":4C18
+         ItemData        =   "frmMain.frx":4C34
          Left            =   -74880
-         List            =   "frmMain.frx":4C1F
+         List            =   "frmMain.frx":4C3B
          Style           =   1  '확인란
          TabIndex        =   25
          Top             =   120
@@ -607,9 +635,9 @@ Begin VB.Form frmMain
       End
       Begin VB.ListBox lvContacts 
          Height          =   4020
-         ItemData        =   "frmMain.frx":4C34
+         ItemData        =   "frmMain.frx":4C50
          Left            =   -74880
-         List            =   "frmMain.frx":4C3B
+         List            =   "frmMain.frx":4C57
          TabIndex        =   3
          Top             =   120
          Width           =   1695
@@ -628,7 +656,7 @@ Begin VB.Form frmMain
          Appearance      =   0
          MonthColumns    =   3
          MonthRows       =   2
-         StartOfWeek     =   7340033
+         StartOfWeek     =   120848385
          CurrentDate     =   43858
       End
    End
@@ -637,28 +665,28 @@ Begin VB.Form frmMain
       Height          =   270
       Left            =   0
       TabIndex        =   0
-      Top             =   6375
-      Width           =   8610
-      _ExtentX        =   15187
+      Top             =   6390
+      Width           =   10950
+      _ExtentX        =   19315
       _ExtentY        =   476
       _Version        =   393216
       BeginProperty Panels {8E3867A5-8586-11D1-B16A-00C0F0283628} 
          NumPanels       =   3
          BeginProperty Panel1 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             AutoSize        =   1
-            Object.Width           =   10001
+            Object.Width           =   14129
             Text            =   "날짜를 누르십시오."
             TextSave        =   "날짜를 누르십시오."
          EndProperty
          BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
             AutoSize        =   2
-            TextSave        =   "2020-02-09"
+            TextSave        =   "2020-02-10"
          EndProperty
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             AutoSize        =   2
-            TextSave        =   "오후 7:16"
+            TextSave        =   "오전 11:38"
          EndProperty
       EndProperty
    End
@@ -733,7 +761,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Private Declare Function OSWinHelp% Lib "user32" Alias "WinHelpA" (ByVal hwnd&, ByVal HelpFile$, ByVal wCommand%, dwData As Any)
 Dim Contact As Integer
-Dim iFIleNo As Integer
+Dim iFileNo As Integer
 Dim Task As Integer
 
 Sub LoadContacts()
@@ -852,15 +880,15 @@ Private Sub cmdSaveContact_Click()
     If lvContacts.List(lvContacts.ListIndex) = "새 연락처 추가..." Then
         '해당 연락처가 존재함을 알리는 파일을 만든다.
         'https://stackoverflow.com/questions/21108664/how-to-create-txt-file
-        iFIleNo = FreeFile
+        iFileNo = FreeFile
         '파일을 연다.
-        Open "C:\CALPLANS\CONTACTS\" & txtName.Text For Output As #iFIleNo
+        Open "C:\CALPLANS\CONTACTS\" & txtName.Text For Output As #iFileNo
         
         '파일의 내용은 보지 않으므로 빈 칸으로...
-        Print #iFIleNo, ""
+        Print #iFileNo, ""
         
         '파일을 닫는다.
-        Close #iFIleNo
+        Close #iFileNo
         
         txtName.Text = ""
         
@@ -916,15 +944,15 @@ Private Sub cmdSaveTask_Click()
     If lvTasks.List(lvTasks.ListIndex) = "새 작업 추가..." Then
         '해당 작업이 존재함을 알리는 파일을 만든다.
         'https://stackoverflow.com/questions/21108664/how-to-create-txt-file
-        iFIleNo = FreeFile
+        iFileNo = FreeFile
         '파일을 연다.
-        Open "C:\CALPLANS\TASKS\" & txtTaskTitle.Text For Output As #iFIleNo
+        Open "C:\CALPLANS\TASKS\" & txtTaskTitle.Text For Output As #iFileNo
         
         '파일의 내용은 보지 않으므로 빈 칸으로...
-        Print #iFIleNo, ""
+        Print #iFileNo, ""
         
         '파일을 닫는다.
-        Close #iFIleNo
+        Close #iFileNo
         
         txtTaskTitle.Text = ""
         txtPercentage.Text = ""
@@ -949,6 +977,50 @@ Private Sub cmdDelAllTodaysPlan_Click()
             MessageBox "삭제되었습니다.", "성공", Me
         End If
     End If
+End Sub
+
+Sub SetColor()
+    Select Case GetSetting("Calendar", "Options", "BGColor", 0)
+        Case 0
+            Me.BackColor = &H8000000C
+            ssRibbonMenu.BackColor = &H8000000C
+            SSTab1.BackColor = &H8000000C
+        Case 1
+            Me.BackColor = &H8000000F
+            ssRibbonMenu.BackColor = &H8000000F
+            SSTab1.BackColor = &H8000000F
+        Case 2
+            Me.BackColor = &HFF&
+            ssRibbonMenu.BackColor = &HFF&
+            SSTab1.BackColor = &HFF&
+        Case 3
+            Me.BackColor = &HFFFF&
+            ssRibbonMenu.BackColor = &HFFFF&
+            SSTab1.BackColor = &HFFFF&
+        Case 4
+            Me.BackColor = &HC000&
+            ssRibbonMenu.BackColor = &HC000&
+            SSTab1.BackColor = &HC000&
+        Case 5
+            Me.BackColor = &HFFFF00
+            ssRibbonMenu.BackColor = &HFFFF00
+            SSTab1.BackColor = &HFFFF00
+        Case 6
+            Me.BackColor = &H808000
+            ssRibbonMenu.BackColor = &H808000
+            SSTab1.BackColor = &H808000
+        Case 7
+            Me.BackColor = &HC00000
+            ssRibbonMenu.BackColor = &HC00000
+            SSTab1.BackColor = &HC00000
+        Case 8
+            Me.BackColor = &H0&
+            ssRibbonMenu.BackColor = &H0&
+            SSTab1.BackColor = &H0&
+    End Select
+    
+    ssTodaysPlan.BackColor = Me.BackColor
+    cmdHelp.BackColor = Me.BackColor
 End Sub
 
 Private Sub Form_Load()
@@ -997,6 +1069,14 @@ Private Sub Form_Load()
     
     LoadContacts
     LoadTasks
+    
+    SSTab1.Tab = GetSetting("Calendar", "Options", "StartPage", 0)
+    
+    SetColor
+    
+    MkDir "C:\CALPLANS\" & Format(Now, "YYYY\MM\DD")
+    
+    lvTodaysPlan.Path = "C:\CALPLANS\" & Format(Now, "YYYY\MM\DD")
 End Sub
 
 

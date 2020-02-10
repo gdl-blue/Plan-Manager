@@ -154,7 +154,7 @@ Public CurrentDate As Date
 Public Year As Integer
 Public Month As Integer
 Public Day As Integer
-Dim iFIleNo As Integer
+Dim iFileNo As Integer
 
 Private Sub CancelButton_Click()
     If MsgBox("일정 수정를 취소하시겠습니까? 임시 저장되지 않습니다.", vbQuestion + vbOKCancel, "일정 추가") = vbOK Then
@@ -191,9 +191,11 @@ Private Sub OKButton_Click()
         MessageBox "24시 대신 0시로 입력해주십시오.", "입력 값 오류", Me, 16
         Exit Sub
     End If
-    If txtTimeHrs.Text > 24 Or txtTimeMin.Text > 59 Or txtTimeHrs.Text < 0 Or txtTimeMin.Text < 0 Then
-        MessageBox "시간에서 시는 0부터 24, 분은 0부터 59까지의 정수이여야 합니다.", "입력 값 오류", Me, 16
-        Exit Sub
+    If GetSetting("Calendar", "Options", "NoTimeCheck", 0) = 0 Then
+        If txtTimeHrs.Text > 24 Or txtTimeMin.Text > 59 Or txtTimeHrs.Text < 0 Or txtTimeMin.Text < 0 Then
+            MessageBox "시간에서 시는 0부터 24, 분은 0부터 59까지의 정수이여야 합니다.", "입력 값 오류", Me, 16
+            Exit Sub
+        End If
     End If
     If txtTitle.Text = "" Then
         MessageBox "제목의 값은 필수입니다.", "입력 값 오류", Me, 16
@@ -229,16 +231,16 @@ Private Sub OKButton_Click()
     If FileExists("C:\CALPLANS\CTGORIES\" & txtCategory.Text) = False Then
         If txtCategory.Text <> "업무" And txtCategory.Text <> "여가생활" And txtCategory.Text <> "약속" And txtCategory.Text <> "취미" And txtCategory.Text <> "(지정되지 않음)" Then
             'https://stackoverflow.com/questions/21108664/how-to-create-txt-file
-            iFIleNo = FreeFile
+            iFileNo = FreeFile
             '파일을 연다.
             
-            Open "C:\CALPLANS\CTGORIES\" & txtCategory.Text For Output As #iFIleNo
+            Open "C:\CALPLANS\CTGORIES\" & txtCategory.Text For Output As #iFileNo
             
             '파일의 내용은 보지 않으므로 빈 칸으로...
-            Print #iFIleNo, ""
+            Print #iFileNo, ""
             
             '파일을 닫는다.
-            Close #iFIleNo
+            Close #iFileNo
         End If
     End If
     
