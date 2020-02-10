@@ -333,7 +333,7 @@ Begin VB.Form frmMain
             _ExtentY        =   476
             _Version        =   327681
             BuddyControl    =   "txtPercentage"
-            BuddyDispid     =   196626
+            BuddyDispid     =   196627
             OrigLeft        =   3850
             OrigTop         =   1200
             OrigRight       =   4105
@@ -656,7 +656,7 @@ Begin VB.Form frmMain
          Appearance      =   0
          MonthColumns    =   3
          MonthRows       =   2
-         StartOfWeek     =   120848385
+         StartOfWeek     =   47120385
          CurrentDate     =   43858
       End
    End
@@ -686,7 +686,7 @@ Begin VB.Form frmMain
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             AutoSize        =   2
-            TextSave        =   "오전 11:38"
+            TextSave        =   "오후 2:37"
          EndProperty
       EndProperty
    End
@@ -1076,7 +1076,7 @@ Private Sub Form_Load()
     
     MkDir "C:\CALPLANS\" & Format(Now, "YYYY\MM\DD")
     
-    lvTodaysPlan.Path = "C:\CALPLANS\" & Format(Now, "YYYY\MM\DD")
+    lvTodaysPlan.Path = "C:\CALPLANS\" & Format(Now, "YYYY") & "\" & Format(Now, "M") & "\" & Format(Now, "D")
 End Sub
 
 
