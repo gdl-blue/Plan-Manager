@@ -137,8 +137,9 @@ Private Declare Function RegQueryValueEx Lib "advapi32" Alias "RegQueryValueExA"
 Private Declare Function RegCloseKey Lib "advapi32" (ByVal hKey As Long) As Long
 
 Private Sub Form_Load()
-    lblVersion.Caption = "버전 " & App.Major & "." & App.Minor & "." & App.Revision
-    lblTitle.Caption = App.Title
+    'lblVersion.Caption = "버전 " & App.Major & "." & App.Minor & "." & App.Revision
+    lblVersion.Caption = "버전 3.0.0 베타 1"
+    lblTitle.Caption = App.Title ' & " " & App.Major
     Me.Caption = App.Title & " 정보"
     lblDescription.Caption = App.FileDescription
 End Sub

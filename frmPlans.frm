@@ -118,6 +118,10 @@ Private Sub cmdDelBtn_Click()
         DeleteSetting "Calendar", "NotifiedPlans\" & Year & "\" & Month & "\" & Day, lstPlanList.SelectedItem.Text
     End If
     
+    frmMain.lvTodaysPlan.Refresh
+    frmMain.lvTodaysPlans.Refresh
+    frmMain.lvTmrPlans.Refresh
+    
     LoadPlans
 End Sub
 
@@ -132,14 +136,14 @@ Sub LoadPlans()
     MkDir "C:\CALPLANS\" & Year & "\" & Month & "\" & Day
     
     lvPlanFiles.Path = "C:\CALPLANS\" & Year & "\" & Month & "\" & Day & "\"
-    
+
     For Plan = 0 To lvPlanFiles.ListCount - 1
         'PlanData = GetSetting("Calendar", Year & "\" & Month & "\" & Day, lvPlanFIles.List(Plan), "(지정되지 않음)")
-    
+
         Title = lvPlanFiles.List(Plan)
         Time = GetSetting("Calendar", Year & "\" & Month & "\" & Day, lvPlanFiles.List(Plan) & "Time", "(지정되지 않음)")
         Category = GetSetting("Calendar", Year & "\" & Month & "\" & Day, lvPlanFiles.List(Plan) & "Cate", "(지정되지 않음)")
-        
+
         lstPlanList.ListItems.Add , , Title
         lstPlanList.ListItems(Plan + 1).SubItems(1) = Left$(Time, 2) & ":" & Right$(Time, 2)
         lstPlanList.ListItems(Plan + 1).SubItems(2) = Category
@@ -154,7 +158,7 @@ Private Sub cmdViewPlan_Click()
     frmPlanView.Title = lstPlanList.SelectedItem.Text
     frmPlanView.lblTimeHrs.Caption = Split(lstPlanList.SelectedItem.SubItems(1), ":")(0) & "시"
     frmPlanView.lblTimeMin.Caption = Split(lstPlanList.SelectedItem.SubItems(1), ":")(1) & "분"
-    frmPlanView.lblLocation.Caption = GetSetting("Calendar", Year & "\" & Month & "\" & Day, lstPlanList.SelectedItem.Text & "Location", "알 수 없음")
+    frmPlanView.lblLocation.Text = GetSetting("Calendar", Year & "\" & Month & "\" & Day, lstPlanList.SelectedItem.Text & "Location", "알 수 없음")
     frmPlanView.txtContent.Text = GetSetting("Calendar", Year & "\" & Month & "\" & Day, lstPlanList.SelectedItem.Text & "Cont", "자세한 내용 없음")
     frmPlanView.Show vbModal, Me
     

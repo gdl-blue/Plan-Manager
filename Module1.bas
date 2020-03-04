@@ -1,11 +1,31 @@
 Attribute VB_Name = "default"
+'시스템 트레이 소스코드 퍼온곳 - http://www.vbforums.com/showthread.php?595990-VB6-System-tray-icon-systray
+
 Public fMainForm As frmMain
+
+'http://www.vbforums.com/showthread.php?447184-Check-For-Running-Process
+Option Explicit
+Private Declare Function OpenProcess Lib "kernel32" ( _
+    ByVal dwDesiredAccess As Long, ByVal bInheritHandle As Long, ByVal dwProcessId As Long) As Long
+    
+Private Declare Function CloseHandle Lib "kernel32" ( _
+    ByVal hObject As Long) As Long
+ 
+Private Declare Function EnumProcesses Lib "PSAPI.DLL" ( _
+   lpidProcess As Long, ByVal cb As Long, cbNeeded As Long) As Long
+ 
+Private Declare Function EnumProcessModules Lib "PSAPI.DLL" ( _
+    ByVal hProcess As Long, lphModule As Long, ByVal cb As Long, lpcbNeeded As Long) As Long
+ 
+Private Declare Function GetModuleBaseName Lib "PSAPI.DLL" Alias "GetModuleBaseNameA" ( _
+    ByVal hProcess As Long, ByVal hModule As Long, ByVal lpFileName As String, ByVal nSize As Long) As Long
+ 
+Private Const PROCESS_VM_READ = &H10
+Private Const PROCESS_QUERY_INFORMATION = &H400
 
 '파일 존재 확인 함수
 'http://www.vbforums.com/showthread.php?349990-Classic-VB-How-can-I-check-if-a-file-exists
 'In a standard Module: Module1.bas
-Option Explicit
- 
 Private Const OF_EXIST         As Long = &H4000
 Private Const OFS_MAXPATHNAME  As Long = 128
 Private Const HFILE_ERROR      As Long = -1
@@ -32,14 +52,41 @@ Public Const MB_WARNING As Long = 48      ' for conditions that might cause prob
 Public Const MB_INFORMATION As Long = 64  ' for informative messages only
 Public Const MB_QUESTION As Long = 32     ' (no longer recommended to be used)
 
+Private Function IsProcessRunning(ByVal sProcess As String) As Boolean
+    Const MAX_PATH As Long = 260
+    Dim lProcesses() As Long, lModules() As Long, N As Long, lRet As Long, hProcess As Long
+    Dim sName As String
+    
+    sProcess = UCase$(sProcess)
+    
+    ReDim lProcesses(1023) As Long
+    If EnumProcesses(lProcesses(0), 1024 * 4, lRet) Then
+        For N = 0 To (lRet \ 4) - 1
+            hProcess = OpenProcess(PROCESS_QUERY_INFORMATION Or PROCESS_VM_READ, 0, lProcesses(N))
+            If hProcess Then
+                ReDim lModules(1023)
+                If EnumProcessModules(hProcess, lModules(0), 1024 * 4, lRet) Then
+                    sName = String$(MAX_PATH, vbNullChar)
+                    GetModuleBaseName hProcess, lModules(0), sName, MAX_PATH
+                    sName = Left$(sName, InStr(sName, vbNullChar) - 1)
+                    If Len(sName) = Len(sProcess) Then
+                        If sProcess = UCase$(sName) Then IsProcessRunning = True: Exit Function
+                    End If
+                End If
+            End If
+            CloseHandle hProcess
+        Next N
+    End If
+End Function
+
 'http://www.devpia.com/MAEUL/Contents/Detail.aspx?BoardID=48&MAEULNo=19&no=2034&ref=1001
 Public Function LenH(ByVal strValue As String) As Integer
     LenH = LenB(StrConv(strValue, vbFromUnicode))
 End Function
                         
-Sub MessageBox(Content As String, Title As String, OwnerForm As Form, Optional Icon As Long = 64) 'Windows Vista 이상 윈도우에서 Windws 2000 스타일 메시지 상자 표시
+Sub MessageBox(Content As String, Title As String, Optional OwnerForm As Form = 1, Optional Icon As Long = 64) 'Windows Vista 이상 윈도우에서 Windws 2000 스타일 메시지 상자 표시
     'http://www.vbforums.com/showthread.php?353910-Read-registry-key-SOLVED
-    '사용중인 윈도우가 XP 이하이면 실제 메시지상자 표시
+    '사용중인 윈도우가 XP 이하이면 이 메시지 상자 표시이유가 없으므로 실제 메시지상자 표시
     On Error Resume Next
     
     Dim Registry As Object

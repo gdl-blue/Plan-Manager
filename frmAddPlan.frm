@@ -29,7 +29,7 @@ Begin VB.Form frmAddPlan
       ScrollBars      =   2  '수직
       TabIndex        =   13
       Top             =   2400
-      Width           =   3975
+      Width           =   4335
    End
    Begin VB.ComboBox txtCategory 
       Height          =   300
@@ -38,14 +38,14 @@ Begin VB.Form frmAddPlan
       List            =   "frmAddPlan.frx":044F
       TabIndex        =   11
       Top             =   1680
-      Width           =   3975
+      Width           =   4335
    End
    Begin VB.TextBox txtLocation 
       Height          =   270
       Left            =   1320
       TabIndex        =   9
       Top             =   960
-      Width           =   2775
+      Width           =   3135
    End
    Begin VB.TextBox txtTimeMin 
       Height          =   270
@@ -60,6 +60,7 @@ Begin VB.Form frmAddPlan
       Left            =   120
       MaxLength       =   2
       TabIndex        =   4
+      ToolTipText     =   "24시 형식으로 입력합니다."
       Top             =   960
       Width           =   375
    End
@@ -68,7 +69,7 @@ Begin VB.Form frmAddPlan
       Left            =   120
       TabIndex        =   3
       Top             =   360
-      Width           =   3975
+      Width           =   4335
    End
    Begin VB.CommandButton CancelButton 
       Cancel          =   -1  'True
@@ -125,6 +126,7 @@ Begin VB.Form frmAddPlan
       Height          =   255
       Left            =   120
       TabIndex        =   5
+      ToolTipText     =   "24시 형식으로 입력합니다."
       Top             =   720
       Width           =   855
    End
@@ -264,6 +266,8 @@ Private Sub OKButton_Click()
     End If
     
     frmMain.lvTodaysPlan.Refresh
+    frmMain.lvTodaysPlans.Refresh
+    frmMain.lvTmrPlans.Refresh
     
     Unload Me
 End Sub

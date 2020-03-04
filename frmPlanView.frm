@@ -14,11 +14,20 @@ Begin VB.Form frmPlanView
    ScaleWidth      =   6285
    ShowInTaskbar   =   0   'False
    StartUpPosition =   1  '소유자 가운데
+   Begin VB.TextBox lblLocation 
+      BackColor       =   &H8000000F&
+      Height          =   270
+      Left            =   600
+      Locked          =   -1  'True
+      TabIndex        =   8
+      Top             =   600
+      Width           =   4215
+   End
    Begin VB.CommandButton cmdEditPlan 
       Caption         =   "수정(&E)..."
       Height          =   375
       Left            =   4920
-      TabIndex        =   8
+      TabIndex        =   7
       Top             =   600
       Width           =   1215
    End
@@ -28,7 +37,7 @@ Begin VB.Form frmPlanView
       Default         =   -1  'True
       Height          =   375
       Left            =   4920
-      TabIndex        =   7
+      TabIndex        =   6
       Top             =   120
       Width           =   1215
    End
@@ -39,17 +48,9 @@ Begin VB.Form frmPlanView
       Locked          =   -1  'True
       MultiLine       =   -1  'True
       ScrollBars      =   2  '수직
-      TabIndex        =   6
+      TabIndex        =   5
       Top             =   1080
       Width           =   4695
-   End
-   Begin VB.Label lblLocation 
-      BorderStyle     =   1  '단일 고정
-      Height          =   255
-      Left            =   600
-      TabIndex        =   5
-      Top             =   600
-      Width           =   4215
    End
    Begin VB.Label Label2 
       Caption         =   "위치:"
@@ -116,7 +117,7 @@ Private Sub cmdEditPlan_Click()
     frmEditPlan.txtTimeMin.Text = Left$(lblTimeMin.Caption, 2)
     frmEditPlan.txtTimeMin.Text = Left$(lblTimeMin.Caption, 2)
     frmEditPlan.txtCategory.Text = Category
-    frmEditPlan.txtLocation.Text = Me.lblLocation.Caption
+    frmEditPlan.txtLocation.Text = Me.lblLocation.Text
     frmEditPlan.txtContent.Text = Me.txtContent.Text
     
     frmEditPlan.Year = Year
