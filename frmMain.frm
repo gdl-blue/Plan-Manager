@@ -23,7 +23,7 @@ Begin VB.Form frmMain
       Caption         =   "갱신(&R)"
       Height          =   300
       Left            =   8760
-      TabIndex        =   63
+      TabIndex        =   62
       ToolTipText     =   "오늘의 일정목록을 갱신합니다."
       Top             =   5820
       Width           =   1935
@@ -36,7 +36,7 @@ Begin VB.Form frmMain
    Begin TabDlg.SSTab ssTodaysPlan 
       Height          =   6135
       Left            =   8640
-      TabIndex        =   59
+      TabIndex        =   58
       Top             =   120
       Width           =   2205
       _ExtentX        =   3889
@@ -63,14 +63,14 @@ Begin VB.Form frmMain
       Begin VB.FileListBox lvTmrPlans 
          Height          =   5490
          Left            =   -74880
-         TabIndex        =   62
+         TabIndex        =   61
          Top             =   360
          Width           =   1935
       End
       Begin VB.FileListBox lvTodaysPlans 
          Height          =   270
          Left            =   240
-         TabIndex        =   61
+         TabIndex        =   60
          Top             =   140
          Visible         =   0   'False
          Width           =   255
@@ -78,7 +78,7 @@ Begin VB.Form frmMain
       Begin VB.FileListBox lvTodaysPlan 
          Height          =   5310
          Left            =   120
-         TabIndex        =   60
+         TabIndex        =   59
          Top             =   375
          Width           =   1935
       End
@@ -122,38 +122,30 @@ Begin VB.Form frmMain
       TabCaption(1)   =   " 보기"
       TabPicture(1)   =   "frmMain.frx":08E8
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "tglStatusBar"
-      Tab(1).Control(1)=   "tglCalWeekNum"
+      Tab(1).Control(0)=   "tglCalWeekNum"
+      Tab(1).Control(1)=   "tglStatusBar"
       Tab(1).ControlCount=   2
       TabCaption(2)   =   " 일정"
       TabPicture(2)   =   "frmMain.frx":0D3A
       Tab(2).ControlEnabled=   0   'False
       Tab(2).Control(0)=   "cmdTodaysPlan"
+      Tab(2).Control(0).Enabled=   0   'False
       Tab(2).Control(1)=   "cmdDelAllTodaysPlan"
+      Tab(2).Control(1).Enabled=   0   'False
       Tab(2).Control(2)=   "cmdPlanCategories"
+      Tab(2).Control(2).Enabled=   0   'False
       Tab(2).ControlCount=   3
       TabCaption(3)   =   " 도구"
       TabPicture(3)   =   "frmMain.frx":118C
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "cmdBrowser"
-      Tab(3).Control(1)=   "cmdOptions"
-      Tab(3).ControlCount=   2
-      Begin VB.CommandButton cmdBrowser 
-         Caption         =   "   GitHub      브라우저  "
-         Height          =   855
-         Left            =   -73440
-         Picture         =   "frmMain.frx":15DE
-         Style           =   1  '그래픽
-         TabIndex        =   58
-         ToolTipText     =   "깃허브 정보페이지를 엽니다."
-         Top             =   360
-         Width           =   1095
-      End
+      Tab(3).Control(0)=   "cmdOptions"
+      Tab(3).Control(0).Enabled=   0   'False
+      Tab(3).ControlCount=   1
       Begin VB.CommandButton cmdOptions 
          Caption         =   "환경설정"
          Height          =   855
          Left            =   -74880
-         Picture         =   "frmMain.frx":1A20
+         Picture         =   "frmMain.frx":15DE
          Style           =   1  '그래픽
          TabIndex        =   57
          ToolTipText     =   "프로그램을 구성합니다."
@@ -164,7 +156,7 @@ Begin VB.Form frmMain
          Caption         =   "일정 분류"
          Height          =   855
          Left            =   -72240
-         Picture         =   "frmMain.frx":1E62
+         Picture         =   "frmMain.frx":1A20
          Style           =   1  '그래픽
          TabIndex        =   56
          ToolTipText     =   "분류 목록을 표시합니다."
@@ -175,7 +167,7 @@ Begin VB.Form frmMain
          Caption         =   "이날의   일정 삭제"
          Height          =   855
          Left            =   -73680
-         Picture         =   "frmMain.frx":22A4
+         Picture         =   "frmMain.frx":1E62
          Style           =   1  '그래픽
          TabIndex        =   54
          ToolTipText     =   "선택한 날의 일정을 모두 삭제합니다."
@@ -187,7 +179,7 @@ Begin VB.Form frmMain
          Caption         =   "이날의 일정"
          Height          =   855
          Left            =   -74880
-         Picture         =   "frmMain.frx":26E6
+         Picture         =   "frmMain.frx":22A4
          Style           =   1  '그래픽
          TabIndex        =   53
          ToolTipText     =   "표시한 날짜의 일정 목록을 표시합니다."
@@ -198,7 +190,7 @@ Begin VB.Form frmMain
          Caption         =   "끝내기"
          Height          =   855
          Left            =   2760
-         Picture         =   "frmMain.frx":2B28
+         Picture         =   "frmMain.frx":26E6
          Style           =   1  '그래픽
          TabIndex        =   50
          ToolTipText     =   "프로그램을 끝냅니다."
@@ -209,7 +201,7 @@ Begin VB.Form frmMain
          Caption         =   "데이터 색인"
          Height          =   855
          Left            =   1200
-         Picture         =   "frmMain.frx":2F6A
+         Picture         =   "frmMain.frx":2B28
          Style           =   1  '그래픽
          TabIndex        =   49
          ToolTipText     =   "주소록, 일정 전체목록입니다."
@@ -220,7 +212,7 @@ Begin VB.Form frmMain
          Caption         =   "일정 목록"
          Height          =   855
          Left            =   120
-         Picture         =   "frmMain.frx":33AC
+         Picture         =   "frmMain.frx":2F6A
          Style           =   1  '그래픽
          TabIndex        =   48
          ToolTipText     =   "표시한 날짜의 일정 목록을 표시합니다."
@@ -240,7 +232,7 @@ Begin VB.Form frmMain
          Size            =   "1931;1508"
          Value           =   "1"
          Caption         =   "주 번호"
-         Picture         =   "frmMain.frx":37EE
+         Picture         =   "frmMain.frx":33AC
          FontName        =   "굴림"
          FontHeight      =   180
          FontCharSet     =   129
@@ -281,7 +273,7 @@ Begin VB.Form frmMain
       ShowFocusRect   =   0   'False
       BackColor       =   -2147483636
       TabCaption(0)   =   "일정"
-      TabPicture(0)   =   "frmMain.frx":3B08
+      TabPicture(0)   =   "frmMain.frx":36C6
       Tab(0).ControlEnabled=   -1  'True
       Tab(0).Control(0)=   "MonthView1"
       Tab(0).Control(0).Enabled=   0   'False
@@ -289,27 +281,27 @@ Begin VB.Form frmMain
       Tab(0).Control(1).Enabled=   0   'False
       Tab(0).ControlCount=   2
       TabCaption(1)   =   "주소록"
-      TabPicture(1)   =   "frmMain.frx":3F5A
+      TabPicture(1)   =   "frmMain.frx":3B18
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "cmdResetFields"
-      Tab(1).Control(1)=   "cmdDeleteAllContacts"
-      Tab(1).Control(2)=   "cmdDelContact"
-      Tab(1).Control(3)=   "lvContactFiles"
+      Tab(1).Control(0)=   "lvContacts"
+      Tab(1).Control(1)=   "Frame1"
+      Tab(1).Control(2)=   "Frame2"
+      Tab(1).Control(3)=   "cmdSaveContact"
       Tab(1).Control(4)=   "Frame3"
-      Tab(1).Control(5)=   "cmdSaveContact"
-      Tab(1).Control(6)=   "Frame2"
-      Tab(1).Control(7)=   "Frame1"
-      Tab(1).Control(8)=   "lvContacts"
+      Tab(1).Control(5)=   "lvContactFiles"
+      Tab(1).Control(6)=   "cmdDelContact"
+      Tab(1).Control(7)=   "cmdDeleteAllContacts"
+      Tab(1).Control(8)=   "cmdResetFields"
       Tab(1).ControlCount=   9
       TabCaption(2)   =   "할 일"
-      TabPicture(2)   =   "frmMain.frx":43AC
+      TabPicture(2)   =   "frmMain.frx":3F6A
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "cmdDeleteAllTasks"
-      Tab(2).Control(1)=   "lvTaskFiles"
-      Tab(2).Control(2)=   "Frame4"
-      Tab(2).Control(3)=   "cmdDelTask"
-      Tab(2).Control(4)=   "cmdSaveTask"
-      Tab(2).Control(5)=   "lvTasks"
+      Tab(2).Control(0)=   "lvTasks"
+      Tab(2).Control(1)=   "cmdSaveTask"
+      Tab(2).Control(2)=   "cmdDelTask"
+      Tab(2).Control(3)=   "Frame4"
+      Tab(2).Control(4)=   "lvTaskFiles"
+      Tab(2).Control(5)=   "cmdDeleteAllTasks"
       Tab(2).ControlCount=   6
       Begin VB.CommandButton cmdDeleteAllTasks 
          Caption         =   "모두 삭제(&L)"
@@ -468,9 +460,9 @@ Begin VB.Form frmMain
       End
       Begin VB.ListBox lvTasks 
          Height          =   4050
-         ItemData        =   "frmMain.frx":47FE
+         ItemData        =   "frmMain.frx":43BC
          Left            =   -74880
-         List            =   "frmMain.frx":4805
+         List            =   "frmMain.frx":43C3
          Style           =   1  '확인란
          TabIndex        =   25
          Top             =   120
@@ -670,9 +662,9 @@ Begin VB.Form frmMain
       End
       Begin VB.ListBox lvContacts 
          Height          =   4020
-         ItemData        =   "frmMain.frx":481A
+         ItemData        =   "frmMain.frx":43D8
          Left            =   -74880
-         List            =   "frmMain.frx":4821
+         List            =   "frmMain.frx":43DF
          TabIndex        =   3
          Top             =   120
          Width           =   1695
@@ -691,7 +683,7 @@ Begin VB.Form frmMain
          Appearance      =   0
          MonthColumns    =   3
          MonthRows       =   2
-         StartOfWeek     =   104136705
+         StartOfWeek     =   7208961
          CurrentDate     =   43858
       End
    End
@@ -714,12 +706,12 @@ Begin VB.Form frmMain
          BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
             AutoSize        =   2
-            TextSave        =   "2020-03-04"
+            TextSave        =   "2020-03-06"
          EndProperty
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             AutoSize        =   2
-            TextSave        =   "오후 2:51"
+            TextSave        =   "오전 10:22"
          EndProperty
       EndProperty
    End
@@ -866,10 +858,6 @@ Sub LoadContacts()
     Next Contact
 End Sub
 
-Private Sub cmdBrowser_Click()
-    frmBrowser.Show
-End Sub
-
 Private Sub cmdDelContact_Click()
     If MsgBox(lvContacts.List(lvContacts.ListIndex) & " 연락처를 삭제하시겠습니까?", vbQuestion + vbOKCancel, "주소록 삭제") = vbOK Then
         Kill "C:\CALPLANS\CONTACTS\" & lvContacts.List(lvContacts.ListIndex)
@@ -934,7 +922,7 @@ Private Sub cmdPlanList_Click()
 End Sub
 
 Private Sub cmdResetFields_Click()
-    If MsgBox("계속하시겠습니까?", vbOKCancel + vbQuestion, "초기화") = vbOK Then
+    If Confirm("한번만 경고합니다. 모든 입력상자의 값을 초기화하시겠습니까?", "초기화", Me) Then
         txtCellPhone.Text = ""
         txtEmail.Text = ""
         txtPostalCode.Text = ""
@@ -948,8 +936,9 @@ End Sub
 
 Private Sub cmdSaveContact_Click()
     On Error Resume Next
-    If InStr(1, txtName.Text, "?") > 0 Or InStr(1, txtName.Text, "\") > 0 Or InStr(1, txtName.Text, "|") > 0 Or InStr(1, txtName.Text, "/") > 0 Or InStr(1, txtName.Text, "*") > 0 Or InStr(1, txtName.Text, ":") > 0 Or InStr(1, txtName.Text, ".") > 0 Or InStr(1, txtName.Text, ChrW$(34)) > 0 Then
-        MsgBox "이름의 값이 올바르지 않습니다.", 16, "입력 값 오류:"
+    If InStr(1, txtName.Text, "?") > 0 Or InStr(1, txtName.Text, "\") > 0 Or InStr(1, txtName.Text, "|") > 0 Or InStr(1, txtName.Text, "/") > 0 Or InStr(1, txtName.Text, "*") > 0 Or InStr(1, txtName.Text, ":") > 0 Or InStr(1, txtName.Text, ".") > 0 Or InStr(1, txtName.Text, ChrW$(34)) > 0 Or txtName.Text = "" Then
+        MessageBox "이름의 값이 올바르지 않습니다.", "입력 값 오류", Me, 16
+        Exit Sub
     End If
     
     SaveSetting "Calendar", "Contacts", txtName.Text & "CellPhone", txtCellPhone.Text
@@ -1022,8 +1011,9 @@ Sub LoadTasks()
 End Sub
 
 Private Sub cmdSaveTask_Click()
-    If InStr(1, txtTaskTitle.Text, "?") > 0 Or InStr(1, txtTaskTitle.Text, "\") > 0 Or InStr(1, txtTaskTitle.Text, "|") > 0 Or InStr(1, txtTaskTitle.Text, "/") > 0 Or InStr(1, txtTaskTitle.Text, "*") > 0 Or InStr(1, txtTaskTitle.Text, ":") > 0 Or InStr(1, txtTaskTitle.Text, ".") > 0 Or InStr(1, txtTaskTitle.Text, ChrW$(34)) > 0 Then
-        MsgBox "제목의 값이 올바르지 않습니다.", 16, "입력 값 오류:"
+    If InStr(1, txtTaskTitle.Text, "?") > 0 Or InStr(1, txtTaskTitle.Text, "\") > 0 Or InStr(1, txtTaskTitle.Text, "|") > 0 Or InStr(1, txtTaskTitle.Text, "/") > 0 Or InStr(1, txtTaskTitle.Text, "*") > 0 Or InStr(1, txtTaskTitle.Text, ":") > 0 Or InStr(1, txtTaskTitle.Text, ".") > 0 Or InStr(1, txtTaskTitle.Text, ChrW$(34)) > 0 Or txtTaskTitle.Text = "" Then
+        MessageBox "제목의 값이 올바르지 않습니다.", "입력 값 오류", Me, 16
+        Exit Sub
     End If
     
     SaveSetting "Calendar", "Tasks", txtTaskTitle.Text & "Perc", txtPercentage.Text
@@ -1056,8 +1046,8 @@ End Sub
 
 Private Sub cmdDelAllTodaysPlan_Click()
     On Error Resume Next
-    If MsgBox("삭제하시겠습니까?", vbQuestion + vbOKCancel, "삭제") = vbOK Then
-        If MsgBox("복구 *불가능*합니다. 정말로 " & MonthView1.SelStart & "의 모든 일정을 삭제하시겠습니까?", vbOKCancel + vbExclamation, "삭제") = vbOK Then
+    If Confirm("삭제하시겠습니까?", "삭제", Me) Then
+        If Confirm("복구 *불가능*합니다. 정말로 " & MonthView1.SelStart & "의 모든 일정을 삭제하시겠습니까?", "삭제", Me, , True) Then
             On Error Resume Next
             Shell "CMD /C RD /S /Q " & ChrW$(34) & "C:\CALPLANS\" & Split(MonthView1.SelStart, "-")(0) & "\" & Split(MonthView1.SelStart, "-")(1) & "\" & Split(MonthView1.SelStart, "-")(2) & ChrW$(34)
             Shell "COMMAND /C DELTREE /Y " & ChrW$(34) & "C:\CALPLANS\" & Split(MonthView1.SelStart, "-")(0) & "\" & Split(MonthView1.SelStart, "-")(1) & "\" & Split(MonthView1.SelStart, "-")(2) & ChrW$(34)
@@ -1390,6 +1380,11 @@ Private Sub mnuHelpSearchForHelpOn_Click()
         MessageBox "도움말 목차를 표시할 수 없습니다. 이 프로그램과 연관된 도움말이 없습니다.", App.Title, Me, 16
     Else
         On Error Resume Next
+        If FileExists(Dir1.Path & "\PLNMGR32.HLP") = False Then
+            MessageBox "도움말 파일을 찾을 수 없습니다. 풀그림 실행화일 경로에 PLNMGR32.HLP이 있는지 확인하십시오. 없으면 다시 설치하거나 깃허브에서 받아 복사하십시오.", "도움말", Me, 16
+            Exit Sub
+        End If
+        
         nRet = OSWinHelp(Me.hwnd, Dir1.Path & "\PLNMGR32.HLP", 261, 0)
         If Err Then
             MsgBox Err.Description
@@ -1411,6 +1406,11 @@ Private Sub mnuHelpContents_Click()
         MessageBox "도움말 목차를 표시할 수 없습니다. 이 프로그램과 연관된 도움말이 없습니다.", App.Title, Me, 16
     Else
         On Error Resume Next
+        If FileExists(Dir1.Path & "\PLNMGR32.HLP") = False Then
+            MessageBox "도움말 파일을 찾을 수 없습니다. 풀그림 실행화일 경로에 PLNMGR32.HLP이 있는지 확인하십시오. 없으면 다시 설치하거나 깃허브에서 받아 복사하십시오.", "도움말", Me, 16
+            Exit Sub
+        End If
+        
         nRet = OSWinHelp(Me.hwnd, Dir1.Path & "\PLNMGR32.HLP", 3, 0)
         If Err Then
             MsgBox Err.Description
@@ -1535,24 +1535,24 @@ Private Sub mnuFileClose_Click()
     MsgBox "'mnuFileClose_Click' 코드를 추가하십시오."
 End Sub
 
-Private Sub mnuFileOpen_Click()
-    Dim sFile As String
-
-
-    With dlgCommonDialog
-        .DialogTitle = "열기"
-        .CancelError = False
-        '작업: Common Dialog 컨트롤의 플래그와 특성을 설정합니다.
-        .Filter = "모든 파일(*.*)|*.*"
-        .ShowOpen
-        If Len(.FileName) = 0 Then
-            Exit Sub
-        End If
-        sFile = .FileName
-    End With
-    '작업: 코드를 추가하여 열려 있는 파일을 처리합니다.
-
-End Sub
+'Private Sub mnuFileOpen_Click()
+'    Dim sFile As String
+'
+'
+'    With dlgCommonDialog
+'        .DialogTitle = "열기"
+'        .CancelError = False
+'        '작업: Common Dialog 컨트롤의 플래그와 특성을 설정합니다.
+'        .Filter = "모든 파일(*.*)|*.*"
+'        .ShowOpen
+'        If Len(.FileName) = 0 Then
+'            Exit Sub
+'        End If
+'        sFile = .FileName
+'    End With
+'    '작업: 코드를 추가하여 열려 있는 파일을 처리합니다.
+'
+'End Sub
 
 Private Sub mnuFileNew_Click()
     '작업: 'mnuFileNew_Click' 코드를 추가하십시오.

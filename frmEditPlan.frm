@@ -39,7 +39,7 @@ Begin VB.Form frmEditPlan
       Locked          =   -1  'True
       TabIndex        =   6
       Top             =   360
-      Width           =   3975
+      Width           =   4335
    End
    Begin VB.TextBox txtTimeHrs 
       Height          =   270
@@ -62,7 +62,7 @@ Begin VB.Form frmEditPlan
       Left            =   1320
       TabIndex        =   3
       Top             =   960
-      Width           =   2775
+      Width           =   3135
    End
    Begin VB.ComboBox txtCategory 
       Height          =   300
@@ -71,7 +71,7 @@ Begin VB.Form frmEditPlan
       List            =   "frmEditPlan.frx":044F
       TabIndex        =   2
       Top             =   1680
-      Width           =   3975
+      Width           =   4335
    End
    Begin VB.TextBox txtContent 
       Height          =   975
@@ -80,7 +80,7 @@ Begin VB.Form frmEditPlan
       ScrollBars      =   2  '수직
       TabIndex        =   1
       Top             =   2400
-      Width           =   3975
+      Width           =   4335
    End
    Begin VB.FileListBox lvCateFiles 
       Height          =   270
@@ -157,7 +157,7 @@ Public Day As Integer
 Dim iFileNo As Integer
 
 Private Sub CancelButton_Click()
-    If MsgBox("일정 수정를 취소하시겠습니까? 임시 저장되지 않습니다.", vbQuestion + vbOKCancel, "일정 추가") = vbOK Then
+    If Confirm("일정 수정를 취소하시겠습니까? 임시 저장되지 않습니다.", "일정 추가", Me) Then
         Unload Me
     End If
 End Sub
@@ -187,12 +187,8 @@ Private Sub OKButton_Click()
         MessageBox "시간의 값이 올바르지 않습니다.", "입력 값 오류", Me, 16
         Exit Sub
     End If
-    If txtTimeHrs.Text = "24" Then
-        MessageBox "24시 대신 0시로 입력해주십시오.", "입력 값 오류", Me, 16
-        Exit Sub
-    End If
     If GetSetting("Calendar", "Options", "NoTimeCheck", 0) = 0 Then
-        If txtTimeHrs.Text > 24 Or txtTimeMin.Text > 59 Or txtTimeHrs.Text < 0 Or txtTimeMin.Text < 0 Then
+        If txtTimeHrs.Text > 23 Or txtTimeMin.Text > 59 Or txtTimeHrs.Text < 0 Or txtTimeMin.Text < 0 Then
             MessageBox "시간에서 시는 0부터 24, 분은 0부터 59까지의 정수이여야 합니다.", "입력 값 오류", Me, 16
             Exit Sub
         End If

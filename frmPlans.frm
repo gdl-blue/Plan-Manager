@@ -109,7 +109,7 @@ End Sub
 
 Private Sub cmdDelBtn_Click()
     On Error Resume Next
-    If MsgBox("'" & lstPlanList.SelectedItem.Text & "' 일정을 삭제하시겠습니까?", vbQuestion + vbOKCancel, "일정 삭제") = vbOK Then
+    If Confirm("'" & lstPlanList.SelectedItem.Text & "' 일정을 삭제하시겠습니까?", "일정 삭제", Me) Then
         Kill "C:\CALPLANS\" & Year & "\" & Month & "\" & Day & "\" & lstPlanList.SelectedItem.Text
         DeleteSetting "Calendar", Year & "\" & Month & "\" & Day, lstPlanList.SelectedItem.Text & "Cate"
         DeleteSetting "Calendar", Year & "\" & Month & "\" & Day, lstPlanList.SelectedItem.Text & "Time"

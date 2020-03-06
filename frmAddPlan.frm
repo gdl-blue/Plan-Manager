@@ -155,7 +155,7 @@ Dim txtTime As String
 Dim Category As Integer
 
 Private Sub CancelButton_Click()
-    If MsgBox("일정 추가를 취소하시겠습니까? 임시 저장되지 않습니다.", vbQuestion + vbOKCancel, "일정 추가") = vbOK Then
+    If Confirm("일정 추가를 취소하시겠습니까? 임시 저장되지 않습니다.", "일정 추가", Me) Then
         Unload Me
     End If
 End Sub
@@ -191,13 +191,9 @@ Private Sub OKButton_Click()
         MessageBox "시간의 값이 올바르지 않습니다.", "입력 값 오류", Me, 16
         Exit Sub
     End If
-    If txtTimeHrs.Text = "24" Then
-        MessageBox "24시 대신 0시로 입력해주십시오.", "입력 값 오류", Me, 16
-        Exit Sub
-    End If
     If GetSetting("Calendar", "Options", "NoTimeCheck", 0) = 0 Then
-        If txtTimeHrs.Text > 24 Or txtTimeMin.Text > 59 Or txtTimeHrs.Text < 0 Or txtTimeMin.Text < 0 Then
-            MessageBox "시간에서 시는 0부터 24, 분은 0부터 59까지의 정수이여야 합니다.", "입력 값 오류", Me, 16
+        If txtTimeHrs.Text > 23 Or txtTimeMin.Text > 59 Or txtTimeHrs.Text < 0 Or txtTimeMin.Text < 0 Then
+            MessageBox "시간에서 시는 0부터 23, 분은 0부터 59까지의 정수이여야 합니다.", "입력 값 오류", Me, 16
             Exit Sub
     End If
     End If

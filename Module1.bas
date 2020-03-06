@@ -1,6 +1,8 @@
 Attribute VB_Name = "default"
 '시스템 트레이 소스코드 퍼온곳 - http://www.vbforums.com/showthread.php?595990-VB6-System-tray-icon-systray
 
+Public MSGRS As Boolean
+
 Public fMainForm As frmMain
 
 'http://www.vbforums.com/showthread.php?447184-Check-For-Running-Process
@@ -136,6 +138,63 @@ Sub MessageBox(Content As String, Title As String, Optional OwnerForm As Form = 
     msgXPMB.BeepSnd = Icon
     msgXPMB.Show vbModal, OwnerForm
 End Sub
+
+Function Confirm(Content As String, Title As String, Optional OwnerForm As Form = 1, Optional Icon As Long = 32, Optional BtnReversed As Boolean = False) As Boolean 'Windows Vista 이상 윈도우에서 Windws 2000 스타일 메시지 상자 표시
+    '=====================================================
+    
+    Select Case Icon
+        Case 48
+            msgXPOC.imgMBIconWarning.Visible = True
+        Case 16
+            msgXPOC.imgMBIconError.Visible = True
+        Case 64
+            msgXPOC.imgMBIconInfo.Visible = True
+        Case 32
+            msgXPOC.imgMBIconQuestion.Visible = True
+    End Select
+    
+    Dim i As Integer
+    Dim LineCount As Integer
+    Dim LContent As Integer
+    LContent = 0
+    LineCount = 1
+    For i = 1 To Len(Content)
+        If Mid$(Content, i, Len(vbCrLf)) = vbCrLf Then LineCount = LineCount + 1
+    Next i
+    
+    Dim S As Integer
+    For S = 1 To UBound(Split(Content, vbCrLf))
+        If LenH(Split(Content, vbCrLf)(S)) > LContent Then LContent = LenH(Split(Content, vbCrLf)(S))
+    Next S
+    
+    If LContent = 0 Then LContent = LenH(Content)
+    
+    LineCount = LineCount + 1
+    msgXPOC.lblContent.Height = 240 * LineCount
+    msgXPOC.Height = 1575 + LineCount * 240 - 300
+    msgXPOC.Caption = Title
+    msgXPOC.lblContent.Caption = Content
+    msgXPOC.Width = 2040 + (LContent * 85)
+    msgXPOC.cmdOK.Left = msgXPOC.Width / 2 - 810 - msgXPOC.cmdOK.Width / 2
+    msgXPOC.cmdOK.Top = 840 + ((LineCount - 1) * 240) - 200
+    msgXPOC.cmdCancel.Left = msgXPOC.Width / 2 - 810 - msgXPOC.cmdOK.Width / 2 - 120 + msgXPOC.cmdOK.Width + 240
+    msgXPOC.cmdCancel.Top = 840 + ((LineCount - 1) * 240) - 200
+    msgXPOC.BeepSnd = Icon
+    
+    If BtnReversed = True Then
+        Dim LB As Integer
+        LB = msgXPOC.cmdOK.Left
+        Dim RB As Integer
+        RB = msgXPOC.cmdCancel.Left
+        
+        msgXPOC.cmdCancel.Left = LB
+        msgXPOC.cmdOK.Left = RB
+    End If
+    
+    msgXPOC.Show vbModal, OwnerForm
+    
+    Confirm = MSGRS
+End Function
  
 Public Function FileExists(ByVal Fname As String) As Boolean
     Dim lRetVal As Long
