@@ -81,7 +81,7 @@ Begin VB.Form frmAddPlan
       Width           =   1215
    End
    Begin VB.CommandButton OKButton 
-      Caption         =   "확인"
+      Caption         =   "추가(&A)"
       Default         =   -1  'True
       Height          =   375
       Left            =   4680
@@ -184,6 +184,9 @@ End Sub
 
 Private Sub OKButton_Click()
     '입력값을 검사한다.
+    If Mid$(txtTimeMin.Text, 1, 1) = "0" Then
+        txtTimeMin.Text = Mid$(txtTimeMin.Text, 2, 1)
+    End If
     If InStr(1, txtTitle.Text, "?") > 0 Or InStr(1, txtTitle.Text, "\") > 0 Or InStr(1, txtTitle.Text, "|") > 0 Or InStr(1, txtTitle.Text, ".") > 0 Or InStr(1, txtTitle.Text, "/") > 0 Or InStr(1, txtTitle.Text, "*") > 0 Or InStr(1, txtTitle.Text, ":") > 0 Or InStr(1, txtTitle.Text, ChrW$(34)) > 0 Then
         MessageBox "제목의 값이 올바르지 않습니다.", "입력 값 오류", Me, 16
     End If

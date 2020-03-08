@@ -25,7 +25,7 @@ Begin VB.Form msgXPOC
       Width           =   1455
    End
    Begin VB.CommandButton cmdOK 
-      Caption         =   "»Æ¿Œ"
+      Caption         =   "Ω¬¿Œ"
       Height          =   320
       Left            =   2760
       TabIndex        =   0

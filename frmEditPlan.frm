@@ -15,7 +15,7 @@ Begin VB.Form frmEditPlan
    ShowInTaskbar   =   0   'False
    StartUpPosition =   1  '소유자 가운데
    Begin VB.CommandButton OKButton 
-      Caption         =   "확인"
+      Caption         =   "저장(&S)"
       Default         =   -1  'True
       Height          =   375
       Left            =   4680

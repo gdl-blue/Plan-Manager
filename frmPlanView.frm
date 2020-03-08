@@ -33,7 +33,7 @@ Begin VB.Form frmPlanView
    End
    Begin VB.CommandButton cmdClose 
       Cancel          =   -1  'True
-      Caption         =   "»Æ¿Œ"
+      Caption         =   "¥›±‚(&C)"
       Default         =   -1  'True
       Height          =   375
       Left            =   4920

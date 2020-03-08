@@ -35,7 +35,7 @@ Begin VB.Form frmOptions
       Width           =   1335
    End
    Begin VB.CommandButton Command1 
-      Caption         =   "확인"
+      Caption         =   "승인"
       Default         =   -1  'True
       Height          =   375
       Left            =   6360
@@ -71,55 +71,42 @@ Begin VB.Form frmOptions
       TabPicture(1)   =   "frmOptions.frx":045E
       Tab(1).ControlEnabled=   0   'False
       Tab(1).Control(0)=   "Frame2"
-      Tab(1).Control(0).Enabled=   0   'False
       Tab(1).ControlCount=   1
       TabCaption(2)   =   "표준"
       TabPicture(2)   =   "frmOptions.frx":047A
       Tab(2).ControlEnabled=   0   'False
       Tab(2).Control(0)=   "Frame4"
-      Tab(2).Control(0).Enabled=   0   'False
       Tab(2).ControlCount=   1
       TabCaption(3)   =   "검사"
       TabPicture(3)   =   "frmOptions.frx":0496
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "Frame6"
-      Tab(3).Control(0).Enabled=   0   'False
-      Tab(3).Control(1)=   "Label9"
-      Tab(3).Control(1).Enabled=   0   'False
+      Tab(3).Control(0)=   "Label9"
+      Tab(3).Control(1)=   "Frame6"
       Tab(3).ControlCount=   2
       TabCaption(4)   =   "사용자 분류"
       TabPicture(4)   =   "frmOptions.frx":04B2
       Tab(4).ControlEnabled=   0   'False
-      Tab(4).Control(0)=   "cmdClearCates"
-      Tab(4).Control(0).Enabled=   0   'False
-      Tab(4).Control(1)=   "cmdDelSelCate"
-      Tab(4).Control(1).Enabled=   0   'False
-      Tab(4).Control(2)=   "cmdAddNewCate"
-      Tab(4).Control(2).Enabled=   0   'False
-      Tab(4).Control(3)=   "txtCategory"
-      Tab(4).Control(3).Enabled=   0   'False
-      Tab(4).Control(4)=   "Frame5"
-      Tab(4).Control(4).Enabled=   0   'False
-      Tab(4).Control(5)=   "Label8"
-      Tab(4).Control(5).Enabled=   0   'False
+      Tab(4).Control(0)=   "Label8"
+      Tab(4).Control(1)=   "Frame5"
+      Tab(4).Control(2)=   "txtCategory"
+      Tab(4).Control(3)=   "cmdAddNewCate"
+      Tab(4).Control(4)=   "cmdDelSelCate"
+      Tab(4).Control(5)=   "cmdClearCates"
       Tab(4).ControlCount=   6
       TabCaption(5)   =   "테마"
       TabPicture(5)   =   "frmOptions.frx":04CE
       Tab(5).ControlEnabled=   0   'False
       Tab(5).Control(0)=   "Frame7"
-      Tab(5).Control(0).Enabled=   0   'False
       Tab(5).ControlCount=   1
       TabCaption(6)   =   "초기화"
       TabPicture(6)   =   "frmOptions.frx":04EA
       Tab(6).ControlEnabled=   0   'False
       Tab(6).Control(0)=   "Frame3"
-      Tab(6).Control(0).Enabled=   0   'False
       Tab(6).ControlCount=   1
       TabCaption(7)   =   "달력"
       TabPicture(7)   =   "frmOptions.frx":0506
       Tab(7).ControlEnabled=   0   'False
       Tab(7).Control(0)=   "Frame1"
-      Tab(7).Control(0).Enabled=   0   'False
       Tab(7).ControlCount=   1
       Begin VB.Frame Frame10 
          Caption         =   "테마"
@@ -195,11 +182,11 @@ Begin VB.Form frmOptions
       End
       Begin VB.Frame Frame8 
          Caption         =   "레이아웃"
-         Height          =   1095
+         Height          =   1575
          Left            =   120
          TabIndex        =   36
          Top             =   720
-         Width           =   4815
+         Width           =   5895
          Begin VB.CheckBox chkTP 
             Caption         =   "오늘의일정 숨기기(&T)"
             Height          =   180
@@ -489,7 +476,7 @@ Private Sub cmdAddNewCate_Click()
     If txtCategory.Text <> "업무" And txtCategory.Text <> "여가생활" And txtCategory.Text <> "약속" And txtCategory.Text <> "취미" And txtCategory.Text <> "(지정되지 않음)" Then
         On Error Resume Next
         If Len(txtCategory.Text) < 1 Then
-            MessageBox "txtCategory.Text의 값은 1자 이상이여야 합니다.", "오류", Me, 16
+            MessageBox "분류의 제목을 입력해주십시오.", "오류", Me, 16
             Exit Sub
         End If
         'https://stackoverflow.com/questions/21108664/how-to-create-txt-file
