@@ -14,4 +14,4 @@ VB6으로 만든 일정관리자 프로그램.
 - http://www.vbforums.com/showthread.php?349990-Classic-VB-How-can-I-check-if-a-file-exists
 
 ## 나중에 사용하게될 수도 있는 코드
-- http://www.planet-source-code.com/vb/scripts/ShowCode.asp?txtCodeId=66951&lngWId=1
+- http://www.planet-source-code.com/vb/scripts/ShowCode.asp?txtCodeId=66698&lngWId=1
