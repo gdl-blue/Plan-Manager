@@ -80,18 +80,18 @@ Begin VB.Form frmOptions
       TabCaption(3)   =   "검사"
       TabPicture(3)   =   "frmOptions.frx":0496
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "Label9"
-      Tab(3).Control(1)=   "Frame6"
+      Tab(3).Control(0)=   "Frame6"
+      Tab(3).Control(1)=   "Label9"
       Tab(3).ControlCount=   2
       TabCaption(4)   =   "사용자 분류"
       TabPicture(4)   =   "frmOptions.frx":04B2
       Tab(4).ControlEnabled=   0   'False
-      Tab(4).Control(0)=   "Label8"
-      Tab(4).Control(1)=   "Frame5"
-      Tab(4).Control(2)=   "txtCategory"
-      Tab(4).Control(3)=   "cmdAddNewCate"
-      Tab(4).Control(4)=   "cmdDelSelCate"
-      Tab(4).Control(5)=   "cmdClearCates"
+      Tab(4).Control(0)=   "cmdClearCates"
+      Tab(4).Control(1)=   "cmdDelSelCate"
+      Tab(4).Control(2)=   "cmdAddNewCate"
+      Tab(4).Control(3)=   "txtCategory"
+      Tab(4).Control(4)=   "Frame5"
+      Tab(4).Control(5)=   "Label8"
       Tab(4).ControlCount=   6
       TabCaption(5)   =   "테마"
       TabPicture(5)   =   "frmOptions.frx":04CE
@@ -682,6 +682,7 @@ Private Sub Form_Load()
     cmbStartPage.AddItem "일정"
     cmbStartPage.AddItem "주소록"
     cmbStartPage.AddItem "할 일"
+    cmbStartPage.AddItem "일과표"
     
     cmbBGColor.AddItem "시스템: 응용프로그램 작업영역"
     cmbBGColor.AddItem "시스템: 단추 표면색"
