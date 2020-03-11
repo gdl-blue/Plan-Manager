@@ -35,7 +35,7 @@ Begin VB.Form frmOptions
       Width           =   1335
    End
    Begin VB.CommandButton Command1 
-      Caption         =   "승인"
+      Caption         =   "확인"
       Default         =   -1  'True
       Height          =   375
       Left            =   6360
@@ -76,6 +76,7 @@ Begin VB.Form frmOptions
       TabPicture(2)   =   "frmOptions.frx":047A
       Tab(2).ControlEnabled=   0   'False
       Tab(2).Control(0)=   "Frame4"
+      Tab(2).Control(0).Enabled=   0   'False
       Tab(2).ControlCount=   1
       TabCaption(3)   =   "검사"
       TabPicture(3)   =   "frmOptions.frx":0496
@@ -187,6 +188,14 @@ Begin VB.Form frmOptions
          TabIndex        =   36
          Top             =   720
          Width           =   5895
+         Begin VB.CheckBox chkNoRibbon 
+            Caption         =   "리본 메뉴 없음(&N)"
+            Height          =   255
+            Left            =   3360
+            TabIndex        =   48
+            Top             =   240
+            Width           =   2415
+         End
          Begin VB.CheckBox chkTP 
             Caption         =   "오늘의일정 숨기기(&T)"
             Height          =   180
@@ -335,18 +344,34 @@ Begin VB.Form frmOptions
       End
       Begin VB.Frame Frame4 
          Caption         =   "시작"
-         Height          =   855
+         Height          =   1575
          Left            =   -74880
          TabIndex        =   13
          Top             =   720
          Width           =   6015
+         Begin VB.OptionButton radCFQ 
+            Caption         =   "이전에 끝낸 지점에서 시작(&Q)"
+            Height          =   255
+            Left            =   360
+            TabIndex        =   50
+            Top             =   1200
+            Width           =   5295
+         End
+         Begin VB.OptionButton radSelST 
+            Caption         =   "탭 선택(&T):"
+            Height          =   255
+            Left            =   360
+            TabIndex        =   49
+            Top             =   480
+            Width           =   5175
+         End
          Begin VB.ComboBox cmbStartPage 
             Height          =   300
-            Left            =   120
+            Left            =   600
             Style           =   2  '드롭다운 목록
             TabIndex        =   15
-            Top             =   480
-            Width           =   5775
+            Top             =   840
+            Width           =   5295
          End
          Begin VB.Label Label7 
             Caption         =   "시작 화면:"
@@ -619,6 +644,14 @@ Private Sub Command1_Click()
     
     SaveSetting "Calendar", "Options", "TP", chkTP.Value
     
+    SaveSetting "Calendar", "Options", "NoRibbon", chkNoRibbon.Value
+    
+    If radSelST.Value = False Then
+        SaveSetting "Calendar", "Options", "SST", False
+    Else
+        SaveSetting "Calendar", "Options", "SST", True
+    End If
+    
     If GetSetting("Calendar", "Options", "TP", 0) = 1 Then
         frmMain.Width = 8715
     Else
@@ -669,6 +702,14 @@ Private Sub Form_Load()
     
     chkTP.Value = GetSetting("Calendar", "Options", "TP", 0)
     
+    If GetSetting("Calendar", "Options", "SST", True) = True Then
+        radSelST.Value = True
+    Else
+        radCFQ.Value = True
+    End If
+    
+    chkNoRibbon.Value = GetSetting("Calendar", "Options", "NoRibbon", 0)
+    
     
     On Error Resume Next
     cmbWSD.AddItem "일요일"
@@ -706,3 +747,10 @@ Private Sub Form_Load()
     cmbWSD.ListIndex = GetSetting("Calendar", "Options", "WSD", 0)
 End Sub
 
+Private Sub radCFQ_Click()
+    cmbStartPage.Enabled = False
+End Sub
+
+Private Sub radSelST_Click()
+    cmbStartPage.Enabled = True
+End Sub

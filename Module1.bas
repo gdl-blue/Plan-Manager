@@ -129,7 +129,7 @@ Sub MessageBox(Content As String, Title As String, Optional OwnerForm As Form = 
     
     LineCount = LineCount + 1
     msgXPMB.lblContent.Height = 240 * LineCount
-    msgXPMB.Height = 1575 + LineCount * 240 - 300
+    msgXPMB.Height = 1575 + LineCount * 240 - 300 + 50
     msgXPMB.Caption = Title
     msgXPMB.lblContent.Caption = Content
     msgXPMB.Width = 2040 + (LContent * 85)
@@ -171,7 +171,7 @@ Function Confirm(Content As String, Title As String, Optional OwnerForm As Form 
     
     LineCount = LineCount + 1
     msgXPOC.lblContent.Height = 240 * LineCount
-    msgXPOC.Height = 1575 + LineCount * 240 - 300
+    msgXPOC.Height = 1575 + LineCount * 240 - 300 + 50
     msgXPOC.Caption = Title
     msgXPOC.lblContent.Caption = Content
     msgXPOC.Width = 2040 + (LContent * 85)

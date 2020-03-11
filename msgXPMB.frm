@@ -16,7 +16,7 @@ Begin VB.Form msgXPMB
    StartUpPosition =   2  '화면 가운데
    Begin VB.CommandButton cmdOK 
       Cancel          =   -1  'True
-      Caption         =   "승인"
+      Caption         =   "확인"
       Default         =   -1  'True
       Height          =   320
       Left            =   2760

@@ -9,14 +9,14 @@ Begin VB.Form frmMain
    BackColor       =   &H8000000C&
    BorderStyle     =   1  '단일 고정
    Caption         =   "일정관리자"
-   ClientHeight    =   6660
+   ClientHeight    =   6630
    ClientLeft      =   150
    ClientTop       =   495
    ClientWidth     =   10950
    Icon            =   "frmMain.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
-   ScaleHeight     =   6660
+   ScaleHeight     =   6630
    ScaleWidth      =   10950
    StartUpPosition =   3  'Windows 기본값
    Begin VB.CommandButton cmdTltRef 
@@ -25,7 +25,7 @@ Begin VB.Form frmMain
       Left            =   8760
       TabIndex        =   62
       ToolTipText     =   "오늘의 일정목록을 갱신합니다."
-      Top             =   5820
+      Top             =   5880
       Width           =   1935
    End
    Begin VB.Timer Timer1 
@@ -1225,7 +1225,7 @@ Begin VB.Form frmMain
       Height          =   270
       Left            =   0
       TabIndex        =   0
-      Top             =   6390
+      Top             =   6360
       Width           =   10950
       _ExtentX        =   19315
       _ExtentY        =   476
@@ -1244,7 +1244,7 @@ Begin VB.Form frmMain
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             AutoSize        =   2
-            TextSave        =   "오전 7:05"
+            TextSave        =   "오후 5:11"
          EndProperty
       EndProperty
    End
@@ -1632,6 +1632,22 @@ Private Sub Form_Load()
         Me.Width = 8715
     End If
     
+    If GetSetting("Calendar", "Options", "NoRibbon", 0) = 1 Then
+        SSTab1.Top = 120
+        ssTodaysPlan.Height = 4695
+        lvTodaysPlan.Height = 3870
+        cmdTltRef.Top = 4440
+        Me.Height = 5900
+        
+        ssRibbonMenu.Visible = False
+        cmdHelp.Visible = False
+        
+        mnuDateMenu.Visible = True
+        mnuFile.Visible = True
+        mnuView.Visible = True
+        mnuHelp.Visible = True
+    End If
+    
     tglCalWeekNum.Value = GetSetting("Calendar", "Options", "SWN", True)
     If GetSetting("Calendar", "Options", "SWN", "True") = "False" Then
         MonthView1.ShowWeekNumbers = "False"
@@ -1692,6 +1708,10 @@ Private Sub Form_Load()
     LoadTasks
     
     SSTab1.Tab = GetSetting("Calendar", "Options", "StartPage", 0)
+    
+    If GetSetting("Calendar", "Options", "SST", True) = False Then
+        SSTab1.Tab = GetSetting("Calendar", "Config", "LTB", GetSetting("Calendar", "Options", "StartPage", 0))
+    End If
     
     SetColor
     
@@ -1789,6 +1809,8 @@ End Sub
 Private Sub Form_Unload(Cancel As Integer)
     If Confirm("일정관리자를 닫으면 예정 일정 알림을 받지 않습니다.", "경고", Me, 48) = True Then
         Dim i As Integer
+        
+        SaveSetting "Calendar", "Config", "LTB", SSTab1.Tab
     
     
         'close all sub forms
