@@ -3,26 +3,59 @@ Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
 Begin VB.Form frmPlans 
    BorderStyle     =   3  '크기 고정 대화 상자
    Caption         =   "일정 목록"
-   ClientHeight    =   3615
+   ClientHeight    =   4020
    ClientLeft      =   2760
    ClientTop       =   3750
-   ClientWidth     =   4515
+   ClientWidth     =   5925
    Icon            =   "frmPlans.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   3615
-   ScaleWidth      =   4515
+   ScaleHeight     =   4020
+   ScaleWidth      =   5925
    ShowInTaskbar   =   0   'False
    StartUpPosition =   1  '소유자 가운데
+   Begin VB.CommandButton Command1 
+      Caption         =   "이동(&M)"
+      Height          =   375
+      Left            =   4440
+      TabIndex        =   10
+      Top             =   80
+      Width           =   1335
+   End
+   Begin VB.ComboBox txtDay 
+      Height          =   300
+      Left            =   3360
+      TabIndex        =   9
+      Text            =   "Combo1"
+      Top             =   120
+      Width           =   615
+   End
+   Begin VB.ComboBox txtMonth 
+      Height          =   300
+      Left            =   1800
+      TabIndex        =   8
+      Text            =   "Combo1"
+      Top             =   120
+      Width           =   615
+   End
+   Begin VB.TextBox txtYear 
+      Alignment       =   1  '오른쪽 맞춤
+      Height          =   270
+      Left            =   120
+      MaxLength       =   4
+      TabIndex        =   6
+      Top             =   120
+      Width           =   975
+   End
    Begin VB.CommandButton cmdClose 
       Cancel          =   -1  'True
-      Caption         =   "Command1"
-      Height          =   180
-      Left            =   2760
+      Caption         =   "닫기(&C)"
+      Height          =   375
+      Left            =   4440
       TabIndex        =   5
-      Top             =   3840
-      Width           =   255
+      Top             =   3480
+      Width           =   1335
    End
    Begin VB.FileListBox lvPlanFiles 
       Height          =   450
@@ -34,36 +67,37 @@ Begin VB.Form frmPlans
    End
    Begin VB.CommandButton cmdViewPlan 
       Caption         =   "보기(&V)..."
+      Default         =   -1  'True
       Height          =   375
-      Left            =   3000
+      Left            =   4440
       TabIndex        =   3
-      Top             =   3120
+      Top             =   1440
       Width           =   1335
    End
    Begin VB.CommandButton cmdDelBtn 
       Caption         =   "삭제(&D)"
       Height          =   375
-      Left            =   1560
+      Left            =   4440
       TabIndex        =   2
-      Top             =   3120
+      Top             =   960
       Width           =   1335
    End
    Begin VB.CommandButton cmdAddBtn 
       Caption         =   "추가(&C)..."
       Height          =   375
-      Left            =   120
+      Left            =   4440
       TabIndex        =   1
-      Top             =   3120
+      Top             =   480
       Width           =   1335
    End
    Begin ComctlLib.ListView lstPlanList 
-      Height          =   2895
+      Height          =   3375
       Left            =   120
       TabIndex        =   0
-      Top             =   120
+      Top             =   480
       Width           =   4215
       _ExtentX        =   7435
-      _ExtentY        =   5106
+      _ExtentY        =   5953
       View            =   3
       LabelEdit       =   1
       Sorted          =   -1  'True
@@ -75,6 +109,14 @@ Begin VB.Form frmPlans
       BorderStyle     =   1
       Appearance      =   1
       NumItems        =   0
+   End
+   Begin VB.Label Label1 
+      Caption         =   "년                  월                        일"
+      Height          =   255
+      Left            =   1200
+      TabIndex        =   7
+      Top             =   165
+      Width           =   3135
    End
 End
 Attribute VB_Name = "frmPlans"
@@ -166,11 +208,50 @@ exitsub:
     Exit Sub
 End Sub
 
+Private Sub Command1_Click()
+    On Error Resume Next
+    If IsNumeric(txtYear.Text) = False Or IsNumeric(txtYear.Text) = False Or IsNumeric(txtYear.Text) = False Then
+        MessageBox "날짜의 값은 숫자이여야 합니다.", "오류", Me, 16
+        Exit Sub
+    ElseIf txtYear.Text < 1 Or txtYear.Text > 9999 Then
+        MessageBox "해(연도)의 값은 1 이상 9999 이하이여야 합니다. 88, 05 등의 값은 1988, 2005으로 치환됩니다.", "오류", Me, 16
+        Exit Sub
+    ElseIf txtMonth.Text < 1 Or txtMonth.Text > 12 Then
+        MessageBox "달의 값은 1 이상 12 이하이여야 합니다.", "오류", Me, 16
+        Exit Sub
+    ElseIf (txtDay.Text < 1 Or txtDay.Text > 31) Then
+        MessageBox "일의 값은 달의 값이 7 이하이면서 홀수이거나 8 이상이면서 짝수일 때에는 1 이상 31 이하, 달이 2일 때는 1 이상 29 이하, 그 외에는 1 이상 30 이하이여야 합니다.", "오류", Me, 16
+        Exit Sub
+    End If
+    
+    CurrentDate = txtYear.Text & "-" & txtMonth.Text & "-" & txtDay.Text
+    Form_Load
+End Sub
+
 Private Sub Form_Load()
     Year = Split(CurrentDate, "-")(0)
     Month = Split(CurrentDate, "-")(1)
     Day = Split(CurrentDate, "-")(2)
     Me.Caption = Year & "년 " & Month & "월 " & Day & "일의 일정 목록"
+    
+    lstPlanList.ColumnHeaders.Clear
+    
+    txtMonth.Clear
+    txtDay.Clear
+    
+    txtYear.Text = Year
+    txtMonth.Text = Month
+    txtDay.Text = Day
+    
+    On Error Resume Next
+    
+    Dim i As Integer
+    For i = 1 To 12
+        txtMonth.AddItem CStr(i)
+    Next i
+    For i = 1 To 31
+        txtDay.AddItem CStr(i)
+    Next i
     
     lstPlanList.ColumnHeaders.Add , , "제목", 2000
     lstPlanList.ColumnHeaders.Add , , "시간", 350

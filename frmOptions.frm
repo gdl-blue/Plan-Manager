@@ -189,7 +189,7 @@ Begin VB.Form frmOptions
          Top             =   720
          Width           =   5895
          Begin VB.CheckBox chkNoRibbon 
-            Caption         =   "리본 메뉴 없음(&N)"
+            Caption         =   "리본 메뉴 비활성(&N)"
             Height          =   255
             Left            =   3360
             TabIndex        =   48
@@ -197,7 +197,7 @@ Begin VB.Form frmOptions
             Width           =   2415
          End
          Begin VB.CheckBox chkTP 
-            Caption         =   "오늘의일정 숨기기(&T)"
+            Caption         =   "오늘의일정 숨기기(&O)"
             Height          =   180
             Left            =   120
             TabIndex        =   37
@@ -358,7 +358,7 @@ Begin VB.Form frmOptions
             Width           =   5295
          End
          Begin VB.OptionButton radSelST 
-            Caption         =   "탭 선택(&T):"
+            Caption         =   "화면 선택(&T)"
             Height          =   255
             Left            =   360
             TabIndex        =   49
