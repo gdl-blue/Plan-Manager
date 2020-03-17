@@ -1,8 +1,9 @@
 VERSION 5.00
+Object = "{FE0065C0-1B7B-11CF-9D53-00AA003C9CB6}#1.1#0"; "COMCT232.OCX"
 Begin VB.Form frmEditPlan 
    BorderStyle     =   3  '크기 고정 대화 상자
    Caption         =   "일정 수정"
-   ClientHeight    =   3510
+   ClientHeight    =   4185
    ClientLeft      =   2760
    ClientTop       =   3750
    ClientWidth     =   6030
@@ -10,10 +11,43 @@ Begin VB.Form frmEditPlan
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   3510
+   ScaleHeight     =   4185
    ScaleWidth      =   6030
    ShowInTaskbar   =   0   'False
    StartUpPosition =   1  '소유자 가운데
+   Begin VB.TextBox txtParts 
+      Height          =   270
+      Left            =   960
+      TabIndex        =   19
+      Top             =   1560
+      Width           =   3495
+   End
+   Begin ComCtl2.UpDown UpDown1 
+      Height          =   270
+      Left            =   600
+      TabIndex        =   17
+      Top             =   1560
+      Width           =   255
+      _ExtentX        =   450
+      _ExtentY        =   476
+      _Version        =   327681
+      BuddyControl    =   "txtImprty"
+      BuddyDispid     =   196625
+      OrigLeft        =   600
+      OrigTop         =   1560
+      OrigRight       =   855
+      OrigBottom      =   1815
+      SyncBuddy       =   -1  'True
+      BuddyProperty   =   65547
+      Enabled         =   -1  'True
+   End
+   Begin VB.TextBox txtImprty 
+      Height          =   270
+      Left            =   120
+      TabIndex        =   16
+      Top             =   1560
+      Width           =   480
+   End
    Begin VB.CommandButton OKButton 
       Caption         =   "저장(&S)"
       Default         =   -1  'True
@@ -70,16 +104,16 @@ Begin VB.Form frmEditPlan
       Left            =   120
       List            =   "frmEditPlan.frx":044F
       TabIndex        =   2
-      Top             =   1680
+      Top             =   2160
       Width           =   4335
    End
    Begin VB.TextBox txtContent 
-      Height          =   975
+      Height          =   1335
       Left            =   120
       MultiLine       =   -1  'True
       ScrollBars      =   2  '수직
       TabIndex        =   1
-      Top             =   2400
+      Top             =   2760
       Width           =   4335
    End
    Begin VB.FileListBox lvCateFiles 
@@ -89,6 +123,22 @@ Begin VB.Form frmEditPlan
       Top             =   1920
       Visible         =   0   'False
       Width           =   495
+   End
+   Begin VB.Label Label8 
+      Caption         =   "참여자:"
+      Height          =   255
+      Left            =   960
+      TabIndex        =   18
+      Top             =   1320
+      Width           =   735
+   End
+   Begin VB.Label Label7 
+      Caption         =   "중요도:"
+      Height          =   255
+      Left            =   120
+      TabIndex        =   15
+      Top             =   1320
+      Width           =   615
    End
    Begin VB.Label Label1 
       Caption         =   "제목:"
@@ -127,7 +177,7 @@ Begin VB.Form frmEditPlan
       Height          =   255
       Left            =   120
       TabIndex        =   10
-      Top             =   1440
+      Top             =   1920
       Width           =   495
    End
    Begin VB.Label Label6 
@@ -135,7 +185,7 @@ Begin VB.Form frmEditPlan
       Height          =   255
       Left            =   120
       TabIndex        =   9
-      Top             =   2160
+      Top             =   2520
       Width           =   855
    End
 End
@@ -201,6 +251,11 @@ Private Sub OKButton_Click()
         txtCategory.Text = "(지정되지 않음)"
     End If
     
+    If IsNumeric(txtImprty.Text) = False Or txtImprty.Text < 1 Or txtImprty.Text > 10 Then
+        MessageBox "중요도는 1(낮음)부터 10(높음)까지여야 합니다.", "입력 값 오류", Me, 16
+        Exit Sub
+    End If
+    
     '레지스트리에 일정의 기타 정보를 저장한다.
     If txtTimeHrs.Text < 9 Then
         If txtTimeMin.Text < 9 Then
@@ -220,6 +275,8 @@ Private Sub OKButton_Click()
     SaveSetting "Calendar", Year & "\" & Month & "\" & Day, txtTitle.Text & "Location", txtLocation.Text
     SaveSetting "Calendar", Year & "\" & Month & "\" & Day, txtTitle.Text & "Cate", txtCategory.Text
     SaveSetting "Calendar", Year & "\" & Month & "\" & Day, txtTitle.Text & "Cont", txtContent.Text
+    SaveSetting "Calendar", Year & "\" & Month & "\" & Day, txtTitle.Text & "Part", txtParts.Text
+    SaveSetting "Calendar", Year & "\" & Month & "\" & Day, txtTitle.Text & "Impt", txtImprty.Text
     
     frmPlans.LoadPlans
     

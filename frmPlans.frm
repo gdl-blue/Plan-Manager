@@ -6,19 +6,19 @@ Begin VB.Form frmPlans
    ClientHeight    =   4020
    ClientLeft      =   2760
    ClientTop       =   3750
-   ClientWidth     =   5925
+   ClientWidth     =   7170
    Icon            =   "frmPlans.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
    ScaleHeight     =   4020
-   ScaleWidth      =   5925
+   ScaleWidth      =   7170
    ShowInTaskbar   =   0   'False
    StartUpPosition =   1  '소유자 가운데
    Begin VB.CommandButton cmdTody 
       Caption         =   "T"
       Height          =   375
-      Left            =   3960
+      Left            =   5280
       TabIndex        =   13
       ToolTipText     =   "오늘의 날짜로 이동"
       Top             =   80
@@ -27,7 +27,7 @@ Begin VB.Form frmPlans
    Begin VB.CommandButton cmdYest 
       Caption         =   "◀"
       Height          =   375
-      Left            =   4920
+      Left            =   6240
       TabIndex        =   12
       ToolTipText     =   "어제로"
       Top             =   80
@@ -36,7 +36,7 @@ Begin VB.Form frmPlans
    Begin VB.CommandButton cmdTomr 
       Caption         =   "▶"
       Height          =   375
-      Left            =   5400
+      Left            =   6720
       TabIndex        =   11
       ToolTipText     =   "내일로"
       Top             =   80
@@ -45,7 +45,7 @@ Begin VB.Form frmPlans
    Begin VB.CommandButton cmdMoveTo 
       Caption         =   "→"
       Height          =   375
-      Left            =   4440
+      Left            =   5760
       TabIndex        =   10
       ToolTipText     =   "선택한 날짜로 이동"
       Top             =   80
@@ -80,7 +80,7 @@ Begin VB.Form frmPlans
       Cancel          =   -1  'True
       Caption         =   "닫기(&C)"
       Height          =   375
-      Left            =   4440
+      Left            =   5760
       TabIndex        =   5
       Top             =   3480
       Width           =   1335
@@ -97,7 +97,7 @@ Begin VB.Form frmPlans
       Caption         =   "보기(&V)..."
       Default         =   -1  'True
       Height          =   375
-      Left            =   4440
+      Left            =   5760
       TabIndex        =   3
       Top             =   1440
       Width           =   1335
@@ -105,7 +105,7 @@ Begin VB.Form frmPlans
    Begin VB.CommandButton cmdDelBtn 
       Caption         =   "삭제(&D)"
       Height          =   375
-      Left            =   4440
+      Left            =   5760
       TabIndex        =   2
       Top             =   960
       Width           =   1335
@@ -113,7 +113,7 @@ Begin VB.Form frmPlans
    Begin VB.CommandButton cmdAddBtn 
       Caption         =   "추가(&C)..."
       Height          =   375
-      Left            =   4440
+      Left            =   5760
       TabIndex        =   1
       Top             =   480
       Width           =   1335
@@ -123,8 +123,8 @@ Begin VB.Form frmPlans
       Left            =   120
       TabIndex        =   0
       Top             =   480
-      Width           =   4215
-      _ExtentX        =   7435
+      Width           =   5535
+      _ExtentX        =   9763
       _ExtentY        =   5953
       View            =   3
       LabelEdit       =   1
@@ -165,6 +165,7 @@ Dim Plan As Integer
 Dim Title As String
 Dim Time As String
 Dim Category As String
+Dim Imprty As String
 Dim PlanData As String
 Dim PlanItem As ListItem
 
@@ -213,10 +214,12 @@ Sub LoadPlans()
         Title = lvPlanFiles.List(Plan)
         Time = GetSetting("Calendar", Year & "\" & Month & "\" & Day, lvPlanFiles.List(Plan) & "Time", "(지정되지 않음)")
         Category = GetSetting("Calendar", Year & "\" & Month & "\" & Day, lvPlanFiles.List(Plan) & "Cate", "(지정되지 않음)")
+        Imprty = GetSetting("Calendar", Year & "\" & Month & "\" & Day, lvPlanFiles.List(Plan) & "Impt", "1")
 
         lstPlanList.ListItems.Add , , Title
         lstPlanList.ListItems(Plan + 1).SubItems(1) = Left$(Time, 2) & ":" & Right$(Time, 2)
         lstPlanList.ListItems(Plan + 1).SubItems(2) = Category
+        lstPlanList.ListItems(Plan + 1).SubItems(3) = Imprty
     Next Plan
 End Sub
 
@@ -240,6 +243,8 @@ Private Sub cmdViewPlan_Click()
     frmPlanView.lblTimeMin.Caption = Split(lstPlanList.SelectedItem.SubItems(1), ":")(1) & "분"
     frmPlanView.lblLocation.Text = GetSetting("Calendar", Year & "\" & Month & "\" & Day, lstPlanList.SelectedItem.Text & "Location", "알 수 없음")
     frmPlanView.txtContent.Text = GetSetting("Calendar", Year & "\" & Month & "\" & Day, lstPlanList.SelectedItem.Text & "Cont", "자세한 내용 없음")
+    frmPlanView.txtImprty.Text = GetSetting("Calendar", Year & "\" & Month & "\" & Day, lstPlanList.SelectedItem.Text & "Impt", "1")
+    frmPlanView.txtParts.Text = GetSetting("Calendar", Year & "\" & Month & "\" & Day, lstPlanList.SelectedItem.Text & "Part", "")
     frmPlanView.Show vbModal, Me
     
 exitsub:
@@ -299,6 +304,7 @@ Private Sub Form_Load()
     lstPlanList.ColumnHeaders.Add , , "제목", 2000
     lstPlanList.ColumnHeaders.Add , , "시간", 350
     lstPlanList.ColumnHeaders.Add , , "분류", 850
+    lstPlanList.ColumnHeaders.Add , , "중요도", 450
     
     LoadPlans
     

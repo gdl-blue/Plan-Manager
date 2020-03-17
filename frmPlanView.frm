@@ -2,7 +2,7 @@ VERSION 5.00
 Begin VB.Form frmPlanView 
    BorderStyle     =   3  '크기 고정 대화 상자
    Caption         =   "내 일정"
-   ClientHeight    =   2895
+   ClientHeight    =   3255
    ClientLeft      =   45
    ClientTop       =   435
    ClientWidth     =   6285
@@ -10,10 +10,29 @@ Begin VB.Form frmPlanView
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   2895
+   ScaleHeight     =   3255
    ScaleWidth      =   6285
    ShowInTaskbar   =   0   'False
    StartUpPosition =   1  '소유자 가운데
+   Begin VB.TextBox txtParts 
+      BackColor       =   &H8000000F&
+      Height          =   270
+      Left            =   2280
+      Locked          =   -1  'True
+      TabIndex        =   12
+      Top             =   960
+      Width           =   2535
+   End
+   Begin VB.TextBox txtImprty 
+      BackColor       =   &H8000000F&
+      Height          =   270
+      Left            =   840
+      Locked          =   -1  'True
+      TabIndex        =   10
+      Text            =   "1"
+      Top             =   960
+      Width           =   495
+   End
    Begin VB.TextBox lblLocation 
       BackColor       =   &H8000000F&
       Height          =   270
@@ -49,8 +68,24 @@ Begin VB.Form frmPlanView
       MultiLine       =   -1  'True
       ScrollBars      =   2  '수직
       TabIndex        =   5
-      Top             =   1080
+      Top             =   1560
       Width           =   4695
+   End
+   Begin VB.Label Label5 
+      Caption         =   "참여자:"
+      Height          =   255
+      Left            =   1560
+      TabIndex        =   11
+      Top             =   960
+      Width           =   855
+   End
+   Begin VB.Label Label4 
+      Caption         =   "중요도:"
+      Height          =   255
+      Left            =   120
+      TabIndex        =   9
+      Top             =   960
+      Width           =   615
    End
    Begin VB.Label Label2 
       Caption         =   "위치:"
@@ -119,6 +154,8 @@ Private Sub cmdEditPlan_Click()
     frmEditPlan.txtCategory.Text = Category
     frmEditPlan.txtLocation.Text = Me.lblLocation.Text
     frmEditPlan.txtContent.Text = Me.txtContent.Text
+    frmEditPlan.txtParts.Text = Me.txtParts.Text
+    frmEditPlan.txtImprty.Text = Me.txtImprty.Text
     
     frmEditPlan.Year = Year
     frmEditPlan.Day = Day

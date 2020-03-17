@@ -122,15 +122,15 @@ Begin VB.Form frmMain
       TabCaption(1)   =   " 보기"
       TabPicture(1)   =   "frmMain.frx":08E8
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "tglCalWeekNum"
-      Tab(1).Control(1)=   "tglStatusBar"
+      Tab(1).Control(0)=   "tglStatusBar"
+      Tab(1).Control(1)=   "tglCalWeekNum"
       Tab(1).ControlCount=   2
       TabCaption(2)   =   " 일정"
       TabPicture(2)   =   "frmMain.frx":0D3A
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "cmdPlanCategories"
+      Tab(2).Control(0)=   "cmdTodaysPlan"
       Tab(2).Control(1)=   "cmdDelAllTodaysPlan"
-      Tab(2).Control(2)=   "cmdTodaysPlan"
+      Tab(2).Control(2)=   "cmdPlanCategories"
       Tab(2).ControlCount=   3
       TabCaption(3)   =   " 도구"
       TabPicture(3)   =   "frmMain.frx":118C
@@ -267,7 +267,7 @@ Begin VB.Form frmMain
       _Version        =   393216
       TabOrientation  =   1
       Tabs            =   4
-      Tab             =   3
+      Tab             =   2
       TabsPerRow      =   4
       TabHeight       =   582
       ShowFocusRect   =   0   'False
@@ -275,144 +275,98 @@ Begin VB.Form frmMain
       TabCaption(0)   =   "일정"
       TabPicture(0)   =   "frmMain.frx":3B18
       Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "MonthView1"
-      Tab(0).Control(1)=   "Dir1"
+      Tab(0).Control(0)=   "Dir1"
+      Tab(0).Control(1)=   "MonthView1"
       Tab(0).ControlCount=   2
       TabCaption(1)   =   "주소록"
       TabPicture(1)   =   "frmMain.frx":3F6A
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "cmdResetFields"
-      Tab(1).Control(1)=   "cmdDeleteAllContacts"
-      Tab(1).Control(2)=   "cmdDelContact"
-      Tab(1).Control(3)=   "lvContactFiles"
+      Tab(1).Control(0)=   "lvContacts"
+      Tab(1).Control(1)=   "Frame1"
+      Tab(1).Control(2)=   "Frame2"
+      Tab(1).Control(3)=   "cmdSaveContact"
       Tab(1).Control(4)=   "Frame3"
-      Tab(1).Control(5)=   "cmdSaveContact"
-      Tab(1).Control(6)=   "Frame2"
-      Tab(1).Control(7)=   "Frame1"
-      Tab(1).Control(8)=   "lvContacts"
+      Tab(1).Control(5)=   "lvContactFiles"
+      Tab(1).Control(6)=   "cmdDelContact"
+      Tab(1).Control(7)=   "cmdDeleteAllContacts"
+      Tab(1).Control(8)=   "cmdResetFields"
       Tab(1).ControlCount=   9
       TabCaption(2)   =   "할 일"
       TabPicture(2)   =   "frmMain.frx":43BC
-      Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "cmdDeleteAllTasks"
-      Tab(2).Control(1)=   "lvTaskFiles"
-      Tab(2).Control(2)=   "Frame4"
-      Tab(2).Control(3)=   "cmdDelTask"
-      Tab(2).Control(4)=   "cmdSaveTask"
-      Tab(2).Control(5)=   "lvTasks"
+      Tab(2).ControlEnabled=   -1  'True
+      Tab(2).Control(0)=   "lvTasks"
+      Tab(2).Control(0).Enabled=   0   'False
+      Tab(2).Control(1)=   "cmdSaveTask"
+      Tab(2).Control(1).Enabled=   0   'False
+      Tab(2).Control(2)=   "cmdDelTask"
+      Tab(2).Control(2).Enabled=   0   'False
+      Tab(2).Control(3)=   "Frame4"
+      Tab(2).Control(3).Enabled=   0   'False
+      Tab(2).Control(4)=   "lvTaskFiles"
+      Tab(2).Control(4).Enabled=   0   'False
+      Tab(2).Control(5)=   "cmdDeleteAllTasks"
+      Tab(2).Control(5).Enabled=   0   'False
       Tab(2).ControlCount=   6
       TabCaption(3)   =   "일과표"
       TabPicture(3)   =   "frmMain.frx":480E
-      Tab(3).ControlEnabled=   -1  'True
-      Tab(3).Control(0)=   "lblDOW"
-      Tab(3).Control(0).Enabled=   0   'False
-      Tab(3).Control(1)=   "Label15"
-      Tab(3).Control(1).Enabled=   0   'False
-      Tab(3).Control(2)=   "txtPlannerTF(0)"
-      Tab(3).Control(2).Enabled=   0   'False
-      Tab(3).Control(3)=   "txtPlannerTF(1)"
-      Tab(3).Control(3).Enabled=   0   'False
-      Tab(3).Control(4)=   "txtPlannerTF(2)"
-      Tab(3).Control(4).Enabled=   0   'False
-      Tab(3).Control(5)=   "txtPlannerTF(3)"
-      Tab(3).Control(5).Enabled=   0   'False
-      Tab(3).Control(6)=   "txtPlannerTF(4)"
-      Tab(3).Control(6).Enabled=   0   'False
-      Tab(3).Control(7)=   "txtPlannerTF(5)"
-      Tab(3).Control(7).Enabled=   0   'False
-      Tab(3).Control(8)=   "txtPlannerTF(6)"
-      Tab(3).Control(8).Enabled=   0   'False
-      Tab(3).Control(9)=   "txtPlannerTF(7)"
-      Tab(3).Control(9).Enabled=   0   'False
-      Tab(3).Control(10)=   "txtPlannerTF(8)"
-      Tab(3).Control(10).Enabled=   0   'False
-      Tab(3).Control(11)=   "txtPlannerTF(9)"
-      Tab(3).Control(11).Enabled=   0   'False
-      Tab(3).Control(12)=   "txtPlannerTF(10)"
-      Tab(3).Control(12).Enabled=   0   'False
-      Tab(3).Control(13)=   "txtPlannerTF(11)"
-      Tab(3).Control(13).Enabled=   0   'False
-      Tab(3).Control(14)=   "txtPlannerTF(12)"
-      Tab(3).Control(14).Enabled=   0   'False
-      Tab(3).Control(15)=   "txtPlannerTF(13)"
-      Tab(3).Control(15).Enabled=   0   'False
-      Tab(3).Control(16)=   "txtPlannerTF(14)"
-      Tab(3).Control(16).Enabled=   0   'False
-      Tab(3).Control(17)=   "txtPlannerTF(15)"
-      Tab(3).Control(17).Enabled=   0   'False
-      Tab(3).Control(18)=   "txtPlannerTF(16)"
-      Tab(3).Control(18).Enabled=   0   'False
-      Tab(3).Control(19)=   "txtPlannerTF(17)"
-      Tab(3).Control(19).Enabled=   0   'False
-      Tab(3).Control(20)=   "txtPlannerTF(18)"
-      Tab(3).Control(20).Enabled=   0   'False
-      Tab(3).Control(21)=   "txtPlannerTF(19)"
-      Tab(3).Control(21).Enabled=   0   'False
-      Tab(3).Control(22)=   "txtPlannerTF(20)"
-      Tab(3).Control(22).Enabled=   0   'False
-      Tab(3).Control(23)=   "txtPlannerTF(21)"
-      Tab(3).Control(23).Enabled=   0   'False
-      Tab(3).Control(24)=   "txtPlannerTF(22)"
-      Tab(3).Control(24).Enabled=   0   'False
-      Tab(3).Control(25)=   "txtPlannerTF(23)"
-      Tab(3).Control(25).Enabled=   0   'False
-      Tab(3).Control(26)=   "txtPlannerTF(24)"
-      Tab(3).Control(26).Enabled=   0   'False
-      Tab(3).Control(27)=   "txtPlannerTF(25)"
-      Tab(3).Control(27).Enabled=   0   'False
-      Tab(3).Control(28)=   "txtPlannerTF(26)"
-      Tab(3).Control(28).Enabled=   0   'False
-      Tab(3).Control(29)=   "txtPlannerTF(27)"
-      Tab(3).Control(29).Enabled=   0   'False
-      Tab(3).Control(30)=   "txtPlannerTF(28)"
-      Tab(3).Control(30).Enabled=   0   'False
-      Tab(3).Control(31)=   "txtPlannerTF(29)"
-      Tab(3).Control(31).Enabled=   0   'False
-      Tab(3).Control(32)=   "txtPlannerTF(30)"
-      Tab(3).Control(32).Enabled=   0   'False
-      Tab(3).Control(33)=   "txtPlannerTF(31)"
-      Tab(3).Control(33).Enabled=   0   'False
-      Tab(3).Control(34)=   "txtPlannerTF(32)"
-      Tab(3).Control(34).Enabled=   0   'False
-      Tab(3).Control(35)=   "txtPlannerTF(33)"
-      Tab(3).Control(35).Enabled=   0   'False
-      Tab(3).Control(36)=   "txtPlannerTF(34)"
-      Tab(3).Control(36).Enabled=   0   'False
-      Tab(3).Control(37)=   "txtPlannerTF(35)"
-      Tab(3).Control(37).Enabled=   0   'False
-      Tab(3).Control(38)=   "txtPlannerTF(36)"
-      Tab(3).Control(38).Enabled=   0   'False
-      Tab(3).Control(39)=   "txtPlannerTF(37)"
-      Tab(3).Control(39).Enabled=   0   'False
-      Tab(3).Control(40)=   "txtPlannerTF(38)"
-      Tab(3).Control(40).Enabled=   0   'False
-      Tab(3).Control(41)=   "txtPlannerTF(39)"
-      Tab(3).Control(41).Enabled=   0   'False
-      Tab(3).Control(42)=   "txtPlannerTF(40)"
-      Tab(3).Control(42).Enabled=   0   'False
-      Tab(3).Control(43)=   "txtPlannerTF(41)"
-      Tab(3).Control(43).Enabled=   0   'False
-      Tab(3).Control(44)=   "txtPlannerTF(42)"
-      Tab(3).Control(44).Enabled=   0   'False
-      Tab(3).Control(45)=   "txtPlannerTF(43)"
-      Tab(3).Control(45).Enabled=   0   'False
-      Tab(3).Control(46)=   "txtPlannerTF(44)"
-      Tab(3).Control(46).Enabled=   0   'False
-      Tab(3).Control(47)=   "txtPlannerTF(45)"
-      Tab(3).Control(47).Enabled=   0   'False
-      Tab(3).Control(48)=   "txtPlannerTF(46)"
-      Tab(3).Control(48).Enabled=   0   'False
-      Tab(3).Control(49)=   "txtPlannerTF(47)"
-      Tab(3).Control(49).Enabled=   0   'False
-      Tab(3).Control(50)=   "txtPlannerTF(48)"
-      Tab(3).Control(50).Enabled=   0   'False
-      Tab(3).Control(51)=   "sdcmdSavePlanner"
-      Tab(3).Control(51).Enabled=   0   'False
+      Tab(3).ControlEnabled=   0   'False
+      Tab(3).Control(0)=   "sdcmdSavePlanner"
+      Tab(3).Control(1)=   "txtPlannerTF(48)"
+      Tab(3).Control(2)=   "txtPlannerTF(47)"
+      Tab(3).Control(3)=   "txtPlannerTF(46)"
+      Tab(3).Control(4)=   "txtPlannerTF(45)"
+      Tab(3).Control(5)=   "txtPlannerTF(44)"
+      Tab(3).Control(6)=   "txtPlannerTF(43)"
+      Tab(3).Control(7)=   "txtPlannerTF(42)"
+      Tab(3).Control(8)=   "txtPlannerTF(41)"
+      Tab(3).Control(9)=   "txtPlannerTF(40)"
+      Tab(3).Control(10)=   "txtPlannerTF(39)"
+      Tab(3).Control(11)=   "txtPlannerTF(38)"
+      Tab(3).Control(12)=   "txtPlannerTF(37)"
+      Tab(3).Control(13)=   "txtPlannerTF(36)"
+      Tab(3).Control(14)=   "txtPlannerTF(35)"
+      Tab(3).Control(15)=   "txtPlannerTF(34)"
+      Tab(3).Control(16)=   "txtPlannerTF(33)"
+      Tab(3).Control(17)=   "txtPlannerTF(32)"
+      Tab(3).Control(18)=   "txtPlannerTF(31)"
+      Tab(3).Control(19)=   "txtPlannerTF(30)"
+      Tab(3).Control(20)=   "txtPlannerTF(29)"
+      Tab(3).Control(21)=   "txtPlannerTF(28)"
+      Tab(3).Control(22)=   "txtPlannerTF(27)"
+      Tab(3).Control(23)=   "txtPlannerTF(26)"
+      Tab(3).Control(24)=   "txtPlannerTF(25)"
+      Tab(3).Control(25)=   "txtPlannerTF(24)"
+      Tab(3).Control(26)=   "txtPlannerTF(23)"
+      Tab(3).Control(27)=   "txtPlannerTF(22)"
+      Tab(3).Control(28)=   "txtPlannerTF(21)"
+      Tab(3).Control(29)=   "txtPlannerTF(20)"
+      Tab(3).Control(30)=   "txtPlannerTF(19)"
+      Tab(3).Control(31)=   "txtPlannerTF(18)"
+      Tab(3).Control(32)=   "txtPlannerTF(17)"
+      Tab(3).Control(33)=   "txtPlannerTF(16)"
+      Tab(3).Control(34)=   "txtPlannerTF(15)"
+      Tab(3).Control(35)=   "txtPlannerTF(14)"
+      Tab(3).Control(36)=   "txtPlannerTF(13)"
+      Tab(3).Control(37)=   "txtPlannerTF(12)"
+      Tab(3).Control(38)=   "txtPlannerTF(11)"
+      Tab(3).Control(39)=   "txtPlannerTF(10)"
+      Tab(3).Control(40)=   "txtPlannerTF(9)"
+      Tab(3).Control(41)=   "txtPlannerTF(8)"
+      Tab(3).Control(42)=   "txtPlannerTF(7)"
+      Tab(3).Control(43)=   "txtPlannerTF(6)"
+      Tab(3).Control(44)=   "txtPlannerTF(5)"
+      Tab(3).Control(45)=   "txtPlannerTF(4)"
+      Tab(3).Control(46)=   "txtPlannerTF(3)"
+      Tab(3).Control(47)=   "txtPlannerTF(2)"
+      Tab(3).Control(48)=   "txtPlannerTF(1)"
+      Tab(3).Control(49)=   "txtPlannerTF(0)"
+      Tab(3).Control(50)=   "Label15"
+      Tab(3).Control(51)=   "lblDOW"
       Tab(3).ControlCount=   52
       Begin VB.CommandButton sdcmdSavePlanner 
          Caption         =   "저장(&S)"
          Height          =   375
-         Left            =   6960
+         Left            =   -68040
          TabIndex        =   114
          Top             =   120
          Width           =   1215
@@ -420,7 +374,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   48
-         Left            =   6120
+         Left            =   -68880
          MultiLine       =   -1  'True
          TabIndex        =   113
          Top             =   3600
@@ -429,7 +383,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   47
-         Left            =   5160
+         Left            =   -69840
          MultiLine       =   -1  'True
          TabIndex        =   112
          Top             =   3600
@@ -438,7 +392,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   46
-         Left            =   4200
+         Left            =   -70800
          MultiLine       =   -1  'True
          TabIndex        =   111
          Top             =   3600
@@ -447,7 +401,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   45
-         Left            =   3240
+         Left            =   -71760
          MultiLine       =   -1  'True
          TabIndex        =   110
          Top             =   3600
@@ -456,7 +410,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   44
-         Left            =   2280
+         Left            =   -72720
          MultiLine       =   -1  'True
          TabIndex        =   109
          Top             =   3600
@@ -465,7 +419,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   43
-         Left            =   1320
+         Left            =   -73680
          MultiLine       =   -1  'True
          TabIndex        =   108
          Top             =   3600
@@ -474,7 +428,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   42
-         Left            =   360
+         Left            =   -74640
          MultiLine       =   -1  'True
          TabIndex        =   107
          Top             =   3600
@@ -483,7 +437,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   41
-         Left            =   6120
+         Left            =   -68880
          MultiLine       =   -1  'True
          TabIndex        =   106
          Top             =   3120
@@ -492,7 +446,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   40
-         Left            =   5160
+         Left            =   -69840
          MultiLine       =   -1  'True
          TabIndex        =   105
          Top             =   3120
@@ -501,7 +455,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   39
-         Left            =   4200
+         Left            =   -70800
          MultiLine       =   -1  'True
          TabIndex        =   104
          Top             =   3120
@@ -510,7 +464,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   38
-         Left            =   3240
+         Left            =   -71760
          MultiLine       =   -1  'True
          TabIndex        =   103
          Top             =   3120
@@ -519,7 +473,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   37
-         Left            =   2280
+         Left            =   -72720
          MultiLine       =   -1  'True
          TabIndex        =   102
          Top             =   3120
@@ -528,7 +482,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   36
-         Left            =   1320
+         Left            =   -73680
          MultiLine       =   -1  'True
          TabIndex        =   101
          Top             =   3120
@@ -537,7 +491,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   35
-         Left            =   360
+         Left            =   -74640
          MultiLine       =   -1  'True
          TabIndex        =   100
          Top             =   3120
@@ -546,7 +500,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   34
-         Left            =   6120
+         Left            =   -68880
          MultiLine       =   -1  'True
          TabIndex        =   99
          Top             =   2640
@@ -555,7 +509,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   33
-         Left            =   5160
+         Left            =   -69840
          MultiLine       =   -1  'True
          TabIndex        =   98
          Top             =   2640
@@ -564,7 +518,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   32
-         Left            =   4200
+         Left            =   -70800
          MultiLine       =   -1  'True
          TabIndex        =   97
          Top             =   2640
@@ -573,7 +527,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   31
-         Left            =   3240
+         Left            =   -71760
          MultiLine       =   -1  'True
          TabIndex        =   96
          Top             =   2640
@@ -582,7 +536,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   30
-         Left            =   2280
+         Left            =   -72720
          MultiLine       =   -1  'True
          TabIndex        =   95
          Top             =   2640
@@ -591,7 +545,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   29
-         Left            =   1320
+         Left            =   -73680
          MultiLine       =   -1  'True
          TabIndex        =   94
          Top             =   2640
@@ -600,7 +554,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   28
-         Left            =   360
+         Left            =   -74640
          MultiLine       =   -1  'True
          TabIndex        =   93
          Top             =   2640
@@ -609,7 +563,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   27
-         Left            =   6120
+         Left            =   -68880
          MultiLine       =   -1  'True
          TabIndex        =   92
          Top             =   2040
@@ -618,7 +572,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   26
-         Left            =   5160
+         Left            =   -69840
          MultiLine       =   -1  'True
          TabIndex        =   91
          Top             =   2040
@@ -627,7 +581,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   25
-         Left            =   4200
+         Left            =   -70800
          MultiLine       =   -1  'True
          TabIndex        =   90
          Top             =   2040
@@ -636,7 +590,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   24
-         Left            =   3240
+         Left            =   -71760
          MultiLine       =   -1  'True
          TabIndex        =   89
          Top             =   2040
@@ -645,7 +599,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   23
-         Left            =   2280
+         Left            =   -72720
          MultiLine       =   -1  'True
          TabIndex        =   88
          Top             =   2040
@@ -654,7 +608,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   22
-         Left            =   1320
+         Left            =   -73680
          MultiLine       =   -1  'True
          TabIndex        =   87
          Top             =   2040
@@ -663,7 +617,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   21
-         Left            =   360
+         Left            =   -74640
          MultiLine       =   -1  'True
          TabIndex        =   86
          Top             =   2040
@@ -672,7 +626,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   20
-         Left            =   6120
+         Left            =   -68880
          MultiLine       =   -1  'True
          TabIndex        =   85
          Top             =   1440
@@ -681,7 +635,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   19
-         Left            =   5160
+         Left            =   -69840
          MultiLine       =   -1  'True
          TabIndex        =   84
          Top             =   1440
@@ -690,7 +644,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   18
-         Left            =   4200
+         Left            =   -70800
          MultiLine       =   -1  'True
          TabIndex        =   83
          Top             =   1440
@@ -699,7 +653,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   17
-         Left            =   3240
+         Left            =   -71760
          MultiLine       =   -1  'True
          TabIndex        =   82
          Top             =   1440
@@ -708,7 +662,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   16
-         Left            =   2280
+         Left            =   -72720
          MultiLine       =   -1  'True
          TabIndex        =   81
          Top             =   1440
@@ -717,7 +671,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   15
-         Left            =   1320
+         Left            =   -73680
          MultiLine       =   -1  'True
          TabIndex        =   80
          Top             =   1440
@@ -726,7 +680,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   14
-         Left            =   360
+         Left            =   -74640
          MultiLine       =   -1  'True
          TabIndex        =   79
          Top             =   1440
@@ -735,7 +689,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   13
-         Left            =   6120
+         Left            =   -68880
          MultiLine       =   -1  'True
          TabIndex        =   78
          Top             =   960
@@ -744,7 +698,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   12
-         Left            =   5160
+         Left            =   -69840
          MultiLine       =   -1  'True
          TabIndex        =   77
          Top             =   960
@@ -753,7 +707,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   11
-         Left            =   4200
+         Left            =   -70800
          MultiLine       =   -1  'True
          TabIndex        =   76
          Top             =   960
@@ -762,7 +716,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   10
-         Left            =   3240
+         Left            =   -71760
          MultiLine       =   -1  'True
          TabIndex        =   75
          Top             =   960
@@ -771,7 +725,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   9
-         Left            =   2280
+         Left            =   -72720
          MultiLine       =   -1  'True
          TabIndex        =   74
          Top             =   960
@@ -780,7 +734,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   8
-         Left            =   1320
+         Left            =   -73680
          MultiLine       =   -1  'True
          TabIndex        =   73
          Top             =   960
@@ -789,7 +743,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   7
-         Left            =   360
+         Left            =   -74640
          MultiLine       =   -1  'True
          TabIndex        =   72
          Top             =   960
@@ -798,7 +752,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   6
-         Left            =   6120
+         Left            =   -68880
          MultiLine       =   -1  'True
          TabIndex        =   71
          Top             =   480
@@ -807,7 +761,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   5
-         Left            =   5160
+         Left            =   -69840
          MultiLine       =   -1  'True
          TabIndex        =   70
          Top             =   480
@@ -816,7 +770,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   4
-         Left            =   4200
+         Left            =   -70800
          MultiLine       =   -1  'True
          TabIndex        =   69
          Top             =   480
@@ -825,7 +779,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   3
-         Left            =   3240
+         Left            =   -71760
          MultiLine       =   -1  'True
          TabIndex        =   68
          Top             =   480
@@ -834,7 +788,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   2
-         Left            =   2280
+         Left            =   -72720
          MultiLine       =   -1  'True
          TabIndex        =   67
          Top             =   480
@@ -843,7 +797,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   1
-         Left            =   1320
+         Left            =   -73680
          MultiLine       =   -1  'True
          TabIndex        =   66
          Top             =   480
@@ -852,7 +806,7 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtPlannerTF 
          Height          =   495
          Index           =   0
-         Left            =   360
+         Left            =   -74640
          MultiLine       =   -1  'True
          TabIndex        =   65
          Top             =   480
@@ -861,7 +815,7 @@ Begin VB.Form frmMain
       Begin VB.CommandButton cmdDeleteAllTasks 
          Caption         =   "모두 삭제(&L)"
          Height          =   495
-         Left            =   -67920
+         Left            =   7080
          TabIndex        =   52
          Top             =   3698
          Width           =   1215
@@ -892,7 +846,7 @@ Begin VB.Form frmMain
       End
       Begin VB.FileListBox lvTaskFiles 
          Height          =   270
-         Left            =   -67920
+         Left            =   7080
          TabIndex        =   40
          Top             =   698
          Visible         =   0   'False
@@ -901,10 +855,45 @@ Begin VB.Form frmMain
       Begin VB.Frame Frame4 
          Caption         =   "할 일 정보"
          Height          =   4095
-         Left            =   -72480
+         Left            =   2520
          TabIndex        =   28
          Top             =   98
          Width           =   4455
+         Begin VB.TextBox txtPart 
+            Height          =   270
+            Left            =   960
+            TabIndex        =   119
+            Top             =   1920
+            Width           =   3375
+         End
+         Begin ComCtl2.UpDown UpDown2 
+            Height          =   270
+            Left            =   600
+            TabIndex        =   118
+            Top             =   1920
+            Width           =   255
+            _ExtentX        =   450
+            _ExtentY        =   476
+            _Version        =   327681
+            BuddyControl    =   "txtImpt"
+            BuddyDispid     =   196699
+            OrigLeft        =   600
+            OrigTop         =   1920
+            OrigRight       =   855
+            OrigBottom      =   2175
+            SyncBuddy       =   -1  'True
+            BuddyProperty   =   65547
+            Enabled         =   -1  'True
+         End
+         Begin VB.TextBox txtImpt 
+            Height          =   270
+            Left            =   120
+            MaxLength       =   2
+            TabIndex        =   117
+            Text            =   "1"
+            Top             =   1920
+            Width           =   480
+         End
          Begin ComCtl2.UpDown UpDown1 
             Height          =   270
             Left            =   3840
@@ -927,12 +916,12 @@ Begin VB.Form frmMain
             Enabled         =   -1  'True
          End
          Begin VB.TextBox txtMemo 
-            Height          =   2055
+            Height          =   1335
             Left            =   120
             MultiLine       =   -1  'True
             ScrollBars      =   2  '수직
             TabIndex        =   36
-            Top             =   1920
+            Top             =   2640
             Width           =   4215
          End
          Begin VB.TextBox txtTaskTitle 
@@ -962,12 +951,28 @@ Begin VB.Form frmMain
             _Version        =   327682
             Appearance      =   0
          End
+         Begin VB.Label Label16 
+            Caption         =   "참여자:"
+            Height          =   255
+            Left            =   960
+            TabIndex        =   116
+            Top             =   1680
+            Width           =   975
+         End
+         Begin VB.Label Label14 
+            Caption         =   "중요도:"
+            Height          =   255
+            Left            =   120
+            TabIndex        =   115
+            Top             =   1680
+            Width           =   615
+         End
          Begin VB.Label Label11 
             Caption         =   "내용:"
             Height          =   255
             Left            =   120
             TabIndex        =   35
-            Top             =   1680
+            Top             =   2400
             Width           =   735
          End
          Begin VB.Label Label10 
@@ -1000,7 +1005,7 @@ Begin VB.Form frmMain
          Caption         =   "삭제(&D)"
          Enabled         =   0   'False
          Height          =   495
-         Left            =   -67920
+         Left            =   7080
          TabIndex        =   27
          Top             =   3098
          Width           =   1215
@@ -1008,7 +1013,7 @@ Begin VB.Form frmMain
       Begin VB.CommandButton cmdSaveTask 
          Caption         =   "저장(&S)"
          Height          =   495
-         Left            =   -67920
+         Left            =   7080
          TabIndex        =   26
          Top             =   98
          Width           =   1215
@@ -1016,7 +1021,7 @@ Begin VB.Form frmMain
       Begin VB.ListBox lvTasks 
          Height          =   4050
          ItemData        =   "frmMain.frx":4B28
-         Left            =   -74880
+         Left            =   120
          List            =   "frmMain.frx":4B2F
          Style           =   1  '확인란
          TabIndex        =   25
@@ -1238,20 +1243,20 @@ Begin VB.Form frmMain
          Appearance      =   0
          MonthColumns    =   3
          MonthRows       =   2
-         StartOfWeek     =   121438209
+         StartOfWeek     =   83951617
          CurrentDate     =   43858
       End
       Begin VB.Label Label15 
          Caption         =   "7시           9시           12시          15시           18시         21시            밤"
          Height          =   225
-         Left            =   720
+         Left            =   -74280
          TabIndex        =   64
          Top             =   240
          Width           =   6135
       End
       Begin VB.Label lblDOW 
          Height          =   3495
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   63
          Top             =   600
          Width           =   255
@@ -1276,12 +1281,12 @@ Begin VB.Form frmMain
          BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
             AutoSize        =   2
-            TextSave        =   "2020-03-11"
+            TextSave        =   "2020-03-17"
          EndProperty
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             AutoSize        =   2
-            TextSave        =   "오후 6:12"
+            TextSave        =   "오전 7:40"
          EndProperty
       EndProperty
    End
@@ -1579,8 +1584,16 @@ Private Sub cmdSaveTask_Click()
         Exit Sub
     End If
     
+    
+    If IsNumeric(txtImpt.Text) = False Or txtImpt.Text < 1 Or txtImpt.Text > 10 Then
+        MessageBox "중요도는 1(낮음)부터 10(높음)까지여야 합니다.", "입력 값 오류", Me, 16
+        Exit Sub
+    End If
+    
     SaveSetting "Calendar", "Tasks", txtTaskTitle.Text & "Perc", txtPercentage.Text
     SaveSetting "Calendar", "Tasks", txtTaskTitle.Text & "Memo", txtMemo.Text
+    SaveSetting "Calendar", "Tasks", txtTaskTitle.Text & "Impt", txtImpt.Text
+    SaveSetting "Calendar", "Tasks", txtTaskTitle.Text & "Part", txtPart.Text
     
     If lvTasks.List(lvTasks.ListIndex) = "새 작업 추가..." Then
         '해당 작업이 존재함을 알리는 파일을 만든다.
@@ -1936,6 +1949,8 @@ Private Sub lvTasks_Click()
     txtTaskTitle.Text = lvTasks.List(lvTasks.ListIndex)
     txtPercentage.Text = GetSetting("Calendar", "Tasks", lvTasks.List(lvTasks.ListIndex) & "Perc", "")
     txtMemo.Text = GetSetting("Calendar", "Tasks", lvTasks.List(lvTasks.ListIndex) & "Memo", "")
+    txtPart.Text = GetSetting("Calendar", "Tasks", lvTasks.List(lvTasks.ListIndex) & "Part", "")
+    txtImpt.Text = GetSetting("Calendar", "Tasks", lvTasks.List(lvTasks.ListIndex) & "Impt", "")
     
     If SSTab1.Tab = 2 Then
         Me.Caption = App.Title & " - " & SSTab1.TabCaption(SSTab1.Tab) & " (" & lvTasks.List(lvTasks.ListIndex) & ")"

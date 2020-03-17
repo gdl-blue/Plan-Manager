@@ -1,87 +1,130 @@
 VERSION 5.00
+Object = "{FE0065C0-1B7B-11CF-9D53-00AA003C9CB6}#1.1#0"; "COMCT232.OCX"
 Begin VB.Form frmAddPlan 
    BorderStyle     =   3  '크기 고정 대화 상자
    Caption         =   "일정 추가"
-   ClientHeight    =   3990
+   ClientHeight    =   4410
    ClientLeft      =   2760
    ClientTop       =   3750
-   ClientWidth     =   9510
-   ControlBox      =   0   'False
+   ClientWidth     =   7095
    Icon            =   "frmAddPlan.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   3990
-   ScaleWidth      =   9510
+   ScaleHeight     =   4410
+   ScaleWidth      =   7095
    ShowInTaskbar   =   0   'False
    StartUpPosition =   1  '소유자 가운데
+   Begin VB.TextBox txtParticipants 
+      Height          =   270
+      Left            =   5400
+      TabIndex        =   28
+      Top             =   80
+      Width           =   1575
+   End
+   Begin ComCtl2.UpDown UpDown1 
+      Height          =   270
+      Left            =   4440
+      TabIndex        =   26
+      Top             =   75
+      Width           =   255
+      _ExtentX        =   450
+      _ExtentY        =   476
+      _Version        =   327681
+      BuddyControl    =   "txtImprt"
+      BuddyDispid     =   196610
+      OrigLeft        =   5280
+      OrigTop         =   80
+      OrigRight       =   5535
+      OrigBottom      =   335
+      SyncBuddy       =   -1  'True
+      BuddyProperty   =   65547
+      Enabled         =   -1  'True
+   End
+   Begin VB.TextBox txtImprt 
+      Alignment       =   1  '오른쪽 맞춤
+      Height          =   270
+      Left            =   4080
+      TabIndex        =   25
+      Text            =   "1"
+      Top             =   80
+      Width           =   360
+   End
    Begin VB.Frame Frame1 
-      Caption         =   "일정 반복/복제"
-      Height          =   1455
+      Caption         =   "이 일정이 있는 날짜"
+      Height          =   2895
       Left            =   120
-      TabIndex        =   17
-      Top             =   2400
-      Width           =   3855
+      TabIndex        =   16
+      Top             =   1440
+      Width           =   3255
       Begin VB.CommandButton cmdRPT 
          Caption         =   "되풀이"
-         Height          =   285
-         Left            =   2640
-         TabIndex        =   24
+         Height          =   375
+         Left            =   2040
+         TabIndex        =   23
          ToolTipText     =   "이번달이 끝날때까지 일정 매주 되풀이"
-         Top             =   240
+         Top             =   2400
          Width           =   1095
       End
       Begin VB.CommandButton cmdDP 
          Caption         =   "-"
-         Height          =   285
-         Left            =   2280
-         TabIndex        =   23
-         Top             =   240
+         Height          =   375
+         Left            =   1800
+         TabIndex        =   22
+         Top             =   2400
          Width           =   255
       End
       Begin VB.ListBox lvPlanCP 
-         Height          =   780
+         Height          =   2040
          Left            =   120
-         TabIndex        =   22
-         Top             =   600
-         Width           =   3615
+         TabIndex        =   21
+         Top             =   240
+         Width           =   3015
       End
       Begin VB.CommandButton cmdCP 
          Caption         =   "+"
-         Height          =   285
-         Left            =   1920
-         TabIndex        =   21
-         Top             =   240
+         Height          =   375
+         Left            =   1560
+         TabIndex        =   20
+         Top             =   2400
          Width           =   255
       End
       Begin VB.TextBox txtCD 
          Height          =   270
-         Left            =   1440
-         TabIndex        =   20
-         Top             =   240
+         Left            =   1200
+         TabIndex        =   19
+         Top             =   2460
          Width           =   375
       End
       Begin VB.TextBox txtCM 
          Height          =   270
-         Left            =   960
-         TabIndex        =   19
-         Top             =   240
+         Left            =   720
+         TabIndex        =   18
+         Top             =   2460
          Width           =   375
       End
       Begin VB.TextBox txtCY 
          Height          =   270
          Left            =   120
          MaxLength       =   4
-         TabIndex        =   18
-         Top             =   240
-         Width           =   735
+         TabIndex        =   17
+         Top             =   2460
+         Width           =   495
+      End
+      Begin VB.Label Label7 
+         Caption         =   "  -       -"
+         Height          =   255
+         Left            =   480
+         TabIndex        =   29
+         Top             =   2520
+         Width           =   855
       End
    End
    Begin VB.CheckBox chkRepeat 
       Caption         =   "이번달이 끝날때까지 일정 매주 되풀이"
       Height          =   255
       Left            =   8520
-      TabIndex        =   16
+      TabIndex        =   15
       Top             =   5040
       Visible         =   0   'False
       Width           =   3975
@@ -95,33 +138,33 @@ Begin VB.Form frmAddPlan
       Width           =   495
    End
    Begin VB.TextBox txtContent 
-      Height          =   3495
-      Left            =   4080
+      Height          =   2415
+      Left            =   3480
       MultiLine       =   -1  'True
       ScrollBars      =   2  '수직
       TabIndex        =   13
-      Top             =   360
-      Width           =   3735
+      Top             =   1440
+      Width           =   3495
    End
    Begin VB.ComboBox txtCategory 
       Height          =   300
       ItemData        =   "frmAddPlan.frx":0442
-      Left            =   120
+      Left            =   3480
       List            =   "frmAddPlan.frx":044F
       TabIndex        =   11
-      Top             =   1680
-      Width           =   3855
+      Top             =   720
+      Width           =   3495
    End
    Begin VB.TextBox txtLocation 
       Height          =   270
-      Left            =   1320
+      Left            =   1080
       TabIndex        =   9
       Top             =   960
-      Width           =   2655
+      Width           =   2295
    End
    Begin VB.TextBox txtTimeMin 
       Height          =   270
-      Left            =   720
+      Left            =   630
       MaxLength       =   2
       TabIndex        =   7
       Top             =   960
@@ -141,54 +184,61 @@ Begin VB.Form frmAddPlan
       Left            =   120
       TabIndex        =   3
       Top             =   360
-      Width           =   3855
+      Width           =   3255
    End
    Begin VB.CommandButton CancelButton 
       Cancel          =   -1  'True
       Caption         =   "취소"
       Height          =   375
-      Left            =   8040
+      Left            =   5280
       TabIndex        =   1
-      Top             =   600
-      Width           =   1335
+      Top             =   3960
+      Width           =   1695
    End
    Begin VB.CommandButton OKButton 
       Caption         =   "추가(&A)"
-      Default         =   -1  'True
       Height          =   375
-      Left            =   8040
+      Left            =   3480
       TabIndex        =   0
-      Top             =   120
-      Width           =   1335
+      Top             =   3960
+      Width           =   1695
    End
-   Begin VB.Label Label7 
-      Caption         =   "설정:"
+   Begin VB.Label Label10 
+      Caption         =   "참여자:"
       Height          =   255
-      Left            =   120
-      TabIndex        =   15
-      Top             =   2160
-      Width           =   1815
+      Left            =   4800
+      TabIndex        =   27
+      Top             =   120
+      Width           =   735
+   End
+   Begin VB.Label Label9 
+      Caption         =   "중요도:"
+      Height          =   255
+      Left            =   3480
+      TabIndex        =   24
+      Top             =   120
+      Width           =   735
    End
    Begin VB.Label Label6 
       Caption         =   "내용:"
       Height          =   255
-      Left            =   4080
+      Left            =   3480
       TabIndex        =   12
-      Top             =   120
+      Top             =   1200
       Width           =   855
    End
    Begin VB.Label Label5 
       Caption         =   "분류:"
       Height          =   255
-      Left            =   120
+      Left            =   3480
       TabIndex        =   10
-      Top             =   1440
+      Top             =   480
       Width           =   495
    End
    Begin VB.Label Label4 
       Caption         =   "위치:"
       Height          =   255
-      Left            =   1320
+      Left            =   1080
       TabIndex        =   8
       Top             =   720
       Width           =   975
@@ -303,6 +353,10 @@ Private Sub Form_Load()
     Day = Split(CurrentDate, "-")(2)
     Me.Caption = "일정 추가 - " & Year & "년 " & Month & "월 " & Day & "일"
     
+    txtCY.Text = Year
+    txtCM.Text = Month
+    txtCD.Text = Day
+    
     On Error Resume Next
     MkDir "C:\CALPLANS\CTGORIES"
     
@@ -348,19 +402,23 @@ Private Sub OKButton_Click()
         MessageBox "제목의 값은 필수입니다.", "입력 값 오류", Me, 16
         Exit Sub
     End If
+    If IsNumeric(txtImprt.Text) = False Or txtImprt.Text < 1 Or txtImprt.Text > 10 Then
+        MessageBox "중요도는 1(낮음)부터 10(높음)까지여야 합니다.", "입력 값 오류", Me, 16
+        Exit Sub
+    End If
     If txtCategory.Text = "" Then
         txtCategory.Text = "(지정되지 않음)"
     End If
     
-    Dim DD As Integer
+    Dim dd As Integer
     Dim DCY As String
     Dim DCM As String
     Dim DCD As String
     
-    For DD = 0 To lvPlanCP.ListCount - 1
-        DCY = CStr(CInt(Split(lvPlanCP.List(DD), "-")(0)))
-        DCM = CStr(CInt(Split(lvPlanCP.List(DD), "-")(1)))
-        DCD = CStr(CInt(Split(lvPlanCP.List(DD), "-")(2)))
+    For dd = 0 To lvPlanCP.ListCount - 1
+        DCY = CStr(CInt(Split(lvPlanCP.List(dd), "-")(0)))
+        DCM = CStr(CInt(Split(lvPlanCP.List(dd), "-")(1)))
+        DCD = CStr(CInt(Split(lvPlanCP.List(dd), "-")(2)))
         
         '일정을 추가하기 전에 해당 제목의 일정이 존재하는지 확인한다.
         If FileExists("C:\CALPLANS\" & DCY & "\" & DCM & "\" & DCD & "\" & txtTitle.Text) = True Then
@@ -399,6 +457,8 @@ Private Sub OKButton_Click()
         SaveSetting "Calendar", DCY & "\" & DCM & "\" & DCD, txtTitle.Text & "Location", txtLocation.Text
         SaveSetting "Calendar", DCY & "\" & DCM & "\" & DCD, txtTitle.Text & "Cate", txtCategory.Text
         SaveSetting "Calendar", DCY & "\" & DCM & "\" & DCD, txtTitle.Text & "Cont", txtContent.Text
+        SaveSetting "Calendar", DCY & "\" & DCM & "\" & DCD, txtTitle.Text & "Part", txtParticipants.Text
+        SaveSetting "Calendar", DCY & "\" & DCM & "\" & DCD, txtTitle.Text & "Impt", txtImprt.Text
         
         frmPlans.LoadPlans
         
@@ -417,7 +477,7 @@ Private Sub OKButton_Click()
             '파일을 닫는다.
             Close #iFileNo
         End If
-    Next DD
+    Next dd
     
     frmMain.lvTodaysPlan.Refresh
     frmMain.lvTodaysPlans.Refresh

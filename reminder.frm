@@ -27,19 +27,19 @@ Begin VB.Form frmReminder
    Begin VB.CommandButton cmdReAlert 
       Cancel          =   -1  'True
       Caption         =   "다시 알림(&R)"
+      Default         =   -1  'True
       Height          =   375
       Left            =   4680
       TabIndex        =   1
-      Top             =   600
+      Top             =   120
       Width           =   1215
    End
    Begin VB.CommandButton OKButton 
       Caption         =   "닫기(&C)"
-      Default         =   -1  'True
       Height          =   375
       Left            =   4680
       TabIndex        =   0
-      Top             =   120
+      Top             =   600
       Width           =   1215
    End
    Begin VB.Label lblLoca 
