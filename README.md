@@ -3,6 +3,8 @@
 
 VB6으로 만든 일정관리자 프로그램.
 
+VB6 특성상 95 이상의 모든 윈도우에서 실행 가능. (3.1에서는 WIN32 관련 프로그램 필요)
+
 ## 사용한 자원/코드
 - http://www.vbforums.com/showthread.php?595990-VB6-System-tray-icon-systray
 - http://www.vbforums.com/showthread.php?447184-Check-For-Running-Process
