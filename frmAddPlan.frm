@@ -58,13 +58,13 @@ Begin VB.Form frmAddPlan
       Top             =   1440
       Width           =   3255
       Begin VB.CommandButton cmdRPT 
-         Caption         =   "되풀이"
+         Caption         =   "매주 되풀이"
          Height          =   375
-         Left            =   2040
+         Left            =   2030
          TabIndex        =   23
          ToolTipText     =   "이번달이 끝날때까지 일정 매주 되풀이"
          Top             =   2400
-         Width           =   1095
+         Width           =   1105
       End
       Begin VB.CommandButton cmdDP 
          Caption         =   "-"
@@ -297,17 +297,17 @@ Private Sub cmdCP_Click()
         Exit Sub
     End If
     
-    Dim cy As Integer
+    Dim CY As Integer
     Dim CM As Integer
     Dim CD As Integer
     
-    cy = CStr(CInt(txtCY.Text))
+    CY = CStr(CInt(txtCY.Text))
     CM = CStr(CInt(txtCM.Text))
     CD = CStr(CInt(txtCD.Text))
     
-    MkDir "C:\CALPLANS\" & cy & "\" & CM & "\" & CD
+    MkDir "C:\CALPLANS\" & CY & "\" & CM & "\" & CD
     
-    lvPlanCP.AddItem cy & "-" & CM & "-" & CD
+    lvPlanCP.AddItem CY & "-" & CM & "-" & CD
 End Sub
 
 Private Sub cmdDP_Click()
@@ -328,6 +328,7 @@ Private Sub cmdRPT_Click()
         If Split(DT, "-")(1) <> Split(CurrentDate, "-")(1) Then
             Exit Sub
         End If
+        MkDir "C:\CALPLANS\" & CStr(CInt(Split(DT, "-")(0))) & "\" & CStr(CInt(Split(DT, "-")(1))) & "\" & CStr(CInt(Split(DT, "-")(2)))
         lvPlanCP.AddItem CStr(CInt(Split(DT, "-")(0))) & "-" & CStr(CInt(Split(DT, "-")(1))) & "-" & CStr(CInt(Split(DT, "-")(2)))
     Next i
 End Sub

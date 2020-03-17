@@ -876,7 +876,7 @@ Begin VB.Form frmMain
             _ExtentY        =   476
             _Version        =   327681
             BuddyControl    =   "txtImpt"
-            BuddyDispid     =   196699
+            BuddyDispid     =   196631
             OrigLeft        =   600
             OrigTop         =   1920
             OrigRight       =   855
@@ -904,7 +904,7 @@ Begin VB.Form frmMain
             _ExtentY        =   476
             _Version        =   327681
             BuddyControl    =   "txtPercentage"
-            BuddyDispid     =   196632
+            BuddyDispid     =   196634
             OrigLeft        =   3850
             OrigTop         =   1200
             OrigRight       =   4105
@@ -1243,7 +1243,7 @@ Begin VB.Form frmMain
          Appearance      =   0
          MonthColumns    =   3
          MonthRows       =   2
-         StartOfWeek     =   83951617
+         StartOfWeek     =   85327873
          CurrentDate     =   43858
       End
       Begin VB.Label Label15 
@@ -1286,7 +1286,7 @@ Begin VB.Form frmMain
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             AutoSize        =   2
-            TextSave        =   "오전 7:40"
+            TextSave        =   "오전 7:57"
          EndProperty
       EndProperty
    End
@@ -1791,6 +1791,8 @@ Private Sub Form_Load()
     For j = 0 To txtPlannerTF.Count - 1
         txtPlannerTF(j).Text = GetSetting("Calendar", "Planner", CStr(j), "")
     Next j
+    
+    MonthView1.Value = Split(Format(Now, "YYYY-M-D"), "-")(0) & "-" & Split(Format(Now, "YYYY-M-D"), "-")(1) & "-" & Split(Format(Now, "YYYY-M-D"), "-")(2)
 End Sub
 
 Private Sub lvTodaysPlan_DblClick()
