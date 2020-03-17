@@ -15,17 +15,45 @@ Begin VB.Form frmPlans
    ScaleWidth      =   5925
    ShowInTaskbar   =   0   'False
    StartUpPosition =   1  '소유자 가운데
-   Begin VB.CommandButton Command1 
-      Caption         =   "이동(&M)"
+   Begin VB.CommandButton cmdTody 
+      Caption         =   "T"
+      Height          =   375
+      Left            =   3960
+      TabIndex        =   13
+      ToolTipText     =   "오늘의 날짜로 이동"
+      Top             =   80
+      Width           =   375
+   End
+   Begin VB.CommandButton cmdYest 
+      Caption         =   "◀"
+      Height          =   375
+      Left            =   4920
+      TabIndex        =   12
+      ToolTipText     =   "어제로"
+      Top             =   80
+      Width           =   375
+   End
+   Begin VB.CommandButton cmdTomr 
+      Caption         =   "▶"
+      Height          =   375
+      Left            =   5400
+      TabIndex        =   11
+      ToolTipText     =   "내일로"
+      Top             =   80
+      Width           =   375
+   End
+   Begin VB.CommandButton cmdMoveTo 
+      Caption         =   "→"
       Height          =   375
       Left            =   4440
       TabIndex        =   10
+      ToolTipText     =   "선택한 날짜로 이동"
       Top             =   80
-      Width           =   1335
+      Width           =   375
    End
    Begin VB.ComboBox txtDay 
       Height          =   300
-      Left            =   3360
+      Left            =   3000
       TabIndex        =   9
       Text            =   "Combo1"
       Top             =   120
@@ -33,7 +61,7 @@ Begin VB.Form frmPlans
    End
    Begin VB.ComboBox txtMonth 
       Height          =   300
-      Left            =   1800
+      Left            =   1680
       TabIndex        =   8
       Text            =   "Combo1"
       Top             =   120
@@ -111,7 +139,7 @@ Begin VB.Form frmPlans
       NumItems        =   0
    End
    Begin VB.Label Label1 
-      Caption         =   "년                  월                        일"
+      Caption         =   "년                월                   일"
       Height          =   255
       Left            =   1200
       TabIndex        =   7
@@ -192,6 +220,16 @@ Sub LoadPlans()
     Next Plan
 End Sub
 
+Private Sub cmdTody_Click()
+    CurrentDate = Format(Now, "YYYY-M-D")
+    Form_Load
+End Sub
+
+Private Sub cmdTomr_Click()
+    CurrentDate = DateAdd("d", 1, CurrentDate)
+    Form_Load
+End Sub
+
 Private Sub cmdViewPlan_Click()
     On Error GoTo exitsub
     frmPlanView.CurrentDate = CurrentDate
@@ -208,7 +246,7 @@ exitsub:
     Exit Sub
 End Sub
 
-Private Sub Command1_Click()
+Private Sub cmdMoveTo_Click()
     On Error Resume Next
     If IsNumeric(txtYear.Text) = False Or IsNumeric(txtYear.Text) = False Or IsNumeric(txtYear.Text) = False Then
         MessageBox "날짜의 값은 숫자이여야 합니다.", "오류", Me, 16
@@ -225,6 +263,11 @@ Private Sub Command1_Click()
     End If
     
     CurrentDate = txtYear.Text & "-" & txtMonth.Text & "-" & txtDay.Text
+    Form_Load
+End Sub
+
+Private Sub cmdYest_Click()
+    CurrentDate = DateAdd("d", -1, CurrentDate)
     Form_Load
 End Sub
 
