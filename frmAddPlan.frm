@@ -18,14 +18,14 @@ Begin VB.Form frmAddPlan
    Begin VB.TextBox txtParticipants 
       Height          =   270
       Left            =   5400
-      TabIndex        =   28
+      TabIndex        =   6
       Top             =   80
       Width           =   1575
    End
    Begin ComCtl2.UpDown UpDown1 
       Height          =   270
       Left            =   4440
-      TabIndex        =   26
+      TabIndex        =   27
       Top             =   75
       Width           =   255
       _ExtentX        =   450
@@ -45,7 +45,7 @@ Begin VB.Form frmAddPlan
       Alignment       =   1  '오른쪽 맞춤
       Height          =   270
       Left            =   4080
-      TabIndex        =   25
+      TabIndex        =   5
       Text            =   "1"
       Top             =   80
       Width           =   360
@@ -54,30 +54,39 @@ Begin VB.Form frmAddPlan
       Caption         =   "이 일정이 있는 날짜"
       Height          =   2895
       Left            =   120
-      TabIndex        =   16
+      TabIndex        =   25
       Top             =   1440
       Width           =   3255
       Begin VB.CommandButton cmdRPT 
-         Caption         =   "매주 되풀이"
+         Caption         =   "되풀이..."
          Height          =   375
-         Left            =   2030
-         TabIndex        =   23
-         ToolTipText     =   "이번달이 끝날때까지 일정 매주 되풀이"
+         Left            =   2280
+         TabIndex        =   15
+         ToolTipText     =   "일정 매주 되풀이"
          Top             =   2400
-         Width           =   1105
+         Width           =   870
+      End
+      Begin VB.CommandButton cmdDelAll 
+         Caption         =   "A"
+         Height          =   375
+         Left            =   2040
+         TabIndex        =   30
+         ToolTipText     =   "모든 날짜를 삭제합니다."
+         Top             =   2400
+         Width           =   255
       End
       Begin VB.CommandButton cmdDP 
          Caption         =   "-"
          Height          =   375
          Left            =   1800
-         TabIndex        =   22
+         TabIndex        =   14
          Top             =   2400
          Width           =   255
       End
       Begin VB.ListBox lvPlanCP 
          Height          =   2040
          Left            =   120
-         TabIndex        =   21
+         TabIndex        =   9
          Top             =   240
          Width           =   3015
       End
@@ -85,21 +94,21 @@ Begin VB.Form frmAddPlan
          Caption         =   "+"
          Height          =   375
          Left            =   1560
-         TabIndex        =   20
+         TabIndex        =   12
          Top             =   2400
          Width           =   255
       End
       Begin VB.TextBox txtCD 
          Height          =   270
          Left            =   1200
-         TabIndex        =   19
+         TabIndex        =   13
          Top             =   2460
          Width           =   375
       End
       Begin VB.TextBox txtCM 
          Height          =   270
          Left            =   720
-         TabIndex        =   18
+         TabIndex        =   11
          Top             =   2460
          Width           =   375
       End
@@ -107,7 +116,7 @@ Begin VB.Form frmAddPlan
          Height          =   270
          Left            =   120
          MaxLength       =   4
-         TabIndex        =   17
+         TabIndex        =   10
          Top             =   2460
          Width           =   495
       End
@@ -124,7 +133,7 @@ Begin VB.Form frmAddPlan
       Caption         =   "이번달이 끝날때까지 일정 매주 되풀이"
       Height          =   255
       Left            =   8520
-      TabIndex        =   15
+      TabIndex        =   24
       Top             =   5040
       Visible         =   0   'False
       Width           =   3975
@@ -132,7 +141,7 @@ Begin VB.Form frmAddPlan
    Begin VB.FileListBox lvCateFiles 
       Height          =   270
       Left            =   7920
-      TabIndex        =   14
+      TabIndex        =   23
       Top             =   5040
       Visible         =   0   'False
       Width           =   495
@@ -142,7 +151,7 @@ Begin VB.Form frmAddPlan
       Left            =   3480
       MultiLine       =   -1  'True
       ScrollBars      =   2  '수직
-      TabIndex        =   13
+      TabIndex        =   8
       Top             =   1440
       Width           =   3495
    End
@@ -151,14 +160,14 @@ Begin VB.Form frmAddPlan
       ItemData        =   "frmAddPlan.frx":0442
       Left            =   3480
       List            =   "frmAddPlan.frx":044F
-      TabIndex        =   11
+      TabIndex        =   7
       Top             =   720
       Width           =   3495
    End
    Begin VB.TextBox txtLocation 
       Height          =   270
       Left            =   1080
-      TabIndex        =   9
+      TabIndex        =   4
       Top             =   960
       Width           =   2295
    End
@@ -166,7 +175,7 @@ Begin VB.Form frmAddPlan
       Height          =   270
       Left            =   630
       MaxLength       =   2
-      TabIndex        =   7
+      TabIndex        =   3
       Top             =   960
       Width           =   375
    End
@@ -174,7 +183,7 @@ Begin VB.Form frmAddPlan
       Height          =   270
       Left            =   120
       MaxLength       =   2
-      TabIndex        =   4
+      TabIndex        =   2
       ToolTipText     =   "24시 형식으로 입력합니다."
       Top             =   960
       Width           =   375
@@ -182,7 +191,7 @@ Begin VB.Form frmAddPlan
    Begin VB.TextBox txtTitle 
       Height          =   270
       Left            =   120
-      TabIndex        =   3
+      TabIndex        =   1
       Top             =   360
       Width           =   3255
    End
@@ -191,7 +200,7 @@ Begin VB.Form frmAddPlan
       Caption         =   "취소"
       Height          =   375
       Left            =   5280
-      TabIndex        =   1
+      TabIndex        =   16
       Top             =   3960
       Width           =   1695
    End
@@ -207,7 +216,7 @@ Begin VB.Form frmAddPlan
       Caption         =   "참여자:"
       Height          =   255
       Left            =   4800
-      TabIndex        =   27
+      TabIndex        =   28
       Top             =   120
       Width           =   735
    End
@@ -215,7 +224,7 @@ Begin VB.Form frmAddPlan
       Caption         =   "중요도:"
       Height          =   255
       Left            =   3480
-      TabIndex        =   24
+      TabIndex        =   26
       Top             =   120
       Width           =   735
    End
@@ -223,7 +232,7 @@ Begin VB.Form frmAddPlan
       Caption         =   "내용:"
       Height          =   255
       Left            =   3480
-      TabIndex        =   12
+      TabIndex        =   22
       Top             =   1200
       Width           =   855
    End
@@ -231,7 +240,7 @@ Begin VB.Form frmAddPlan
       Caption         =   "분류:"
       Height          =   255
       Left            =   3480
-      TabIndex        =   10
+      TabIndex        =   21
       Top             =   480
       Width           =   495
    End
@@ -239,7 +248,7 @@ Begin VB.Form frmAddPlan
       Caption         =   "위치:"
       Height          =   255
       Left            =   1080
-      TabIndex        =   8
+      TabIndex        =   20
       Top             =   720
       Width           =   975
    End
@@ -247,7 +256,7 @@ Begin VB.Form frmAddPlan
       Caption         =   " :"
       Height          =   255
       Left            =   480
-      TabIndex        =   6
+      TabIndex        =   19
       Top             =   960
       Width           =   255
    End
@@ -255,7 +264,7 @@ Begin VB.Form frmAddPlan
       Caption         =   "시간:"
       Height          =   255
       Left            =   120
-      TabIndex        =   5
+      TabIndex        =   18
       ToolTipText     =   "24시 형식으로 입력합니다."
       Top             =   720
       Width           =   855
@@ -264,9 +273,22 @@ Begin VB.Form frmAddPlan
       Caption         =   "제목:"
       Height          =   255
       Left            =   120
-      TabIndex        =   2
+      TabIndex        =   17
       Top             =   120
       Width           =   1095
+   End
+   Begin VB.Menu mnuRepeatTypeSelect 
+      Caption         =   "되풀이 방식 선택"
+      Visible         =   0   'False
+      Begin VB.Menu mnuRTSMonth 
+         Caption         =   "이번 달이 끝날 때까지(&M)"
+      End
+      Begin VB.Menu mnuRTSYear 
+         Caption         =   "올해가 끝날 때까지(&Y)"
+      End
+      Begin VB.Menu mnuRTSCustom 
+         Caption         =   "사용자 지정(&C)..."
+      End
    End
 End
 Attribute VB_Name = "frmAddPlan"
@@ -297,17 +319,32 @@ Private Sub cmdCP_Click()
         Exit Sub
     End If
     
-    Dim CY As Integer
+    Dim cy As Integer
     Dim CM As Integer
     Dim CD As Integer
     
-    CY = CStr(CInt(txtCY.Text))
+    cy = CStr(CInt(txtCY.Text))
     CM = CStr(CInt(txtCM.Text))
     CD = CStr(CInt(txtCD.Text))
     
-    MkDir "C:\CALPLANS\" & CY & "\" & CM & "\" & CD
+    Dim i As Integer
+    For i = 0 To lvPlanCP.ListCount - 1
+        If lvPlanCP.List(i) = cy & "-" & CM & "-" & CD Then
+            MessageBox "이미 추가된 날짜입니다.", "오류", Me, 16
+            Exit Sub
+        End If
+    Next i
     
-    lvPlanCP.AddItem CY & "-" & CM & "-" & CD
+    MkDir "C:\CALPLANS\" & cy & "\" & CM & "\" & CD
+    
+    lvPlanCP.AddItem cy & "-" & CM & "-" & CD
+End Sub
+
+Private Sub cmdDelAll_Click()
+    On Error Resume Next
+    If Confirm("추가한 *모든* 날짜를 삭제하시겠습니까?", "경고", Me, 48) Then
+        lvPlanCP.Clear
+    End If
 End Sub
 
 Private Sub cmdDP_Click()
@@ -319,18 +356,7 @@ End Sub
 
 Private Sub cmdRPT_Click()
     On Error Resume Next
-    Dim i As Integer
-    Dim DT As String
-    DT = CurrentDate
-    
-    For i = 1 To 5
-        DT = DateAdd("d", 7, DT)
-        If Split(DT, "-")(1) <> Split(CurrentDate, "-")(1) Then
-            Exit Sub
-        End If
-        MkDir "C:\CALPLANS\" & CStr(CInt(Split(DT, "-")(0))) & "\" & CStr(CInt(Split(DT, "-")(1))) & "\" & CStr(CInt(Split(DT, "-")(2)))
-        lvPlanCP.AddItem CStr(CInt(Split(DT, "-")(0))) & "-" & CStr(CInt(Split(DT, "-")(1))) & "-" & CStr(CInt(Split(DT, "-")(2)))
-    Next i
+    PopupMenu mnuRepeatTypeSelect, , , , mnuRTSMonth
 End Sub
 
 'Private Sub cmdTody_Click()
@@ -352,7 +378,7 @@ Private Sub Form_Load()
     Year = Split(CurrentDate, "-")(0)
     Month = Split(CurrentDate, "-")(1)
     Day = Split(CurrentDate, "-")(2)
-    Me.Caption = "일정 추가 - " & Year & "년 " & Month & "월 " & Day & "일"
+    'Me.Caption = "일정 추가 - " & Year & "년 " & Month & "월 " & Day & "일"
     
     txtCY.Text = Year
     txtCM.Text = Month
@@ -374,6 +400,94 @@ Private Sub Form_Load()
     Next Category
     
     lvPlanCP.AddItem CStr(CInt(Year)) & "-" & CStr(CInt(Month)) & "-" & CStr(CInt(Day))
+End Sub
+
+Private Sub lvPlanCP_KeyDown(KeyCode As Integer, Shift As Integer)
+    On Error Resume Next
+    If (KeyCode = 46) Then
+        cmdDP_Click
+    End If
+End Sub
+
+Private Sub mnuRTSCustom_Click()
+    On Error Resume Next
+    Dim i As Integer
+    Dim DT As String
+    DT = txtCY.Text & "-" & txtCM.Text & "-" & txtCD.Text
+    
+    Dim CM As String
+    CM = InputBox("달 번호를 입력하십시오.", "알림")
+    
+    If CM = "" Then
+        Exit Sub
+    End If
+    
+    If IsNumeric(CM) = False Or CM > 12 Or CM < txtCM.Text Then
+        MessageBox "달이 숫자가 아니거나 12를 초과하거나 기준(현재) 달보다 작습니다.", "오류", Me, 16
+        Exit Sub
+    End If
+    
+    For i = 1 To 48
+        DT = DateAdd("d", 7, DT)
+        If Split(DT, "-")(1) > CInt(CM) Then
+            Exit Sub
+        End If
+        
+        Dim j As Integer
+        For j = 0 To lvPlanCP.ListCount - 1
+            If lvPlanCP.List(j) = CStr(CInt(Split(DT, "-")(0))) & "-" & CStr(CInt(Split(DT, "-")(1))) & "-" & CStr(CInt(Split(DT, "-")(2))) Then GoTo forend
+        Next j
+        
+        MkDir "C:\CALPLANS\" & CStr(CInt(Split(DT, "-")(0))) & "\" & CStr(CInt(Split(DT, "-")(1))) & "\" & CStr(CInt(Split(DT, "-")(2)))
+        lvPlanCP.AddItem CStr(CInt(Split(DT, "-")(0))) & "-" & CStr(CInt(Split(DT, "-")(1))) & "-" & CStr(CInt(Split(DT, "-")(2)))
+forend:
+    Next i
+End Sub
+
+Private Sub mnuRTSMonth_Click()
+    On Error Resume Next
+    Dim i As Integer
+    Dim DT As String
+    DT = txtCY.Text & "-" & txtCM.Text & "-" & txtCD.Text
+    
+    For i = 1 To 5
+        DT = DateAdd("d", 7, DT)
+        If Split(DT, "-")(1) <> Split(CurrentDate, "-")(1) Then
+            Exit Sub
+        End If
+        
+        Dim j As Integer
+        For j = 0 To lvPlanCP.ListCount - 1
+            If lvPlanCP.List(j) = CStr(CInt(Split(DT, "-")(0))) & "-" & CStr(CInt(Split(DT, "-")(1))) & "-" & CStr(CInt(Split(DT, "-")(2))) Then GoTo forend
+        Next j
+        
+        MkDir "C:\CALPLANS\" & CStr(CInt(Split(DT, "-")(0))) & "\" & CStr(CInt(Split(DT, "-")(1))) & "\" & CStr(CInt(Split(DT, "-")(2)))
+        lvPlanCP.AddItem CStr(CInt(Split(DT, "-")(0))) & "-" & CStr(CInt(Split(DT, "-")(1))) & "-" & CStr(CInt(Split(DT, "-")(2)))
+forend:
+    Next i
+End Sub
+
+Private Sub mnuRTSYear_Click()
+    On Error Resume Next
+    Dim i As Integer
+    Dim DT As String
+    DT = txtCY.Text & "-" & txtCM.Text & "-" & txtCD.Text
+    
+    For i = 1 To 50
+        DT = DateAdd("d", 7, DT)
+        If Split(DT, "-")(0) <> Split(CurrentDate, "-")(0) Then
+            Exit Sub
+        End If
+        
+        Dim j As Integer
+        For j = 0 To lvPlanCP.ListCount - 1
+            If lvPlanCP.List(j) = CStr(CInt(Split(DT, "-")(0))) & "-" & CStr(CInt(Split(DT, "-")(1))) & "-" & CStr(CInt(Split(DT, "-")(2))) Then GoTo forend
+        Next j
+        
+        MkDir "C:\CALPLANS\" & CStr(CInt(Split(DT, "-")(0))) & "\" & CStr(CInt(Split(DT, "-")(1))) & "\" & CStr(CInt(Split(DT, "-")(2)))
+        lvPlanCP.AddItem CStr(CInt(Split(DT, "-")(0))) & "-" & CStr(CInt(Split(DT, "-")(1))) & "-" & CStr(CInt(Split(DT, "-")(2)))
+forend:
+    Next i
 End Sub
 
 Private Sub OKButton_Click()
