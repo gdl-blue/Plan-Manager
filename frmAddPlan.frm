@@ -58,7 +58,7 @@ Begin VB.Form frmAddPlan
       Top             =   1440
       Width           =   3255
       Begin VB.CommandButton cmdRPT 
-         Caption         =   "되풀이..."
+         Caption         =   "반복..."
          Height          =   375
          Left            =   2280
          TabIndex        =   15
@@ -280,6 +280,10 @@ Begin VB.Form frmAddPlan
    Begin VB.Menu mnuRepeatTypeSelect 
       Caption         =   "되풀이 방식 선택"
       Visible         =   0   'False
+      Begin VB.Menu mnuDescEW 
+         Caption         =   "매 주 반복"
+         Enabled         =   0   'False
+      End
       Begin VB.Menu mnuRTSMonth 
          Caption         =   "이번 달이 끝날 때까지(&M)"
       End
@@ -288,6 +292,35 @@ Begin VB.Form frmAddPlan
       End
       Begin VB.Menu mnuRTSCustom 
          Caption         =   "사용자 지정(&C)..."
+      End
+      Begin VB.Menu mnuSep29482 
+         Caption         =   "-"
+      End
+      Begin VB.Menu mnuDescED 
+         Caption         =   "매일 반복"
+         Enabled         =   0   'False
+      End
+      Begin VB.Menu mnuEDTM 
+         Caption         =   "이번 달이 끝날 때까지(&O)"
+      End
+      Begin VB.Menu mnuEDTY 
+         Caption         =   "올해가 끝날 때까찌(&E)"
+      End
+      Begin VB.Menu mnuEDCU 
+         Caption         =   "사용자 지정(&U)..."
+      End
+      Begin VB.Menu mnuSep12948 
+         Caption         =   "-"
+      End
+      Begin VB.Menu mnuDescEM 
+         Caption         =   "매 달 반복"
+         Enabled         =   0   'False
+      End
+      Begin VB.Menu mnuEMTY 
+         Caption         =   "올해가 끝날 때까지(&A)"
+      End
+      Begin VB.Menu mnuEMCU 
+         Caption         =   "사용자 지정(&S)..."
       End
    End
 End
@@ -407,6 +440,155 @@ Private Sub lvPlanCP_KeyDown(KeyCode As Integer, Shift As Integer)
     If (KeyCode = 46) Then
         cmdDP_Click
     End If
+End Sub
+
+Private Sub mnuEDCU_Click()
+    On Error Resume Next
+    Dim i As Integer
+    Dim DT As String
+    DT = txtCY.Text & "-" & txtCM.Text & "-" & txtCD.Text
+    
+    Dim CM As String
+    CM = InputBox("달 번호를 입력하십시오.", "알림")
+    
+    If CM = "" Then
+        Exit Sub
+    End If
+    
+    If IsNumeric(CM) = False Or CM > 12 Or CM < txtCM.Text Then
+        MessageBox "달이 숫자가 아니거나 12를 초과하거나 기준 달보다 작습니다.", "오류", Me, 16
+        Exit Sub
+    End If
+    
+    For i = 1 To 48
+        DT = DateAdd("d", 1, DT)
+        If Split(DT, "-")(1) > CInt(CM) Then
+            Exit Sub
+        End If
+        
+        Dim j As Integer
+        For j = 0 To lvPlanCP.ListCount - 1
+            If lvPlanCP.List(j) = CStr(CInt(Split(DT, "-")(0))) & "-" & CStr(CInt(Split(DT, "-")(1))) & "-" & CStr(CInt(Split(DT, "-")(2))) Then GoTo forend
+        Next j
+        
+        MkDir "C:\CALPLANS\" & CStr(CInt(Split(DT, "-")(0))) & "\" & CStr(CInt(Split(DT, "-")(1))) & "\" & CStr(CInt(Split(DT, "-")(2)))
+        lvPlanCP.AddItem CStr(CInt(Split(DT, "-")(0))) & "-" & CStr(CInt(Split(DT, "-")(1))) & "-" & CStr(CInt(Split(DT, "-")(2)))
+forend:
+    Next i
+End Sub
+
+Private Sub mnuEDTM_Click()
+    On Error Resume Next
+    Dim i As Integer
+    Dim DT As String
+    DT = txtCY.Text & "-" & txtCM.Text & "-" & txtCD.Text
+    
+    For i = 1 To 33
+        DT = DateAdd("d", 1, DT)
+        If Split(DT, "-")(1) <> Split(CurrentDate, "-")(1) Then
+            Exit Sub
+        End If
+        
+        Dim j As Integer
+        For j = 0 To lvPlanCP.ListCount - 1
+            If lvPlanCP.List(j) = CStr(CInt(Split(DT, "-")(0))) & "-" & CStr(CInt(Split(DT, "-")(1))) & "-" & CStr(CInt(Split(DT, "-")(2))) Then GoTo forend
+        Next j
+        
+        MkDir "C:\CALPLANS\" & CStr(CInt(Split(DT, "-")(0))) & "\" & CStr(CInt(Split(DT, "-")(1))) & "\" & CStr(CInt(Split(DT, "-")(2)))
+        lvPlanCP.AddItem CStr(CInt(Split(DT, "-")(0))) & "-" & CStr(CInt(Split(DT, "-")(1))) & "-" & CStr(CInt(Split(DT, "-")(2)))
+forend:
+    Next i
+End Sub
+
+Private Sub mnuEDTY_Click()
+    On Error Resume Next
+    Dim i As Integer
+    Dim DT As String
+    DT = txtCY.Text & "-" & txtCM.Text & "-" & txtCD.Text
+    
+    For i = 1 To 377
+        DT = DateAdd("d", 1, DT)
+        If Split(DT, "-")(0) <> Split(CurrentDate, "-")(0) Then
+            Exit Sub
+        End If
+        
+        Dim j As Integer
+        For j = 0 To lvPlanCP.ListCount - 1
+            If lvPlanCP.List(j) = CStr(CInt(Split(DT, "-")(0))) & "-" & CStr(CInt(Split(DT, "-")(1))) & "-" & CStr(CInt(Split(DT, "-")(2))) Then GoTo forend
+        Next j
+        
+        MkDir "C:\CALPLANS\" & CStr(CInt(Split(DT, "-")(0))) & "\" & CStr(CInt(Split(DT, "-")(1))) & "\" & CStr(CInt(Split(DT, "-")(2)))
+        lvPlanCP.AddItem CStr(CInt(Split(DT, "-")(0))) & "-" & CStr(CInt(Split(DT, "-")(1))) & "-" & CStr(CInt(Split(DT, "-")(2)))
+forend:
+    Next i
+End Sub
+
+Private Sub mnuEMCU_Click()
+    On Error Resume Next
+    Dim i As Integer
+    Dim DT As String
+    DT = txtCY.Text & "-" & txtCM.Text & "-" & txtCD.Text
+    
+    Dim CM As String
+    CM = InputBox("달 번호를 입력하십시오.", "알림")
+    
+    If CM = "" Then
+        Exit Sub
+    End If
+    
+    If IsNumeric(CM) = False Or CM > 12 Or CM < txtCM.Text Then
+        MessageBox "달이 숫자가 아니거나 12를 초과하거나 기준 달보다 작습니다.", "오류", Me, 16
+        Exit Sub
+    End If
+    
+    For i = 1 To 15
+        Dim j As Integer
+        For j = 1 To 35
+            DT = DateAdd("d", 1, DT)
+            If Split(DT, "-")(2) = txtCD.Text Then Exit For
+        Next j
+        
+        If CInt(Split(DT, "-")(1)) > CInt(CM) Then Exit Sub
+        
+        If Split(DT, "-")(0) <> CInt(txtCY.Text) Then
+            Exit Sub
+        End If
+        
+        For j = 0 To lvPlanCP.ListCount - 1
+            If lvPlanCP.List(j) = CStr(CInt(Split(DT, "-")(0))) & "-" & CStr(CInt(Split(DT, "-")(1))) & "-" & CStr(CInt(Split(DT, "-")(2))) Then GoTo forend
+        Next j
+        
+        MkDir "C:\CALPLANS\" & CStr(CInt(Split(DT, "-")(0))) & "\" & CStr(CInt(Split(DT, "-")(1))) & "\" & CStr(CInt(Split(DT, "-")(2)))
+        lvPlanCP.AddItem CStr(CInt(Split(DT, "-")(0))) & "-" & CStr(CInt(Split(DT, "-")(1))) & "-" & CStr(CInt(Split(DT, "-")(2)))
+forend:
+    Next i
+End Sub
+
+Private Sub mnuEMTY_Click()
+    On Error Resume Next
+    Dim i As Integer
+    Dim DT As String
+    DT = txtCY.Text & "-" & txtCM.Text & "-" & txtCD.Text
+    
+    For i = 1 To 15
+        Dim j As Integer
+        For j = 1 To 35
+            DT = DateAdd("d", 1, DT)
+            If Split(DT, "-")(2) = txtCD.Text Then Exit For
+        Next j
+        
+        If Split(DT, "-")(0) <> CInt(txtCY.Text) Then
+            Exit Sub
+        End If
+        
+        For j = 0 To lvPlanCP.ListCount - 1
+            If lvPlanCP.List(j) = CStr(CInt(Split(DT, "-")(0))) & "-" & CStr(CInt(Split(DT, "-")(1))) & "-" & CStr(CInt(Split(DT, "-")(2))) Then GoTo forend
+        Next j
+        
+        MkDir "C:\CALPLANS\" & CStr(CInt(Split(DT, "-")(0))) & "\" & CStr(CInt(Split(DT, "-")(1))) & "\" & CStr(CInt(Split(DT, "-")(2)))
+        lvPlanCP.AddItem CStr(CInt(Split(DT, "-")(0))) & "-" & CStr(CInt(Split(DT, "-")(1))) & "-" & CStr(CInt(Split(DT, "-")(2)))
+forend:
+    Next i
 End Sub
 
 Private Sub mnuRTSCustom_Click()
