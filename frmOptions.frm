@@ -53,13 +53,14 @@ Begin VB.Form frmOptions
       _ExtentY        =   7223
       _Version        =   393216
       Tabs            =   8
+      Tab             =   2
       TabsPerRow      =   4
       TabHeight       =   520
       ShowFocusRect   =   0   'False
       BackColor       =   -2147483636
       TabCaption(0)   =   "화면 표시"
       TabPicture(0)   =   "frmOptions.frx":0442
-      Tab(0).ControlEnabled=   -1  'True
+      Tab(0).ControlEnabled=   0   'False
       Tab(0).Control(0)=   "Frame8"
       Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "Frame9"
@@ -74,25 +75,27 @@ Begin VB.Form frmOptions
       Tab(1).ControlCount=   1
       TabCaption(2)   =   "표준"
       TabPicture(2)   =   "frmOptions.frx":047A
-      Tab(2).ControlEnabled=   0   'False
+      Tab(2).ControlEnabled=   -1  'True
       Tab(2).Control(0)=   "Frame4"
       Tab(2).Control(0).Enabled=   0   'False
-      Tab(2).ControlCount=   1
+      Tab(2).Control(1)=   "Frame11"
+      Tab(2).Control(1).Enabled=   0   'False
+      Tab(2).ControlCount=   2
       TabCaption(3)   =   "검사"
       TabPicture(3)   =   "frmOptions.frx":0496
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "Frame6"
-      Tab(3).Control(1)=   "Label9"
+      Tab(3).Control(0)=   "Label9"
+      Tab(3).Control(1)=   "Frame6"
       Tab(3).ControlCount=   2
       TabCaption(4)   =   "사용자 분류"
       TabPicture(4)   =   "frmOptions.frx":04B2
       Tab(4).ControlEnabled=   0   'False
-      Tab(4).Control(0)=   "cmdClearCates"
-      Tab(4).Control(1)=   "cmdDelSelCate"
-      Tab(4).Control(2)=   "cmdAddNewCate"
-      Tab(4).Control(3)=   "txtCategory"
-      Tab(4).Control(4)=   "Frame5"
-      Tab(4).Control(5)=   "Label8"
+      Tab(4).Control(0)=   "Label8"
+      Tab(4).Control(1)=   "Frame5"
+      Tab(4).Control(2)=   "txtCategory"
+      Tab(4).Control(3)=   "cmdAddNewCate"
+      Tab(4).Control(4)=   "cmdDelSelCate"
+      Tab(4).Control(5)=   "cmdClearCates"
       Tab(4).ControlCount=   6
       TabCaption(5)   =   "테마"
       TabPicture(5)   =   "frmOptions.frx":04CE
@@ -109,10 +112,26 @@ Begin VB.Form frmOptions
       Tab(7).ControlEnabled=   0   'False
       Tab(7).Control(0)=   "Frame1"
       Tab(7).ControlCount=   1
+      Begin VB.Frame Frame11 
+         Caption         =   "팁 상자"
+         Height          =   615
+         Left            =   120
+         TabIndex        =   51
+         Top             =   2400
+         Width           =   3135
+         Begin VB.CheckBox Check1 
+            Caption         =   "시작 시 '알고 계십니까' 표시(&P)"
+            Height          =   255
+            Left            =   120
+            TabIndex        =   52
+            Top             =   240
+            Width           =   2895
+         End
+      End
       Begin VB.Frame Frame10 
          Caption         =   "테마"
          Height          =   735
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   44
          Top             =   3240
          Width           =   7455
@@ -136,7 +155,7 @@ Begin VB.Form frmOptions
       Begin VB.Frame Frame9 
          Caption         =   "달력"
          Height          =   735
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   41
          Top             =   2400
          Width           =   7455
@@ -184,7 +203,7 @@ Begin VB.Form frmOptions
       Begin VB.Frame Frame8 
          Caption         =   "레이아웃"
          Height          =   1575
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   36
          Top             =   720
          Width           =   5895
@@ -345,7 +364,7 @@ Begin VB.Form frmOptions
       Begin VB.Frame Frame4 
          Caption         =   "시작"
          Height          =   1575
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   13
          Top             =   720
          Width           =   6015
