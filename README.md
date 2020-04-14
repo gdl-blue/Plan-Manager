@@ -14,6 +14,7 @@ VB6 특성상 95 이상의 모든 윈도우에서 실행 가능. (3.1에서는 W
 - http://www.vbforums.com/showthread.php?546633-VB6-Sleep-Function
 - https://stackoverflow.com/questions/21108664/how-to-create-txt-file
 - http://www.vbforums.com/showthread.php?349990-Classic-VB-How-can-I-check-if-a-file-exists
+- http://www.vbforums.com/showthread.php?617573-RESOLVED-Scroll-bars-for-frame-inside-a-tab
 
 ## 나중에 사용하게될 수도 있는 코드
 - http://www.planet-source-code.com/vb/scripts/ShowCode.asp?txtCodeId=66951&lngWId=1
