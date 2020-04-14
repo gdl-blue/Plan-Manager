@@ -4,7 +4,7 @@ Begin VB.Form msgXPOC
    Caption         =   "메시지 상자"
    ClientHeight    =   1335
    ClientLeft      =   45
-   ClientTop       =   435
+   ClientTop       =   465
    ClientWidth     =   28440
    Icon            =   "msgXPOC.frx":0000
    LinkTopic       =   "Form1"
@@ -58,10 +58,19 @@ Begin VB.Form msgXPOC
    End
    Begin VB.Label lblContent 
       Caption         =   "내용"
+      BeginProperty Font 
+         Name            =   "굴림체"
+         Size            =   9
+         Charset         =   129
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   495
       Left            =   960
       TabIndex        =   1
-      Top             =   360
+      Top             =   320
       Width           =   27255
    End
    Begin VB.Image imgMBIconInfo 

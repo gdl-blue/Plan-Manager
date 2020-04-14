@@ -5,7 +5,7 @@ Begin VB.Form frmPlans
    Caption         =   "일정 목록"
    ClientHeight    =   4020
    ClientLeft      =   2760
-   ClientTop       =   3750
+   ClientTop       =   3900
    ClientWidth     =   7170
    Icon            =   "frmPlans.frx":0000
    LinkTopic       =   "Form1"
@@ -16,13 +16,13 @@ Begin VB.Form frmPlans
    ShowInTaskbar   =   0   'False
    StartUpPosition =   1  '소유자 가운데
    Begin VB.CommandButton cmdTody 
-      Caption         =   "T"
+      Caption         =   "오늘로(&T)"
       Height          =   375
-      Left            =   5280
+      Left            =   4440
       TabIndex        =   13
       ToolTipText     =   "오늘의 날짜로 이동"
       Top             =   80
-      Width           =   375
+      Width           =   1215
    End
    Begin VB.CommandButton cmdYest 
       Caption         =   "◀"
@@ -55,7 +55,7 @@ Begin VB.Form frmPlans
       Height          =   300
       Left            =   3000
       TabIndex        =   9
-      Text            =   "Combo1"
+      Text            =   "txtDay"
       Top             =   120
       Width           =   615
    End
@@ -63,7 +63,7 @@ Begin VB.Form frmPlans
       Height          =   300
       Left            =   1680
       TabIndex        =   8
-      Text            =   "Combo1"
+      Text            =   "txtMonth"
       Top             =   120
       Width           =   615
    End

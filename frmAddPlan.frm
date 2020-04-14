@@ -5,7 +5,7 @@ Begin VB.Form frmAddPlan
    Caption         =   "일정 추가"
    ClientHeight    =   4410
    ClientLeft      =   2760
-   ClientTop       =   3750
+   ClientTop       =   3780
    ClientWidth     =   7095
    Icon            =   "frmAddPlan.frx":0000
    LinkTopic       =   "Form1"
@@ -280,6 +280,12 @@ Begin VB.Form frmAddPlan
    Begin VB.Menu mnuRepeatTypeSelect 
       Caption         =   "되풀이 방식 선택"
       Visible         =   0   'False
+      Begin VB.Menu mnuInfoSt 
+         Caption         =   "기준 날짜"
+      End
+      Begin VB.Menu mnuSep32434 
+         Caption         =   "-"
+      End
       Begin VB.Menu mnuDescEW 
          Caption         =   "매 주 반복"
          Enabled         =   0   'False
@@ -389,6 +395,7 @@ End Sub
 
 Private Sub cmdRPT_Click()
     On Error Resume Next
+    mnuInfoSt.Caption = "기준 날짜: " & txtCY.Text & "년 " & txtCM.Text & "월 " & txtCD.Text & "일"
     PopupMenu mnuRepeatTypeSelect, , , , mnuRTSMonth
 End Sub
 
@@ -589,6 +596,10 @@ Private Sub mnuEMTY_Click()
         lvPlanCP.AddItem CStr(CInt(Split(DT, "-")(0))) & "-" & CStr(CInt(Split(DT, "-")(1))) & "-" & CStr(CInt(Split(DT, "-")(2)))
 forend:
     Next i
+End Sub
+
+Private Sub mnuInfoSt_Click()
+    MessageBox "기준 날짜를 변경하려면 반복 단추 앞의 세 입력칸을 사용하십시오.", "정보", Me
 End Sub
 
 Private Sub mnuRTSCustom_Click()

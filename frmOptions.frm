@@ -1,12 +1,11 @@
 VERSION 5.00
 Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.Form frmOptions 
-   BackColor       =   &H8000000C&
    BorderStyle     =   3  '크기 고정 대화 상자
    Caption         =   "환경설정"
    ClientHeight    =   4635
    ClientLeft      =   -75
-   ClientTop       =   -75
+   ClientTop       =   255
    ClientWidth     =   8250
    Icon            =   "frmOptions.frx":0000
    MaxButton       =   0   'False
@@ -53,33 +52,28 @@ Begin VB.Form frmOptions
       _ExtentY        =   7223
       _Version        =   393216
       Tabs            =   8
-      Tab             =   2
+      Tab             =   6
       TabsPerRow      =   4
       TabHeight       =   520
       ShowFocusRect   =   0   'False
-      BackColor       =   -2147483636
       TabCaption(0)   =   "화면 표시"
       TabPicture(0)   =   "frmOptions.frx":0442
       Tab(0).ControlEnabled=   0   'False
       Tab(0).Control(0)=   "Frame8"
-      Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "Frame9"
-      Tab(0).Control(1).Enabled=   0   'False
       Tab(0).Control(2)=   "Frame10"
-      Tab(0).Control(2).Enabled=   0   'False
       Tab(0).ControlCount=   3
       TabCaption(1)   =   "사용자 데이터"
       TabPicture(1)   =   "frmOptions.frx":045E
       Tab(1).ControlEnabled=   0   'False
       Tab(1).Control(0)=   "Frame2"
-      Tab(1).ControlCount=   1
+      Tab(1).Control(1)=   "Frame3"
+      Tab(1).ControlCount=   2
       TabCaption(2)   =   "표준"
       TabPicture(2)   =   "frmOptions.frx":047A
-      Tab(2).ControlEnabled=   -1  'True
+      Tab(2).ControlEnabled=   0   'False
       Tab(2).Control(0)=   "Frame4"
-      Tab(2).Control(0).Enabled=   0   'False
       Tab(2).Control(1)=   "Frame11"
-      Tab(2).Control(1).Enabled=   0   'False
       Tab(2).ControlCount=   2
       TabCaption(3)   =   "검사"
       TabPicture(3)   =   "frmOptions.frx":0496
@@ -91,39 +85,141 @@ Begin VB.Form frmOptions
       TabPicture(4)   =   "frmOptions.frx":04B2
       Tab(4).ControlEnabled=   0   'False
       Tab(4).Control(0)=   "Label8"
-      Tab(4).Control(1)=   "Frame5"
-      Tab(4).Control(2)=   "txtCategory"
-      Tab(4).Control(3)=   "cmdAddNewCate"
-      Tab(4).Control(4)=   "cmdDelSelCate"
-      Tab(4).Control(5)=   "cmdClearCates"
-      Tab(4).ControlCount=   6
+      Tab(4).Control(1)=   "Label11"
+      Tab(4).Control(2)=   "Label14"
+      Tab(4).Control(3)=   "txtCategory"
+      Tab(4).Control(4)=   "cmdAddNewCate"
+      Tab(4).Control(5)=   "cmdDelSelCate"
+      Tab(4).Control(6)=   "cmdClearCates"
+      Tab(4).Control(7)=   "lvCustomCates"
+      Tab(4).Control(8)=   "lvGroups"
+      Tab(4).Control(9)=   "txtNewGroup"
+      Tab(4).Control(10)=   "cmdClearGroups"
+      Tab(4).Control(11)=   "cmdAddNewGroup"
+      Tab(4).Control(12)=   "cmdDelGroup"
+      Tab(4).ControlCount=   13
       TabCaption(5)   =   "테마"
       TabPicture(5)   =   "frmOptions.frx":04CE
       Tab(5).ControlEnabled=   0   'False
       Tab(5).Control(0)=   "Frame7"
       Tab(5).ControlCount=   1
-      TabCaption(6)   =   "초기화"
+      TabCaption(6)   =   "비밀번호"
       TabPicture(6)   =   "frmOptions.frx":04EA
-      Tab(6).ControlEnabled=   0   'False
-      Tab(6).Control(0)=   "Frame3"
-      Tab(6).ControlCount=   1
+      Tab(6).ControlEnabled=   -1  'True
+      Tab(6).ControlCount=   0
       TabCaption(7)   =   "달력"
       TabPicture(7)   =   "frmOptions.frx":0506
       Tab(7).ControlEnabled=   0   'False
       Tab(7).Control(0)=   "Frame1"
       Tab(7).ControlCount=   1
+      Begin VB.CommandButton cmdDelGroup 
+         Caption         =   "선택 그룹 삭제"
+         Height          =   375
+         Left            =   -72600
+         TabIndex        =   58
+         Top             =   2400
+         Width           =   1335
+      End
+      Begin VB.CommandButton cmdAddNewGroup 
+         Caption         =   "입력 추가(&D)"
+         Height          =   375
+         Left            =   -68760
+         TabIndex        =   57
+         Top             =   3600
+         Width           =   1335
+      End
+      Begin VB.CommandButton cmdClearGroups 
+         Caption         =   "그룹 전체삭제"
+         Height          =   375
+         Left            =   -70320
+         TabIndex        =   56
+         Top             =   1440
+         Width           =   1335
+      End
+      Begin VB.TextBox txtNewGroup 
+         Height          =   270
+         Left            =   -74880
+         TabIndex        =   53
+         Top             =   3720
+         Width           =   6015
+      End
+      Begin VB.FileListBox lvGroups 
+         Height          =   1350
+         Left            =   -72600
+         TabIndex        =   52
+         Top             =   960
+         Width           =   2175
+      End
+      Begin VB.FileListBox lvCustomCates 
+         Height          =   1350
+         Left            =   -74880
+         TabIndex        =   51
+         Top             =   960
+         Width           =   2175
+      End
+      Begin VB.Frame Frame3 
+         Caption         =   "초기화"
+         Height          =   1335
+         Left            =   -74880
+         TabIndex        =   45
+         Top             =   2520
+         Width           =   6015
+         Begin VB.CommandButton cmdPrgReset 
+            Caption         =   "초기화(&R)"
+            Height          =   375
+            Left            =   4560
+            TabIndex        =   46
+            Top             =   240
+            Width           =   1335
+         End
+         Begin VB.Label lblResetN1 
+            Caption         =   "데이터 초기화"
+            Height          =   255
+            Left            =   120
+            TabIndex        =   50
+            Top             =   960
+            Visible         =   0   'False
+            Width           =   1215
+         End
+         Begin VB.Label lblResetCount 
+            Caption         =   "7"
+            Height          =   255
+            Left            =   1320
+            TabIndex        =   49
+            Top             =   960
+            Visible         =   0   'False
+            Width           =   255
+         End
+         Begin VB.Label Label4 
+            Caption         =   "프로그램 전체 데이터를 초기화합니다."
+            Height          =   255
+            Left            =   120
+            TabIndex        =   48
+            Top             =   360
+            Width           =   4215
+         End
+         Begin VB.Label lblResetN2 
+            Caption         =   "단계 전입니다."
+            Height          =   255
+            Left            =   1440
+            TabIndex        =   47
+            Top             =   960
+            Visible         =   0   'False
+            Width           =   2055
+         End
+      End
       Begin VB.Frame Frame11 
          Caption         =   "팁 상자"
          Height          =   615
-         Left            =   120
-         TabIndex        =   51
+         Left            =   -74880
+         TabIndex        =   43
          Top             =   2400
          Width           =   3135
          Begin VB.CheckBox Check1 
             Caption         =   "시작 시 '알고 계십니까' 표시(&P)"
             Height          =   255
             Left            =   120
-            TabIndex        =   52
+            TabIndex        =   44
             Top             =   240
             Width           =   2895
          End
@@ -132,14 +228,14 @@ Begin VB.Form frmOptions
          Caption         =   "테마"
          Height          =   735
          Left            =   -74880
-         TabIndex        =   44
+         TabIndex        =   36
          Top             =   3240
          Width           =   7455
          Begin VB.CommandButton cmdTheSet 
             Caption         =   "테마(&T)..."
             Height          =   375
             Left            =   6120
-            TabIndex        =   45
+            TabIndex        =   37
             Top             =   240
             Width           =   1215
          End
@@ -147,7 +243,7 @@ Begin VB.Form frmOptions
             Caption         =   "테마를 적용하려면 다음 단추를 누르십시오."
             Height          =   255
             Left            =   120
-            TabIndex        =   46
+            TabIndex        =   38
             Top             =   300
             Width           =   4215
          End
@@ -156,14 +252,14 @@ Begin VB.Form frmOptions
          Caption         =   "달력"
          Height          =   735
          Left            =   -74880
-         TabIndex        =   41
+         TabIndex        =   33
          Top             =   2400
          Width           =   7455
          Begin VB.CommandButton cmdCalSet 
             Caption         =   "달력(&A)..."
             Height          =   375
             Left            =   6120
-            TabIndex        =   42
+            TabIndex        =   34
             Top             =   240
             Width           =   1215
          End
@@ -171,7 +267,7 @@ Begin VB.Form frmOptions
             Caption         =   "달력을 사용자 정의하려면 다음 단추를 누르십시오."
             Height          =   255
             Left            =   120
-            TabIndex        =   43
+            TabIndex        =   35
             Top             =   300
             Width           =   4215
          End
@@ -180,14 +276,14 @@ Begin VB.Form frmOptions
          Caption         =   "달력"
          Height          =   975
          Left            =   -74880
-         TabIndex        =   38
+         TabIndex        =   30
          Top             =   720
          Width           =   6015
          Begin VB.ComboBox cmbWSD 
             Height          =   300
             Left            =   120
             Style           =   2  '드롭다운 목록
-            TabIndex        =   39
+            TabIndex        =   31
             Top             =   600
             Width           =   5655
          End
@@ -195,7 +291,7 @@ Begin VB.Form frmOptions
             Caption         =   "주의 시작 요일:"
             Height          =   255
             Left            =   120
-            TabIndex        =   40
+            TabIndex        =   32
             Top             =   360
             Width           =   1455
          End
@@ -204,14 +300,14 @@ Begin VB.Form frmOptions
          Caption         =   "레이아웃"
          Height          =   1575
          Left            =   -74880
-         TabIndex        =   36
+         TabIndex        =   28
          Top             =   720
          Width           =   5895
          Begin VB.CheckBox chkNoRibbon 
             Caption         =   "리본 메뉴 비활성(&N)"
             Height          =   255
             Left            =   3360
-            TabIndex        =   48
+            TabIndex        =   40
             Top             =   240
             Width           =   2415
          End
@@ -219,74 +315,23 @@ Begin VB.Form frmOptions
             Caption         =   "오늘의일정 숨기기(&O)"
             Height          =   255
             Left            =   120
-            TabIndex        =   37
+            TabIndex        =   29
             Top             =   240
             Width           =   2535
-         End
-      End
-      Begin VB.Frame Frame3 
-         Caption         =   "초기화"
-         Height          =   1335
-         Left            =   -74880
-         TabIndex        =   30
-         Top             =   720
-         Width           =   6015
-         Begin VB.CommandButton cmdPrgReset 
-            Caption         =   "초기화(&R)"
-            Height          =   375
-            Left            =   4560
-            TabIndex        =   31
-            Top             =   240
-            Width           =   1335
-         End
-         Begin VB.Label lblResetN2 
-            Caption         =   "단계 전입니다."
-            Height          =   255
-            Left            =   1440
-            TabIndex        =   32
-            Top             =   960
-            Visible         =   0   'False
-            Width           =   2055
-         End
-         Begin VB.Label Label4 
-            Caption         =   "프로그램 전체 데이터를 초기화합니다."
-            Height          =   255
-            Left            =   120
-            TabIndex        =   35
-            Top             =   360
-            Width           =   4215
-         End
-         Begin VB.Label lblResetCount 
-            Caption         =   "7"
-            Height          =   255
-            Left            =   1320
-            TabIndex        =   34
-            Top             =   960
-            Visible         =   0   'False
-            Width           =   255
-         End
-         Begin VB.Label lblResetN1 
-            Caption         =   "데이터 초기화"
-            Height          =   255
-            Left            =   120
-            TabIndex        =   33
-            Top             =   960
-            Visible         =   0   'False
-            Width           =   1215
          End
       End
       Begin VB.Frame Frame7 
          Caption         =   "색 테마"
          Height          =   975
          Left            =   -74880
-         TabIndex        =   27
+         TabIndex        =   25
          Top             =   720
          Width           =   5775
          Begin VB.ComboBox cmbBGColor 
             Height          =   300
             Left            =   120
             Style           =   2  '드롭다운 목록
-            TabIndex        =   29
+            TabIndex        =   27
             Top             =   480
             Width           =   5535
          End
@@ -294,31 +339,31 @@ Begin VB.Form frmOptions
             Caption         =   "프로그램 배경 테마:"
             Height          =   255
             Left            =   120
-            TabIndex        =   28
+            TabIndex        =   26
             Top             =   240
             Width           =   3855
          End
       End
       Begin VB.CommandButton cmdClearCates 
-         Caption         =   "모두 삭제(&C)"
+         Caption         =   "분류 전체삭제"
          Height          =   375
-         Left            =   -68760
-         TabIndex        =   26
-         Top             =   2640
+         Left            =   -70320
+         TabIndex        =   24
+         Top             =   960
          Width           =   1335
       End
       Begin VB.Frame Frame6 
          Caption         =   "값 검사 설정"
          Height          =   615
          Left            =   -74880
-         TabIndex        =   23
+         TabIndex        =   21
          Top             =   720
          Width           =   6015
          Begin VB.CheckBox chkNoTimeCHeck 
             Caption         =   "일정 추가 시 시간이 올바르지 검사 안함(&T)"
             Height          =   255
             Left            =   120
-            TabIndex        =   24
+            TabIndex        =   22
             Top             =   240
             Width           =   4335
          End
@@ -326,45 +371,30 @@ Begin VB.Form frmOptions
       Begin VB.CommandButton cmdDelSelCate 
          Caption         =   "선택 분류 삭제"
          Height          =   375
-         Left            =   -68760
-         TabIndex        =   22
-         Top             =   3120
+         Left            =   -74880
+         TabIndex        =   20
+         Top             =   2400
          Width           =   1335
       End
       Begin VB.CommandButton cmdAddNewCate 
-         Caption         =   "입력 분류 추가"
+         Caption         =   "입력 추가(&A)"
          Height          =   375
          Left            =   -68760
-         TabIndex        =   21
-         Top             =   3600
+         TabIndex        =   19
+         Top             =   3120
          Width           =   1335
       End
       Begin VB.TextBox txtCategory 
          Height          =   270
-         Left            =   -72960
-         TabIndex        =   20
-         Top             =   3720
-         Width           =   3855
-      End
-      Begin VB.Frame Frame5 
-         Caption         =   "분류 목록"
-         Height          =   3255
          Left            =   -74880
-         TabIndex        =   17
-         Top             =   720
-         Width           =   1815
-         Begin VB.FileListBox lvCustomCates 
-            Height          =   2970
-            Left            =   120
-            TabIndex        =   18
-            Top             =   240
-            Width           =   1575
-         End
+         TabIndex        =   18
+         Top             =   3120
+         Width           =   6015
       End
       Begin VB.Frame Frame4 
          Caption         =   "시작"
          Height          =   1575
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   13
          Top             =   720
          Width           =   6015
@@ -372,7 +402,7 @@ Begin VB.Form frmOptions
             Caption         =   "이전에 끝낸 지점에서 시작(&Q)"
             Height          =   255
             Left            =   360
-            TabIndex        =   50
+            TabIndex        =   42
             Top             =   1200
             Width           =   5295
          End
@@ -380,7 +410,7 @@ Begin VB.Form frmOptions
             Caption         =   "화면 선택(&T)"
             Height          =   255
             Left            =   360
-            TabIndex        =   49
+            TabIndex        =   41
             Top             =   480
             Width           =   5175
          End
@@ -481,30 +511,45 @@ Begin VB.Form frmOptions
             Width           =   2655
          End
       End
+      Begin VB.Label Label14 
+         Caption         =   "일정 분류 목록:                 그룹 목록:"
+         Height          =   255
+         Left            =   -74880
+         TabIndex        =   55
+         Top             =   720
+         Width           =   4695
+      End
+      Begin VB.Label Label11 
+         Caption         =   "새 그룹 추가:"
+         Height          =   255
+         Left            =   -74880
+         TabIndex        =   54
+         Top             =   3480
+         Width           =   1575
+      End
       Begin VB.Label Label9 
          Caption         =   "[*] 이 설정을 변경하면 프로그램이 올바로 작동하지 않을 수 있습니다."
          Height          =   255
          Left            =   -74880
-         TabIndex        =   25
+         TabIndex        =   23
          Top             =   3720
          Width           =   7335
       End
       Begin VB.Label Label8 
-         Caption         =   "새 분류 추가:"
+         Caption         =   "새 일정 분류 추가:"
          Height          =   255
-         Left            =   -72960
-         TabIndex        =   19
-         Top             =   3480
+         Left            =   -74880
+         TabIndex        =   17
+         Top             =   2880
          Width           =   2055
       End
    End
    Begin VB.Label Label6 
       BackStyle       =   0  '투명
       Caption         =   "이 설정을 완전히 적용하려면 프로그램을 다시 시작해야 합니다."
-      ForeColor       =   &H00FFFFFF&
       Height          =   255
       Left            =   120
-      TabIndex        =   47
+      TabIndex        =   39
       Top             =   4320
       Width           =   5295
    End
@@ -519,6 +564,10 @@ Dim ResetCount As Integer
 Private Sub cmdAddNewCate_Click()
     If txtCategory.Text <> "업무" And txtCategory.Text <> "여가생활" And txtCategory.Text <> "약속" And txtCategory.Text <> "취미" And txtCategory.Text <> "(지정되지 않음)" Then
         On Error Resume Next
+        
+        MkDir "C:\CALPLANS"
+        MkDir "C:\CALPLANS\CTGORIES"
+        
         If Len(txtCategory.Text) < 1 Then
             MessageBox "분류의 제목을 입력해주십시오.", "오류", Me, 16
             Exit Sub
@@ -557,6 +606,19 @@ Private Sub cmdClearCates_Click()
         Next i
         
         lvCustomCates.Refresh
+        MessageBox "모두 삭제되었습니다.", "성공", Me, 48
+    End If
+End Sub
+
+Private Sub cmdClearGroups_Click()
+    If Confirm("정말로 " & lvGroups.ListCount & "개의 그룹을 *모두* 삭제하시겠습니까?", "삭제", Me) Then
+        On Error Resume Next
+        Dim i As Integer
+        For i = 0 To lvGroups.ListCount - 1
+            Kill "C:\CALPLANS\CTGROUPS\" & lvGroups.List(i)
+        Next i
+        
+        lvGroups.Refresh
         MessageBox "모두 삭제되었습니다.", "성공", Me, 48
     End If
 End Sub
@@ -698,8 +760,11 @@ Private Sub cmdPrgReset_Click()
     If ResetCount = 0 Then
         cmdPrgReset.Enabled = False
         If Confirm("마지막 경고. 정말로 프로그램 전체를 초기화하시겠습니까?", "초기화", Me) Then
-            Shell "CMD /C RD /S /Q C:\CALPLANS"
-            Shell "CMD /C RD /S /Q C:\CALPLANS"
+            If Confirm("컴퓨터가 Windows 95, 98 혹은 Me를 실행중입니까?", "질문", Me) Then
+                Shell "COMMAND /C RD /S /Q C:\CALPLANS"
+            Else
+                Shell "CMD /C RD /S /Q C:\CALPLANS"
+            End If
             MessageBox "초기화 완료. 프로그램을 종료합니다...", "초기화", Me
             End
         Else
@@ -710,6 +775,51 @@ Private Sub cmdPrgReset_Click()
             
             ResetCount = 7
         End If
+    End If
+End Sub
+
+Private Sub cmdAddNewGroup_Click()
+    If txtNewGroup.Text <> "지정 안 함" And txtNewGroup.Text <> "가족" And txtNewGroup.Text <> "친척" And txtNewGroup.Text <> "동료" Then
+        On Error Resume Next
+        
+        MkDir "C:\CALPLANS"
+        MkDir "C:\CALPLANS\CTGROUPS"
+        
+        If Len(txtNewGroup.Text) < 1 Then
+            MessageBox "그룹의 이름을 입력해주십시오.", "오류", Me, 16
+            Exit Sub
+        End If
+        'https://stackoverflow.com/questions/21108664/how-to-create-txt-file
+        Dim iFileNo As Integer
+        iFileNo = FreeFile
+        '파일을 연다.
+        
+        Open "C:\CALPLANS\CTGROUPS\" & txtNewGroup.Text For Output As #iFileNo
+        
+        '파일의 내용은 보지 않으므로 빈 칸으로...
+        Print #iFileNo, ""
+        
+        '파일을 닫는다.
+        Close #iFileNo
+        
+        lvGroups.Refresh
+        
+        MessageBox "추가되었습니다.", "성공", Me
+    Else
+        MessageBox "이미 존재하거나 올바르지 않습니다.", "오류", Me, 16
+    End If
+End Sub
+
+Private Sub Command4_Click()
+
+End Sub
+
+Private Sub cmdDelGroup_Click()
+    If Confirm("한번만 경고합니다. 정말로 삭제하시겠습니까?", "삭제", Me) Then
+        On Error Resume Next
+        Kill "C:\CALPLANS\CTGROUPS\" & lvGroups.List(lvGroups.ListIndex)
+        
+        lvGroups.Refresh
     End If
 End Sub
 
@@ -758,8 +868,10 @@ Private Sub Form_Load()
     
     MkDir "C:\CALPLANS"
     MkDir "C:\CALPLANS\CTGORIES"
+    MkDir "C:\CALPLANS\CTGROUPS"
     
     lvCustomCates.Path = "C:\CALPLANS\CTGORIES"
+    lvGroups.Path = "C:\CALPLANS\CTGROUPS"
     
     cmbStartPage.ListIndex = GetSetting("Calendar", "Options", "StartPage", 0)
     

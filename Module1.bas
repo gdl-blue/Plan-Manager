@@ -54,6 +54,23 @@ Public Const MB_WARNING As Long = 48      ' for conditions that might cause prob
 Public Const MB_INFORMATION As Long = 64  ' for informative messages only
 Public Const MB_QUESTION As Long = 32     ' (no longer recommended to be used)
 
+Function GetWinver(ByVal Typ As Integer) As Integer
+    Dim arr(2) As Integer
+    Dim WinVer As String
+    
+    Dim Registry As Object
+    
+    Set Registry = CreateObject("WScript.Shell")
+    
+    WinVer = CStr(Registry.RegRead("HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\CurrentVersion"))
+    
+    If Typ = 1 Then
+        GetWinver = CInt(Split(WinVer, ".")(0))
+    Else
+        GetWinver = CInt(Split(WinVer, ".")(1))
+    End If
+End Function
+
 Private Function IsProcessRunning(ByVal sProcess As String) As Boolean
     Const MAX_PATH As Long = 260
     Dim lProcesses() As Long, lModules() As Long, N As Long, lRet As Long, hProcess As Long
@@ -207,6 +224,42 @@ Public Function FileExists(ByVal Fname As String) As Boolean
         FileExists = False
     End If
     
+End Function
+
+Public Function StringAt(ByVal Text As String, Pos) As String
+    StringAt = Mid$(Text, Pos, 1)
+End Function
+
+Public Function PlayFair(ByVal Text As String, Key As String, Optional Mode As Integer = 1) As String
+    Text = UCase(Text)
+    Key = UCase(Key)
+    
+    Dim i As Integer
+    Dim p As Integer
+    p = 1
+    
+    Dim RetVal As String
+    RetVal = ""
+    
+    For i = 1 To Len(Text)
+        If p > Len(Key) Then p = 1
+        
+        If StringAt(Text, i) = " " Then
+            RetVal = RetVal & " "
+            GoTo endfor
+        End If
+        
+        If Mode = 2 Then
+            RetVal = RetVal & ChrW$(Asc(StringAt(Text, i)) - (Asc(StringAt(Key, p))) - 64)
+        Else
+            RetVal = RetVal & ChrW$(Asc(StringAt(Text, i)) + Asc(StringAt(Key, p)) - 64)
+        End If
+        
+endfor:
+        p = p + 1
+    Next i
+    
+    PlayFair = RetVal
 End Function
 
 Sub Main()
