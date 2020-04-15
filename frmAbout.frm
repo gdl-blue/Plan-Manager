@@ -4,7 +4,7 @@ Begin VB.Form frmAbout
    Caption         =   "정보"
    ClientHeight    =   3525
    ClientLeft      =   45
-   ClientTop       =   435
+   ClientTop       =   495
    ClientWidth     =   5865
    ClipControls    =   0   'False
    Icon            =   "frmAbout.frx":0000
@@ -16,6 +16,14 @@ Begin VB.Form frmAbout
    ShowInTaskbar   =   0   'False
    StartUpPosition =   1  '소유자 가운데
    Tag             =   "정보 일정표"
+   Begin VB.CommandButton cmdDevPage 
+      Caption         =   "GitHub..."
+      Height          =   345
+      Left            =   4245
+      TabIndex        =   7
+      Top             =   3060
+      Width           =   1467
+   End
    Begin VB.PictureBox picIcon 
       AutoSize        =   -1  'True
       BorderStyle     =   0  '없음
@@ -39,27 +47,27 @@ Begin VB.Form frmAbout
       Left            =   4245
       TabIndex        =   0
       Tag             =   "확인"
-      Top             =   2625
+      Top             =   2205
       Width           =   1467
    End
    Begin VB.CommandButton cmdSysInfo 
       Caption         =   "시스템 정보..."
       Height          =   345
-      Left            =   4260
+      Left            =   4245
       TabIndex        =   1
       Tag             =   "시스템 정보..."
-      Top             =   3075
+      Top             =   2625
       Width           =   1452
    End
    Begin VB.Label lblDescription 
       Caption         =   "응용 프로그램 설명"
       ForeColor       =   &H00000000&
-      Height          =   1170
+      Height          =   810
       Left            =   1050
       TabIndex        =   6
       Tag             =   "응용 프로그램 설명"
-      Top             =   1125
-      Width           =   4092
+      Top             =   1200
+      Width           =   4095
    End
    Begin VB.Label lblTitle 
       Caption         =   "응용 프로그램 제목"
@@ -77,8 +85,8 @@ Begin VB.Form frmAbout
       Index           =   1
       X1              =   225
       X2              =   5657
-      Y1              =   2430
-      Y2              =   2430
+      Y1              =   2070
+      Y2              =   2070
    End
    Begin VB.Line Line1 
       BorderColor     =   &H00FFFFFF&
@@ -86,8 +94,8 @@ Begin VB.Form frmAbout
       Index           =   0
       X1              =   240
       X2              =   5657
-      Y1              =   2445
-      Y2              =   2445
+      Y1              =   2085
+      Y2              =   2085
    End
    Begin VB.Label lblVersion 
       Caption         =   "버전"
@@ -99,14 +107,13 @@ Begin VB.Form frmAbout
       Width           =   4092
    End
    Begin VB.Label lblDisclaimer 
-      Caption         =   "경고: ..."
+      Caption         =   "이 버전은 시험용 혹은 디버깅으로 사용됩니다. 확인되지 않은 오류가 있을 수 있습니다."
       ForeColor       =   &H00000000&
       Height          =   825
       Left            =   255
       TabIndex        =   3
       Tag             =   "경고: ..."
-      Top             =   2625
-      Visible         =   0   'False
+      Top             =   2260
       Width           =   3870
    End
 End
@@ -136,9 +143,13 @@ Private Declare Function RegOpenKeyEx Lib "advapi32" Alias "RegOpenKeyExA" (ByVa
 Private Declare Function RegQueryValueEx Lib "advapi32" Alias "RegQueryValueExA" (ByVal hKey As Long, ByVal lpValueName As String, ByVal lpReserved As Long, ByRef lpType As Long, ByVal lpData As String, ByRef lpcbData As Long) As Long
 Private Declare Function RegCloseKey Lib "advapi32" (ByVal hKey As Long) As Long
 
+Private Sub cmdDevPage_Click()
+    Shell "explorer.exe https://github.com/gdl-888/Plan-Manager"
+End Sub
+
 Private Sub Form_Load()
-    'lblVersion.Caption = "버전 " & App.Major & "." & App.Minor & "." & App.Revision
-    lblVersion.Caption = "버전 3.0.0 베타 " & App.Revision
+    lblVersion.Caption = "버전 " & App.Major & "." & App.Minor & "." & App.Revision
+    'lblVersion.Caption = "버전 3.0.0 베타 " & App.Revision
     lblTitle.Caption = App.Title ' & " " & App.Major
     Me.Caption = App.Title & " 정보"
     lblDescription.Caption = App.FileDescription
