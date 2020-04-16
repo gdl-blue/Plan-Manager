@@ -11,7 +11,7 @@ Begin VB.Form frmMain
    Caption         =   "일정관리자"
    ClientHeight    =   6630
    ClientLeft      =   150
-   ClientTop       =   2355
+   ClientTop       =   2445
    ClientWidth     =   10950
    Icon            =   "frmMain.frx":0000
    LinkTopic       =   "Form1"
@@ -125,7 +125,6 @@ Begin VB.Form frmMain
       _ExtentY        =   2355
       _Version        =   393216
       Tabs            =   4
-      Tab             =   2
       TabsPerRow      =   8
       TabHeight       =   548
       TabMaxWidth     =   1587
@@ -144,10 +143,13 @@ Begin VB.Form frmMain
       EndProperty
       TabCaption(0)   =   "홈"
       TabPicture(0)   =   "frmMain.frx":0496
-      Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "cmdEndPrg"
+      Tab(0).ControlEnabled=   -1  'True
+      Tab(0).Control(0)=   "cmdPlanList"
+      Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "cmdPlanIndex"
-      Tab(0).Control(2)=   "cmdPlanList"
+      Tab(0).Control(1).Enabled=   0   'False
+      Tab(0).Control(2)=   "cmdEndPrg"
+      Tab(0).Control(2).Enabled=   0   'False
       Tab(0).ControlCount=   3
       TabCaption(1)   =   "보기"
       TabPicture(1)   =   "frmMain.frx":04B2
@@ -157,11 +159,9 @@ Begin VB.Form frmMain
       Tab(1).ControlCount=   2
       TabCaption(2)   =   "일정"
       TabPicture(2)   =   "frmMain.frx":04CE
-      Tab(2).ControlEnabled=   -1  'True
-      Tab(2).Control(0)=   "cmdTodaysPlan"
-      Tab(2).Control(0).Enabled=   0   'False
-      Tab(2).Control(1)=   "cmdDelAllTodaysPlan"
-      Tab(2).Control(1).Enabled=   0   'False
+      Tab(2).ControlEnabled=   0   'False
+      Tab(2).Control(0)=   "cmdDelAllTodaysPlan"
+      Tab(2).Control(1)=   "cmdTodaysPlan"
       Tab(2).ControlCount=   2
       TabCaption(3)   =   "도구"
       TabPicture(3)   =   "frmMain.frx":04EA
@@ -182,7 +182,7 @@ Begin VB.Form frmMain
       Begin VB.CommandButton cmdDelAllTodaysPlan 
          Caption         =   "이날의   일정 삭제"
          Height          =   855
-         Left            =   1320
+         Left            =   -73680
          Picture         =   "frmMain.frx":0948
          Style           =   1  '그래픽
          TabIndex        =   54
@@ -194,7 +194,7 @@ Begin VB.Form frmMain
       Begin VB.CommandButton cmdTodaysPlan 
          Caption         =   "이날의 일정"
          Height          =   855
-         Left            =   120
+         Left            =   -74880
          Picture         =   "frmMain.frx":0D8A
          Style           =   1  '그래픽
          TabIndex        =   53
@@ -205,7 +205,7 @@ Begin VB.Form frmMain
       Begin VB.CommandButton cmdEndPrg 
          Caption         =   "끝내기"
          Height          =   855
-         Left            =   -72240
+         Left            =   2760
          Picture         =   "frmMain.frx":11CC
          Style           =   1  '그래픽
          TabIndex        =   50
@@ -216,7 +216,7 @@ Begin VB.Form frmMain
       Begin VB.CommandButton cmdPlanIndex 
          Caption         =   "데이터 색인"
          Height          =   855
-         Left            =   -73800
+         Left            =   1200
          Picture         =   "frmMain.frx":160E
          Style           =   1  '그래픽
          TabIndex        =   49
@@ -227,7 +227,7 @@ Begin VB.Form frmMain
       Begin VB.CommandButton cmdPlanList 
          Caption         =   "일정 목록"
          Height          =   840
-         Left            =   -74880
+         Left            =   120
          Picture         =   "frmMain.frx":1A50
          Style           =   1  '그래픽
          TabIndex        =   48
@@ -268,6 +268,7 @@ Begin VB.Form frmMain
          Size            =   "1931;1508"
          Value           =   "1"
          Caption         =   "상태표시줄"
+         Picture         =   "frmMain.frx":21AC
          FontName        =   "굴림"
          FontHeight      =   180
          FontCharSet     =   129
@@ -291,94 +292,94 @@ Begin VB.Form frmMain
       TabHeight       =   582
       ShowFocusRect   =   0   'False
       BackColor       =   -2147483636
-      MouseIcon       =   "frmMain.frx":21AC
+      MouseIcon       =   "frmMain.frx":25FE
       TabCaption(0)   =   "일정"
-      TabPicture(0)   =   "frmMain.frx":21C8
+      TabPicture(0)   =   "frmMain.frx":261A
       Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "MonthView1"
-      Tab(0).Control(1)=   "Dir1"
+      Tab(0).Control(0)=   "Dir1"
+      Tab(0).Control(1)=   "MonthView1"
       Tab(0).ControlCount=   2
       TabCaption(1)   =   "주소록"
-      TabPicture(1)   =   "frmMain.frx":261A
+      TabPicture(1)   =   "frmMain.frx":2A6C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "lvContacts"
-      Tab(1).Control(1)=   "Frame1"
-      Tab(1).Control(2)=   "Frame2"
-      Tab(1).Control(3)=   "cmdSaveContact"
+      Tab(1).Control(0)=   "cmdResetFields"
+      Tab(1).Control(1)=   "cmdDeleteAllContacts"
+      Tab(1).Control(2)=   "cmdDelContact"
+      Tab(1).Control(3)=   "lvContactFiles"
       Tab(1).Control(4)=   "Frame3"
-      Tab(1).Control(5)=   "lvContactFiles"
-      Tab(1).Control(6)=   "cmdDelContact"
-      Tab(1).Control(7)=   "cmdDeleteAllContacts"
-      Tab(1).Control(8)=   "cmdResetFields"
+      Tab(1).Control(5)=   "cmdSaveContact"
+      Tab(1).Control(6)=   "Frame2"
+      Tab(1).Control(7)=   "Frame1"
+      Tab(1).Control(8)=   "lvContacts"
       Tab(1).ControlCount=   9
       TabCaption(2)   =   "할 일"
-      TabPicture(2)   =   "frmMain.frx":2A6C
+      TabPicture(2)   =   "frmMain.frx":2EBE
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "lvTasks"
-      Tab(2).Control(1)=   "cmdSaveTask"
-      Tab(2).Control(2)=   "cmdDelTask"
-      Tab(2).Control(3)=   "Frame4"
-      Tab(2).Control(4)=   "lvTaskFiles"
-      Tab(2).Control(5)=   "cmdDeleteAllTasks"
+      Tab(2).Control(0)=   "cmdDeleteAllTasks"
+      Tab(2).Control(1)=   "lvTaskFiles"
+      Tab(2).Control(2)=   "Frame4"
+      Tab(2).Control(3)=   "cmdDelTask"
+      Tab(2).Control(4)=   "cmdSaveTask"
+      Tab(2).Control(5)=   "lvTasks"
       Tab(2).ControlCount=   6
       TabCaption(3)   =   "일과표"
-      TabPicture(3)   =   "frmMain.frx":2EBE
+      TabPicture(3)   =   "frmMain.frx":3310
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "lblDOW"
-      Tab(3).Control(1)=   "Label15"
-      Tab(3).Control(2)=   "txtPlannerTF(0)"
-      Tab(3).Control(3)=   "txtPlannerTF(1)"
-      Tab(3).Control(4)=   "txtPlannerTF(2)"
-      Tab(3).Control(5)=   "txtPlannerTF(3)"
-      Tab(3).Control(6)=   "txtPlannerTF(4)"
-      Tab(3).Control(7)=   "txtPlannerTF(5)"
-      Tab(3).Control(8)=   "txtPlannerTF(6)"
-      Tab(3).Control(9)=   "txtPlannerTF(7)"
-      Tab(3).Control(10)=   "txtPlannerTF(8)"
-      Tab(3).Control(11)=   "txtPlannerTF(9)"
-      Tab(3).Control(12)=   "txtPlannerTF(10)"
-      Tab(3).Control(13)=   "txtPlannerTF(11)"
-      Tab(3).Control(14)=   "txtPlannerTF(12)"
-      Tab(3).Control(15)=   "txtPlannerTF(13)"
-      Tab(3).Control(16)=   "txtPlannerTF(14)"
-      Tab(3).Control(17)=   "txtPlannerTF(15)"
-      Tab(3).Control(18)=   "txtPlannerTF(16)"
-      Tab(3).Control(19)=   "txtPlannerTF(17)"
-      Tab(3).Control(20)=   "txtPlannerTF(18)"
-      Tab(3).Control(21)=   "txtPlannerTF(19)"
-      Tab(3).Control(22)=   "txtPlannerTF(20)"
-      Tab(3).Control(23)=   "txtPlannerTF(21)"
-      Tab(3).Control(24)=   "txtPlannerTF(22)"
-      Tab(3).Control(25)=   "txtPlannerTF(23)"
-      Tab(3).Control(26)=   "txtPlannerTF(24)"
-      Tab(3).Control(27)=   "txtPlannerTF(25)"
-      Tab(3).Control(28)=   "txtPlannerTF(26)"
-      Tab(3).Control(29)=   "txtPlannerTF(27)"
-      Tab(3).Control(30)=   "txtPlannerTF(28)"
-      Tab(3).Control(31)=   "txtPlannerTF(29)"
-      Tab(3).Control(32)=   "txtPlannerTF(30)"
-      Tab(3).Control(33)=   "txtPlannerTF(31)"
-      Tab(3).Control(34)=   "txtPlannerTF(32)"
-      Tab(3).Control(35)=   "txtPlannerTF(33)"
-      Tab(3).Control(36)=   "txtPlannerTF(34)"
-      Tab(3).Control(37)=   "txtPlannerTF(35)"
-      Tab(3).Control(38)=   "txtPlannerTF(36)"
-      Tab(3).Control(39)=   "txtPlannerTF(37)"
-      Tab(3).Control(40)=   "txtPlannerTF(38)"
-      Tab(3).Control(41)=   "txtPlannerTF(39)"
-      Tab(3).Control(42)=   "txtPlannerTF(40)"
-      Tab(3).Control(43)=   "txtPlannerTF(41)"
-      Tab(3).Control(44)=   "txtPlannerTF(42)"
-      Tab(3).Control(45)=   "txtPlannerTF(43)"
-      Tab(3).Control(46)=   "txtPlannerTF(44)"
-      Tab(3).Control(47)=   "txtPlannerTF(45)"
-      Tab(3).Control(48)=   "txtPlannerTF(46)"
-      Tab(3).Control(49)=   "txtPlannerTF(47)"
-      Tab(3).Control(50)=   "txtPlannerTF(48)"
-      Tab(3).Control(51)=   "sdcmdSavePlanner"
+      Tab(3).Control(0)=   "sdcmdSavePlanner"
+      Tab(3).Control(1)=   "txtPlannerTF(48)"
+      Tab(3).Control(2)=   "txtPlannerTF(47)"
+      Tab(3).Control(3)=   "txtPlannerTF(46)"
+      Tab(3).Control(4)=   "txtPlannerTF(45)"
+      Tab(3).Control(5)=   "txtPlannerTF(44)"
+      Tab(3).Control(6)=   "txtPlannerTF(43)"
+      Tab(3).Control(7)=   "txtPlannerTF(42)"
+      Tab(3).Control(8)=   "txtPlannerTF(41)"
+      Tab(3).Control(9)=   "txtPlannerTF(40)"
+      Tab(3).Control(10)=   "txtPlannerTF(39)"
+      Tab(3).Control(11)=   "txtPlannerTF(38)"
+      Tab(3).Control(12)=   "txtPlannerTF(37)"
+      Tab(3).Control(13)=   "txtPlannerTF(36)"
+      Tab(3).Control(14)=   "txtPlannerTF(35)"
+      Tab(3).Control(15)=   "txtPlannerTF(34)"
+      Tab(3).Control(16)=   "txtPlannerTF(33)"
+      Tab(3).Control(17)=   "txtPlannerTF(32)"
+      Tab(3).Control(18)=   "txtPlannerTF(31)"
+      Tab(3).Control(19)=   "txtPlannerTF(30)"
+      Tab(3).Control(20)=   "txtPlannerTF(29)"
+      Tab(3).Control(21)=   "txtPlannerTF(28)"
+      Tab(3).Control(22)=   "txtPlannerTF(27)"
+      Tab(3).Control(23)=   "txtPlannerTF(26)"
+      Tab(3).Control(24)=   "txtPlannerTF(25)"
+      Tab(3).Control(25)=   "txtPlannerTF(24)"
+      Tab(3).Control(26)=   "txtPlannerTF(23)"
+      Tab(3).Control(27)=   "txtPlannerTF(22)"
+      Tab(3).Control(28)=   "txtPlannerTF(21)"
+      Tab(3).Control(29)=   "txtPlannerTF(20)"
+      Tab(3).Control(30)=   "txtPlannerTF(19)"
+      Tab(3).Control(31)=   "txtPlannerTF(18)"
+      Tab(3).Control(32)=   "txtPlannerTF(17)"
+      Tab(3).Control(33)=   "txtPlannerTF(16)"
+      Tab(3).Control(34)=   "txtPlannerTF(15)"
+      Tab(3).Control(35)=   "txtPlannerTF(14)"
+      Tab(3).Control(36)=   "txtPlannerTF(13)"
+      Tab(3).Control(37)=   "txtPlannerTF(12)"
+      Tab(3).Control(38)=   "txtPlannerTF(11)"
+      Tab(3).Control(39)=   "txtPlannerTF(10)"
+      Tab(3).Control(40)=   "txtPlannerTF(9)"
+      Tab(3).Control(41)=   "txtPlannerTF(8)"
+      Tab(3).Control(42)=   "txtPlannerTF(7)"
+      Tab(3).Control(43)=   "txtPlannerTF(6)"
+      Tab(3).Control(44)=   "txtPlannerTF(5)"
+      Tab(3).Control(45)=   "txtPlannerTF(4)"
+      Tab(3).Control(46)=   "txtPlannerTF(3)"
+      Tab(3).Control(47)=   "txtPlannerTF(2)"
+      Tab(3).Control(48)=   "txtPlannerTF(1)"
+      Tab(3).Control(49)=   "txtPlannerTF(0)"
+      Tab(3).Control(50)=   "Label15"
+      Tab(3).Control(51)=   "lblDOW"
       Tab(3).ControlCount=   52
       TabCaption(4)   =   "알람"
-      TabPicture(4)   =   "frmMain.frx":31D8
+      TabPicture(4)   =   "frmMain.frx":362A
       Tab(4).ControlEnabled=   -1  'True
       Tab(4).Control(0)=   "Label18"
       Tab(4).Control(0).Enabled=   0   'False
@@ -1216,9 +1217,9 @@ Begin VB.Form frmMain
       End
       Begin VB.ListBox lvTasks 
          Height          =   4050
-         ItemData        =   "frmMain.frx":362A
+         ItemData        =   "frmMain.frx":3A7C
          Left            =   -74880
-         List            =   "frmMain.frx":3631
+         List            =   "frmMain.frx":3A83
          Style           =   1  '확인란
          TabIndex        =   25
          Top             =   98
@@ -1434,9 +1435,9 @@ Begin VB.Form frmMain
       End
       Begin VB.ListBox lvContacts 
          Height          =   4020
-         ItemData        =   "frmMain.frx":3646
+         ItemData        =   "frmMain.frx":3A98
          Left            =   -74880
-         List            =   "frmMain.frx":364D
+         List            =   "frmMain.frx":3A9F
          TabIndex        =   3
          Top             =   98
          Width           =   1695
@@ -1455,7 +1456,7 @@ Begin VB.Form frmMain
          Appearance      =   0
          MonthColumns    =   3
          MonthRows       =   2
-         StartOfWeek     =   102498305
+         StartOfWeek     =   86376449
          CurrentDate     =   43858
       End
       Begin VB.Label Label20 
@@ -1522,7 +1523,7 @@ Begin VB.Form frmMain
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             AutoSize        =   2
-            TextSave        =   "오후 10:48"
+            TextSave        =   "오후 11:24"
          EndProperty
       EndProperty
    End
@@ -2224,9 +2225,9 @@ Private Sub timAlarmChecker_Timer()
         ttt = Format(Now, "hh:mm")
         
         If GetSetting("Calendar", "Alarms", lvAlarmList.List(Alarm) & "Time", "00:00") = ttt Then
-            If GetSetting("Calendar", "NotifiedAlarms", lvAlarmList.List(Alarm) & "Time", "abc") = "abc" Then
+            If GetSetting("Calendar", "NotifiedAlarms", lvAlarmList.List(Alarm), "abc") = "abc" Then
                 If GetSetting("Calendar", "Alarms", lvAlarmList.List(Alarm) & "W" & DayOfWeek(), 0) = 1 Then
-                    SaveSetting "Calendar", "NotifiedAlarms", lvAlarmList.List(Alarm) & "Time", "1"
+                    SaveSetting "Calendar", "NotifiedAlarms", lvAlarmList.List(Alarm), "1"
                     frmAlarm.lblCaption = lvAlarmList.List(Alarm)
                     frmAlarm.txtAlarmMemo = GetSetting("Calendar", "Alarms", lvAlarmList.List(Alarm) & "Memo", "")
                     frmAlarm.Show vbModal, Me

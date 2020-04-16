@@ -6,7 +6,7 @@ Begin VB.Form frmOptions
    Caption         =   "환경설정"
    ClientHeight    =   4635
    ClientLeft      =   -75
-   ClientTop       =   1365
+   ClientTop       =   1455
    ClientWidth     =   8250
    Icon            =   "frmOptions.frx":0000
    MaxButton       =   0   'False
@@ -53,7 +53,7 @@ Begin VB.Form frmOptions
       _ExtentY        =   7223
       _Version        =   393216
       Tabs            =   8
-      Tab             =   6
+      Tab             =   7
       TabsPerRow      =   4
       TabHeight       =   520
       ShowFocusRect   =   0   'False
@@ -61,44 +61,44 @@ Begin VB.Form frmOptions
       TabCaption(0)   =   "화면 표시"
       TabPicture(0)   =   "frmOptions.frx":0442
       Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "Frame1"
+      Tab(0).Control(0)=   "Frame8"
       Tab(0).Control(1)=   "Frame10"
-      Tab(0).Control(2)=   "Frame8"
+      Tab(0).Control(2)=   "Frame1"
       Tab(0).ControlCount=   3
       TabCaption(1)   =   "사용자 데이터"
       TabPicture(1)   =   "frmOptions.frx":045E
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "Frame2"
-      Tab(1).Control(1)=   "Frame3"
+      Tab(1).Control(0)=   "Frame3"
+      Tab(1).Control(1)=   "Frame2"
       Tab(1).ControlCount=   2
       TabCaption(2)   =   "표준"
       TabPicture(2)   =   "frmOptions.frx":047A
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "Frame11"
-      Tab(2).Control(1)=   "Frame4"
+      Tab(2).Control(0)=   "Frame4"
+      Tab(2).Control(1)=   "Frame11"
       Tab(2).ControlCount=   2
       TabCaption(3)   =   "검사"
       TabPicture(3)   =   "frmOptions.frx":0496
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "Frame6"
-      Tab(3).Control(1)=   "Label9"
+      Tab(3).Control(0)=   "Label9"
+      Tab(3).Control(1)=   "Frame6"
       Tab(3).ControlCount=   2
       TabCaption(4)   =   "사용자 분류"
       TabPicture(4)   =   "frmOptions.frx":04B2
       Tab(4).ControlEnabled=   0   'False
-      Tab(4).Control(0)=   "Label8"
-      Tab(4).Control(1)=   "Label11"
-      Tab(4).Control(2)=   "Label14"
-      Tab(4).Control(3)=   "txtCategory"
-      Tab(4).Control(4)=   "cmdAddNewCate"
-      Tab(4).Control(5)=   "cmdDelSelCate"
+      Tab(4).Control(0)=   "cmdDelGroup"
+      Tab(4).Control(1)=   "cmdAddNewGroup"
+      Tab(4).Control(2)=   "cmdClearGroups"
+      Tab(4).Control(3)=   "txtNewGroup"
+      Tab(4).Control(4)=   "lvGroups"
+      Tab(4).Control(5)=   "lvCustomCates"
       Tab(4).Control(6)=   "cmdClearCates"
-      Tab(4).Control(7)=   "lvCustomCates"
-      Tab(4).Control(8)=   "lvGroups"
-      Tab(4).Control(9)=   "txtNewGroup"
-      Tab(4).Control(10)=   "cmdClearGroups"
-      Tab(4).Control(11)=   "cmdAddNewGroup"
-      Tab(4).Control(12)=   "cmdDelGroup"
+      Tab(4).Control(7)=   "cmdDelSelCate"
+      Tab(4).Control(8)=   "cmdAddNewCate"
+      Tab(4).Control(9)=   "txtCategory"
+      Tab(4).Control(10)=   "Label14"
+      Tab(4).Control(11)=   "Label11"
+      Tab(4).Control(12)=   "Label8"
       Tab(4).ControlCount=   13
       TabCaption(5)   =   "테마"
       TabPicture(5)   =   "frmOptions.frx":04CE
@@ -107,23 +107,44 @@ Begin VB.Form frmOptions
       Tab(5).ControlCount=   1
       TabCaption(6)   =   "비밀번호"
       TabPicture(6)   =   "frmOptions.frx":04EA
-      Tab(6).ControlEnabled=   -1  'True
+      Tab(6).ControlEnabled=   0   'False
       Tab(6).Control(0)=   "Frame5"
-      Tab(6).Control(0).Enabled=   0   'False
       Tab(6).Control(1)=   "chkPasswordRequired"
-      Tab(6).Control(1).Enabled=   0   'False
       Tab(6).ControlCount=   2
       TabCaption(7)   =   "소리"
       TabPicture(7)   =   "frmOptions.frx":0506
-      Tab(7).ControlEnabled=   0   'False
+      Tab(7).ControlEnabled=   -1  'True
       Tab(7).Control(0)=   "Label12"
+      Tab(7).Control(0).Enabled=   0   'False
       Tab(7).Control(1)=   "Frame12"
+      Tab(7).Control(1).Enabled=   0   'False
       Tab(7).Control(2)=   "Frame34"
-      Tab(7).ControlCount=   3
+      Tab(7).Control(2).Enabled=   0   'False
+      Tab(7).Control(3)=   "cmdPlayNS"
+      Tab(7).Control(3).Enabled=   0   'False
+      Tab(7).Control(4)=   "cmdPlayRT"
+      Tab(7).Control(4).Enabled=   0   'False
+      Tab(7).ControlCount=   5
+      Begin VB.CommandButton cmdPlayRT 
+         Caption         =   "듣기(&R)"
+         Height          =   320
+         Left            =   4320
+         TabIndex        =   79
+         Top             =   3080
+         Width           =   1335
+      End
+      Begin VB.CommandButton cmdPlayNS 
+         Caption         =   "듣기(&N)"
+         Height          =   320
+         Left            =   4320
+         TabIndex        =   78
+         Top             =   1640
+         Width           =   1335
+      End
       Begin VB.CheckBox chkPasswordRequired 
          Caption         =   "프로그램을 시작할 때 암호 입력 필요"
          Height          =   255
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   77
          Top             =   720
          Width           =   3255
@@ -131,7 +152,7 @@ Begin VB.Form frmOptions
       Begin VB.Frame Frame34 
          Caption         =   "일정 알림음"
          Height          =   1335
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   64
          Top             =   720
          Width           =   5895
@@ -186,7 +207,7 @@ Begin VB.Form frmOptions
       Begin VB.Frame Frame12 
          Caption         =   "알람음"
          Height          =   1335
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   65
          Top             =   2160
          Width           =   5895
@@ -266,7 +287,7 @@ Begin VB.Form frmOptions
       Begin VB.Frame Frame5 
          Caption         =   " "
          Height          =   2535
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   53
          Top             =   720
          Width           =   6015
@@ -684,7 +705,7 @@ Begin VB.Form frmOptions
       Begin VB.Label Label12 
          Caption         =   "시스템 경고음 외의 알림음은 PC 스피커가 있어야 작동합니다."
          Height          =   255
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   66
          Top             =   3720
          Width           =   5295
@@ -748,6 +769,9 @@ Dim lngOriginalTop         As Long
 Dim lngIncrement           As Long
 Dim lngOriginalTop2        As Long
 Dim lngIncrement2          As Long
+
+Dim RTI As Integer
+Dim NSI As Integer
 
 Dim Loaded As Boolean
 
@@ -924,6 +948,14 @@ Private Sub cmdOptionHelp_Click()
     MessageBox "설정과 관련된 도움말이 없습니다.", "오류", Me, 16
 End Sub
 
+Private Sub cmdPlayNS_Click()
+    PlayNotification NSI
+End Sub
+
+Private Sub cmdPlayRT_Click()
+    PlayRingtone RTI
+End Sub
+
 Private Sub cmdTheSet_Click()
     SSTab1.Tab = 5
 End Sub
@@ -956,6 +988,13 @@ Private Sub Command1_Click()
     frmMain.SetColor
     
     frmMain.MonthView1.StartOfWeek = cmbWSD.ListIndex + 1
+    
+    Dim i As Integer
+    
+    SaveSetting "Calendar", "Options", "Notification", NSI
+    
+    SaveSetting "Calendar", "Options", "Ringtone", RTI
+    
     Unload Me
 End Sub
 
@@ -1099,20 +1138,21 @@ Private Sub Form_Load()
     
     cmbWSD.ListIndex = GetSetting("Calendar", "Options", "WSD", 0)
     
-    optNotificationSound.Item(GetSetting("Calendar", "Options", "Notification", 0)).Value = True
-    optRingtone.Item(GetSetting("Calendar", "Options", "Ringtone", 0)).Value = True
+    NSI = GetSetting("Calendar", "Options", "Notification", 0)
+    RTI = GetSetting("Calendar", "Options", "Ringtone", 0)
+    
+    optNotificationSound.Item(NSI).Value = True
+    optRingtone.Item(RTI).Value = True
     
     Loaded = True
 End Sub
 
 Private Sub optNotificationSound_Click(Index As Integer)
-    If Loaded = False Then Exit Sub
-    PlayNotification Index
+    NSI = Index
 End Sub
 
 Private Sub optRingtone_Click(Index As Integer)
-    If Loaded = False Then Exit Sub
-    PlayRingtone Index
+    RTI = Index
 End Sub
 
 Private Sub radCFQ_Click()
