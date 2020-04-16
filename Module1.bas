@@ -262,6 +262,28 @@ endfor:
     PlayFair = RetVal
 End Function
 
+Function DayOfWeek() As Integer
+    Dim DOW As String
+    Select Case DatePart("w", Now)
+        Case vbSunday
+            DOW = 0
+        Case vbMonday
+            DOW = 1
+        Case vbTuesday
+            DOW = 2
+        Case vbWednesday
+            DOW = 3
+        Case vbThursday
+            DOW = 4
+        Case vbFriday
+            DOW = 5
+        Case vbSaturday
+            DOW = 6
+    End Select
+    
+    DayOfWeek = DOW
+End Function
+
 Sub Main()
     Set fMainForm = New frmMain
     fMainForm.Show

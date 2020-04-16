@@ -11,7 +11,7 @@ Begin VB.Form frmMain
    Caption         =   "일정관리자"
    ClientHeight    =   6630
    ClientLeft      =   150
-   ClientTop       =   1665
+   ClientTop       =   2355
    ClientWidth     =   10950
    Icon            =   "frmMain.frx":0000
    LinkTopic       =   "Form1"
@@ -20,6 +20,19 @@ Begin VB.Form frmMain
    ScaleMode       =   0  '사용자
    ScaleWidth      =   10950
    StartUpPosition =   3  'Windows 기본값
+   Begin VB.FileListBox lvAlarmList 
+      Height          =   270
+      Left            =   3480
+      TabIndex        =   142
+      Top             =   0
+      Visible         =   0   'False
+      Width           =   375
+   End
+   Begin VB.Timer timAlarmChecker 
+      Interval        =   10000
+      Left            =   5040
+      Top             =   0
+   End
    Begin VB.FileListBox lvGroupList 
       Height          =   270
       Left            =   10800
@@ -375,24 +388,34 @@ Begin VB.Form frmMain
       Tab(4).Control(2).Enabled=   0   'False
       Tab(4).Control(3)=   "lvAlarms"
       Tab(4).Control(3).Enabled=   0   'False
-      Tab(4).Control(4)=   "Text1"
+      Tab(4).Control(4)=   "txtAlarmTitle"
       Tab(4).Control(4).Enabled=   0   'False
-      Tab(4).Control(5)=   "Text2"
+      Tab(4).Control(5)=   "txtTimeHrs"
       Tab(4).Control(5).Enabled=   0   'False
-      Tab(4).Control(6)=   "Text3"
+      Tab(4).Control(6)=   "txtTimeMin"
       Tab(4).Control(6).Enabled=   0   'False
       Tab(4).Control(7)=   "Frame5"
       Tab(4).Control(7).Enabled=   0   'False
       Tab(4).Control(8)=   "Command1"
       Tab(4).Control(8).Enabled=   0   'False
-      Tab(4).Control(9)=   "Command2"
+      Tab(4).Control(9)=   "cmdSaveAlarm"
       Tab(4).Control(9).Enabled=   0   'False
-      Tab(4).Control(10)=   "Command3"
+      Tab(4).Control(10)=   "cmdDeleteAlarm"
       Tab(4).Control(10).Enabled=   0   'False
-      Tab(4).Control(11)=   "Text4"
+      Tab(4).Control(11)=   "txtAlarmMemo"
       Tab(4).Control(11).Enabled=   0   'False
-      Tab(4).ControlCount=   12
-      Begin VB.TextBox Text4 
+      Tab(4).Control(12)=   "lvAlarmFiles"
+      Tab(4).Control(12).Enabled=   0   'False
+      Tab(4).ControlCount=   13
+      Begin VB.FileListBox lvAlarmFiles 
+         Height          =   270
+         Left            =   5640
+         TabIndex        =   141
+         Top             =   720
+         Visible         =   0   'False
+         Width           =   975
+      End
+      Begin VB.TextBox txtAlarmMemo 
          Height          =   1215
          Left            =   2640
          MultiLine       =   -1  'True
@@ -400,15 +423,16 @@ Begin VB.Form frmMain
          Top             =   2520
          Width           =   5535
       End
-      Begin VB.CommandButton Command3 
+      Begin VB.CommandButton cmdDeleteAlarm 
          Caption         =   "삭제(&D)"
+         Enabled         =   0   'False
          Height          =   375
          Left            =   5400
          TabIndex        =   138
          Top             =   3840
          Width           =   1335
       End
-      Begin VB.CommandButton Command2 
+      Begin VB.CommandButton cmdSaveAlarm 
          Caption         =   "저장(&S)"
          Height          =   375
          Left            =   6840
@@ -495,21 +519,21 @@ Begin VB.Form frmMain
             Width           =   1215
          End
       End
-      Begin VB.TextBox Text3 
+      Begin VB.TextBox txtTimeMin 
          Height          =   270
          Left            =   3600
          TabIndex        =   127
          Top             =   600
          Width           =   375
       End
-      Begin VB.TextBox Text2 
+      Begin VB.TextBox txtTimeHrs 
          Height          =   270
          Left            =   3240
          TabIndex        =   126
          Top             =   600
          Width           =   375
       End
-      Begin VB.TextBox Text1 
+      Begin VB.TextBox txtAlarmTitle 
          Height          =   270
          Left            =   3240
          TabIndex        =   124
@@ -1048,7 +1072,7 @@ Begin VB.Form frmMain
             _ExtentY        =   476
             _Version        =   327681
             BuddyControl    =   "txtImpt"
-            BuddyDispid     =   196636
+            BuddyDispid     =   196641
             OrigLeft        =   600
             OrigTop         =   1920
             OrigRight       =   855
@@ -1076,7 +1100,7 @@ Begin VB.Form frmMain
             _ExtentY        =   476
             _Version        =   327681
             BuddyControl    =   "txtPercentage"
-            BuddyDispid     =   196639
+            BuddyDispid     =   196644
             OrigLeft        =   3850
             OrigTop         =   1200
             OrigRight       =   4105
@@ -1431,7 +1455,7 @@ Begin VB.Form frmMain
          Appearance      =   0
          MonthColumns    =   3
          MonthRows       =   2
-         StartOfWeek     =   97845249
+         StartOfWeek     =   102498305
          CurrentDate     =   43858
       End
       Begin VB.Label Label20 
@@ -1493,12 +1517,12 @@ Begin VB.Form frmMain
          BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
             AutoSize        =   2
-            TextSave        =   "2020-04-14"
+            TextSave        =   "2020-04-15"
          EndProperty
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             AutoSize        =   2
-            TextSave        =   "오전 1:59"
+            TextSave        =   "오후 10:48"
          EndProperty
       EndProperty
    End
@@ -1591,6 +1615,24 @@ Option Explicit
 '출처: http://www.vbforums.com/showthread.php?546633-VB6-Sleep-Function
 Private Declare Sub Sleep Lib "kernel32" (ByVal dwMilliseconds As Long)
 
+
+Sub ClearAlarmFields()
+    cmdDeleteAlarm.Enabled = False
+    
+    txtAlarmTitle.Text = ""
+    txtTimeHrs.Text = ""
+    txtTimeMin.Text = ""
+    
+    Dim i As Integer
+    For i = 0 To 6
+        chkDayOfWeeks(i).Value = 0
+    Next i
+    
+    txtAlarmMemo.Text = ""
+    
+    txtAlarmTitle.Enabled = True
+End Sub
+
 ' Credits: (Milk (Sleep+Pause Sub)). (Wayne Spangler (Pause Sub))
 Private Sub Pause(ByVal Delay As Single)
    Delay = Timer + Delay
@@ -1605,6 +1647,88 @@ Private Sub Pause(ByVal Delay As Single)
        DoEvents ' to process events.
        Sleep 1 ' to not eat cpu
    Loop While Delay > Timer
+End Sub
+
+Private Sub cmdDeleteAlarm_Click()
+    On Error Resume Next
+    If Confirm("한 번만 경고하는데 선택한 알람을 삭제할까요?", "경고", Me) Then
+        Kill "C:\CALPLANS\ALARMS\" & lvAlarms.SelectedItem.SubItems(1)
+        
+        ClearAlarmFields
+        
+        LoadAlarms
+    End If
+End Sub
+
+Private Sub cmdSaveAlarm_Click()
+    '입력값을 검사한다.
+    If Mid$(txtTimeMin.Text, 1, 1) = "0" Then
+        txtTimeMin.Text = Mid$(txtTimeMin.Text, 2, 1)
+    End If
+    If InStr(1, txtAlarmTitle.Text, "?") > 0 Or InStr(1, txtAlarmTitle.Text, "\") > 0 Or InStr(1, txtAlarmTitle.Text, "|") > 0 Or InStr(1, txtAlarmTitle.Text, ".") > 0 Or InStr(1, txtAlarmTitle.Text, "/") > 0 Or InStr(1, txtAlarmTitle.Text, "*") > 0 Or InStr(1, txtAlarmTitle.Text, ":") > 0 Or InStr(1, txtAlarmTitle.Text, ChrW$(34)) > 0 Or txtAlarmTitle.Text = "새 알람 추가..." Then
+        MessageBox "제목의 값이 올바르지 않습니다.", "입력 값 오류", Me, 16
+    End If
+    If IsNumeric(txtTimeHrs.Text) = False Or IsNumeric(txtTimeMin.Text) = False Then
+        MessageBox "시간의 값이 올바르지 않습니다.", "입력 값 오류", Me, 16
+        Exit Sub
+    End If
+    If GetSetting("Calendar", "Options", "NoTimeCheck", 0) = 0 Then
+        If txtTimeHrs.Text > 23 Or txtTimeMin.Text > 59 Or txtTimeHrs.Text < 0 Or txtTimeMin.Text < 0 Then
+            MessageBox "시간에서 시는 0부터 23, 분은 0부터 59까지의 정수이여야 합니다.", "입력 값 오류", Me, 16
+            Exit Sub
+    End If
+    End If
+    If txtAlarmTitle.Text = "" Then
+        MessageBox "제목의 값은 필수입니다.", "입력 값 오류", Me, 16
+        Exit Sub
+    End If
+    
+    '일정을 추가하기 전에 해당 제목의 일정이 존재하는지 확인한다.
+    If FileExists("C:\CALPLANS\ALARMS\" & txtAlarmTitle.Text) = True And lvAlarms.SelectedItem.SubItems(1) = "새 알람 추가..." Then
+        MessageBox "해당 이름의 알람이 이미 존재합니다.", "처리 중 오류", Me, 16
+    End If
+    
+    '해당 알람이 존재함을 알리는 파일을 만든다.
+    'https://stackoverflow.com/questions/21108664/how-to-create-txt-file
+    Dim iFileNo As Integer
+    iFileNo = FreeFile
+    '파일을 연다.
+    Open "C:\CALPLANS\ALARMS\" & txtAlarmTitle.Text For Output As #iFileNo
+    
+    '파일의 내용은 보지 않으므로 빈 칸으로...
+    Print #iFileNo, ""
+    
+    '파일을 닫는다.
+    Close #iFileNo
+    
+    Dim txtTime As String
+    
+    '레지스트리에 일정의 기타 정보를 저장한다.
+    If txtTimeHrs.Text < 9 Then
+        If txtTimeMin.Text < 9 Then
+            txtTime = "0" & txtTimeHrs.Text & ":0" & txtTimeMin.Text
+        Else
+            txtTime = "0" & txtTimeHrs.Text & ":" & txtTimeMin.Text
+        End If
+    Else
+        If txtTimeMin.Text < 9 Then
+            txtTime = txtTimeHrs.Text & ":0" & txtTimeMin.Text
+        Else
+            txtTime = txtTimeHrs.Text & ":" & txtTimeMin.Text
+        End If
+    End If
+    
+    SaveSetting "Calendar", "Alarms", txtAlarmTitle.Text & "Time", txtTime
+    SaveSetting "Calendar", "Alarms", txtAlarmTitle.Text & "Memo", txtAlarmMemo.Text
+    
+    Dim i As Integer
+    For i = 0 To 6
+        SaveSetting "Calendar", "Alarms", txtAlarmTitle.Text & "W" & CStr(i), chkDayOfWeeks(i).Value
+    Next i
+    
+    ClearAlarmFields
+    
+    LoadAlarms
 End Sub
 
 Private Sub cmdTltRef_Click()
@@ -2040,6 +2164,29 @@ Private Sub Form_Load()
     frmTip.Show vbModal, Me
 End Sub
 
+Private Sub lvAlarms_ItemClick(ByVal Item As ComctlLib.ListItem)
+    On Error Resume Next
+    If Item.SubItems(1) = "새 알람 추가..." Then
+        ClearAlarmFields
+    Else
+        cmdDeleteAlarm.Enabled = True
+        
+        txtAlarmTitle.Text = Item.SubItems(1)
+        txtTimeHrs.Text = Split(GetSetting("Calendar", "Alarms", txtAlarmTitle.Text & "Time", "00:00"), ":")(0)
+        txtTimeMin.Text = Split(GetSetting("Calendar", "Alarms", txtAlarmTitle.Text & "Time", "00:00"), ":")(1)
+        
+        On Error Resume Next
+        Dim i As Integer
+        For i = 0 To 6
+            chkDayOfWeeks(i).Value = GetSetting("Calendar", "Alarms", txtAlarmTitle.Text & "W" & CStr(i), 0)
+        Next i
+        
+        txtAlarmMemo.Text = GetSetting("Calendar", "Alarms", txtAlarmTitle.Text & "Memo", "")
+        
+        txtAlarmTitle.Enabled = False
+    End If
+End Sub
+
 Private Sub lvTodaysPlan_DblClick()
     On Error Resume Next
 End Sub
@@ -2058,6 +2205,35 @@ Private Sub sdcmdSavePlanner_Click()
     sbStatusBar.Panels(1).Text = "저장되었습니다."
     Sleep 1000
     sbStatusBar.Panels(1).Text = ""
+End Sub
+
+Private Sub timAlarmChecker_Timer()
+    '알람을 찾는다.
+    On Error Resume Next
+    
+    MkDir "C:\CALPLANS"
+    MkDir "C:\CALPLANS\ALARMS"
+    
+    lvAlarmList.Path = "C:\CALPLANS\ALARMS"
+    lvAlarmList.Refresh
+    
+    Dim Alarm As Integer
+    Dim ttt As Integer
+    
+    For Alarm = 0 To lvAlarmList.ListCount - 1
+        ttt = Format(Now, "hh:mm")
+        
+        If GetSetting("Calendar", "Alarms", lvAlarmList.List(Alarm) & "Time", "00:00") = ttt Then
+            If GetSetting("Calendar", "NotifiedAlarms", lvAlarmList.List(Alarm) & "Time", "abc") = "abc" Then
+                If GetSetting("Calendar", "Alarms", lvAlarmList.List(Alarm) & "W" & DayOfWeek(), 0) = 1 Then
+                    SaveSetting "Calendar", "NotifiedAlarms", lvAlarmList.List(Alarm) & "Time", "1"
+                    frmAlarm.lblCaption = lvAlarmList.List(Alarm)
+                    frmAlarm.txtAlarmMemo = GetSetting("Calendar", "Alarms", lvAlarmList.List(Alarm) & "Memo", "")
+                    frmAlarm.Show vbModal, Me
+                End If
+            End If
+        End If
+    Next Alarm
 End Sub
 
 Private Sub Timer1_Timer()
@@ -2509,6 +2685,41 @@ Private Sub LoadAlarms()
     
     On Error Resume Next
     
+    lvAlarms.ListItems.Clear
+    lvAlarmFiles.Refresh
+    
+    MkDir "C:\CALPLANS"
+    MkDir "C:\CALPLANS\ALARMS"
+    
+    lvAlarmFiles.Path = "C:\CALPLANS\ALARMS"
+    
     lvAlarms.ColumnHeaders.Add , , "시간", 350
     lvAlarms.ColumnHeaders.Add , , "이름", 1400
+
+    lvAlarms.ListItems.Add , , "--:--"
+    lvAlarms.ListItems(1).SubItems(1) = "새 알람 추가..."
+    
+    Dim Alarm As Integer
+    Dim Title As String
+    Dim Time As String
+    
+    For Alarm = 0 To lvAlarmFiles.ListCount - 1
+        Title = lvAlarmFiles.List(Alarm)
+        Time = GetSetting("Calendar", "Alarms", Title & "Time", "00:00")
+
+        lvAlarms.ListItems.Add , , Time
+        lvAlarms.ListItems(Alarm + 2).SubItems(1) = Title
+    Next Alarm
 End Sub
+
+Private Sub txtTimeHrs_Change()
+    On Error Resume Next
+    If Len(txtTimeHrs.Text) = 2 Or (txtTimeHrs.Text >= 3 And txtTimeHrs.Text <= 9) Then
+        txtTimeMin.SetFocus '시 입력 칸을 채우면 다음 칸을 활성화한다.
+    End If
+End Sub
+
+Private Sub txtTimeMin_Change()
+    If txtTimeMin.Text = "" Then txtTimeHrs.SetFocus
+End Sub
+
