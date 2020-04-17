@@ -4,7 +4,7 @@ Begin VB.Form frmAbout
    Caption         =   "정보"
    ClientHeight    =   3525
    ClientLeft      =   45
-   ClientTop       =   495
+   ClientTop       =   585
    ClientWidth     =   5865
    ClipControls    =   0   'False
    Icon            =   "frmAbout.frx":0000
@@ -58,6 +58,26 @@ Begin VB.Form frmAbout
       Tag             =   "시스템 정보..."
       Top             =   2625
       Width           =   1452
+   End
+   Begin VB.Label lblCreditsLink 
+      Caption         =   "사용된 외부 코드 목록"
+      BeginProperty Font 
+         Name            =   "굴림"
+         Size            =   9
+         Charset         =   129
+         Weight          =   400
+         Underline       =   -1  'True
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H80000010&
+      Height          =   230
+      Left            =   240
+      MouseIcon       =   "frmAbout.frx":044E
+      MousePointer    =   4  '아이콘
+      TabIndex        =   8
+      Top             =   3240
+      Width           =   1815
    End
    Begin VB.Label lblDescription 
       Caption         =   "응용 프로그램 설명"
@@ -258,3 +278,10 @@ GetKeyError:    ' 발생한 오류를 처리합니다...
         rc = RegCloseKey(hKey)                                  ' 레지스트리 키를 닫습니다.
 End Function
 
+Private Sub Label1_Click()
+
+End Sub
+
+Private Sub lblCreditsLink_Click()
+    frmCredits.Show vbModal, Me
+End Sub

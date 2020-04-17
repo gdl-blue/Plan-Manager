@@ -27,6 +27,7 @@ Form=frmCheckDeactivatePassword.frm
 Module=ringtones; ringtnes.bas
 Form=frmAlarm.frm
 Module=SubClassControl; SubClassControl.bas
+Form=frmCredits.frm
 IconForm="frmMain"
 Startup="Sub Main"
 HelpFile="C:\Users\Dev\Desktop\PLNMGR32.HLP"

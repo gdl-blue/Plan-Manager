@@ -11,7 +11,7 @@ Begin VB.Form frmMain
    Caption         =   "일정관리자"
    ClientHeight    =   6645
    ClientLeft      =   150
-   ClientTop       =   3195
+   ClientTop       =   3735
    ClientWidth     =   10950
    Icon            =   "frmMain.frx":0000
    LinkTopic       =   "Form1"
@@ -20,13 +20,51 @@ Begin VB.Form frmMain
    ScaleMode       =   0  '사용자
    ScaleWidth      =   10950
    StartUpPosition =   3  'Windows 기본값
+   Begin VB.CommandButton cmdRibbonFile 
+      BackColor       =   &H8000000C&
+      Caption         =   "파일(&F)"
+      Height          =   330
+      Left            =   120
+      TabIndex        =   144
+      Top             =   120
+      Width           =   1125
+   End
+   Begin VB.CommandButton cmdMnuAbout 
+      BackColor       =   &H8000000C&
+      Caption         =   "☎"
+      Height          =   375
+      Left            =   7440
+      TabIndex        =   141
+      ToolTipText     =   "프로그램 정보를 보여줍니다."
+      Top             =   70
+      Width           =   375
+   End
+   Begin VB.CommandButton cmdMnuOptions 
+      BackColor       =   &H8000000C&
+      Caption         =   "*"
+      BeginProperty Font 
+         Name            =   "굴림"
+         Size            =   20.25
+         Charset         =   129
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   375
+      Left            =   7800
+      TabIndex        =   140
+      ToolTipText     =   "환경 설정"
+      Top             =   70
+      Width           =   375
+   End
    Begin VB.PictureBox pbxTodaysPlanTab 
       Height          =   1335
       Left            =   11280
       Picture         =   "frmMain.frx":0442
       ScaleHeight     =   1275
       ScaleWidth      =   1515
-      TabIndex        =   147
+      TabIndex        =   139
       Top             =   1920
       Width           =   1575
    End
@@ -36,7 +74,7 @@ Begin VB.Form frmMain
       Picture         =   "frmMain.frx":27604
       ScaleHeight     =   915
       ScaleWidth      =   4635
-      TabIndex        =   146
+      TabIndex        =   138
       Top             =   600
       Visible         =   0   'False
       Width           =   4695
@@ -44,7 +82,7 @@ Begin VB.Form frmMain
    Begin VB.FileListBox lvAlarmList 
       Height          =   270
       Left            =   3480
-      TabIndex        =   142
+      TabIndex        =   134
       Top             =   0
       Visible         =   0   'False
       Width           =   375
@@ -57,7 +95,7 @@ Begin VB.Form frmMain
    Begin VB.FileListBox lvGroupList 
       Height          =   270
       Left            =   10800
-      TabIndex        =   121
+      TabIndex        =   113
       Top             =   0
       Visible         =   0   'False
       Width           =   495
@@ -66,7 +104,7 @@ Begin VB.Form frmMain
       Caption         =   "갱신(&R)"
       Height          =   300
       Left            =   8760
-      TabIndex        =   61
+      TabIndex        =   53
       ToolTipText     =   "오늘의 일정목록을 갱신합니다."
       Top             =   5880
       Width           =   1935
@@ -79,7 +117,7 @@ Begin VB.Form frmMain
    Begin TabDlg.SSTab ssTodaysPlan 
       Height          =   6135
       Left            =   8640
-      TabIndex        =   57
+      TabIndex        =   49
       Top             =   120
       Width           =   2205
       _ExtentX        =   3889
@@ -106,14 +144,14 @@ Begin VB.Form frmMain
       Begin VB.FileListBox lvTmrPlans 
          Height          =   5490
          Left            =   -74880
-         TabIndex        =   60
+         TabIndex        =   52
          Top             =   360
          Width           =   1935
       End
       Begin VB.FileListBox lvTodaysPlans 
          Height          =   270
          Left            =   240
-         TabIndex        =   59
+         TabIndex        =   51
          Top             =   140
          Visible         =   0   'False
          Width           =   735
@@ -121,34 +159,35 @@ Begin VB.Form frmMain
       Begin VB.FileListBox lvTodaysPlan 
          Height          =   5310
          Left            =   120
-         TabIndex        =   58
+         TabIndex        =   50
          Top             =   375
          Width           =   1935
       End
    End
    Begin VB.CommandButton cmdHelp 
       BackColor       =   &H8000000C&
-      Caption         =   "도움말"
-      Height          =   360
-      Left            =   7440
-      TabIndex        =   51
+      Caption         =   "?"
+      Height          =   375
+      Left            =   8160
+      TabIndex        =   47
       ToolTipText     =   "프로그램의 도움말과 관련된 항목입니다."
       Top             =   70
-      Width           =   1095
+      Width           =   375
    End
    Begin TabDlg.SSTab ssRibbonMenu 
       Height          =   1335
       Left            =   120
       TabIndex        =   44
       Top             =   120
-      Width           =   8415
-      _ExtentX        =   14843
+      Width           =   8880
+      _ExtentX        =   15663
       _ExtentY        =   2355
       _Version        =   393216
       Tabs            =   4
+      Tab             =   1
       TabsPerRow      =   8
       TabHeight       =   548
-      TabMaxWidth     =   1587
+      TabMaxWidth     =   1940
       WordWrap        =   0   'False
       ShowFocusRect   =   0   'False
       BackColor       =   -2147483636
@@ -162,104 +201,134 @@ Begin VB.Form frmMain
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      TabCaption(0)   =   "홈"
+      TabCaption(0)   =   "Tab 0"
       TabPicture(0)   =   "frmMain.frx":5C16A
-      Tab(0).ControlEnabled=   -1  'True
-      Tab(0).Control(0)=   "cmdPlanList"
-      Tab(0).Control(0).Enabled=   0   'False
-      Tab(0).Control(1)=   "cmdPlanIndex"
-      Tab(0).Control(1).Enabled=   0   'False
-      Tab(0).Control(2)=   "cmdEndPrg"
-      Tab(0).Control(2).Enabled=   0   'False
-      Tab(0).ControlCount=   3
-      TabCaption(1)   =   "보기"
+      Tab(0).ControlEnabled=   0   'False
+      Tab(0).ControlCount=   0
+      TabCaption(1)   =   " 홈"
       TabPicture(1)   =   "frmMain.frx":5C186
-      Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "tglCalWeekNum"
-      Tab(1).Control(1)=   "tglStatusBar"
+      Tab(1).ControlEnabled=   -1  'True
+      Tab(1).Control(0)=   "Frame6"
+      Tab(1).Control(0).Enabled=   0   'False
+      Tab(1).Control(1)=   "Frame7"
+      Tab(1).Control(1).Enabled=   0   'False
       Tab(1).ControlCount=   2
-      TabCaption(2)   =   "일정"
-      TabPicture(2)   =   "frmMain.frx":5C1A2
+      TabCaption(2)   =   "보기"
+      TabPicture(2)   =   "frmMain.frx":5C5D8
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "cmdDelAllTodaysPlan"
-      Tab(2).Control(1)=   "cmdTodaysPlan"
+      Tab(2).Control(0)=   "tglCalWeekNum"
+      Tab(2).Control(1)=   "tglStatusBar"
       Tab(2).ControlCount=   2
-      TabCaption(3)   =   "도구"
-      TabPicture(3)   =   "frmMain.frx":5C1BE
+      TabCaption(3)   =   "일정"
+      TabPicture(3)   =   "frmMain.frx":5CA2A
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "cmdOptions"
+      Tab(3).Control(0)=   "Frame8"
       Tab(3).ControlCount=   1
-      Begin VB.CommandButton cmdOptions 
-         Caption         =   "환경설정"
+      Begin VB.Frame Frame8 
+         Caption         =   "-"
          Height          =   855
          Left            =   -74880
-         Picture         =   "frmMain.frx":5C1DA
-         Style           =   1  '그래픽
-         TabIndex        =   56
-         ToolTipText     =   "프로그램을 구성합니다."
+         TabIndex        =   150
          Top             =   360
-         Width           =   1095
+         Width           =   2415
+         Begin VB.CommandButton cmdDelAllTodaysPlan 
+            Caption         =   "이날의   일정 삭제"
+            Height          =   735
+            Left            =   1320
+            Picture         =   "frmMain.frx":5CE7C
+            Style           =   1  '그래픽
+            TabIndex        =   152
+            ToolTipText     =   "선택한 날의 일정을 모두 삭제합니다."
+            Top             =   120
+            UseMaskColor    =   -1  'True
+            Width           =   975
+         End
+         Begin VB.CommandButton cmdTodaysPlan 
+            Caption         =   "이날의 일정"
+            Height          =   735
+            Left            =   120
+            Picture         =   "frmMain.frx":5D2BE
+            Style           =   1  '그래픽
+            TabIndex        =   151
+            ToolTipText     =   "표시한 날짜의 일정 목록을 표시합니다."
+            Top             =   120
+            Width           =   1095
+         End
       End
-      Begin VB.CommandButton cmdDelAllTodaysPlan 
-         Caption         =   "이날의   일정 삭제"
+      Begin VB.Frame Frame7 
+         Caption         =   "-"
          Height          =   855
-         Left            =   -73680
-         Picture         =   "frmMain.frx":5C61C
-         Style           =   1  '그래픽
-         TabIndex        =   54
-         ToolTipText     =   "선택한 날의 일정을 모두 삭제합니다."
+         Left            =   2640
+         TabIndex        =   148
          Top             =   360
-         UseMaskColor    =   -1  'True
-         Width           =   975
+         Width           =   1335
+         Begin VB.CommandButton cmdEndPrg 
+            Caption         =   "끝내기"
+            Height          =   735
+            Left            =   120
+            Picture         =   "frmMain.frx":5D700
+            Style           =   1  '그래픽
+            TabIndex        =   149
+            ToolTipText     =   "프로그램을 끝냅니다."
+            Top             =   120
+            Width           =   1095
+         End
       End
-      Begin VB.CommandButton cmdTodaysPlan 
-         Caption         =   "이날의 일정"
+      Begin VB.Frame Frame6 
+         Caption         =   "-"
+         ForeColor       =   &H80000008&
          Height          =   855
-         Left            =   -74880
-         Picture         =   "frmMain.frx":5CA5E
-         Style           =   1  '그래픽
-         TabIndex        =   53
-         ToolTipText     =   "표시한 날짜의 일정 목록을 표시합니다."
-         Top             =   360
-         Width           =   1095
-      End
-      Begin VB.CommandButton cmdEndPrg 
-         Caption         =   "끝내기"
-         Height          =   855
-         Left            =   2760
-         Picture         =   "frmMain.frx":5CEA0
-         Style           =   1  '그래픽
-         TabIndex        =   50
-         ToolTipText     =   "프로그램을 끝냅니다."
-         Top             =   380
-         Width           =   1215
-      End
-      Begin VB.CommandButton cmdPlanIndex 
-         Caption         =   "데이터 색인"
-         Height          =   855
-         Left            =   1200
-         Picture         =   "frmMain.frx":5D2E2
-         Style           =   1  '그래픽
-         TabIndex        =   49
-         ToolTipText     =   "주소록, 일정 전체목록입니다."
-         Top             =   380
-         Width           =   1215
-      End
-      Begin VB.CommandButton cmdPlanList 
-         Caption         =   "일정 목록"
-         Height          =   840
          Left            =   120
-         Picture         =   "frmMain.frx":5D724
-         Style           =   1  '그래픽
-         TabIndex        =   48
-         ToolTipText     =   "표시한 날짜의 일정 목록을 표시합니다."
-         Top             =   380
-         Width           =   975
+         TabIndex        =   145
+         Top             =   360
+         Width           =   2415
+         Begin VB.CommandButton cmdPlanIndex 
+            Caption         =   "데이터 색인"
+            Height          =   735
+            Left            =   1200
+            Picture         =   "frmMain.frx":5DB42
+            Style           =   1  '그래픽
+            TabIndex        =   147
+            ToolTipText     =   "주소록, 일정 전체목록입니다."
+            Top             =   120
+            Width           =   1095
+         End
+         Begin VB.CommandButton cmdPlanList 
+            Caption         =   "일정 목록"
+            Height          =   720
+            Left            =   120
+            Picture         =   "frmMain.frx":5DF84
+            Style           =   1  '그래픽
+            TabIndex        =   146
+            ToolTipText     =   "표시한 날짜의 일정 목록을 표시합니다."
+            Top             =   120
+            Width           =   975
+         End
+      End
+      Begin MSForms.ToggleButton tglStatusBar 
+         Height          =   840
+         Left            =   -74880
+         TabIndex        =   143
+         ToolTipText     =   "상태표시줄을 표시하거나 숨깁니다."
+         Top             =   375
+         Width           =   1095
+         BackColor       =   -2147483633
+         ForeColor       =   -2147483630
+         DisplayStyle    =   6
+         Size            =   "1931;1482"
+         Value           =   "1"
+         Caption         =   "상태표시줄"
+         Picture         =   "frmMain.frx":5E3C6
+         FontName        =   "굴림"
+         FontHeight      =   180
+         FontCharSet     =   129
+         FontPitchAndFamily=   34
+         ParagraphAlign  =   3
       End
       Begin MSForms.ToggleButton tglCalWeekNum 
          Height          =   855
          Left            =   -73680
-         TabIndex        =   55
+         TabIndex        =   142
          ToolTipText     =   "달력에서 주의 번호를 표시하거나 숨깁니다."
          Top             =   360
          Width           =   1095
@@ -269,27 +338,7 @@ Begin VB.Form frmMain
          Size            =   "1931;1508"
          Value           =   "1"
          Caption         =   "주 번호"
-         Picture         =   "frmMain.frx":5DB66
-         FontName        =   "굴림"
-         FontHeight      =   180
-         FontCharSet     =   129
-         FontPitchAndFamily=   34
-         ParagraphAlign  =   3
-      End
-      Begin MSForms.ToggleButton tglStatusBar 
-         Height          =   855
-         Left            =   -74880
-         TabIndex        =   47
-         ToolTipText     =   "상태표시줄을 표시하거나 숨깁니다."
-         Top             =   380
-         Width           =   1095
-         BackColor       =   -2147483633
-         ForeColor       =   -2147483630
-         DisplayStyle    =   6
-         Size            =   "1931;1508"
-         Value           =   "1"
-         Caption         =   "상태표시줄"
-         Picture         =   "frmMain.frx":5DE80
+         Picture         =   "frmMain.frx":5E818
          FontName        =   "굴림"
          FontHeight      =   180
          FontCharSet     =   129
@@ -313,15 +362,15 @@ Begin VB.Form frmMain
       TabHeight       =   582
       ShowFocusRect   =   0   'False
       BackColor       =   -2147483636
-      MouseIcon       =   "frmMain.frx":5E2D2
+      MouseIcon       =   "frmMain.frx":5EB32
       TabCaption(0)   =   "일정"
-      TabPicture(0)   =   "frmMain.frx":5E2EE
+      TabPicture(0)   =   "frmMain.frx":5EB4E
       Tab(0).ControlEnabled=   0   'False
       Tab(0).Control(0)=   "Dir1"
       Tab(0).Control(1)=   "MonthView1"
       Tab(0).ControlCount=   2
       TabCaption(1)   =   "주소록"
-      TabPicture(1)   =   "frmMain.frx":5E740
+      TabPicture(1)   =   "frmMain.frx":5EFA0
       Tab(1).ControlEnabled=   0   'False
       Tab(1).Control(0)=   "cmdResetFields"
       Tab(1).Control(1)=   "cmdDeleteAllContacts"
@@ -334,7 +383,7 @@ Begin VB.Form frmMain
       Tab(1).Control(8)=   "lvContacts"
       Tab(1).ControlCount=   9
       TabCaption(2)   =   "할 일"
-      TabPicture(2)   =   "frmMain.frx":5EB92
+      TabPicture(2)   =   "frmMain.frx":5F3F2
       Tab(2).ControlEnabled=   0   'False
       Tab(2).Control(0)=   "cmdDeleteAllTasks"
       Tab(2).Control(1)=   "lvTaskFiles"
@@ -344,7 +393,7 @@ Begin VB.Form frmMain
       Tab(2).Control(5)=   "lvTasks"
       Tab(2).ControlCount=   6
       TabCaption(3)   =   "일과표"
-      TabPicture(3)   =   "frmMain.frx":5EFE4
+      TabPicture(3)   =   "frmMain.frx":5F844
       Tab(3).ControlEnabled=   0   'False
       Tab(3).Control(0)=   "sdcmdSavePlanner"
       Tab(3).Control(1)=   "txtPlannerTF(48)"
@@ -400,7 +449,7 @@ Begin VB.Form frmMain
       Tab(3).Control(51)=   "lblDOW"
       Tab(3).ControlCount=   52
       TabCaption(4)   =   "알람"
-      TabPicture(4)   =   "frmMain.frx":5F2FE
+      TabPicture(4)   =   "frmMain.frx":5FB5E
       Tab(4).ControlEnabled=   -1  'True
       Tab(4).Control(0)=   "Label18"
       Tab(4).Control(0).Enabled=   0   'False
@@ -432,7 +481,7 @@ Begin VB.Form frmMain
       Begin VB.FileListBox lvAlarmFiles 
          Height          =   270
          Left            =   7440
-         TabIndex        =   141
+         TabIndex        =   133
          Top             =   0
          Visible         =   0   'False
          Width           =   975
@@ -441,7 +490,7 @@ Begin VB.Form frmMain
          Height          =   1215
          Left            =   2640
          MultiLine       =   -1  'True
-         TabIndex        =   140
+         TabIndex        =   132
          Top             =   2520
          Width           =   5535
       End
@@ -450,7 +499,7 @@ Begin VB.Form frmMain
          Enabled         =   0   'False
          Height          =   375
          Left            =   5400
-         TabIndex        =   138
+         TabIndex        =   130
          Top             =   3840
          Width           =   1335
       End
@@ -458,7 +507,7 @@ Begin VB.Form frmMain
          Caption         =   "저장(&S)"
          Height          =   375
          Left            =   6840
-         TabIndex        =   137
+         TabIndex        =   129
          Top             =   3840
          Width           =   1335
       End
@@ -466,7 +515,7 @@ Begin VB.Form frmMain
          Caption         =   "초기화(&R)"
          Height          =   375
          Left            =   2640
-         TabIndex        =   136
+         TabIndex        =   128
          Top             =   3840
          Width           =   1335
       End
@@ -474,14 +523,14 @@ Begin VB.Form frmMain
          Caption         =   "요일"
          Height          =   1335
          Left            =   2640
-         TabIndex        =   128
+         TabIndex        =   120
          Top             =   880
          Width           =   5535
          Begin VB.CommandButton cmdSelectAllDW 
             Caption         =   "모두 선택(&A)"
             Height          =   320
             Left            =   1560
-            TabIndex        =   145
+            TabIndex        =   137
             Top             =   940
             Width           =   1215
          End
@@ -489,7 +538,7 @@ Begin VB.Form frmMain
             Caption         =   "선택 해제(&U)"
             Height          =   320
             Left            =   2880
-            TabIndex        =   144
+            TabIndex        =   136
             Top             =   940
             Width           =   1215
          End
@@ -497,7 +546,7 @@ Begin VB.Form frmMain
             Caption         =   "선택 반전(&R)"
             Height          =   320
             Left            =   4200
-            TabIndex        =   143
+            TabIndex        =   135
             Top             =   940
             Width           =   1215
          End
@@ -506,7 +555,7 @@ Begin VB.Form frmMain
             Height          =   255
             Index           =   6
             Left            =   2880
-            TabIndex        =   135
+            TabIndex        =   127
             Top             =   600
             Width           =   1215
          End
@@ -515,7 +564,7 @@ Begin VB.Form frmMain
             Height          =   255
             Index           =   5
             Left            =   1560
-            TabIndex        =   134
+            TabIndex        =   126
             Top             =   600
             Width           =   1215
          End
@@ -524,7 +573,7 @@ Begin VB.Form frmMain
             Height          =   255
             Index           =   4
             Left            =   120
-            TabIndex        =   133
+            TabIndex        =   125
             Top             =   600
             Width           =   1215
          End
@@ -533,7 +582,7 @@ Begin VB.Form frmMain
             Height          =   255
             Index           =   3
             Left            =   4200
-            TabIndex        =   132
+            TabIndex        =   124
             Top             =   240
             Width           =   1215
          End
@@ -542,7 +591,7 @@ Begin VB.Form frmMain
             Height          =   255
             Index           =   2
             Left            =   2880
-            TabIndex        =   131
+            TabIndex        =   123
             Top             =   240
             Width           =   1215
          End
@@ -551,7 +600,7 @@ Begin VB.Form frmMain
             Height          =   255
             Index           =   1
             Left            =   1560
-            TabIndex        =   130
+            TabIndex        =   122
             Top             =   240
             Width           =   1215
          End
@@ -560,7 +609,7 @@ Begin VB.Form frmMain
             Height          =   255
             Index           =   0
             Left            =   120
-            TabIndex        =   129
+            TabIndex        =   121
             Top             =   240
             Width           =   1215
          End
@@ -568,28 +617,28 @@ Begin VB.Form frmMain
       Begin VB.TextBox txtTimeMin 
          Height          =   270
          Left            =   3600
-         TabIndex        =   127
+         TabIndex        =   119
          Top             =   600
          Width           =   375
       End
       Begin VB.TextBox txtTimeHrs 
          Height          =   270
          Left            =   3240
-         TabIndex        =   126
+         TabIndex        =   118
          Top             =   600
          Width           =   375
       End
       Begin VB.TextBox txtAlarmTitle 
          Height          =   270
          Left            =   3240
-         TabIndex        =   124
+         TabIndex        =   116
          Top             =   240
          Width           =   4935
       End
       Begin ComctlLib.ListView lvAlarms 
          Height          =   4095
          Left            =   120
-         TabIndex        =   122
+         TabIndex        =   114
          Top             =   120
          Width           =   2415
          _ExtentX        =   4260
@@ -609,7 +658,7 @@ Begin VB.Form frmMain
          Caption         =   "저장(&S)"
          Height          =   375
          Left            =   -68040
-         TabIndex        =   113
+         TabIndex        =   105
          Top             =   120
          Width           =   1215
       End
@@ -618,7 +667,7 @@ Begin VB.Form frmMain
          Index           =   48
          Left            =   -68880
          MultiLine       =   -1  'True
-         TabIndex        =   112
+         TabIndex        =   104
          Top             =   3600
          Width           =   2055
       End
@@ -627,7 +676,7 @@ Begin VB.Form frmMain
          Index           =   47
          Left            =   -69840
          MultiLine       =   -1  'True
-         TabIndex        =   111
+         TabIndex        =   103
          Top             =   3600
          Width           =   975
       End
@@ -636,7 +685,7 @@ Begin VB.Form frmMain
          Index           =   46
          Left            =   -70800
          MultiLine       =   -1  'True
-         TabIndex        =   110
+         TabIndex        =   102
          Top             =   3600
          Width           =   975
       End
@@ -645,7 +694,7 @@ Begin VB.Form frmMain
          Index           =   45
          Left            =   -71760
          MultiLine       =   -1  'True
-         TabIndex        =   109
+         TabIndex        =   101
          Top             =   3600
          Width           =   975
       End
@@ -654,7 +703,7 @@ Begin VB.Form frmMain
          Index           =   44
          Left            =   -72720
          MultiLine       =   -1  'True
-         TabIndex        =   108
+         TabIndex        =   100
          Top             =   3600
          Width           =   975
       End
@@ -663,7 +712,7 @@ Begin VB.Form frmMain
          Index           =   43
          Left            =   -73680
          MultiLine       =   -1  'True
-         TabIndex        =   107
+         TabIndex        =   99
          Top             =   3600
          Width           =   975
       End
@@ -672,7 +721,7 @@ Begin VB.Form frmMain
          Index           =   42
          Left            =   -74640
          MultiLine       =   -1  'True
-         TabIndex        =   106
+         TabIndex        =   98
          Top             =   3600
          Width           =   975
       End
@@ -681,7 +730,7 @@ Begin VB.Form frmMain
          Index           =   41
          Left            =   -68880
          MultiLine       =   -1  'True
-         TabIndex        =   105
+         TabIndex        =   97
          Top             =   3120
          Width           =   2055
       End
@@ -690,7 +739,7 @@ Begin VB.Form frmMain
          Index           =   40
          Left            =   -69840
          MultiLine       =   -1  'True
-         TabIndex        =   104
+         TabIndex        =   96
          Top             =   3120
          Width           =   975
       End
@@ -699,7 +748,7 @@ Begin VB.Form frmMain
          Index           =   39
          Left            =   -70800
          MultiLine       =   -1  'True
-         TabIndex        =   103
+         TabIndex        =   95
          Top             =   3120
          Width           =   975
       End
@@ -708,7 +757,7 @@ Begin VB.Form frmMain
          Index           =   38
          Left            =   -71760
          MultiLine       =   -1  'True
-         TabIndex        =   102
+         TabIndex        =   94
          Top             =   3120
          Width           =   975
       End
@@ -717,7 +766,7 @@ Begin VB.Form frmMain
          Index           =   37
          Left            =   -72720
          MultiLine       =   -1  'True
-         TabIndex        =   101
+         TabIndex        =   93
          Top             =   3120
          Width           =   975
       End
@@ -726,7 +775,7 @@ Begin VB.Form frmMain
          Index           =   36
          Left            =   -73680
          MultiLine       =   -1  'True
-         TabIndex        =   100
+         TabIndex        =   92
          Top             =   3120
          Width           =   975
       End
@@ -735,7 +784,7 @@ Begin VB.Form frmMain
          Index           =   35
          Left            =   -74640
          MultiLine       =   -1  'True
-         TabIndex        =   99
+         TabIndex        =   91
          Top             =   3120
          Width           =   975
       End
@@ -744,7 +793,7 @@ Begin VB.Form frmMain
          Index           =   34
          Left            =   -68880
          MultiLine       =   -1  'True
-         TabIndex        =   98
+         TabIndex        =   90
          Top             =   2640
          Width           =   2055
       End
@@ -753,7 +802,7 @@ Begin VB.Form frmMain
          Index           =   33
          Left            =   -69840
          MultiLine       =   -1  'True
-         TabIndex        =   97
+         TabIndex        =   89
          Top             =   2640
          Width           =   975
       End
@@ -762,7 +811,7 @@ Begin VB.Form frmMain
          Index           =   32
          Left            =   -70800
          MultiLine       =   -1  'True
-         TabIndex        =   96
+         TabIndex        =   88
          Top             =   2640
          Width           =   975
       End
@@ -771,7 +820,7 @@ Begin VB.Form frmMain
          Index           =   31
          Left            =   -71760
          MultiLine       =   -1  'True
-         TabIndex        =   95
+         TabIndex        =   87
          Top             =   2640
          Width           =   975
       End
@@ -780,7 +829,7 @@ Begin VB.Form frmMain
          Index           =   30
          Left            =   -72720
          MultiLine       =   -1  'True
-         TabIndex        =   94
+         TabIndex        =   86
          Top             =   2640
          Width           =   975
       End
@@ -789,7 +838,7 @@ Begin VB.Form frmMain
          Index           =   29
          Left            =   -73680
          MultiLine       =   -1  'True
-         TabIndex        =   93
+         TabIndex        =   85
          Top             =   2640
          Width           =   975
       End
@@ -798,7 +847,7 @@ Begin VB.Form frmMain
          Index           =   28
          Left            =   -74640
          MultiLine       =   -1  'True
-         TabIndex        =   92
+         TabIndex        =   84
          Top             =   2640
          Width           =   975
       End
@@ -807,7 +856,7 @@ Begin VB.Form frmMain
          Index           =   27
          Left            =   -68880
          MultiLine       =   -1  'True
-         TabIndex        =   91
+         TabIndex        =   83
          Top             =   2040
          Width           =   2055
       End
@@ -816,7 +865,7 @@ Begin VB.Form frmMain
          Index           =   26
          Left            =   -69840
          MultiLine       =   -1  'True
-         TabIndex        =   90
+         TabIndex        =   82
          Top             =   2040
          Width           =   975
       End
@@ -825,7 +874,7 @@ Begin VB.Form frmMain
          Index           =   25
          Left            =   -70800
          MultiLine       =   -1  'True
-         TabIndex        =   89
+         TabIndex        =   81
          Top             =   2040
          Width           =   975
       End
@@ -834,7 +883,7 @@ Begin VB.Form frmMain
          Index           =   24
          Left            =   -71760
          MultiLine       =   -1  'True
-         TabIndex        =   88
+         TabIndex        =   80
          Top             =   2040
          Width           =   975
       End
@@ -843,7 +892,7 @@ Begin VB.Form frmMain
          Index           =   23
          Left            =   -72720
          MultiLine       =   -1  'True
-         TabIndex        =   87
+         TabIndex        =   79
          Top             =   2040
          Width           =   975
       End
@@ -852,7 +901,7 @@ Begin VB.Form frmMain
          Index           =   22
          Left            =   -73680
          MultiLine       =   -1  'True
-         TabIndex        =   86
+         TabIndex        =   78
          Top             =   2040
          Width           =   975
       End
@@ -861,7 +910,7 @@ Begin VB.Form frmMain
          Index           =   21
          Left            =   -74640
          MultiLine       =   -1  'True
-         TabIndex        =   85
+         TabIndex        =   77
          Top             =   2040
          Width           =   975
       End
@@ -870,7 +919,7 @@ Begin VB.Form frmMain
          Index           =   20
          Left            =   -68880
          MultiLine       =   -1  'True
-         TabIndex        =   84
+         TabIndex        =   76
          Top             =   1440
          Width           =   2055
       End
@@ -879,7 +928,7 @@ Begin VB.Form frmMain
          Index           =   19
          Left            =   -69840
          MultiLine       =   -1  'True
-         TabIndex        =   83
+         TabIndex        =   75
          Top             =   1440
          Width           =   975
       End
@@ -888,7 +937,7 @@ Begin VB.Form frmMain
          Index           =   18
          Left            =   -70800
          MultiLine       =   -1  'True
-         TabIndex        =   82
+         TabIndex        =   74
          Top             =   1440
          Width           =   975
       End
@@ -897,7 +946,7 @@ Begin VB.Form frmMain
          Index           =   17
          Left            =   -71760
          MultiLine       =   -1  'True
-         TabIndex        =   81
+         TabIndex        =   73
          Top             =   1440
          Width           =   975
       End
@@ -906,7 +955,7 @@ Begin VB.Form frmMain
          Index           =   16
          Left            =   -72720
          MultiLine       =   -1  'True
-         TabIndex        =   80
+         TabIndex        =   72
          Top             =   1440
          Width           =   975
       End
@@ -915,7 +964,7 @@ Begin VB.Form frmMain
          Index           =   15
          Left            =   -73680
          MultiLine       =   -1  'True
-         TabIndex        =   79
+         TabIndex        =   71
          Top             =   1440
          Width           =   975
       End
@@ -924,7 +973,7 @@ Begin VB.Form frmMain
          Index           =   14
          Left            =   -74640
          MultiLine       =   -1  'True
-         TabIndex        =   78
+         TabIndex        =   70
          Top             =   1440
          Width           =   975
       End
@@ -933,7 +982,7 @@ Begin VB.Form frmMain
          Index           =   13
          Left            =   -68880
          MultiLine       =   -1  'True
-         TabIndex        =   77
+         TabIndex        =   69
          Top             =   960
          Width           =   2055
       End
@@ -942,7 +991,7 @@ Begin VB.Form frmMain
          Index           =   12
          Left            =   -69840
          MultiLine       =   -1  'True
-         TabIndex        =   76
+         TabIndex        =   68
          Top             =   960
          Width           =   975
       End
@@ -951,7 +1000,7 @@ Begin VB.Form frmMain
          Index           =   11
          Left            =   -70800
          MultiLine       =   -1  'True
-         TabIndex        =   75
+         TabIndex        =   67
          Top             =   960
          Width           =   975
       End
@@ -960,7 +1009,7 @@ Begin VB.Form frmMain
          Index           =   10
          Left            =   -71760
          MultiLine       =   -1  'True
-         TabIndex        =   74
+         TabIndex        =   66
          Top             =   960
          Width           =   975
       End
@@ -969,7 +1018,7 @@ Begin VB.Form frmMain
          Index           =   9
          Left            =   -72720
          MultiLine       =   -1  'True
-         TabIndex        =   73
+         TabIndex        =   65
          Top             =   960
          Width           =   975
       End
@@ -978,7 +1027,7 @@ Begin VB.Form frmMain
          Index           =   8
          Left            =   -73680
          MultiLine       =   -1  'True
-         TabIndex        =   72
+         TabIndex        =   64
          Top             =   960
          Width           =   975
       End
@@ -987,7 +1036,7 @@ Begin VB.Form frmMain
          Index           =   7
          Left            =   -74640
          MultiLine       =   -1  'True
-         TabIndex        =   71
+         TabIndex        =   63
          Top             =   960
          Width           =   975
       End
@@ -996,7 +1045,7 @@ Begin VB.Form frmMain
          Index           =   6
          Left            =   -68880
          MultiLine       =   -1  'True
-         TabIndex        =   70
+         TabIndex        =   62
          Top             =   480
          Width           =   2055
       End
@@ -1005,7 +1054,7 @@ Begin VB.Form frmMain
          Index           =   5
          Left            =   -69840
          MultiLine       =   -1  'True
-         TabIndex        =   69
+         TabIndex        =   61
          Top             =   480
          Width           =   975
       End
@@ -1014,7 +1063,7 @@ Begin VB.Form frmMain
          Index           =   4
          Left            =   -70800
          MultiLine       =   -1  'True
-         TabIndex        =   68
+         TabIndex        =   60
          Top             =   480
          Width           =   975
       End
@@ -1023,7 +1072,7 @@ Begin VB.Form frmMain
          Index           =   3
          Left            =   -71760
          MultiLine       =   -1  'True
-         TabIndex        =   67
+         TabIndex        =   59
          Top             =   480
          Width           =   975
       End
@@ -1032,7 +1081,7 @@ Begin VB.Form frmMain
          Index           =   2
          Left            =   -72720
          MultiLine       =   -1  'True
-         TabIndex        =   66
+         TabIndex        =   58
          Top             =   480
          Width           =   975
       End
@@ -1041,7 +1090,7 @@ Begin VB.Form frmMain
          Index           =   1
          Left            =   -73680
          MultiLine       =   -1  'True
-         TabIndex        =   65
+         TabIndex        =   57
          Top             =   480
          Width           =   975
       End
@@ -1050,7 +1099,7 @@ Begin VB.Form frmMain
          Index           =   0
          Left            =   -74640
          MultiLine       =   -1  'True
-         TabIndex        =   64
+         TabIndex        =   56
          Top             =   480
          Width           =   975
       End
@@ -1058,7 +1107,7 @@ Begin VB.Form frmMain
          Caption         =   "모두 삭제(&L)"
          Height          =   495
          Left            =   -67920
-         TabIndex        =   52
+         TabIndex        =   48
          Top             =   3698
          Width           =   1215
       End
@@ -1104,21 +1153,21 @@ Begin VB.Form frmMain
          Begin VB.TextBox txtPart 
             Height          =   270
             Left            =   960
-            TabIndex        =   118
+            TabIndex        =   110
             Top             =   1920
             Width           =   3375
          End
          Begin ComCtl2.UpDown UpDown2 
             Height          =   270
             Left            =   600
-            TabIndex        =   117
+            TabIndex        =   109
             Top             =   1920
             Width           =   255
             _ExtentX        =   450
             _ExtentY        =   476
             _Version        =   327681
             BuddyControl    =   "txtImpt"
-            BuddyDispid     =   196648
+            BuddyDispid     =   196653
             OrigLeft        =   600
             OrigTop         =   1920
             OrigRight       =   855
@@ -1131,7 +1180,7 @@ Begin VB.Form frmMain
             Height          =   270
             Left            =   120
             MaxLength       =   2
-            TabIndex        =   116
+            TabIndex        =   108
             Text            =   "1"
             Top             =   1920
             Width           =   480
@@ -1146,7 +1195,7 @@ Begin VB.Form frmMain
             _ExtentY        =   476
             _Version        =   327681
             BuddyControl    =   "txtPercentage"
-            BuddyDispid     =   196651
+            BuddyDispid     =   196656
             OrigLeft        =   3850
             OrigTop         =   1200
             OrigRight       =   4105
@@ -1197,7 +1246,7 @@ Begin VB.Form frmMain
             Caption         =   "참여자:"
             Height          =   255
             Left            =   960
-            TabIndex        =   115
+            TabIndex        =   107
             Top             =   1680
             Width           =   975
          End
@@ -1205,7 +1254,7 @@ Begin VB.Form frmMain
             Caption         =   "중요도:"
             Height          =   255
             Left            =   120
-            TabIndex        =   114
+            TabIndex        =   106
             Top             =   1680
             Width           =   615
          End
@@ -1262,9 +1311,9 @@ Begin VB.Form frmMain
       End
       Begin VB.ListBox lvTasks 
          Height          =   4050
-         ItemData        =   "frmMain.frx":5F750
+         ItemData        =   "frmMain.frx":5FFB0
          Left            =   -74880
-         List            =   "frmMain.frx":5F757
+         List            =   "frmMain.frx":5FFB7
          Style           =   1  '확인란
          TabIndex        =   25
          Top             =   98
@@ -1390,7 +1439,7 @@ Begin VB.Form frmMain
             Height          =   300
             Left            =   3360
             Style           =   2  '드롭다운 목록
-            TabIndex        =   120
+            TabIndex        =   112
             Top             =   560
             Width           =   1455
          End
@@ -1433,7 +1482,7 @@ Begin VB.Form frmMain
             Caption         =   "그룹:"
             Height          =   255
             Left            =   2880
-            TabIndex        =   119
+            TabIndex        =   111
             Top             =   600
             Width           =   495
          End
@@ -1480,9 +1529,9 @@ Begin VB.Form frmMain
       End
       Begin VB.ListBox lvContacts 
          Height          =   4020
-         ItemData        =   "frmMain.frx":5F76C
+         ItemData        =   "frmMain.frx":5FFCC
          Left            =   -74880
-         List            =   "frmMain.frx":5F773
+         List            =   "frmMain.frx":5FFD3
          TabIndex        =   3
          Top             =   98
          Width           =   1695
@@ -1501,14 +1550,14 @@ Begin VB.Form frmMain
          Appearance      =   0
          MonthColumns    =   3
          MonthRows       =   2
-         StartOfWeek     =   104005633
+         StartOfWeek     =   91160577
          CurrentDate     =   43858
       End
       Begin VB.Label Label20 
          Caption         =   "메모:"
          Height          =   255
          Left            =   2640
-         TabIndex        =   139
+         TabIndex        =   131
          Top             =   2280
          Width           =   975
       End
@@ -1516,7 +1565,7 @@ Begin VB.Form frmMain
          Caption         =   "시간:"
          Height          =   255
          Left            =   2640
-         TabIndex        =   125
+         TabIndex        =   117
          Top             =   600
          Width           =   495
       End
@@ -1524,7 +1573,7 @@ Begin VB.Form frmMain
          Caption         =   "이름:"
          Height          =   255
          Left            =   2640
-         TabIndex        =   123
+         TabIndex        =   115
          Top             =   240
          Width           =   615
       End
@@ -1532,14 +1581,14 @@ Begin VB.Form frmMain
          Caption         =   "7시           9시           12시          15시           18시         21시            밤"
          Height          =   225
          Left            =   -74280
-         TabIndex        =   63
+         TabIndex        =   55
          Top             =   240
          Width           =   6135
       End
       Begin VB.Label lblDOW 
          Height          =   3495
          Left            =   -74880
-         TabIndex        =   62
+         TabIndex        =   54
          Top             =   600
          Width           =   255
       End
@@ -1563,12 +1612,12 @@ Begin VB.Form frmMain
          BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
             AutoSize        =   2
-            TextSave        =   "2020-04-16"
+            TextSave        =   "2020-04-17"
          EndProperty
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             AutoSize        =   2
-            TextSave        =   "오후 7:25"
+            TextSave        =   "오전 12:49"
          EndProperty
       EndProperty
    End
@@ -1704,6 +1753,14 @@ Private Sub cmdDeleteAlarm_Click()
         
         LoadAlarms
     End If
+End Sub
+
+Private Sub cmdMnuAbout_Click()
+    mnuHelpAbout_Click
+End Sub
+
+Private Sub cmdMnuOptions_Click()
+    cmdOptions_Click
 End Sub
 
 Private Sub cmdRelectAllDW_Click()
@@ -1867,7 +1924,7 @@ End Sub
 
 Private Sub cmdHelp_Click()
     If GetSetting("Calendar", "Options", "TP", 0) = 0 Then
-        PopupMenu mnuHelp, , Me.Width - 2350 - ssTodaysPlan.Width - 150, 400
+        PopupMenu mnuHelp, , Me.Width - 2350 - ssTodaysPlan.Width + 100, 400
     Else
         PopupMenu mnuHelp, , Me.Width - 2350, 400
     End If
@@ -2084,6 +2141,10 @@ Private Sub cmdUnselectAllDW_Click()
     Next i
 End Sub
 
+Private Sub cmdRibbonFile_Click()
+    PopupMenu mnuFile, , cmdRibbonFile.Left, cmdRibbonFile.Top + cmdRibbonFile.Height
+End Sub
+
 Private Sub Form_Load()
     'MsgBox DayOfWeek()
     'MessageBox PlayFair("dlfjs qkqhrkxdms sdfhuj", "ultra"), "3", Me
@@ -2104,6 +2165,9 @@ Private Sub Form_Load()
         
         ssRibbonMenu.Visible = False
         cmdHelp.Visible = False
+        cmdRibbonFile.Visible = False
+        cmdMnuAbout.Visible = False
+        cmdMnuOptions.Visible = False
         
         mnuDateMenu.Visible = True
         mnuFile.Visible = True
@@ -2280,6 +2344,12 @@ Private Sub sdcmdSavePlanner_Click()
     sbStatusBar.Panels(1).Text = "저장되었습니다."
     Sleep 1000
     sbStatusBar.Panels(1).Text = ""
+End Sub
+
+Private Sub ssRibbonMenu_Click(PreviousTab As Integer)
+    If ssRibbonMenu.Tab = 0 Then
+        ssRibbonMenu.Tab = PreviousTab
+    End If
 End Sub
 
 Private Sub timAlarmChecker_Timer()
