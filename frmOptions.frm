@@ -6,7 +6,7 @@ Begin VB.Form frmOptions
    Caption         =   "환경설정"
    ClientHeight    =   4635
    ClientLeft      =   -75
-   ClientTop       =   1455
+   ClientTop       =   1515
    ClientWidth     =   8250
    Icon            =   "frmOptions.frx":0000
    MaxButton       =   0   'False
@@ -53,23 +53,27 @@ Begin VB.Form frmOptions
       _ExtentY        =   7223
       _Version        =   393216
       Tabs            =   8
-      Tab             =   7
       TabsPerRow      =   4
       TabHeight       =   520
       ShowFocusRect   =   0   'False
       BackColor       =   -2147483645
       TabCaption(0)   =   "화면 표시"
       TabPicture(0)   =   "frmOptions.frx":0442
-      Tab(0).ControlEnabled=   0   'False
+      Tab(0).ControlEnabled=   -1  'True
       Tab(0).Control(0)=   "Frame8"
+      Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "Frame10"
+      Tab(0).Control(1).Enabled=   0   'False
       Tab(0).Control(2)=   "Frame1"
+      Tab(0).Control(2).Enabled=   0   'False
       Tab(0).ControlCount=   3
       TabCaption(1)   =   "사용자 데이터"
       TabPicture(1)   =   "frmOptions.frx":045E
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "Frame3"
-      Tab(1).Control(1)=   "Frame2"
+      Tab(1).Control(0)=   "Frame2"
+      Tab(1).Control(0).Enabled=   0   'False
+      Tab(1).Control(1)=   "Frame3"
+      Tab(1).Control(1).Enabled=   0   'False
       Tab(1).ControlCount=   2
       TabCaption(2)   =   "표준"
       TabPicture(2)   =   "frmOptions.frx":047A
@@ -113,7 +117,7 @@ Begin VB.Form frmOptions
       Tab(6).ControlCount=   2
       TabCaption(7)   =   "소리"
       TabPicture(7)   =   "frmOptions.frx":0506
-      Tab(7).ControlEnabled=   -1  'True
+      Tab(7).ControlEnabled=   0   'False
       Tab(7).Control(0)=   "Label12"
       Tab(7).Control(0).Enabled=   0   'False
       Tab(7).Control(1)=   "Frame12"
@@ -128,7 +132,7 @@ Begin VB.Form frmOptions
       Begin VB.CommandButton cmdPlayRT 
          Caption         =   "듣기(&R)"
          Height          =   320
-         Left            =   4320
+         Left            =   -70680
          TabIndex        =   79
          Top             =   3080
          Width           =   1335
@@ -136,7 +140,7 @@ Begin VB.Form frmOptions
       Begin VB.CommandButton cmdPlayNS 
          Caption         =   "듣기(&N)"
          Height          =   320
-         Left            =   4320
+         Left            =   -70680
          TabIndex        =   78
          Top             =   1640
          Width           =   1335
@@ -152,7 +156,7 @@ Begin VB.Form frmOptions
       Begin VB.Frame Frame34 
          Caption         =   "일정 알림음"
          Height          =   1335
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   64
          Top             =   720
          Width           =   5895
@@ -207,7 +211,7 @@ Begin VB.Form frmOptions
       Begin VB.Frame Frame12 
          Caption         =   "알람음"
          Height          =   1335
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   65
          Top             =   2160
          Width           =   5895
@@ -263,7 +267,7 @@ Begin VB.Form frmOptions
       Begin VB.Frame Frame1 
          Caption         =   "달력"
          Height          =   615
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   61
          Top             =   2520
          Width           =   5895
@@ -427,7 +431,7 @@ Begin VB.Form frmOptions
             TabIndex        =   43
             Top             =   960
             Visible         =   0   'False
-            Width           =   255
+            Width           =   135
          End
          Begin VB.Label Label4 
             Caption         =   "프로그램 전체 데이터를 초기화합니다."
@@ -466,7 +470,7 @@ Begin VB.Form frmOptions
       Begin VB.Frame Frame10 
          Caption         =   "테마"
          Height          =   735
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   30
          Top             =   3240
          Width           =   7455
@@ -490,7 +494,7 @@ Begin VB.Form frmOptions
       Begin VB.Frame Frame8 
          Caption         =   "레이아웃"
          Height          =   1695
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   28
          Top             =   720
          Width           =   5895
@@ -705,7 +709,7 @@ Begin VB.Form frmOptions
       Begin VB.Label Label12 
          Caption         =   "시스템 경고음 외의 알림음은 PC 스피커가 있어야 작동합니다."
          Height          =   255
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   66
          Top             =   3720
          Width           =   5295
