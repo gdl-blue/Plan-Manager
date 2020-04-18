@@ -5,7 +5,7 @@ Begin VB.Form frmAddPlan
    Caption         =   "frmaddplan"
    ClientHeight    =   4410
    ClientLeft      =   2760
-   ClientTop       =   3870
+   ClientTop       =   3900
    ClientWidth     =   7095
    Icon            =   "frmAddPlan.frx":0000
    LinkTopic       =   "Form1"
@@ -62,7 +62,6 @@ Begin VB.Form frmAddPlan
          Height          =   375
          Left            =   2280
          TabIndex        =   15
-         ToolTipText     =   "일정 매주 되풀이"
          Top             =   2400
          Width           =   870
       End
@@ -449,7 +448,7 @@ Private Sub Form_Load()
     CancelButton.Caption = LoadLang("취소", "Cancel")
     OKButton.Caption = LoadLang("추가(&A)", "&Add")
     
-    cmdRPT.Caption = LoadLang("반복...", "Repeat...")
+    cmdRPT.Caption = LoadLang("반복...", "Repeat..")
     
     txtCY.Text = Year
     txtCM.Text = Month

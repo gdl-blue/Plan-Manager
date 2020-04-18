@@ -9,17 +9,45 @@ Begin VB.Form frmMain
    BackColor       =   &H8000000C&
    BorderStyle     =   1  '단일 고정
    Caption         =   "frmMain"
-   ClientHeight    =   6645
+   ClientHeight    =   6630
    ClientLeft      =   150
-   ClientTop       =   4005
+   ClientTop       =   4335
    ClientWidth     =   10950
    Icon            =   "frmMain.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
-   ScaleHeight     =   6645
+   ScaleHeight     =   6630
    ScaleMode       =   0  '사용자
    ScaleWidth      =   10950
    StartUpPosition =   3  'Windows 기본값
+   Begin MSComctlLib.StatusBar sbStatusBar 
+      Align           =   2  '아래 맞춤
+      Height          =   270
+      Left            =   0
+      TabIndex        =   0
+      Top             =   6360
+      Width           =   10950
+      _ExtentX        =   19315
+      _ExtentY        =   476
+      _Version        =   393216
+      BeginProperty Panels {8E3867A5-8586-11D1-B16A-00C0F0283628} 
+         NumPanels       =   3
+         BeginProperty Panel1 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
+            AutoSize        =   1
+            Object.Width           =   14129
+         EndProperty
+         BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
+            Style           =   6
+            AutoSize        =   2
+            TextSave        =   "2020-04-18"
+         EndProperty
+         BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
+            Style           =   5
+            AutoSize        =   2
+            TextSave        =   "오전 2:54"
+         EndProperty
+      EndProperty
+   End
    Begin VB.CommandButton cmdRibbonFile 
       BackColor       =   &H8000000C&
       Caption         =   "cmdRibbonFile"
@@ -106,7 +134,7 @@ Begin VB.Form frmMain
       Left            =   8760
       TabIndex        =   53
       ToolTipText     =   "오늘의 일정목록을 갱신합니다."
-      Top             =   5880
+      Top             =   6000
       Width           =   1935
    End
    Begin VB.Timer Timer1 
@@ -115,13 +143,13 @@ Begin VB.Form frmMain
       Top             =   0
    End
    Begin TabDlg.SSTab ssTodaysPlan 
-      Height          =   6135
+      Height          =   6375
       Left            =   8640
       TabIndex        =   49
       Top             =   120
       Width           =   2205
       _ExtentX        =   3889
-      _ExtentY        =   10821
+      _ExtentY        =   11245
       _Version        =   393216
       Tabs            =   2
       TabsPerRow      =   2
@@ -157,7 +185,7 @@ Begin VB.Form frmMain
          Width           =   735
       End
       Begin VB.FileListBox lvTodaysPlan 
-         Height          =   5310
+         Height          =   5490
          Left            =   120
          TabIndex        =   50
          Top             =   375
@@ -452,19 +480,19 @@ Begin VB.Form frmMain
       TabCaption(4)   =   "알람"
       TabPicture(4)   =   "frmMain.frx":5FB5E
       Tab(4).ControlEnabled=   0   'False
-      Tab(4).Control(0)=   "Label18"
-      Tab(4).Control(1)=   "Label19"
-      Tab(4).Control(2)=   "Label20"
-      Tab(4).Control(3)=   "lvAlarms"
-      Tab(4).Control(4)=   "txtAlarmTitle"
-      Tab(4).Control(5)=   "txtTimeHrs"
+      Tab(4).Control(0)=   "lvAlarmFiles"
+      Tab(4).Control(1)=   "txtAlarmMemo"
+      Tab(4).Control(2)=   "cmdDeleteAlarm"
+      Tab(4).Control(3)=   "cmdSaveAlarm"
+      Tab(4).Control(4)=   "cmdResetAF"
+      Tab(4).Control(5)=   "Frame5"
       Tab(4).Control(6)=   "txtTimeMin"
-      Tab(4).Control(7)=   "Frame5"
-      Tab(4).Control(8)=   "cmdResetAF"
-      Tab(4).Control(9)=   "cmdSaveAlarm"
-      Tab(4).Control(10)=   "cmdDeleteAlarm"
-      Tab(4).Control(11)=   "txtAlarmMemo"
-      Tab(4).Control(12)=   "lvAlarmFiles"
+      Tab(4).Control(7)=   "txtTimeHrs"
+      Tab(4).Control(8)=   "txtAlarmTitle"
+      Tab(4).Control(9)=   "lvAlarms"
+      Tab(4).Control(10)=   "Label20"
+      Tab(4).Control(11)=   "Label19"
+      Tab(4).Control(12)=   "Label18"
       Tab(4).ControlCount=   13
       Begin VB.FileListBox lvAlarmFiles 
          Height          =   270
@@ -632,6 +660,7 @@ Begin VB.Form frmMain
          _ExtentX        =   4260
          _ExtentY        =   7223
          View            =   3
+         LabelEdit       =   1
          Sorted          =   -1  'True
          LabelWrap       =   -1  'True
          HideSelection   =   0   'False
@@ -1108,6 +1137,7 @@ Begin VB.Form frmMain
          Width           =   1350
       End
       Begin VB.CommandButton cmdDeleteAllContacts 
+         Caption         =   "clear"
          Height          =   495
          Left            =   -68040
          TabIndex        =   45
@@ -1307,6 +1337,7 @@ Begin VB.Form frmMain
          Width           =   2295
       End
       Begin VB.CommandButton cmdDelContact 
+         Caption         =   "delete"
          Height          =   495
          Left            =   -68040
          TabIndex        =   24
@@ -1536,7 +1567,7 @@ Begin VB.Form frmMain
          Appearance      =   0
          MonthColumns    =   3
          MonthRows       =   2
-         StartOfWeek     =   94765057
+         StartOfWeek     =   91881473
          CurrentDate     =   43858
       End
       Begin VB.Label Label20 
@@ -1578,34 +1609,6 @@ Begin VB.Form frmMain
          Top             =   600
          Width           =   255
       End
-   End
-   Begin MSComctlLib.StatusBar sbStatusBar 
-      Align           =   2  '아래 맞춤
-      Height          =   270
-      Left            =   0
-      TabIndex        =   0
-      Top             =   6375
-      Width           =   10950
-      _ExtentX        =   19315
-      _ExtentY        =   476
-      _Version        =   393216
-      BeginProperty Panels {8E3867A5-8586-11D1-B16A-00C0F0283628} 
-         NumPanels       =   3
-         BeginProperty Panel1 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
-            AutoSize        =   1
-            Object.Width           =   14129
-         EndProperty
-         BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
-            Style           =   6
-            AutoSize        =   2
-            TextSave        =   "2020-04-17"
-         EndProperty
-         BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
-            Style           =   5
-            AutoSize        =   2
-            TextSave        =   "오후 10:59"
-         EndProperty
-      EndProperty
    End
    Begin VB.Menu mnuFile 
       Caption         =   "파일(&F)"
@@ -2496,12 +2499,7 @@ Private Sub Form_Unload(Cancel As Integer)
         Dim i As Integer
         
         SaveSetting "Calendar", "Config", "LTB", SSTab1.Tab
-    
-    
-        'close all sub forms
-        For i = Forms.Count - 1 To 1 Step -1
-            Unload Forms(i)
-        Next
+        
         If Me.WindowState <> vbMinimized Then
             SaveSetting "Calendar", "Settings", "MainLeft", Me.Left
             SaveSetting "Calendar", "Settings", "MainTop", Me.Top
@@ -2546,8 +2544,6 @@ Private Sub lvContacts_Click()
         cmbGroup.ListIndex = 0
         
         cmdDelContact.Enabled = False
-        
-        If SSTab1.Tab = 1 Then Me.Caption = App.Title & " - " & SSTab1.TabCaption(SSTab1.Tab) & " (새 주소록 추가)"
     Else
         txtName.BackColor = &H8000000F
         txtName.Locked = True
@@ -2596,13 +2592,6 @@ Private Sub lvTasks_Click()
     txtMemo.Text = GetSetting("Calendar", "Tasks", lvTasks.List(lvTasks.ListIndex) & "Memo", "")
     txtPart.Text = GetSetting("Calendar", "Tasks", lvTasks.List(lvTasks.ListIndex) & "Part", "")
     txtImpt.Text = GetSetting("Calendar", "Tasks", lvTasks.List(lvTasks.ListIndex) & "Impt", "")
-    
-    If SSTab1.Tab = 2 Then
-        Me.Caption = App.Title & " - " & SSTab1.TabCaption(SSTab1.Tab) & " (" & lvTasks.List(lvTasks.ListIndex) & ")"
-        If lvTasks.List(lvTasks.ListIndex) = LoadLang("새 작업 추가...", "New...") Then
-            Me.Caption = App.Title & " - " & SSTab1.TabCaption(SSTab1.Tab) & " (새 작업 추가)"
-        End If
-    End If
 End Sub
 
 Private Sub lvTasks_ItemCheck(Item As Integer)
@@ -2714,6 +2703,12 @@ End Sub
 Private Sub mnuViewStatusBar_Click()
     mnuViewStatusBar.Checked = Not mnuViewStatusBar.Checked
     sbStatusBar.Visible = mnuViewStatusBar.Checked
+    
+    If sbStatusBar.Visible Then
+        Me.Height = 7080
+    Else
+        Me.Height = 6810
+    End If
 End Sub
 
 'Private Sub mnuViewToolbar_Click()

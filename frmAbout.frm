@@ -4,7 +4,7 @@ Begin VB.Form frmAbout
    Caption         =   "정보"
    ClientHeight    =   3525
    ClientLeft      =   45
-   ClientTop       =   615
+   ClientTop       =   645
    ClientWidth     =   5865
    ClipControls    =   0   'False
    Icon            =   "frmAbout.frx":0000
@@ -71,13 +71,12 @@ Begin VB.Form frmAbout
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H80000010&
-      Height          =   230
+      Height          =   225
       Left            =   240
-      MouseIcon       =   "frmAbout.frx":044E
-      MousePointer    =   4  '아이콘
+      MousePointer    =   10  '위쪽 화살표
       TabIndex        =   8
       Top             =   3240
-      Width           =   1815
+      Width           =   3855
    End
    Begin VB.Label lblDescription 
       Caption         =   "응용 프로그램 설명"

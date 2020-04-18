@@ -4,15 +4,15 @@ Begin VB.Form frmOptions
    BackColor       =   &H80000003&
    BorderStyle     =   3  '크기 고정 대화 상자
    Caption         =   "환경 설정"
-   ClientHeight    =   4635
+   ClientHeight    =   4305
    ClientLeft      =   -75
-   ClientTop       =   1665
-   ClientWidth     =   8250
+   ClientTop       =   1935
+   ClientWidth     =   8175
    Icon            =   "frmOptions.frx":0000
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   4635
-   ScaleWidth      =   8250
+   ScaleHeight     =   4305
+   ScaleWidth      =   8175
    ShowInTaskbar   =   0   'False
    StartUpPosition =   1  '소유자 가운데
    WhatsThisButton =   -1  'True
@@ -72,70 +72,93 @@ Begin VB.Form frmOptions
       TabCaption(1)   =   "사용자 데이터"
       TabPicture(1)   =   "frmOptions.frx":045E
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "Frame2"
-      Tab(1).Control(1)=   "Frame3"
+      Tab(1).Control(0)=   "Frame3"
+      Tab(1).Control(0).Enabled=   0   'False
+      Tab(1).Control(1)=   "Frame2"
+      Tab(1).Control(1).Enabled=   0   'False
       Tab(1).ControlCount=   2
       TabCaption(2)   =   "표준"
       TabPicture(2)   =   "frmOptions.frx":047A
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "Frame4"
-      Tab(2).Control(1)=   "Frame11"
+      Tab(2).Control(0)=   "Frame11"
+      Tab(2).Control(0).Enabled=   0   'False
+      Tab(2).Control(1)=   "Frame4"
+      Tab(2).Control(1).Enabled=   0   'False
       Tab(2).ControlCount=   2
       TabCaption(3)   =   "검사"
       TabPicture(3)   =   "frmOptions.frx":0496
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "Label9"
-      Tab(3).Control(1)=   "Frame6"
+      Tab(3).Control(0)=   "Frame6"
+      Tab(3).Control(0).Enabled=   0   'False
+      Tab(3).Control(1)=   "Label9"
+      Tab(3).Control(1).Enabled=   0   'False
       Tab(3).ControlCount=   2
       TabCaption(4)   =   "사용자 분류"
       TabPicture(4)   =   "frmOptions.frx":04B2
       Tab(4).ControlEnabled=   0   'False
       Tab(4).Control(0)=   "Label8"
+      Tab(4).Control(0).Enabled=   0   'False
       Tab(4).Control(1)=   "Label11"
+      Tab(4).Control(1).Enabled=   0   'False
       Tab(4).Control(2)=   "Label14"
+      Tab(4).Control(2).Enabled=   0   'False
       Tab(4).Control(3)=   "txtCategory"
+      Tab(4).Control(3).Enabled=   0   'False
       Tab(4).Control(4)=   "cmdAddNewCate"
+      Tab(4).Control(4).Enabled=   0   'False
       Tab(4).Control(5)=   "cmdDelSelCate"
+      Tab(4).Control(5).Enabled=   0   'False
       Tab(4).Control(6)=   "cmdClearCates"
+      Tab(4).Control(6).Enabled=   0   'False
       Tab(4).Control(7)=   "lvCustomCates"
+      Tab(4).Control(7).Enabled=   0   'False
       Tab(4).Control(8)=   "lvGroups"
+      Tab(4).Control(8).Enabled=   0   'False
       Tab(4).Control(9)=   "txtNewGroup"
+      Tab(4).Control(9).Enabled=   0   'False
       Tab(4).Control(10)=   "cmdClearGroups"
+      Tab(4).Control(10).Enabled=   0   'False
       Tab(4).Control(11)=   "cmdAddNewGroup"
+      Tab(4).Control(11).Enabled=   0   'False
       Tab(4).Control(12)=   "cmdDelGroup"
+      Tab(4).Control(12).Enabled=   0   'False
       Tab(4).ControlCount=   13
       TabCaption(5)   =   "테마"
       TabPicture(5)   =   "frmOptions.frx":04CE
       Tab(5).ControlEnabled=   0   'False
       Tab(5).Control(0)=   "Frame7"
+      Tab(5).Control(0).Enabled=   0   'False
       Tab(5).ControlCount=   1
       TabCaption(6)   =   "비밀번호"
       TabPicture(6)   =   "frmOptions.frx":04EA
       Tab(6).ControlEnabled=   0   'False
-      Tab(6).Control(0)=   "chkPasswordRequired"
-      Tab(6).Control(1)=   "Frame5"
+      Tab(6).Control(0)=   "Frame5"
+      Tab(6).Control(1)=   "chkPasswordRequired"
       Tab(6).ControlCount=   2
       TabCaption(7)   =   "소리"
       TabPicture(7)   =   "frmOptions.frx":0506
       Tab(7).ControlEnabled=   0   'False
-      Tab(7).Control(0)=   "cmdPlayRT"
-      Tab(7).Control(1)=   "cmdPlayNS"
-      Tab(7).Control(2)=   "Frame34"
-      Tab(7).Control(3)=   "Frame12"
-      Tab(7).Control(4)=   "Label12"
-      Tab(7).ControlCount=   5
+      Tab(7).Control(0)=   "Frame12"
+      Tab(7).Control(0).Enabled=   0   'False
+      Tab(7).Control(1)=   "Frame34"
+      Tab(7).Control(1).Enabled=   0   'False
+      Tab(7).Control(2)=   "cmdPlayNS"
+      Tab(7).Control(2).Enabled=   0   'False
+      Tab(7).Control(3)=   "cmdPlayRT"
+      Tab(7).Control(3).Enabled=   0   'False
+      Tab(7).ControlCount=   4
       Begin VB.Frame Frame14 
          Caption         =   "언어"
          Height          =   615
          Left            =   6120
-         TabIndex        =   80
+         TabIndex        =   78
          Top             =   2520
          Width           =   1455
          Begin VB.ComboBox cmbLanguage 
             Height          =   300
             Left            =   120
             Style           =   2  '드롭다운 목록
-            TabIndex        =   81
+            TabIndex        =   79
             Top             =   240
             Width           =   1215
          End
@@ -144,14 +167,14 @@ Begin VB.Form frmOptions
          Caption         =   "테마"
          Height          =   735
          Left            =   120
-         TabIndex        =   77
+         TabIndex        =   75
          Top             =   3240
          Width           =   7455
          Begin VB.CommandButton cmdTheSet 
             Caption         =   "테마(&T)..."
             Height          =   375
             Left            =   6120
-            TabIndex        =   78
+            TabIndex        =   76
             Top             =   240
             Width           =   1215
          End
@@ -159,7 +182,7 @@ Begin VB.Form frmOptions
             Caption         =   "테마를 적용하려면 다음 단추를 누르십시오."
             Height          =   255
             Left            =   120
-            TabIndex        =   79
+            TabIndex        =   77
             Top             =   300
             Width           =   4215
          End
@@ -168,7 +191,7 @@ Begin VB.Form frmOptions
          Caption         =   "듣기(&R)"
          Height          =   320
          Left            =   -70680
-         TabIndex        =   76
+         TabIndex        =   74
          Top             =   3080
          Width           =   1335
       End
@@ -176,7 +199,7 @@ Begin VB.Form frmOptions
          Caption         =   "듣기(&N)"
          Height          =   320
          Left            =   -70680
-         TabIndex        =   75
+         TabIndex        =   73
          Top             =   1640
          Width           =   1335
       End
@@ -184,7 +207,7 @@ Begin VB.Form frmOptions
          Caption         =   "프로그램을 시작할 때 암호 입력 필요"
          Height          =   255
          Left            =   -74760
-         TabIndex        =   74
+         TabIndex        =   72
          Top             =   720
          Width           =   3255
       End
@@ -192,14 +215,14 @@ Begin VB.Form frmOptions
          Caption         =   "일정 알림음"
          Height          =   1335
          Left            =   -74880
-         TabIndex        =   61
+         TabIndex        =   60
          Top             =   720
          Width           =   5895
          Begin VB.Frame Frame9 
             BorderStyle     =   0  '없음
             Height          =   975
             Left            =   120
-            TabIndex        =   64
+            TabIndex        =   62
             Top             =   240
             Width           =   5655
             Begin VB.PictureBox grpNotificationContainer 
@@ -210,7 +233,7 @@ Begin VB.Form frmOptions
                Left            =   0
                ScaleHeight     =   975
                ScaleWidth      =   5415
-               TabIndex        =   66
+               TabIndex        =   64
                Top             =   0
                Width           =   5415
                Begin VB.OptionButton optNotificationSound 
@@ -218,7 +241,7 @@ Begin VB.Form frmOptions
                   Height          =   255
                   Index           =   1
                   Left            =   1680
-                  TabIndex        =   73
+                  TabIndex        =   71
                   Top             =   0
                   Width           =   1575
                End
@@ -227,7 +250,7 @@ Begin VB.Form frmOptions
                   Height          =   255
                   Index           =   0
                   Left            =   0
-                  TabIndex        =   67
+                  TabIndex        =   65
                   Top             =   0
                   Width           =   1575
                End
@@ -237,7 +260,7 @@ Begin VB.Form frmOptions
                Height          =   975
                Left            =   5400
                Max             =   1
-               TabIndex        =   65
+               TabIndex        =   63
                Top             =   0
                Width           =   255
             End
@@ -247,7 +270,7 @@ Begin VB.Form frmOptions
          Caption         =   "알람음"
          Height          =   1335
          Left            =   -74880
-         TabIndex        =   62
+         TabIndex        =   61
          Top             =   2160
          Width           =   5895
          Begin VB.VScrollBar VScroll2 
@@ -255,7 +278,7 @@ Begin VB.Form frmOptions
             Height          =   975
             Left            =   5520
             Max             =   1
-            TabIndex        =   69
+            TabIndex        =   67
             Top             =   240
             Width           =   255
          End
@@ -264,7 +287,7 @@ Begin VB.Form frmOptions
             Caption         =   "Frame13"
             Height          =   975
             Left            =   120
-            TabIndex        =   68
+            TabIndex        =   66
             Top             =   240
             Width           =   5655
             Begin VB.PictureBox grpRingtoneContainer 
@@ -275,7 +298,7 @@ Begin VB.Form frmOptions
                Left            =   0
                ScaleHeight     =   975
                ScaleWidth      =   5415
-               TabIndex        =   70
+               TabIndex        =   68
                Top             =   0
                Width           =   5415
                Begin VB.OptionButton optRingtone 
@@ -283,7 +306,7 @@ Begin VB.Form frmOptions
                   Height          =   255
                   Index           =   1
                   Left            =   1680
-                  TabIndex        =   72
+                  TabIndex        =   70
                   Top             =   0
                   Width           =   1575
                End
@@ -292,7 +315,7 @@ Begin VB.Form frmOptions
                   Height          =   255
                   Index           =   0
                   Left            =   0
-                  TabIndex        =   71
+                  TabIndex        =   69
                   Top             =   0
                   Width           =   1575
                End
@@ -303,22 +326,22 @@ Begin VB.Form frmOptions
          Caption         =   "달력"
          Height          =   615
          Left            =   120
-         TabIndex        =   58
+         TabIndex        =   57
          Top             =   2520
          Width           =   5895
          Begin VB.ComboBox cmbWSD 
             Height          =   300
-            Left            =   1080
+            Left            =   1440
             Style           =   2  '드롭다운 목록
-            TabIndex        =   59
+            TabIndex        =   58
             Top             =   240
-            Width           =   4695
+            Width           =   4335
          End
          Begin VB.Label Label5 
             Caption         =   "시작 요일:"
             Height          =   255
             Left            =   120
-            TabIndex        =   60
+            TabIndex        =   59
             Top             =   240
             Width           =   1455
          End
@@ -327,14 +350,14 @@ Begin VB.Form frmOptions
          Caption         =   " "
          Height          =   2535
          Left            =   -74880
-         TabIndex        =   50
+         TabIndex        =   49
          Top             =   720
          Width           =   6015
          Begin VB.CommandButton Command3 
             Caption         =   "변경(&C)"
             Height          =   375
             Left            =   4680
-            TabIndex        =   57
+            TabIndex        =   56
             Top             =   2040
             Width           =   1215
          End
@@ -343,7 +366,7 @@ Begin VB.Form frmOptions
             IMEMode         =   3  '사용 못함
             Left            =   120
             PasswordChar    =   "*"
-            TabIndex        =   56
+            TabIndex        =   55
             Top             =   2040
             Width           =   2535
          End
@@ -352,7 +375,7 @@ Begin VB.Form frmOptions
             IMEMode         =   3  '사용 못함
             Left            =   120
             PasswordChar    =   "*"
-            TabIndex        =   54
+            TabIndex        =   53
             Top             =   1320
             Width           =   2535
          End
@@ -361,7 +384,7 @@ Begin VB.Form frmOptions
             IMEMode         =   3  '사용 못함
             Left            =   120
             PasswordChar    =   "*"
-            TabIndex        =   52
+            TabIndex        =   51
             Top             =   600
             Width           =   2535
          End
@@ -369,7 +392,7 @@ Begin VB.Form frmOptions
             Caption         =   "비밀번호 확인:"
             Height          =   255
             Left            =   120
-            TabIndex        =   55
+            TabIndex        =   54
             Top             =   1800
             Width           =   2055
          End
@@ -377,7 +400,7 @@ Begin VB.Form frmOptions
             Caption         =   "새 비밀번호:"
             Height          =   255
             Left            =   120
-            TabIndex        =   53
+            TabIndex        =   52
             Top             =   1080
             Width           =   2055
          End
@@ -385,7 +408,7 @@ Begin VB.Form frmOptions
             Caption         =   "현재 비밀번호:"
             Height          =   255
             Left            =   120
-            TabIndex        =   51
+            TabIndex        =   50
             Top             =   360
             Width           =   2055
          End
@@ -394,15 +417,15 @@ Begin VB.Form frmOptions
          Caption         =   "선택 그룹 삭제"
          Height          =   375
          Left            =   -72600
-         TabIndex        =   49
+         TabIndex        =   48
          Top             =   2400
-         Width           =   1335
+         Width           =   1575
       End
       Begin VB.CommandButton cmdAddNewGroup 
          Caption         =   "입력 추가(&D)"
          Height          =   375
          Left            =   -68760
-         TabIndex        =   48
+         TabIndex        =   47
          Top             =   3600
          Width           =   1335
       End
@@ -410,43 +433,44 @@ Begin VB.Form frmOptions
          Caption         =   "그룹 전체삭제"
          Height          =   375
          Left            =   -70320
-         TabIndex        =   47
+         TabIndex        =   46
          Top             =   1440
-         Width           =   1335
+         Width           =   1455
       End
       Begin VB.TextBox txtNewGroup 
          Height          =   270
          Left            =   -74880
-         TabIndex        =   44
+         TabIndex        =   43
          Top             =   3720
          Width           =   6015
       End
       Begin VB.FileListBox lvGroups 
          Height          =   1350
          Left            =   -72600
-         TabIndex        =   43
+         TabIndex        =   42
          Top             =   960
          Width           =   2175
       End
       Begin VB.FileListBox lvCustomCates 
          Height          =   1350
          Left            =   -74880
-         TabIndex        =   42
+         TabIndex        =   41
          Top             =   960
          Width           =   2175
       End
       Begin VB.Frame Frame3 
          Caption         =   "초기화"
-         Height          =   1335
+         Height          =   255
          Left            =   -74880
-         TabIndex        =   36
+         TabIndex        =   35
          Top             =   2520
+         Visible         =   0   'False
          Width           =   6015
          Begin VB.CommandButton cmdPrgReset 
             Caption         =   "초기화(&R)"
             Height          =   375
             Left            =   4560
-            TabIndex        =   37
+            TabIndex        =   36
             Top             =   240
             Width           =   1335
          End
@@ -454,7 +478,7 @@ Begin VB.Form frmOptions
             Caption         =   "데이터 초기화"
             Height          =   255
             Left            =   120
-            TabIndex        =   41
+            TabIndex        =   40
             Top             =   960
             Visible         =   0   'False
             Width           =   1215
@@ -463,7 +487,7 @@ Begin VB.Form frmOptions
             Caption         =   "7"
             Height          =   255
             Left            =   1320
-            TabIndex        =   40
+            TabIndex        =   39
             Top             =   960
             Visible         =   0   'False
             Width           =   135
@@ -472,7 +496,7 @@ Begin VB.Form frmOptions
             Caption         =   "프로그램 전체 데이터를 초기화합니다."
             Height          =   255
             Left            =   120
-            TabIndex        =   39
+            TabIndex        =   38
             Top             =   360
             Width           =   4215
          End
@@ -480,7 +504,7 @@ Begin VB.Form frmOptions
             Caption         =   "단계 전입니다."
             Height          =   255
             Left            =   1440
-            TabIndex        =   38
+            TabIndex        =   37
             Top             =   960
             Visible         =   0   'False
             Width           =   2055
@@ -490,14 +514,14 @@ Begin VB.Form frmOptions
          Caption         =   "팁 상자"
          Height          =   615
          Left            =   -74880
-         TabIndex        =   34
+         TabIndex        =   33
          Top             =   2400
          Width           =   3135
          Begin VB.CheckBox Check1 
             Caption         =   "시작 시 '알고 계십니까' 표시(&P)"
             Height          =   255
             Left            =   120
-            TabIndex        =   35
+            TabIndex        =   34
             Top             =   240
             Width           =   2895
          End
@@ -513,7 +537,7 @@ Begin VB.Form frmOptions
             Caption         =   "리본 메뉴 비활성(&N)"
             Height          =   255
             Left            =   3360
-            TabIndex        =   31
+            TabIndex        =   30
             Top             =   240
             Width           =   2415
          End
@@ -523,7 +547,7 @@ Begin VB.Form frmOptions
             Left            =   120
             TabIndex        =   29
             Top             =   240
-            Width           =   2535
+            Width           =   3135
          End
       End
       Begin VB.Frame Frame7 
@@ -556,7 +580,7 @@ Begin VB.Form frmOptions
          Left            =   -70320
          TabIndex        =   24
          Top             =   960
-         Width           =   1335
+         Width           =   1455
       End
       Begin VB.Frame Frame6 
          Caption         =   "값 검사 설정"
@@ -580,7 +604,7 @@ Begin VB.Form frmOptions
          Left            =   -74880
          TabIndex        =   20
          Top             =   2400
-         Width           =   1335
+         Width           =   1575
       End
       Begin VB.CommandButton cmdAddNewCate 
          Caption         =   "입력 추가(&A)"
@@ -608,7 +632,7 @@ Begin VB.Form frmOptions
             Caption         =   "이전에 끝낸 지점에서 시작(&Q)"
             Height          =   255
             Left            =   360
-            TabIndex        =   33
+            TabIndex        =   32
             Top             =   1200
             Width           =   5295
          End
@@ -616,7 +640,7 @@ Begin VB.Form frmOptions
             Caption         =   "화면 선택(&T)"
             Height          =   255
             Left            =   360
-            TabIndex        =   32
+            TabIndex        =   31
             Top             =   480
             Width           =   5175
          End
@@ -717,19 +741,11 @@ Begin VB.Form frmOptions
             Width           =   2655
          End
       End
-      Begin VB.Label Label12 
-         Caption         =   "시스템 경고음 외의 알림음은 PC 스피커가 있어야 작동합니다."
-         Height          =   255
-         Left            =   -74880
-         TabIndex        =   63
-         Top             =   3720
-         Width           =   5295
-      End
       Begin VB.Label Label14 
-         Caption         =   "일정 분류 목록:                 그룹 목록:"
+         Caption         =   "Plan categories:               Contact groups:"
          Height          =   255
          Left            =   -74880
-         TabIndex        =   46
+         TabIndex        =   45
          Top             =   720
          Width           =   4695
       End
@@ -737,7 +753,7 @@ Begin VB.Form frmOptions
          Caption         =   "새 그룹 추가:"
          Height          =   255
          Left            =   -74880
-         TabIndex        =   45
+         TabIndex        =   44
          Top             =   3480
          Width           =   1575
       End
@@ -757,16 +773,6 @@ Begin VB.Form frmOptions
          Top             =   2880
          Width           =   2055
       End
-   End
-   Begin VB.Label Label6 
-      BackStyle       =   0  '투명
-      Caption         =   "이 설정을 완전히 적용하려면 프로그램을 다시 시작해야 합니다."
-      ForeColor       =   &H80000013&
-      Height          =   255
-      Left            =   120
-      TabIndex        =   30
-      Top             =   4320
-      Width           =   5295
    End
 End
 Attribute VB_Name = "frmOptions"
@@ -1000,15 +1006,16 @@ Private Sub Command1_Click()
     Else
         frmMain.Width = 11040
     End If
-    frmMain.SetColor
-    
-    frmMain.MonthView1.StartOfWeek = cmbWSD.ListIndex + 1
     
     Dim i As Integer
     
     SaveSetting "Calendar", "Options", "Notification", NSI
     
     SaveSetting "Calendar", "Options", "Ringtone", RTI
+    
+    If Confirm(LoadLang("설정이 성공적으로 적용되었으며 효과를 적용하려면 프로그램을 재시작해야 합니다. 프로그램을 종료합니다.", "You must restart the application to take effect."), LoadLang("알림", "Information"), Me, 48) Then
+        End
+    End If
     
     Unload Me
 End Sub
@@ -1115,28 +1122,102 @@ Private Sub Form_Load()
     
     
     On Error Resume Next
-    cmbWSD.AddItem "일요일"
-    cmbWSD.AddItem "월요일"
-    cmbWSD.AddItem "화요일"
-    cmbWSD.AddItem "수요일"
-    cmbWSD.AddItem "목요일"
-    cmbWSD.AddItem "금요일"
-    cmbWSD.AddItem "토요일"
+    cmbWSD.AddItem LoadLang("일요일", "Sunday")
+    cmbWSD.AddItem LoadLang("월요일", "Monday")
+    cmbWSD.AddItem LoadLang("화요일", "Tuesday")
+    cmbWSD.AddItem LoadLang("수요일", "Wednesday")
+    cmbWSD.AddItem LoadLang("목요일", "Thursday")
+    cmbWSD.AddItem LoadLang("금요일", "Friday")
+    cmbWSD.AddItem LoadLang("토요일", "Saturday")
     
-    cmbStartPage.AddItem "일정"
-    cmbStartPage.AddItem "주소록"
-    cmbStartPage.AddItem "할 일"
-    cmbStartPage.AddItem "일과표"
+    cmbStartPage.AddItem LoadLang("일정", "Plans")
+    cmbStartPage.AddItem LoadLang("주소록", "Contacts")
+    cmbStartPage.AddItem LoadLang("할 일", "Tasks")
+    cmbStartPage.AddItem LoadLang("일과표", "Schedule")
+    cmbStartPage.AddItem LoadLang("알람", "Alarms")
     
-    cmbBGColor.AddItem "시스템: 응용프로그램 작업영역"
-    cmbBGColor.AddItem "시스템: 단추 표면색"
-    cmbBGColor.AddItem "빨강"
-    cmbBGColor.AddItem "노랑"
-    cmbBGColor.AddItem "초록"
-    cmbBGColor.AddItem "옥색"
-    cmbBGColor.AddItem "청록"
-    cmbBGColor.AddItem "파랑"
-    cmbBGColor.AddItem "검정"
+    cmbBGColor.AddItem LoadLang("시스템: 응용프로그램 작업영역", "System Scheme: Application Background")
+    cmbBGColor.AddItem LoadLang("시스템: 단추 표면색", "System Scheme: Button Face")
+    cmbBGColor.AddItem LoadLang("빨강", "Red")
+    cmbBGColor.AddItem LoadLang("노랑", "Yellow")
+    cmbBGColor.AddItem LoadLang("초록", "Green")
+    cmbBGColor.AddItem LoadLang("옥색", "Cyan")
+    cmbBGColor.AddItem LoadLang("청록", "Dark Cyan")
+    cmbBGColor.AddItem LoadLang("파랑", "Blue")
+    cmbBGColor.AddItem LoadLang("검정", "Black")
+    
+    Me.Caption = LoadLang("환경 설정", "Settings")
+    Command1.Caption = LoadLang("확인", "OK")
+    Command2.Caption = LoadLang("취소", "Cancel")
+    cmdOptionHelp.Caption = LoadLang("도움말(&H)", "&Help") & "..."
+    cmdTheSet.Caption = LoadLang("테마(&T)", "&Theme") & "..."
+    Frame8.Caption = LoadLang("레이아웃", "Layout")
+    chkTP.Caption = LoadLang("오늘의일정 숨기기(&O)", "Hide t&oday's plan list")
+    chkNoRibbon.Caption = LoadLang("리본 메뉴 비활성(&N)", "Disable ribbo&n menu")
+    Frame1.Caption = LoadLang("달력", "Calendar")
+    Frame10.Caption = LoadLang("테마", "Theme")
+    
+    Frame14.Caption = LoadLang("언어", "Language")
+    
+    Label5.Caption = LoadLang("시작 요일", "Start of week") & ":"
+    Label13.Caption = LoadLang("테마를 적용하려면 다음 단추를 누르십시오.", "To apply theme, click the button.")
+    
+    SSTab1.TabCaption(0) = LoadLang("화면표시", "Display")
+    SSTab1.TabCaption(1) = LoadLang("데이터", "User Data")
+    SSTab1.TabCaption(2) = LoadLang("기본 값", "Defaults")
+    SSTab1.TabCaption(3) = LoadLang("입력의 검사", "Value Checking")
+    SSTab1.TabCaption(4) = LoadLang("분류 및 그룹", "Categories")
+    SSTab1.TabCaption(5) = LoadLang("색상 테마", "Theme")
+    SSTab1.TabCaption(6) = LoadLang("암호", "Password")
+    SSTab1.TabCaption(7) = LoadLang("알림 소리", "Sound")
+    
+    Frame2.Caption = LoadLang("내 데이터", "My data")
+    Label1.Caption = LoadLang("내 일정", "My Plans") & ":"
+    Label2.Caption = LoadLang("내 주소록", "My Contacts") & ":"
+    Label3.Caption = LoadLang("내 작업", "My Tasks") & ":"
+    
+    cmdDelPlans.Caption = LoadLang("모두 삭제(&D)", "&Delete All")
+    cmdDelContacts.Caption = LoadLang("모두 삭제(&E)", "D&elete All")
+    cmdDelTasks.Caption = LoadLang("모두 삭제(&L)", "De&lete All")
+    
+    Frame4.Caption = LoadLang("시작 시 작업", "On startup")
+    Label7.Caption = LoadLang("시작 페이지", "Startup Page") & ":"
+    radSelST.Caption = LoadLang("페이지 선택(&T)", "Selec&t a page")
+    radCFQ.Caption = LoadLang("이전에 끝낸 지점에서 시작(&Q)", "Resume where you &quited")
+    
+    Frame11.Caption = LoadLang("팁 상자", "Tip Alert")
+    
+    Frame6.Caption = LoadLang("시간", "Time")
+    chkNoTimeCHeck.Caption = LoadLang("일정 추가 시 시간이 올바르지 검사 안함(&T)", "Do not check if the &time is invalid")
+    Label9.Caption = "[*] " & LoadLang("이 설정을 변경하면 프로그램이 올바로 작동하지 않을 수 있습니다.", "Changing settings in this page may cause internal errors")
+    
+    Label14.Caption = LoadLang("일정 분류 목록:                 그룹 목록:", "Plan categories:               Contact groups:")
+    cmdDelSelCate.Caption = LoadLang("선택 삭제(&S)", "Delete &selected")
+    cmdDelGroup.Caption = LoadLang("선택 삭제(&E)", "Delete s&elected")
+    
+    cmdClearCates.Caption = LoadLang("분류 전체삭제", "Clear Categories")
+    cmdClearGroups.Caption = LoadLang("그룹 전체삭제", "Clear Groups")
+    
+    Label8.Caption = LoadLang("새 일정 분류 추가", "New Category") & ":"
+    Label11.Caption = LoadLang("새 그룹 추가", "New Group") & ":"
+    
+    cmdAddNewCate.Caption = LoadLang("추가(&A)", "&Add")
+    cmdAddNewGroup.Caption = LoadLang("추가(&D)", "A&dd")
+    
+    Frame7.Caption = LoadLang("테마", "Theme")
+    Label10.Caption = LoadLang("배경 색상", "Background Color") & ":"
+    
+    Frame34.Caption = LoadLang("일정 알림음", "Notification Sound")
+    Frame34.Caption = LoadLang("일람음", "Alarm Ringtone")
+    
+    optNotificationSound(0).Caption = LoadLang("삐- 삐-", "Beep- Beep-")
+    optNotificationSound(1).Caption = LoadLang("삐이이-", "Bee-eep-")
+    
+    cmdPlayNS.Caption = LoadLang("듣기(&P)", "&Preview")
+    cmdPlayRT.Caption = LoadLang("듣기(&R)", "P&review")
+    
+    optRingtone(0).Caption = LoadLang("기본음", "Basic Tone")
+    optRingtone(1).Caption = LoadLang("계단음", "Stair Tone")
     
     cmbBGColor.ListIndex = GetSetting("Calendar", "Options", "BGColor", 0)
     
