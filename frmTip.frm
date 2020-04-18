@@ -4,7 +4,7 @@ Begin VB.Form frmTip
    Caption         =   "알고 계십니까"
    ClientHeight    =   3390
    ClientLeft      =   2295
-   ClientTop       =   2325
+   ClientTop       =   2355
    ClientWidth     =   5415
    Icon            =   "frmTip.frx":0000
    LinkTopic       =   "Form1"
@@ -175,7 +175,11 @@ Private Sub Form_Load()
            "해당 응용 프로그램이 있는 디렉터리에 복사하십시오."
     End If
 
-    
+    Me.Caption = LoadLang("알고 계십니까", "Did you know")
+    Label1.Caption = LoadLang("알고 계십니까", "Did you know") & "..."
+    cmdOK.Caption = LoadLang("확인", "OK")
+    cmdNextTip.Caption = LoadLang("다음 팁(&N)", "&Next tip")
+    chkLoadTipsAtStartup.Caption = LoadLang("시작 시 표시(&S)", "&Show on startup")
 End Sub
 
 Public Sub DisplayCurrentTip()

@@ -5,7 +5,7 @@ Begin VB.Form frmEditPlan
    Caption         =   "일정 수정"
    ClientHeight    =   4185
    ClientLeft      =   2760
-   ClientTop       =   3750
+   ClientTop       =   3810
    ClientWidth     =   6030
    Icon            =   "frmEditPlan.frx":0000
    LinkTopic       =   "Form1"
@@ -17,10 +17,10 @@ Begin VB.Form frmEditPlan
    StartUpPosition =   1  '소유자 가운데
    Begin VB.TextBox txtParts 
       Height          =   270
-      Left            =   960
+      Left            =   1080
       TabIndex        =   19
       Top             =   1560
-      Width           =   3495
+      Width           =   3375
    End
    Begin ComCtl2.UpDown UpDown1 
       Height          =   270
@@ -127,10 +127,10 @@ Begin VB.Form frmEditPlan
    Begin VB.Label Label8 
       Caption         =   "참여자:"
       Height          =   255
-      Left            =   960
+      Left            =   1080
       TabIndex        =   18
       Top             =   1320
-      Width           =   735
+      Width           =   2175
    End
    Begin VB.Label Label7 
       Caption         =   "중요도:"
@@ -138,7 +138,7 @@ Begin VB.Form frmEditPlan
       Left            =   120
       TabIndex        =   15
       Top             =   1320
-      Width           =   615
+      Width           =   975
    End
    Begin VB.Label Label1 
       Caption         =   "제목:"
@@ -170,7 +170,7 @@ Begin VB.Form frmEditPlan
       Left            =   1320
       TabIndex        =   11
       Top             =   720
-      Width           =   975
+      Width           =   1815
    End
    Begin VB.Label Label5 
       Caption         =   "분류:"
@@ -178,7 +178,7 @@ Begin VB.Form frmEditPlan
       Left            =   120
       TabIndex        =   10
       Top             =   1920
-      Width           =   495
+      Width           =   1695
    End
    Begin VB.Label Label6 
       Caption         =   "내용:"
@@ -186,7 +186,7 @@ Begin VB.Form frmEditPlan
       Left            =   120
       TabIndex        =   9
       Top             =   2520
-      Width           =   855
+      Width           =   1935
    End
 End
 Attribute VB_Name = "frmEditPlan"
@@ -213,16 +213,23 @@ Private Sub CancelButton_Click()
 End Sub
 
 Private Sub Form_Load()
-    Me.Caption = "일정 수정 - " & Title
+    Me.Caption = LoadLang("일정 수정", "Edit a Plan") & " - " & Title
+    
+    Label1.Caption = LoadLang("제목", "Title") & ":"
+    Label2.Caption = LoadLang("시간", "Time") & ":"
+    Label4.Caption = LoadLang("위치", "Location") & ":"
+    Label7.Caption = LoadLang("중요도", "Importance") & ":"
+    Label8.Caption = LoadLang("참여자", "Participants") & ":"
+    Label5.Caption = LoadLang("분류", "Category") & ":"
+    Label6.Caption = LoadLang("내용", "Note") & ":"
+    
+    OKButton.Caption = LoadLang("저장(&S)", "&Save")
+    CancelButton.Caption = LoadLang("취소", "Cancel")
     
     On Error Resume Next
     MkDir "C:\CALPLANS\CTGORIES"
     
     txtCategory.Clear
-    txtCategory.AddItem "업무"
-    txtCategory.AddItem "여가생활"
-    txtCategory.AddItem "약속"
-    txtCategory.AddItem "취미"
     
     lvCateFiles.Path = "C:\CALPLANS\CTGORIES"
     
@@ -282,19 +289,17 @@ Private Sub OKButton_Click()
     
     '분류를 추가한다.
     If FileExists("C:\CALPLANS\CTGORIES\" & txtCategory.Text) = False Then
-        If txtCategory.Text <> "업무" And txtCategory.Text <> "여가생활" And txtCategory.Text <> "약속" And txtCategory.Text <> "취미" And txtCategory.Text <> "(지정되지 않음)" Then
-            'https://stackoverflow.com/questions/21108664/how-to-create-txt-file
-            iFileNo = FreeFile
-            '파일을 연다.
-            
-            Open "C:\CALPLANS\CTGORIES\" & txtCategory.Text For Output As #iFileNo
-            
-            '파일의 내용은 보지 않으므로 빈 칸으로...
-            Print #iFileNo, ""
-            
-            '파일을 닫는다.
-            Close #iFileNo
-        End If
+        'https://stackoverflow.com/questions/21108664/how-to-create-txt-file
+        iFileNo = FreeFile
+        '파일을 연다.
+        
+        Open "C:\CALPLANS\CTGORIES\" & txtCategory.Text For Output As #iFileNo
+        
+        '파일의 내용은 보지 않으므로 빈 칸으로...
+        Print #iFileNo, ""
+        
+        '파일을 닫는다.
+        Close #iFileNo
     End If
     
     Unload Me

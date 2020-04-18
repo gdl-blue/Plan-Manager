@@ -2,10 +2,10 @@ VERSION 5.00
 Object = "{FE0065C0-1B7B-11CF-9D53-00AA003C9CB6}#1.1#0"; "COMCT232.OCX"
 Begin VB.Form frmAddPlan 
    BorderStyle     =   3  '크기 고정 대화 상자
-   Caption         =   "일정 추가"
+   Caption         =   "frmaddplan"
    ClientHeight    =   4410
    ClientLeft      =   2760
-   ClientTop       =   3780
+   ClientTop       =   3870
    ClientWidth     =   7095
    Icon            =   "frmAddPlan.frx":0000
    LinkTopic       =   "Form1"
@@ -51,14 +51,14 @@ Begin VB.Form frmAddPlan
       Width           =   360
    End
    Begin VB.Frame Frame1 
-      Caption         =   "이 일정이 있는 날짜"
+      Caption         =   "frame1"
       Height          =   2895
       Left            =   120
       TabIndex        =   25
       Top             =   1440
       Width           =   3255
       Begin VB.CommandButton cmdRPT 
-         Caption         =   "반복..."
+         Caption         =   "cmdRPT"
          Height          =   375
          Left            =   2280
          TabIndex        =   15
@@ -197,7 +197,7 @@ Begin VB.Form frmAddPlan
    End
    Begin VB.CommandButton CancelButton 
       Cancel          =   -1  'True
-      Caption         =   "취소"
+      Caption         =   "CancelButton"
       Height          =   375
       Left            =   5280
       TabIndex        =   16
@@ -205,7 +205,7 @@ Begin VB.Form frmAddPlan
       Width           =   1695
    End
    Begin VB.CommandButton OKButton 
-      Caption         =   "추가(&A)"
+      Caption         =   "OKButton"
       Height          =   375
       Left            =   3480
       TabIndex        =   0
@@ -213,7 +213,7 @@ Begin VB.Form frmAddPlan
       Width           =   1695
    End
    Begin VB.Label Label10 
-      Caption         =   "참여자:"
+      Caption         =   "part"
       Height          =   255
       Left            =   4800
       TabIndex        =   28
@@ -221,7 +221,7 @@ Begin VB.Form frmAddPlan
       Width           =   735
    End
    Begin VB.Label Label9 
-      Caption         =   "중요도:"
+      Caption         =   "imp"
       Height          =   255
       Left            =   3480
       TabIndex        =   26
@@ -229,7 +229,7 @@ Begin VB.Form frmAddPlan
       Width           =   735
    End
    Begin VB.Label Label6 
-      Caption         =   "내용:"
+      Caption         =   "memo"
       Height          =   255
       Left            =   3480
       TabIndex        =   22
@@ -237,20 +237,20 @@ Begin VB.Form frmAddPlan
       Width           =   855
    End
    Begin VB.Label Label5 
-      Caption         =   "분류:"
+      Caption         =   "category"
       Height          =   255
       Left            =   3480
       TabIndex        =   21
       Top             =   480
-      Width           =   495
+      Width           =   1455
    End
    Begin VB.Label Label4 
-      Caption         =   "위치:"
+      Caption         =   "locatino"
       Height          =   255
       Left            =   1080
       TabIndex        =   20
       Top             =   720
-      Width           =   975
+      Width           =   1575
    End
    Begin VB.Label Label3 
       Caption         =   " :"
@@ -261,7 +261,7 @@ Begin VB.Form frmAddPlan
       Width           =   255
    End
    Begin VB.Label Label2 
-      Caption         =   "시간:"
+      Caption         =   "time"
       Height          =   255
       Left            =   120
       TabIndex        =   18
@@ -270,7 +270,7 @@ Begin VB.Form frmAddPlan
       Width           =   855
    End
    Begin VB.Label Label1 
-      Caption         =   "제목:"
+      Caption         =   "tiitle"
       Height          =   255
       Left            =   120
       TabIndex        =   17
@@ -395,7 +395,22 @@ End Sub
 
 Private Sub cmdRPT_Click()
     On Error Resume Next
-    mnuInfoSt.Caption = "기준 날짜: " & txtCY.Text & "년 " & txtCM.Text & "월 " & txtCD.Text & "일"
+    mnuDescEW.Caption = LoadLang("매 주 반복", "Repeat every week")
+    mnuDescED.Caption = LoadLang("매일 반복", "Repeat every day")
+    mnuDescEM.Caption = LoadLang("매월 반복", "Repeat every month")
+    
+    mnuRTSMonth.Caption = LoadLang("이번 달이 끝날 때까지(&M)", "Until this &month")
+    mnuRTSYear.Caption = LoadLang("올해가 끝날 때까지(&Y)", "Until this &year")
+    mnuRTSCustom.Caption = LoadLang("사용자 지정(&C)", "&Custom") & "..."
+    
+    mnuEDTM.Caption = LoadLang("이번 달이 끝날 때까지(&O)", "Until this m&onth")
+    mnuEDTY.Caption = LoadLang("올해가 끝날 때까지(&E)", "Until this y&ear")
+    mnuEDCU.Caption = LoadLang("사용자 지정(&U)", "C&ustom") & "..."
+    
+    mnuEMTY.Caption = LoadLang("올해가 끝날 때까지(&A)", "Until this ye&ar")
+    mnuEMCU.Caption = LoadLang("사용자 지정(&S)", "Cu&stom") & "..."
+    
+    mnuInfoSt.Caption = LoadLang("기준 날짜", "Standard Date") & ": " & txtCY.Text & "-" & txtCM.Text & "-" & txtCD.Text
     PopupMenu mnuRepeatTypeSelect, , , , mnuRTSMonth
 End Sub
 
@@ -419,6 +434,22 @@ Private Sub Form_Load()
     Month = Split(CurrentDate, "-")(1)
     Day = Split(CurrentDate, "-")(2)
     'Me.Caption = "일정 추가 - " & Year & "년 " & Month & "월 " & Day & "일"
+    Me.Caption = LoadLang("일정 추가", "Add a plan")
+    
+    Label1.Caption = LoadLang("제목", "Title") & ":"
+    Label2.Caption = LoadLang("시간", "Time") & ":"
+    Label4.Caption = LoadLang("위치", "Location") & ":"
+    Label9.Caption = LoadLang("중요도", "Importance") & ":"
+    Label10.Caption = LoadLang("참여자", "Participants") & ":"
+    Label5.Caption = LoadLang("분류", "Category") & ":"
+    Label6.Caption = LoadLang("내용", "Memo") & ":"
+    
+    Frame1.Caption = LoadLang("이 일정이 있는 날짜", "Plan Date") & ":"
+    
+    CancelButton.Caption = LoadLang("취소", "Cancel")
+    OKButton.Caption = LoadLang("추가(&A)", "&Add")
+    
+    cmdRPT.Caption = LoadLang("반복...", "Repeat...")
     
     txtCY.Text = Year
     txtCM.Text = Month
@@ -430,10 +461,6 @@ Private Sub Form_Load()
     lvCateFiles.Path = "C:\CALPLANS\CTGORIES"
     
     txtCategory.Clear
-    txtCategory.AddItem "업무"
-    txtCategory.AddItem "여가생활"
-    txtCategory.AddItem "약속"
-    txtCategory.AddItem "취미"
     
     For Category = 0 To lvCateFiles.ListCount - 1
         txtCategory.AddItem lvCateFiles.List(Category)
@@ -772,19 +799,17 @@ Private Sub OKButton_Click()
         
         '분류를 추가한다.
         
-        If txtCategory.Text <> "업무" And txtCategory.Text <> "여가생활" And txtCategory.Text <> "약속" And txtCategory.Text <> "취미" And txtCategory.Text <> "(지정되지 않음)" Then
-            'https://stackoverflow.com/questions/21108664/how-to-create-txt-file
-            iFileNo = FreeFile
-            '파일을 연다.
-            
-            Open "C:\CALPLANS\CTGORIES\" & txtCategory.Text For Output As #iFileNo
-            
-            '파일의 내용은 보지 않으므로 빈 칸으로...
-            Print #iFileNo, ""
-            
-            '파일을 닫는다.
-            Close #iFileNo
-        End If
+        'https://stackoverflow.com/questions/21108664/how-to-create-txt-file
+        iFileNo = FreeFile
+        '파일을 연다.
+        
+        Open "C:\CALPLANS\CTGORIES\" & txtCategory.Text For Output As #iFileNo
+        
+        '파일의 내용은 보지 않으므로 빈 칸으로...
+        Print #iFileNo, ""
+        
+        '파일을 닫는다.
+        Close #iFileNo
     Next dd
     
     frmMain.lvTodaysPlan.Refresh

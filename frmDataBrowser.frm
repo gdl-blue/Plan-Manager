@@ -4,7 +4,7 @@ Begin VB.Form frmDataBrowser
    Caption         =   "모든 일정 색인"
    ClientHeight    =   3315
    ClientLeft      =   45
-   ClientTop       =   435
+   ClientTop       =   465
    ClientWidth     =   5595
    Icon            =   "frmDataBrowser.frx":0000
    LinkTopic       =   "Form1"
@@ -46,6 +46,8 @@ Private Sub Form_Load()
     MkDir "C:\CALPLANS"
     MkDir "C:\CALPLANS\TASKS"
     MkDir "C:\CALPLANS\CONTACTS"
+    
+    Me.Caption = LoadLang("모든 일정 색인", "Data Index")
     
     Dir1.Path = "C:\CALPLANS"
 End Sub

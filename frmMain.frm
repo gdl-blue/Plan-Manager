@@ -8,10 +8,10 @@ Object = "{0D452EE1-E08F-101A-852E-02608C4D0BB4}#2.0#0"; "FM20.DLL"
 Begin VB.Form frmMain 
    BackColor       =   &H8000000C&
    BorderStyle     =   1  '단일 고정
-   Caption         =   "일정관리자"
+   Caption         =   "frmMain"
    ClientHeight    =   6645
    ClientLeft      =   150
-   ClientTop       =   3735
+   ClientTop       =   4005
    ClientWidth     =   10950
    Icon            =   "frmMain.frx":0000
    LinkTopic       =   "Form1"
@@ -22,7 +22,7 @@ Begin VB.Form frmMain
    StartUpPosition =   3  'Windows 기본값
    Begin VB.CommandButton cmdRibbonFile 
       BackColor       =   &H8000000C&
-      Caption         =   "파일(&F)"
+      Caption         =   "cmdRibbonFile"
       Height          =   330
       Left            =   120
       TabIndex        =   144
@@ -205,7 +205,7 @@ Begin VB.Form frmMain
       TabPicture(0)   =   "frmMain.frx":5C16A
       Tab(0).ControlEnabled=   0   'False
       Tab(0).ControlCount=   0
-      TabCaption(1)   =   " 홈"
+      TabCaption(1)   =   "home"
       TabPicture(1)   =   "frmMain.frx":5C186
       Tab(1).ControlEnabled=   -1  'True
       Tab(1).Control(0)=   "Frame6"
@@ -213,13 +213,13 @@ Begin VB.Form frmMain
       Tab(1).Control(1)=   "Frame7"
       Tab(1).Control(1).Enabled=   0   'False
       Tab(1).ControlCount=   2
-      TabCaption(2)   =   "보기"
+      TabCaption(2)   =   "view"
       TabPicture(2)   =   "frmMain.frx":5C5D8
       Tab(2).ControlEnabled=   0   'False
       Tab(2).Control(0)=   "tglCalWeekNum"
       Tab(2).Control(1)=   "tglStatusBar"
       Tab(2).ControlCount=   2
-      TabCaption(3)   =   "일정"
+      TabCaption(3)   =   "plans"
       TabPicture(3)   =   "frmMain.frx":5CA2A
       Tab(3).ControlEnabled=   0   'False
       Tab(3).Control(0)=   "Frame8"
@@ -357,7 +357,6 @@ Begin VB.Form frmMain
       _Version        =   393216
       TabOrientation  =   1
       Tabs            =   5
-      Tab             =   4
       TabsPerRow      =   5
       TabHeight       =   582
       ShowFocusRect   =   0   'False
@@ -365,9 +364,11 @@ Begin VB.Form frmMain
       MouseIcon       =   "frmMain.frx":5EB32
       TabCaption(0)   =   "일정"
       TabPicture(0)   =   "frmMain.frx":5EB4E
-      Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "Dir1"
-      Tab(0).Control(1)=   "MonthView1"
+      Tab(0).ControlEnabled=   -1  'True
+      Tab(0).Control(0)=   "MonthView1"
+      Tab(0).Control(0).Enabled=   0   'False
+      Tab(0).Control(1)=   "Dir1"
+      Tab(0).Control(1).Enabled=   0   'False
       Tab(0).ControlCount=   2
       TabCaption(1)   =   "주소록"
       TabPicture(1)   =   "frmMain.frx":5EFA0
@@ -395,92 +396,79 @@ Begin VB.Form frmMain
       TabCaption(3)   =   "일과표"
       TabPicture(3)   =   "frmMain.frx":5F844
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "sdcmdSavePlanner"
-      Tab(3).Control(1)=   "txtPlannerTF(48)"
-      Tab(3).Control(2)=   "txtPlannerTF(47)"
-      Tab(3).Control(3)=   "txtPlannerTF(46)"
-      Tab(3).Control(4)=   "txtPlannerTF(45)"
-      Tab(3).Control(5)=   "txtPlannerTF(44)"
-      Tab(3).Control(6)=   "txtPlannerTF(43)"
-      Tab(3).Control(7)=   "txtPlannerTF(42)"
-      Tab(3).Control(8)=   "txtPlannerTF(41)"
-      Tab(3).Control(9)=   "txtPlannerTF(40)"
-      Tab(3).Control(10)=   "txtPlannerTF(39)"
-      Tab(3).Control(11)=   "txtPlannerTF(38)"
-      Tab(3).Control(12)=   "txtPlannerTF(37)"
-      Tab(3).Control(13)=   "txtPlannerTF(36)"
-      Tab(3).Control(14)=   "txtPlannerTF(35)"
-      Tab(3).Control(15)=   "txtPlannerTF(34)"
-      Tab(3).Control(16)=   "txtPlannerTF(33)"
-      Tab(3).Control(17)=   "txtPlannerTF(32)"
-      Tab(3).Control(18)=   "txtPlannerTF(31)"
-      Tab(3).Control(19)=   "txtPlannerTF(30)"
-      Tab(3).Control(20)=   "txtPlannerTF(29)"
-      Tab(3).Control(21)=   "txtPlannerTF(28)"
-      Tab(3).Control(22)=   "txtPlannerTF(27)"
-      Tab(3).Control(23)=   "txtPlannerTF(26)"
-      Tab(3).Control(24)=   "txtPlannerTF(25)"
-      Tab(3).Control(25)=   "txtPlannerTF(24)"
-      Tab(3).Control(26)=   "txtPlannerTF(23)"
-      Tab(3).Control(27)=   "txtPlannerTF(22)"
-      Tab(3).Control(28)=   "txtPlannerTF(21)"
-      Tab(3).Control(29)=   "txtPlannerTF(20)"
-      Tab(3).Control(30)=   "txtPlannerTF(19)"
-      Tab(3).Control(31)=   "txtPlannerTF(18)"
-      Tab(3).Control(32)=   "txtPlannerTF(17)"
-      Tab(3).Control(33)=   "txtPlannerTF(16)"
-      Tab(3).Control(34)=   "txtPlannerTF(15)"
-      Tab(3).Control(35)=   "txtPlannerTF(14)"
-      Tab(3).Control(36)=   "txtPlannerTF(13)"
-      Tab(3).Control(37)=   "txtPlannerTF(12)"
-      Tab(3).Control(38)=   "txtPlannerTF(11)"
-      Tab(3).Control(39)=   "txtPlannerTF(10)"
-      Tab(3).Control(40)=   "txtPlannerTF(9)"
-      Tab(3).Control(41)=   "txtPlannerTF(8)"
-      Tab(3).Control(42)=   "txtPlannerTF(7)"
-      Tab(3).Control(43)=   "txtPlannerTF(6)"
-      Tab(3).Control(44)=   "txtPlannerTF(5)"
-      Tab(3).Control(45)=   "txtPlannerTF(4)"
-      Tab(3).Control(46)=   "txtPlannerTF(3)"
-      Tab(3).Control(47)=   "txtPlannerTF(2)"
-      Tab(3).Control(48)=   "txtPlannerTF(1)"
-      Tab(3).Control(49)=   "txtPlannerTF(0)"
-      Tab(3).Control(50)=   "Label15"
-      Tab(3).Control(51)=   "lblDOW"
+      Tab(3).Control(0)=   "lblDOW"
+      Tab(3).Control(1)=   "Label15"
+      Tab(3).Control(2)=   "txtPlannerTF(0)"
+      Tab(3).Control(3)=   "txtPlannerTF(1)"
+      Tab(3).Control(4)=   "txtPlannerTF(2)"
+      Tab(3).Control(5)=   "txtPlannerTF(3)"
+      Tab(3).Control(6)=   "txtPlannerTF(4)"
+      Tab(3).Control(7)=   "txtPlannerTF(5)"
+      Tab(3).Control(8)=   "txtPlannerTF(6)"
+      Tab(3).Control(9)=   "txtPlannerTF(7)"
+      Tab(3).Control(10)=   "txtPlannerTF(8)"
+      Tab(3).Control(11)=   "txtPlannerTF(9)"
+      Tab(3).Control(12)=   "txtPlannerTF(10)"
+      Tab(3).Control(13)=   "txtPlannerTF(11)"
+      Tab(3).Control(14)=   "txtPlannerTF(12)"
+      Tab(3).Control(15)=   "txtPlannerTF(13)"
+      Tab(3).Control(16)=   "txtPlannerTF(14)"
+      Tab(3).Control(17)=   "txtPlannerTF(15)"
+      Tab(3).Control(18)=   "txtPlannerTF(16)"
+      Tab(3).Control(19)=   "txtPlannerTF(17)"
+      Tab(3).Control(20)=   "txtPlannerTF(18)"
+      Tab(3).Control(21)=   "txtPlannerTF(19)"
+      Tab(3).Control(22)=   "txtPlannerTF(20)"
+      Tab(3).Control(23)=   "txtPlannerTF(21)"
+      Tab(3).Control(24)=   "txtPlannerTF(22)"
+      Tab(3).Control(25)=   "txtPlannerTF(23)"
+      Tab(3).Control(26)=   "txtPlannerTF(24)"
+      Tab(3).Control(27)=   "txtPlannerTF(25)"
+      Tab(3).Control(28)=   "txtPlannerTF(26)"
+      Tab(3).Control(29)=   "txtPlannerTF(27)"
+      Tab(3).Control(30)=   "txtPlannerTF(28)"
+      Tab(3).Control(31)=   "txtPlannerTF(29)"
+      Tab(3).Control(32)=   "txtPlannerTF(30)"
+      Tab(3).Control(33)=   "txtPlannerTF(31)"
+      Tab(3).Control(34)=   "txtPlannerTF(32)"
+      Tab(3).Control(35)=   "txtPlannerTF(33)"
+      Tab(3).Control(36)=   "txtPlannerTF(34)"
+      Tab(3).Control(37)=   "txtPlannerTF(35)"
+      Tab(3).Control(38)=   "txtPlannerTF(36)"
+      Tab(3).Control(39)=   "txtPlannerTF(37)"
+      Tab(3).Control(40)=   "txtPlannerTF(38)"
+      Tab(3).Control(41)=   "txtPlannerTF(39)"
+      Tab(3).Control(42)=   "txtPlannerTF(40)"
+      Tab(3).Control(43)=   "txtPlannerTF(41)"
+      Tab(3).Control(44)=   "txtPlannerTF(42)"
+      Tab(3).Control(45)=   "txtPlannerTF(43)"
+      Tab(3).Control(46)=   "txtPlannerTF(44)"
+      Tab(3).Control(47)=   "txtPlannerTF(45)"
+      Tab(3).Control(48)=   "txtPlannerTF(46)"
+      Tab(3).Control(49)=   "txtPlannerTF(47)"
+      Tab(3).Control(50)=   "txtPlannerTF(48)"
+      Tab(3).Control(51)=   "sdcmdSavePlanner"
       Tab(3).ControlCount=   52
       TabCaption(4)   =   "알람"
       TabPicture(4)   =   "frmMain.frx":5FB5E
-      Tab(4).ControlEnabled=   -1  'True
+      Tab(4).ControlEnabled=   0   'False
       Tab(4).Control(0)=   "Label18"
-      Tab(4).Control(0).Enabled=   0   'False
       Tab(4).Control(1)=   "Label19"
-      Tab(4).Control(1).Enabled=   0   'False
       Tab(4).Control(2)=   "Label20"
-      Tab(4).Control(2).Enabled=   0   'False
       Tab(4).Control(3)=   "lvAlarms"
-      Tab(4).Control(3).Enabled=   0   'False
       Tab(4).Control(4)=   "txtAlarmTitle"
-      Tab(4).Control(4).Enabled=   0   'False
       Tab(4).Control(5)=   "txtTimeHrs"
-      Tab(4).Control(5).Enabled=   0   'False
       Tab(4).Control(6)=   "txtTimeMin"
-      Tab(4).Control(6).Enabled=   0   'False
       Tab(4).Control(7)=   "Frame5"
-      Tab(4).Control(7).Enabled=   0   'False
-      Tab(4).Control(8)=   "Command1"
-      Tab(4).Control(8).Enabled=   0   'False
+      Tab(4).Control(8)=   "cmdResetAF"
       Tab(4).Control(9)=   "cmdSaveAlarm"
-      Tab(4).Control(9).Enabled=   0   'False
       Tab(4).Control(10)=   "cmdDeleteAlarm"
-      Tab(4).Control(10).Enabled=   0   'False
       Tab(4).Control(11)=   "txtAlarmMemo"
-      Tab(4).Control(11).Enabled=   0   'False
       Tab(4).Control(12)=   "lvAlarmFiles"
-      Tab(4).Control(12).Enabled=   0   'False
       Tab(4).ControlCount=   13
       Begin VB.FileListBox lvAlarmFiles 
          Height          =   270
-         Left            =   7440
+         Left            =   -67560
          TabIndex        =   133
          Top             =   0
          Visible         =   0   'False
@@ -488,46 +476,46 @@ Begin VB.Form frmMain
       End
       Begin VB.TextBox txtAlarmMemo 
          Height          =   1215
-         Left            =   2640
+         Left            =   -72360
          MultiLine       =   -1  'True
          TabIndex        =   132
          Top             =   2520
          Width           =   5535
       End
       Begin VB.CommandButton cmdDeleteAlarm 
-         Caption         =   "삭제(&D)"
+         Caption         =   "cmdDeleteAlarm"
          Enabled         =   0   'False
          Height          =   375
-         Left            =   5400
+         Left            =   -69600
          TabIndex        =   130
          Top             =   3840
          Width           =   1335
       End
       Begin VB.CommandButton cmdSaveAlarm 
-         Caption         =   "저장(&S)"
+         Caption         =   "cmdSaveAlarm"
          Height          =   375
-         Left            =   6840
+         Left            =   -68160
          TabIndex        =   129
          Top             =   3840
          Width           =   1335
       End
-      Begin VB.CommandButton Command1 
-         Caption         =   "초기화(&R)"
+      Begin VB.CommandButton cmdResetAF 
+         Caption         =   "cmdResetAF"
          Height          =   375
-         Left            =   2640
+         Left            =   -72360
          TabIndex        =   128
          Top             =   3840
          Width           =   1335
       End
       Begin VB.Frame Frame5 
-         Caption         =   "요일"
+         Caption         =   "Frame5"
          Height          =   1335
-         Left            =   2640
+         Left            =   -72360
          TabIndex        =   120
          Top             =   880
          Width           =   5535
          Begin VB.CommandButton cmdSelectAllDW 
-            Caption         =   "모두 선택(&A)"
+            Caption         =   "cmdSelectAllDW"
             Height          =   320
             Left            =   1560
             TabIndex        =   137
@@ -535,7 +523,7 @@ Begin VB.Form frmMain
             Width           =   1215
          End
          Begin VB.CommandButton cmdUnselectAllDW 
-            Caption         =   "선택 해제(&U)"
+            Caption         =   "cmdUnselectAllDW"
             Height          =   320
             Left            =   2880
             TabIndex        =   136
@@ -543,7 +531,7 @@ Begin VB.Form frmMain
             Width           =   1215
          End
          Begin VB.CommandButton cmdRelectAllDW 
-            Caption         =   "선택 반전(&R)"
+            Caption         =   "cmdRelectAllDW"
             Height          =   320
             Left            =   4200
             TabIndex        =   135
@@ -616,28 +604,28 @@ Begin VB.Form frmMain
       End
       Begin VB.TextBox txtTimeMin 
          Height          =   270
-         Left            =   3600
+         Left            =   -71400
          TabIndex        =   119
          Top             =   600
          Width           =   375
       End
       Begin VB.TextBox txtTimeHrs 
          Height          =   270
-         Left            =   3240
+         Left            =   -71760
          TabIndex        =   118
          Top             =   600
          Width           =   375
       End
       Begin VB.TextBox txtAlarmTitle 
          Height          =   270
-         Left            =   3240
+         Left            =   -71760
          TabIndex        =   116
          Top             =   240
          Width           =   4935
       End
       Begin ComctlLib.ListView lvAlarms 
          Height          =   4095
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   114
          Top             =   120
          Width           =   2415
@@ -655,7 +643,7 @@ Begin VB.Form frmMain
          NumItems        =   0
       End
       Begin VB.CommandButton sdcmdSavePlanner 
-         Caption         =   "저장(&S)"
+         Caption         =   "sdcmdSavePlanner"
          Height          =   375
          Left            =   -68040
          TabIndex        =   105
@@ -1104,7 +1092,7 @@ Begin VB.Form frmMain
          Width           =   975
       End
       Begin VB.CommandButton cmdDeleteAllTasks 
-         Caption         =   "모두 삭제(&L)"
+         Caption         =   "cmdDeleteAllTasks"
          Height          =   495
          Left            =   -67920
          TabIndex        =   48
@@ -1120,7 +1108,6 @@ Begin VB.Form frmMain
          Width           =   1350
       End
       Begin VB.CommandButton cmdDeleteAllContacts 
-         Caption         =   "모두 삭제(&E)"
          Height          =   495
          Left            =   -68040
          TabIndex        =   45
@@ -1129,7 +1116,7 @@ Begin VB.Form frmMain
       End
       Begin VB.DirListBox Dir1 
          Height          =   300
-         Left            =   -66960
+         Left            =   8040
          TabIndex        =   43
          Top             =   -22
          Visible         =   0   'False
@@ -1144,18 +1131,18 @@ Begin VB.Form frmMain
          Width           =   1215
       End
       Begin VB.Frame Frame4 
-         Caption         =   "할 일 정보"
+         Caption         =   "Frame4"
          Height          =   4095
          Left            =   -72480
          TabIndex        =   28
-         Top             =   98
+         Top             =   120
          Width           =   4455
          Begin VB.TextBox txtPart 
             Height          =   270
-            Left            =   960
+            Left            =   1080
             TabIndex        =   110
             Top             =   1920
-            Width           =   3375
+            Width           =   3255
          End
          Begin ComCtl2.UpDown UpDown2 
             Height          =   270
@@ -1243,23 +1230,23 @@ Begin VB.Form frmMain
             Appearance      =   0
          End
          Begin VB.Label Label16 
-            Caption         =   "참여자:"
+            Caption         =   "Label16"
             Height          =   255
-            Left            =   960
+            Left            =   1080
             TabIndex        =   107
             Top             =   1680
             Width           =   975
          End
          Begin VB.Label Label14 
-            Caption         =   "중요도:"
+            Caption         =   "Label14"
             Height          =   255
             Left            =   120
             TabIndex        =   106
             Top             =   1680
-            Width           =   615
+            Width           =   975
          End
          Begin VB.Label Label11 
-            Caption         =   "내용:"
+            Caption         =   "Label11"
             Height          =   255
             Left            =   120
             TabIndex        =   35
@@ -1267,7 +1254,7 @@ Begin VB.Form frmMain
             Width           =   735
          End
          Begin VB.Label Label10 
-            Caption         =   "제목:"
+            Caption         =   "Label10"
             Height          =   255
             Left            =   120
             TabIndex        =   34
@@ -1284,16 +1271,16 @@ Begin VB.Form frmMain
             Width           =   135
          End
          Begin VB.Label Label8 
-            Caption         =   "완료율:"
+            Caption         =   "Label8"
             Height          =   255
             Left            =   120
             TabIndex        =   30
             Top             =   960
-            Width           =   855
+            Width           =   3735
          End
       End
       Begin VB.CommandButton cmdDelTask 
-         Caption         =   "삭제(&D)"
+         Caption         =   "cmdDelTask"
          Enabled         =   0   'False
          Height          =   495
          Left            =   -67920
@@ -1302,7 +1289,7 @@ Begin VB.Form frmMain
          Width           =   1215
       End
       Begin VB.CommandButton cmdSaveTask 
-         Caption         =   "저장(&S)"
+         Caption         =   "cmdSaveTask"
          Height          =   495
          Left            =   -67920
          TabIndex        =   26
@@ -1320,7 +1307,6 @@ Begin VB.Form frmMain
          Width           =   2295
       End
       Begin VB.CommandButton cmdDelContact 
-         Caption         =   "삭제(&D)"
          Height          =   495
          Left            =   -68040
          TabIndex        =   24
@@ -1336,7 +1322,7 @@ Begin VB.Form frmMain
          Width           =   855
       End
       Begin VB.Frame Frame3 
-         Caption         =   "메모"
+         Caption         =   "Frame3"
          Height          =   1575
          Left            =   -73080
          TabIndex        =   10
@@ -1361,7 +1347,7 @@ Begin VB.Form frmMain
          Width           =   1335
       End
       Begin VB.Frame Frame2 
-         Caption         =   "전화번호"
+         Caption         =   "Frame2"
          Height          =   975
          Left            =   -73080
          TabIndex        =   8
@@ -1383,10 +1369,10 @@ Begin VB.Form frmMain
          End
          Begin VB.TextBox txtHome 
             Height          =   270
-            Left            =   360
+            Left            =   720
             TabIndex        =   14
             Top             =   240
-            Width           =   1455
+            Width           =   1095
          End
          Begin VB.TextBox txtCompany 
             Height          =   270
@@ -1425,15 +1411,15 @@ Begin VB.Form frmMain
             Left            =   120
             TabIndex        =   11
             Top             =   240
-            Width           =   255
+            Width           =   615
          End
       End
       Begin VB.Frame Frame1 
-         Caption         =   "기본 정보"
+         Caption         =   "Frame1"
          Height          =   1335
          Left            =   -73080
          TabIndex        =   4
-         Top             =   98
+         Top             =   120
          Width           =   4935
          Begin VB.ComboBox cmbGroup 
             Height          =   300
@@ -1538,7 +1524,7 @@ Begin VB.Form frmMain
       End
       Begin MSComCtl2.MonthView MonthView1 
          Height          =   4170
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   2
          Top             =   98
          Width           =   8100
@@ -1550,35 +1536,35 @@ Begin VB.Form frmMain
          Appearance      =   0
          MonthColumns    =   3
          MonthRows       =   2
-         StartOfWeek     =   91160577
+         StartOfWeek     =   94765057
          CurrentDate     =   43858
       End
       Begin VB.Label Label20 
-         Caption         =   "메모:"
+         Caption         =   "Label20"
          Height          =   255
-         Left            =   2640
+         Left            =   -72360
          TabIndex        =   131
          Top             =   2280
          Width           =   975
       End
       Begin VB.Label Label19 
-         Caption         =   "시간:"
+         Caption         =   "Label19"
          Height          =   255
-         Left            =   2640
+         Left            =   -72360
          TabIndex        =   117
          Top             =   600
          Width           =   495
       End
       Begin VB.Label Label18 
-         Caption         =   "이름:"
+         Caption         =   "Label18"
          Height          =   255
-         Left            =   2640
+         Left            =   -72360
          TabIndex        =   115
          Top             =   240
          Width           =   615
       End
       Begin VB.Label Label15 
-         Caption         =   "7시           9시           12시          15시           18시         21시            밤"
+         Caption         =   "7             9             12              15             18            21               22-"
          Height          =   225
          Left            =   -74280
          TabIndex        =   55
@@ -1617,7 +1603,7 @@ Begin VB.Form frmMain
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             AutoSize        =   2
-            TextSave        =   "오전 12:49"
+            TextSave        =   "오후 10:59"
          EndProperty
       EndProperty
    End
@@ -1779,7 +1765,7 @@ Private Sub cmdSaveAlarm_Click()
     If Mid$(txtTimeMin.Text, 1, 1) = "0" Then
         txtTimeMin.Text = Mid$(txtTimeMin.Text, 2, 1)
     End If
-    If InStr(1, txtAlarmTitle.Text, "?") > 0 Or InStr(1, txtAlarmTitle.Text, "\") > 0 Or InStr(1, txtAlarmTitle.Text, "|") > 0 Or InStr(1, txtAlarmTitle.Text, ".") > 0 Or InStr(1, txtAlarmTitle.Text, "/") > 0 Or InStr(1, txtAlarmTitle.Text, "*") > 0 Or InStr(1, txtAlarmTitle.Text, ":") > 0 Or InStr(1, txtAlarmTitle.Text, ChrW$(34)) > 0 Or txtAlarmTitle.Text = "새 알람 추가..." Then
+    If InStr(1, txtAlarmTitle.Text, "?") > 0 Or InStr(1, txtAlarmTitle.Text, "\") > 0 Or InStr(1, txtAlarmTitle.Text, "|") > 0 Or InStr(1, txtAlarmTitle.Text, ".") > 0 Or InStr(1, txtAlarmTitle.Text, "/") > 0 Or InStr(1, txtAlarmTitle.Text, "*") > 0 Or InStr(1, txtAlarmTitle.Text, ":") > 0 Or InStr(1, txtAlarmTitle.Text, ChrW$(34)) > 0 Or txtAlarmTitle.Text = LoadLang("새 알람 추가...", "New...") Then
         MessageBox "제목의 값이 올바르지 않습니다.", "입력 값 오류", Me, 16
     End If
     If IsNumeric(txtTimeHrs.Text) = False Or IsNumeric(txtTimeMin.Text) = False Then
@@ -1798,7 +1784,7 @@ Private Sub cmdSaveAlarm_Click()
     End If
     
     '일정을 추가하기 전에 해당 제목의 일정이 존재하는지 확인한다.
-    If FileExists("C:\CALPLANS\ALARMS\" & txtAlarmTitle.Text) = True And lvAlarms.SelectedItem.SubItems(1) = "새 알람 추가..." Then
+    If FileExists("C:\CALPLANS\ALARMS\" & txtAlarmTitle.Text) = True And lvAlarms.SelectedItem.SubItems(1) = LoadLang("새 알람 추가...", "New...") Then
         MessageBox "해당 이름의 알람이 이미 존재합니다.", "처리 중 오류", Me, 16
     End If
     
@@ -1856,10 +1842,6 @@ Private Sub cmdTltRef_Click()
     lvTodaysPlan.Refresh
     lvTodaysPlans.Refresh
     lvTmrPlans.Refresh
-    
-    sbStatusBar.Panels(1).Text = "갱신되었습니다."
-    Sleep 1000
-    sbStatusBar.Panels(1).Text = ""
 End Sub
 
 ' End required code
@@ -1871,7 +1853,7 @@ Sub LoadContacts()
     MkDir "C:\CALPLANS\CONTACTS"
     
     lvContacts.Clear
-    lvContacts.AddItem "새 연락처 추가..."
+    lvContacts.AddItem LoadLang("새 연락처 추가...", "New...")
     
     lvContactFiles.Refresh
     
@@ -1977,7 +1959,7 @@ Private Sub cmdSaveContact_Click()
     
     SaveSetting "Calendar", "Contacts", txtName.Text & "Group", cmbGroup.Text
     
-    If lvContacts.List(lvContacts.ListIndex) = "새 연락처 추가..." Then
+    If lvContacts.List(lvContacts.ListIndex) = LoadLang("새 연락처 추가...", "New...") Then
         '해당 연락처가 존재함을 알리는 파일을 만든다.
         'https://stackoverflow.com/questions/21108664/how-to-create-txt-file
         iFileNo = FreeFile
@@ -2019,7 +2001,7 @@ Sub LoadTasks()
     lvTaskFiles.Refresh
     lvTasks.Clear
     
-    lvTasks.AddItem "새 작업 추가..."
+    lvTasks.AddItem LoadLang("새 작업 추가...", "New...")
     
     For Task = 0 To lvTaskFiles.ListCount - 1
         lvTasks.AddItem lvTaskFiles.List(Task)
@@ -2052,7 +2034,7 @@ Private Sub cmdSaveTask_Click()
     SaveSetting "Calendar", "Tasks", txtTaskTitle.Text & "Impt", txtImpt.Text
     SaveSetting "Calendar", "Tasks", txtTaskTitle.Text & "Part", txtPart.Text
     
-    If lvTasks.List(lvTasks.ListIndex) = "새 작업 추가..." Then
+    If lvTasks.List(lvTasks.ListIndex) = LoadLang("새 작업 추가...", "New...") Then
         '해당 작업이 존재함을 알리는 파일을 만든다.
         'https://stackoverflow.com/questions/21108664/how-to-create-txt-file
         iFileNo = FreeFile
@@ -2189,11 +2171,7 @@ Private Sub Form_Load()
     MkDir "C:\CALPLANS\CONTACTS"
     MkDir "C:\CALPLANS\TASKS"
     
-    cmbGroup.AddItem "지정 안 함"
-    cmbGroup.AddItem "가족"
-    cmbGroup.AddItem "친구"
-    cmbGroup.AddItem "동료"
-    cmbGroup.AddItem "친척"
+    cmbGroup.AddItem LoadLang("지정 안 함", "None")
     
     cmbGroup.ListIndex = 0
     
@@ -2208,18 +2186,19 @@ Private Sub Form_Load()
     MkDir "C:\CALPLANS\" & ty & "\" & tm
     MkDir "C:\CALPLANS\" & ty & "\" & tm & "\" & td
 
-    Select Case Command
+    Select Case UCase(Command)
         Case "/?"
             MessageBox "일정관리자 풀그림을 시작합니다." & vbCrLf & vbCrLf & _
-                   "    PLANMGR.EXE [/R]" & vbCrLf & vbCrLf & _
+                   "    PLNMGR32.EXE [/R]" & vbCrLf & vbCrLf & _
                    "    /R  최소화된 상태로 시작합니다.", _
-                   "일정관리자 도움말", Me
+                   "스위치 도움말", Me
             End
         Case "/R"
             Me.WindowState = 1
         Case ""
         Case Else
             MessageBox "스위치가 틀립니다 - " & Command, "오류", Me, 16
+            End
     End Select
     
     'mnuHelpAbout.Caption = App.Title & " 정보(&A)"
@@ -2235,15 +2214,12 @@ Private Sub Form_Load()
     If GetSetting("Calendar", "Config", "FirstRun", "0") = "0" Then
         SaveSetting "Calendar", "Config", "FirstRun", "1"
         
+        frmWizard.Show vbModal, Me
+        
         If GetWinver(1) >= 6 And GetWinver(2) >= 1 Then
         Else
             MessageBox "컴퓨터가 Windows Vista 혹은 Windows XP 이하의 운영 체제를 실행하고 있습니다. 달력이 올바로 표시되지 않을 수 있습니다.", "경고", Me, 48
         End If
-        
-        MessageBox "일정관리자 3에 오신 것을 환영합니다. 이 풀그림은 GitHub(https://github.com/gdl-888/Plan-Manager)에서만 " & vbCrLf & _
-                   "정식으로 개발 및 배포하고 있으며 타 싸이트/게시판/블로그/카페에서 내려받은 경우 소스코드가 수정되어 " & vbCrLf & _
-                   "바이러스가 포함되어있을 수 있으니 꼭 정식 배포 싸이트에서 내려받아주십시오." & vbCrLf & vbCrLf & _
-                   "계속하려면 <확인>을 누르십시오.", "정보", Me
         
         MessageBox "컴퓨터를 시작할 때부터 알림을 받으려면 [" & ChrW$(34) & Dir1.Path & "\PLNMGR32.EXE" & ChrW$(34) & " /R]" & _
                "(경로 복사됨) 바로가기를 시작프로그램에 추가하십시오.", "알리미 활성화", Me
@@ -2271,13 +2247,13 @@ Private Sub Form_Load()
     lvTodaysPlan.Path = "C:\CALPLANS\" & Format(Now, "YYYY") & "\" & Format(Now, "M") & "\" & Format(Now, "D")
     
     Dim DOWLS(6) As String
-    DOWLS(0) = "일"
-    DOWLS(1) = "월"
-    DOWLS(2) = "화"
-    DOWLS(3) = "수"
-    DOWLS(4) = "목"
-    DOWLS(5) = "금"
-    DOWLS(6) = "토"
+    DOWLS(0) = LoadLang("일", "S")
+    DOWLS(1) = LoadLang("월", "M")
+    DOWLS(2) = LoadLang("화", "T")
+    DOWLS(3) = LoadLang("수", "W")
+    DOWLS(4) = LoadLang("목", "T")
+    DOWLS(5) = LoadLang("금", "F")
+    DOWLS(6) = LoadLang("토", "S")
     
     Dim i As Variant
     For Each i In DOWLS
@@ -2297,6 +2273,93 @@ Private Sub Form_Load()
         cmbGroup.AddItem lvGroupList.List(i)
     Next i
     
+    ssRibbonMenu.TabCaption(1) = LoadLang("홈", "Home")
+    ssRibbonMenu.TabCaption(2) = LoadLang("보기", "View")
+    ssRibbonMenu.TabCaption(3) = LoadLang("일정", "Plan")
+    
+    cmdPlanList.Caption = LoadLang("일정 목록", "Plan List")
+    cmdPlanIndex.Caption = LoadLang("데이터 색인", "Data Index")
+    cmdEndPrg.Caption = LoadLang("끝내기", "Exit")
+    
+    tglStatusBar.Caption = LoadLang("상태표시줄", "Status Bar")
+    tglCalWeekNum.Caption = LoadLang("주 번호", "Week Number")
+    
+    cmdTodaysPlan.Caption = LoadLang("이날의 일정", "Selected Day's Plans")
+    cmdDelAllTodaysPlan.Caption = LoadLang("이날의   일정 삭제", "Delete Plans")
+    
+    cmdMnuAbout.ToolTipText = LoadLang("프로그램 정보", "About this application...")
+    cmdMnuOptions.ToolTipText = LoadLang("환경 설정", "Settings...")
+    cmdHelp.ToolTipText = LoadLang("도움말", "Help")
+    
+    cmdRibbonFile.Caption = LoadLang("파일(&F)", "&File")
+    
+    ssTodaysPlan.TabCaption(0) = LoadLang("오늘 일정", "Today's Plans")
+    ssTodaysPlan.TabCaption(1) = LoadLang("내일 일정", "Tomorrow's Plans")
+    
+    SSTab1.TabCaption(0) = LoadLang("일정", "Plans")
+    SSTab1.TabCaption(1) = LoadLang("주소록", "Contacts")
+    SSTab1.TabCaption(2) = LoadLang("할 일", "Tasks")
+    SSTab1.TabCaption(3) = LoadLang("일과표", "Schedule")
+    SSTab1.TabCaption(4) = LoadLang("알람", "Alarms")
+    
+    cmdTltRef.Caption = LoadLang("갱신(&R)", "&Refresh")
+    
+    Frame1.Caption = LoadLang("기본 정보", "Basic Information")
+    Frame2.Caption = LoadLang("전화번호", "Phone Numbers")
+    Frame3.Caption = LoadLang("메모", "Note")
+    
+     Label1.Caption = LoadLang("이름", "Name") & ":"
+     Label2.Caption = LoadLang("휴대전화", "Cell-phone") & ":"
+     Label3.Caption = LoadLang("전자우편", "E-mail") & ":"
+    Label17.Caption = LoadLang("그룹", "Group") & ":"
+    Label12.Caption = LoadLang("우편번호", "Postal") & ":"
+    Label12.Caption = LoadLang("주소", "Address") & ":"
+     Label4.Caption = LoadLang("집", "Home") & ":"
+     Label5.Caption = LoadLang("회사", "Company") & ":"
+     Label6.Caption = LoadLang("팩스", "Fax") & ":"
+     Label7.Caption = LoadLang("기타", "Other") & ":"
+    
+    cmdSaveContact.Caption = LoadLang("저장(&S)", "&Save")
+    cmdDelContact.Caption = LoadLang("삭제(&D)", "&Delete")
+    cmdDeleteAllContacts.Caption = LoadLang("모두 삭제(&E)", "Cl&ear contatcs")
+    cmdResetFields.Caption = LoadLang("내용 초기화(&R)", "&Reset Fields")
+    
+    Frame4.Caption = LoadLang("할 일 정보", "Task Information")
+    Label10.Caption = LoadLang("제목", "Title") & ":"
+    Label8.Caption = LoadLang("완료율", "Percent Complete") & ":"
+    Label14.Caption = LoadLang("중요도", "Importance") & ":"
+    Label16.Caption = LoadLang("참여자", "Participants") & ":"
+    Label11.Caption = LoadLang("메모", "Note") & ":"
+    
+    cmdSaveTask.Caption = LoadLang("저장(&S)", "&Save")
+    cmdDelTask.Caption = LoadLang("삭제", "&Delete")
+    cmdDeleteAllTasks.Caption = LoadLang("모두 삭제(&E)", "Cl&ear Tasks")
+    
+    sdcmdSavePlanner.Caption = LoadLang("저장(&S)", "&Save")
+    
+    Label18.Caption = LoadLang("이름", "Name") & ":"
+    Label19.Caption = LoadLang("시간", "Time") & ":"
+    Label20.Caption = LoadLang("메모", "Note") & ":"
+    Frame5.Caption = LoadLang("요일", "-")
+    
+    chkDayOfWeeks(0).Caption = LoadLang("일요일", "Sunday")
+    chkDayOfWeeks(1).Caption = LoadLang("월요일", "Monday")
+    chkDayOfWeeks(2).Caption = LoadLang("화요일", "Tuesday")
+    chkDayOfWeeks(3).Caption = LoadLang("수요일", "Wednesday")
+    chkDayOfWeeks(4).Caption = LoadLang("목요일", "Thursday")
+    chkDayOfWeeks(5).Caption = LoadLang("금요일", "Friday")
+    chkDayOfWeeks(6).Caption = LoadLang("토요일", "Saturday")
+    
+    cmdSelectAllDW.Caption = LoadLang("모두 선택(&A)", "Select &All")
+    cmdUnselectAllDW.Caption = LoadLang("선택 해제(&U)", "&Unselect All")
+    cmdRelectAllDW.Caption = LoadLang("선택 반전(&R)", "&Reverse")
+    
+    cmdResetAF.Caption = LoadLang("초기화(&R)", "&Reset Fields")
+    cmdDeleteAlarm.Caption = LoadLang("삭제(&D)", "&Delete")
+    cmdSaveAlarm.Caption = LoadLang("추가(&A)", "&Add")
+    
+    Me.Caption = LoadLang(App.Title, "Plan Manager 3")
+    
     MonthView1.Value = Split(Format(Now, "YYYY-M-D"), "-")(0) & "-" & Split(Format(Now, "YYYY-M-D"), "-")(1) & "-" & Split(Format(Now, "YYYY-M-D"), "-")(2)
 
     Me.Show
@@ -2305,7 +2368,7 @@ End Sub
 
 Private Sub lvAlarms_ItemClick(ByVal Item As ComctlLib.ListItem)
     On Error Resume Next
-    If Item.SubItems(1) = "새 알람 추가..." Then
+    If Item.SubItems(1) = LoadLang("새 알람 추가...", "New...") Then
         ClearAlarmFields
     Else
         cmdDeleteAlarm.Enabled = True
@@ -2461,7 +2524,7 @@ End Sub
 Private Sub lvContacts_Click()
     On Error Resume Next
     
-    If lvContacts.List(lvContacts.ListIndex) = "새 연락처 추가..." Then
+    If lvContacts.List(lvContacts.ListIndex) = LoadLang("새 연락처 추가...", "New...") Then
         txtName.BackColor = &H80000005
         txtName.Locked = False
         
@@ -2522,7 +2585,7 @@ Private Sub lvContacts_Click()
 End Sub
 
 Private Sub lvTasks_Click()
-    If lvTasks.List(lvTasks.ListIndex) = "새 작업 추가..." Then
+    If lvTasks.List(lvTasks.ListIndex) = LoadLang("새 작업 추가...", "New...") Then
         cmdDelTask.Enabled = False
     Else
         cmdDelTask.Enabled = True
@@ -2536,14 +2599,14 @@ Private Sub lvTasks_Click()
     
     If SSTab1.Tab = 2 Then
         Me.Caption = App.Title & " - " & SSTab1.TabCaption(SSTab1.Tab) & " (" & lvTasks.List(lvTasks.ListIndex) & ")"
-        If lvTasks.List(lvTasks.ListIndex) = "새 작업 추가..." Then
+        If lvTasks.List(lvTasks.ListIndex) = LoadLang("새 작업 추가...", "New...") Then
             Me.Caption = App.Title & " - " & SSTab1.TabCaption(SSTab1.Tab) & " (새 작업 추가)"
         End If
     End If
 End Sub
 
 Private Sub lvTasks_ItemCheck(Item As Integer)
-    If lvTasks.List(Item) <> "새 작업 추가..." Then
+    If lvTasks.List(Item) <> LoadLang("새 작업 추가...", "New...") Then
         If lvTasks.Selected(Item) = True Then
             SaveSetting "Calendar", "Tasks", lvTasks.List(Item) & "Perc", "100"
         Else
@@ -2779,19 +2842,6 @@ Private Sub ssRibbonMenu_MouseUp(Button As Integer, Shift As Integer, x As Singl
 End Sub
 
 Private Sub SSTab1_Click(PreviousTab As Integer)
-    Me.Caption = App.Title & " - " & SSTab1.TabCaption(SSTab1.Tab)
-    If SSTab1.Tab = 0 Then
-        Me.Caption = Me.Caption & " (" & MonthView1.Year & "년 " & MonthView1.Month & "월)"
-    ElseIf SSTab1.Tab = 1 Then
-        Me.Caption = Me.Caption & " (새 주소록 추가)"
-    ElseIf SSTab1.Tab = 2 Then
-        Me.Caption = App.Title & " - " & SSTab1.TabCaption(SSTab1.Tab) & " (새 작업 추가)"
-    Else
-        Me.Caption = App.Title & " - " & SSTab1.TabCaption(SSTab1.Tab)
-    End If
-    
-    
-    
     If SSTab1.Tab > 0 Then
         mnuFileBar0.Visible = True
         mnuFileSave.Visible = True
@@ -2839,11 +2889,11 @@ Private Sub LoadAlarms()
     
     lvAlarmFiles.Path = "C:\CALPLANS\ALARMS"
     
-    lvAlarms.ColumnHeaders.Add , , "시간", 350
-    lvAlarms.ColumnHeaders.Add , , "이름", 1400
+    lvAlarms.ColumnHeaders.Add , , LoadLang("시간", "Time"), 350
+    lvAlarms.ColumnHeaders.Add , , LoadLang("이름", "Name"), 1400
 
     lvAlarms.ListItems.Add , , "--:--"
-    lvAlarms.ListItems(1).SubItems(1) = "새 알람 추가..."
+    lvAlarms.ListItems(1).SubItems(1) = LoadLang("새 알람 추가...", "New...")
     
     Dim Alarm As Integer
     Dim Title As String

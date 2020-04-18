@@ -4,7 +4,7 @@ Begin VB.Form frmReminder
    Caption         =   "곧 시작하는 일정이 있습니다."
    ClientHeight    =   3195
    ClientLeft      =   2760
-   ClientTop       =   3810
+   ClientTop       =   3840
    ClientWidth     =   6030
    Icon            =   "reminder.frx":0000
    LinkTopic       =   "Form1"
@@ -93,8 +93,8 @@ Option Explicit
   Private Declare Function SetWindowPos Lib "user32" _
         (ByVal hwnd As Long, _
         ByVal hWndInsertAfter As Long, _
-        ByVal X As Long, _
-        ByVal Y As Long, _
+        ByVal x As Long, _
+        ByVal y As Long, _
         ByVal cx As Long, _
         ByVal cy As Long, _
         ByVal wFlags As Long) As Long
@@ -122,6 +122,13 @@ End Sub
 
 Private Sub Form_Load()
     SetTopMostWindow Me.hwnd, True
+    
+    Me.Caption = LoadLang("곧 시작하는 일정이 있습니다.", "Plan starting soon!")
+    cmdReAlert.Caption = LoadLang("다시 알림(&R)", "Snooze(&R)")
+    OKButton.Caption = LoadLang("닫기(&C)", "&Close")
+    
+    Label1.Caption = LoadLang("다음 일정이 곧 시작합니다.", "The following plan is starting soon.")
+    
     Me.Show vbModal, frmMain
     PlayNotification
 End Sub

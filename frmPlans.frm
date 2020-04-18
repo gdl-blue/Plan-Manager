@@ -2,10 +2,10 @@ VERSION 5.00
 Object = "{6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0"; "COMCTL32.OCX"
 Begin VB.Form frmPlans 
    BorderStyle     =   3  '크기 고정 대화 상자
-   Caption         =   "일정 목록"
+   Caption         =   "frmplans"
    ClientHeight    =   4020
    ClientLeft      =   2760
-   ClientTop       =   3900
+   ClientTop       =   4140
    ClientWidth     =   7170
    Icon            =   "frmPlans.frx":0000
    LinkTopic       =   "Form1"
@@ -16,7 +16,7 @@ Begin VB.Form frmPlans
    ShowInTaskbar   =   0   'False
    StartUpPosition =   1  '소유자 가운데
    Begin VB.CommandButton cmdTody 
-      Caption         =   "오늘로(&T)"
+      Caption         =   "today"
       Height          =   375
       Left            =   4440
       TabIndex        =   13
@@ -78,7 +78,7 @@ Begin VB.Form frmPlans
    End
    Begin VB.CommandButton cmdClose 
       Cancel          =   -1  'True
-      Caption         =   "닫기(&C)"
+      Caption         =   "close"
       Height          =   375
       Left            =   5760
       TabIndex        =   5
@@ -94,7 +94,7 @@ Begin VB.Form frmPlans
       Width           =   855
    End
    Begin VB.CommandButton cmdViewPlan 
-      Caption         =   "보기(&V)..."
+      Caption         =   "view"
       Default         =   -1  'True
       Height          =   375
       Left            =   5760
@@ -103,7 +103,7 @@ Begin VB.Form frmPlans
       Width           =   1335
    End
    Begin VB.CommandButton cmdDelBtn 
-      Caption         =   "삭제(&D)"
+      Caption         =   "delete"
       Height          =   375
       Left            =   5760
       TabIndex        =   2
@@ -111,7 +111,7 @@ Begin VB.Form frmPlans
       Width           =   1335
    End
    Begin VB.CommandButton cmdAddBtn 
-      Caption         =   "추가(&C)..."
+      Caption         =   "add"
       Height          =   375
       Left            =   5760
       TabIndex        =   1
@@ -139,7 +139,7 @@ Begin VB.Form frmPlans
       NumItems        =   0
    End
    Begin VB.Label Label1 
-      Caption         =   "년                월                   일"
+      Caption         =   "   -                    -"
       Height          =   255
       Left            =   1200
       TabIndex        =   7
@@ -236,11 +236,11 @@ End Sub
 Private Sub cmdViewPlan_Click()
     On Error GoTo exitsub
     frmPlanView.CurrentDate = CurrentDate
-    frmPlanView.Caption = lstPlanList.SelectedItem.SubItems(2) & " 일정 - " & lstPlanList.SelectedItem.Text
+    frmPlanView.Caption = lstPlanList.SelectedItem.SubItems(2) & " - " & lstPlanList.SelectedItem.Text
     frmPlanView.Category = lstPlanList.SelectedItem.SubItems(2)
     frmPlanView.Title = lstPlanList.SelectedItem.Text
-    frmPlanView.lblTimeHrs.Caption = Split(lstPlanList.SelectedItem.SubItems(1), ":")(0) & "시"
-    frmPlanView.lblTimeMin.Caption = Split(lstPlanList.SelectedItem.SubItems(1), ":")(1) & "분"
+    frmPlanView.lblTimeHrs.Caption = Split(lstPlanList.SelectedItem.SubItems(1), ":")(0) & ":"
+    frmPlanView.lblTimeMin.Caption = Split(lstPlanList.SelectedItem.SubItems(1), ":")(1)
     frmPlanView.lblLocation.Text = GetSetting("Calendar", Year & "\" & Month & "\" & Day, lstPlanList.SelectedItem.Text & "Location", "알 수 없음")
     frmPlanView.txtContent.Text = GetSetting("Calendar", Year & "\" & Month & "\" & Day, lstPlanList.SelectedItem.Text & "Cont", "자세한 내용 없음")
     frmPlanView.txtImprty.Text = GetSetting("Calendar", Year & "\" & Month & "\" & Day, lstPlanList.SelectedItem.Text & "Impt", "1")
@@ -280,7 +280,10 @@ Private Sub Form_Load()
     Year = Split(CurrentDate, "-")(0)
     Month = Split(CurrentDate, "-")(1)
     Day = Split(CurrentDate, "-")(2)
-    Me.Caption = Year & "년 " & Month & "월 " & Day & "일의 일정 목록"
+    Me.Caption = LoadLang( _
+                    Year & "년 " & Month & "월 " & Day & "일의 일정 목록", _
+                    Year & "-" & Month & "-" & Day & "'s Plans" _
+                 )
     
     lstPlanList.ColumnHeaders.Clear
     
@@ -290,6 +293,14 @@ Private Sub Form_Load()
     txtYear.Text = Year
     txtMonth.Text = Month
     txtDay.Text = Day
+    
+    cmdTody.Caption = LoadLang("오늘로(&T)", "&Today")
+    
+    cmdAddBtn.Caption = LoadLang("추가(&A)...", "&Add")
+    cmdDelBtn.Caption = LoadLang("삭제(&D)", "&Delete")
+    cmdViewPlan.Caption = LoadLang("보기(&E)...", "D&etails")
+    
+    cmdClose.Caption = LoadLang("닫기(&C)...", "&Close")
     
     On Error Resume Next
     
@@ -301,10 +312,10 @@ Private Sub Form_Load()
         txtDay.AddItem CStr(i)
     Next i
     
-    lstPlanList.ColumnHeaders.Add , , "제목", 2000
-    lstPlanList.ColumnHeaders.Add , , "시간", 350
-    lstPlanList.ColumnHeaders.Add , , "분류", 850
-    lstPlanList.ColumnHeaders.Add , , "중요도", 450
+    lstPlanList.ColumnHeaders.Add , , LoadLang("제목", "Title"), 2000
+    lstPlanList.ColumnHeaders.Add , , LoadLang("시간", "Time"), 350
+    lstPlanList.ColumnHeaders.Add , , LoadLang("분류", "Category"), 850
+    lstPlanList.ColumnHeaders.Add , , LoadLang("중요도", "Importance"), 450
     
     LoadPlans
     

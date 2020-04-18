@@ -4,7 +4,7 @@ Begin VB.Form frmAlarm
    Caption         =   "알람"
    ClientHeight    =   3150
    ClientLeft      =   2760
-   ClientTop       =   3930
+   ClientTop       =   3960
    ClientWidth     =   6030
    Icon            =   "frmAlarm.frx":0000
    LinkTopic       =   "Form1"
@@ -28,7 +28,7 @@ Begin VB.Form frmAlarm
       Top             =   1320
    End
    Begin VB.CommandButton CancelButton 
-      Caption         =   "음소거(&M)"
+      Caption         =   "CancelButton"
       Height          =   375
       Left            =   2280
       TabIndex        =   0
@@ -81,8 +81,8 @@ Option Explicit
   Private Declare Function SetWindowPos Lib "user32" _
         (ByVal hwnd As Long, _
         ByVal hWndInsertAfter As Long, _
-        ByVal X As Long, _
-        ByVal Y As Long, _
+        ByVal x As Long, _
+        ByVal y As Long, _
         ByVal cx As Long, _
         ByVal cy As Long, _
         ByVal wFlags As Long) As Long
@@ -109,11 +109,13 @@ Private Sub CancelButton_Click()
 End Sub
 
 Private Sub Form_Load()
-    lblTime.Caption = "현재 시각: " & Format(Now, "hh:mm:ss")
+    lblTime.Caption = LoadLang("현재 시각", "TIme") & ": " & Format(Now, "hh:mm:ss")
+    Me.Caption = LoadLang("알람", "Alarm")
+    CancelButton.Caption = LoadLang("음소거(&M)", "&Mute")
     SetTopMostWindow Me.hwnd, True
     PlayRingtone
 End Sub
 
 Private Sub timTimeChecker_Timer()
-    lblTime.Caption = "현재 시각: " & Format(Now, "hh:mm:ss")
+    lblTime.Caption = LoadLang("현재 시각", "TIme") & ": " & Format(Now, "hh:mm:ss")
 End Sub

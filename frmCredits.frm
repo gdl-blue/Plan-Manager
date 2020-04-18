@@ -1,9 +1,9 @@
 VERSION 5.00
 Begin VB.Form frmCredits 
-   Caption         =   "内靛 免贸"
+   Caption         =   "frmCredits"
    ClientHeight    =   3720
-   ClientLeft      =   45
-   ClientTop       =   465
+   ClientLeft      =   30
+   ClientTop       =   480
    ClientWidth     =   5640
    Icon            =   "frmCredits.frx":0000
    LinkTopic       =   "Form1"
@@ -30,6 +30,8 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Private Sub Form_Load()
     Form_Resize
+    
+    Me.Caption = LoadLang("内靛 免贸", "Credits")
 End Sub
 
 Private Sub Form_Resize()

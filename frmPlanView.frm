@@ -4,7 +4,7 @@ Begin VB.Form frmPlanView
    Caption         =   "내 일정"
    ClientHeight    =   3255
    ClientLeft      =   45
-   ClientTop       =   435
+   ClientTop       =   465
    ClientWidth     =   6285
    Icon            =   "frmPlanView.frx":0000
    LinkTopic       =   "Form1"
@@ -17,11 +17,11 @@ Begin VB.Form frmPlanView
    Begin VB.TextBox txtParts 
       BackColor       =   &H8000000F&
       Height          =   270
-      Left            =   2280
+      Left            =   2640
       Locked          =   -1  'True
       TabIndex        =   12
       Top             =   960
-      Width           =   2535
+      Width           =   2175
    End
    Begin VB.TextBox txtImprty 
       BackColor       =   &H8000000F&
@@ -36,11 +36,11 @@ Begin VB.Form frmPlanView
    Begin VB.TextBox lblLocation 
       BackColor       =   &H8000000F&
       Height          =   270
-      Left            =   600
+      Left            =   960
       Locked          =   -1  'True
       TabIndex        =   8
       Top             =   600
-      Width           =   4215
+      Width           =   3855
    End
    Begin VB.CommandButton cmdEditPlan 
       Caption         =   "수정(&E)..."
@@ -77,7 +77,7 @@ Begin VB.Form frmPlanView
       Left            =   1560
       TabIndex        =   11
       Top             =   960
-      Width           =   855
+      Width           =   1095
    End
    Begin VB.Label Label4 
       Caption         =   "중요도:"
@@ -93,31 +93,31 @@ Begin VB.Form frmPlanView
       Left            =   120
       TabIndex        =   4
       Top             =   600
-      Width           =   495
+      Width           =   855
    End
    Begin VB.Label Label3 
       Caption         =   "에 시작합니다."
       Height          =   255
-      Left            =   1800
+      Left            =   1440
       TabIndex        =   3
       Top             =   120
       Width           =   1815
    End
    Begin VB.Label lblTimeMin 
-      Caption         =   "00분"
+      Caption         =   "00"
       Height          =   255
-      Left            =   1440
+      Left            =   1200
       TabIndex        =   2
       Top             =   120
-      Width           =   375
+      Width           =   255
    End
    Begin VB.Label lblTimeHrs 
-      Caption         =   "00시"
+      Caption         =   "00:"
       Height          =   255
       Left            =   960
       TabIndex        =   1
       Top             =   120
-      Width           =   495
+      Width           =   255
    End
    Begin VB.Label Label1 
       Caption         =   "이 일정은"
@@ -150,7 +150,6 @@ Private Sub cmdEditPlan_Click()
     frmEditPlan.CurrentDate = CurrentDate
     frmEditPlan.txtTimeHrs.Text = Left$(lblTimeHrs.Caption, 2)
     frmEditPlan.txtTimeMin.Text = Left$(lblTimeMin.Caption, 2)
-    frmEditPlan.txtTimeMin.Text = Left$(lblTimeMin.Caption, 2)
     frmEditPlan.txtCategory.Text = Category
     frmEditPlan.txtLocation.Text = Me.lblLocation.Text
     frmEditPlan.txtContent.Text = Me.txtContent.Text
@@ -169,4 +168,14 @@ Private Sub Form_Load()
     Year = Split(CurrentDate, "-")(0)
     Month = Split(CurrentDate, "-")(1)
     Day = Split(CurrentDate, "-")(2)
+    
+    Label1.Caption = LoadLang("이 일정은", "Time: ")
+    Label3.Caption = LoadLang("에 시작합니다.", "")
+    
+    Label2.Caption = LoadLang("위치", "Location") & ":"
+    Label4.Caption = LoadLang("중요도", "Importance") & ":"
+    Label5.Caption = LoadLang("참여자", "Participants") & ":"
+    
+    cmdClose.Caption = LoadLang("닫기(&C)", "&Close")
+    cmdEditPlan.Caption = LoadLang("수정(&E)", "&Edit") & "..."
 End Sub

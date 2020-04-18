@@ -284,6 +284,29 @@ Function DayOfWeek() As Integer
     DayOfWeek = DOW
 End Function
 
+Function LoadLang(ByVal Korean, English)
+    Select Case GetSetting("Calendar", "Options", "Language", 0)
+        Case 0
+            LoadLang = Korean
+        Case 1
+            LoadLang = English
+    End Select
+End Function
+
+Sub CreateFile(ByVal FilePath As String, Optional Content As String = "")
+    'https://stackoverflow.com/questions/21108664/how-to-create-txt-file
+    Dim iFileNo As Integer
+    iFileNo = FreeFile
+    '파일을 연다.
+    
+    Open FilePath For Output As #iFileNo
+    
+    Print #iFileNo, Content
+    
+    '파일을 닫는다.
+    Close #iFileNo
+End Sub
+
 Sub Main()
     Set fMainForm = New frmMain
     fMainForm.Show

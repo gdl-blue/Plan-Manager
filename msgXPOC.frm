@@ -4,7 +4,7 @@ Begin VB.Form msgXPOC
    Caption         =   "메시지 상자"
    ClientHeight    =   1335
    ClientLeft      =   45
-   ClientTop       =   465
+   ClientTop       =   525
    ClientWidth     =   28440
    Icon            =   "msgXPOC.frx":0000
    LinkTopic       =   "Form1"
@@ -106,6 +106,9 @@ Private Sub Image1_Click()
 End Sub
 
 Private Sub Form_Load()
+    cmdOK.Caption = LoadLang("확인", "OK")
+    cmdCancel.Caption = LoadLang("취소", "Cancel")
+    
     MessageBeep BeepSnd '나만 안 되나
     
     'Beep 600, 3
