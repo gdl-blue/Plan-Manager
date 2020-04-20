@@ -4,7 +4,7 @@ Begin VB.Form frmAbout
    Caption         =   "정보"
    ClientHeight    =   3525
    ClientLeft      =   45
-   ClientTop       =   645
+   ClientTop       =   735
    ClientWidth     =   5865
    ClipControls    =   0   'False
    Icon            =   "frmAbout.frx":0000
@@ -167,17 +167,18 @@ Private Sub cmdDevPage_Click()
 End Sub
 
 Private Sub Form_Load()
-    lblVersion.Caption = LoadLang("버전", "Version") & " " & App.Major & "." & App.Minor & "." & App.Revision
+    lblVersion.Caption = LoadLang("버전", "Version", "Version") & " " & App.Major & "." & App.Minor & "." & App.Revision
     'lblVersion.Caption = "버전 3.0.0 베타 " & App.Revision
-    lblTitle.Caption = App.Title ' & " " & App.Major
-    Me.Caption = LoadLang(App.Title & " 정보", "About Plan Manager")
+    lblTitle.Caption = LoadLang(App.Title, "Plan Manager 3") ' & " " & App.Major
+    Me.Caption = LoadLang(App.Title & " 정보", "About Plan Manager", "Informacion del Plan Manager")
     
     lblDisclaimer.Caption = LoadLang("이 버전은 시험용 혹은 디버깅으로 사용됩니다. 확인되지 않은 오류가 있을 수 있습니다.", _
-                                    "This version is currently in beta. Unidentified bugs or errors might appear.")
+                                    "This version is currently in beta. Unidentified bugs or errors might appear.", _
+                                    "Esta version esta actualmente en beta. Pueden aparecer errores no identificados.")
                                     
     cmdOK.Caption = LoadLang("확인", "OK")
-    cmdSysInfo.Caption = LoadLang("시스템 정보...", "System Information...")
-    lblCreditsLink.Caption = LoadLang("사용된 외부 코드 목록", "List of External Codes used")
+    cmdSysInfo.Caption = LoadLang("시스템 정보...", "System Information...", "Informacion del sistema...")
+    lblCreditsLink.Caption = LoadLang("사용된 외부 코드 목록", "List of External Codes used", "Lista de codigos externos utilizados")
     
     lblDescription.Caption = App.FileDescription
 End Sub

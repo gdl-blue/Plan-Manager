@@ -4,7 +4,7 @@ Begin VB.Form msgXPMB
    Caption         =   "메시지 상자"
    ClientHeight    =   1335
    ClientLeft      =   45
-   ClientTop       =   495
+   ClientTop       =   555
    ClientWidth     =   28440
    Icon            =   "msgXPMB.frx":0000
    LinkTopic       =   "Form1"
@@ -82,7 +82,7 @@ Private Sub Image1_Click()
 End Sub
 
 Private Sub Form_Load()
-    cmdOK.Caption = LoadLang("확인", "OK")
+    cmdOK.Caption = LoadLang("확인", "OK", "Acceptar")
     MessageBeep BeepSnd '나만 안 되나
     
     'Beep 600, 3

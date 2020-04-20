@@ -1,12 +1,11 @@
 VERSION 5.00
 Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.Form frmOptions 
-   BackColor       =   &H80000003&
    BorderStyle     =   3  '크기 고정 대화 상자
    Caption         =   "환경 설정"
    ClientHeight    =   4305
    ClientLeft      =   -75
-   ClientTop       =   1935
+   ClientTop       =   2205
    ClientWidth     =   8175
    Icon            =   "frmOptions.frx":0000
    MaxButton       =   0   'False
@@ -56,7 +55,6 @@ Begin VB.Form frmOptions
       TabsPerRow      =   4
       TabHeight       =   520
       ShowFocusRect   =   0   'False
-      BackColor       =   -2147483645
       TabCaption(0)   =   "화면 표시"
       TabPicture(0)   =   "frmOptions.frx":0442
       Tab(0).ControlEnabled=   -1  'True
@@ -72,80 +70,56 @@ Begin VB.Form frmOptions
       TabCaption(1)   =   "사용자 데이터"
       TabPicture(1)   =   "frmOptions.frx":045E
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "Frame3"
-      Tab(1).Control(0).Enabled=   0   'False
-      Tab(1).Control(1)=   "Frame2"
-      Tab(1).Control(1).Enabled=   0   'False
+      Tab(1).Control(0)=   "Frame2"
+      Tab(1).Control(1)=   "Frame3"
       Tab(1).ControlCount=   2
       TabCaption(2)   =   "표준"
       TabPicture(2)   =   "frmOptions.frx":047A
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "Frame11"
-      Tab(2).Control(0).Enabled=   0   'False
-      Tab(2).Control(1)=   "Frame4"
-      Tab(2).Control(1).Enabled=   0   'False
+      Tab(2).Control(0)=   "Frame4"
+      Tab(2).Control(1)=   "Frame11"
       Tab(2).ControlCount=   2
       TabCaption(3)   =   "검사"
       TabPicture(3)   =   "frmOptions.frx":0496
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "Frame6"
-      Tab(3).Control(0).Enabled=   0   'False
-      Tab(3).Control(1)=   "Label9"
-      Tab(3).Control(1).Enabled=   0   'False
+      Tab(3).Control(0)=   "Label9"
+      Tab(3).Control(1)=   "Frame6"
       Tab(3).ControlCount=   2
       TabCaption(4)   =   "사용자 분류"
       TabPicture(4)   =   "frmOptions.frx":04B2
       Tab(4).ControlEnabled=   0   'False
-      Tab(4).Control(0)=   "Label8"
-      Tab(4).Control(0).Enabled=   0   'False
-      Tab(4).Control(1)=   "Label11"
-      Tab(4).Control(1).Enabled=   0   'False
-      Tab(4).Control(2)=   "Label14"
-      Tab(4).Control(2).Enabled=   0   'False
-      Tab(4).Control(3)=   "txtCategory"
-      Tab(4).Control(3).Enabled=   0   'False
-      Tab(4).Control(4)=   "cmdAddNewCate"
-      Tab(4).Control(4).Enabled=   0   'False
-      Tab(4).Control(5)=   "cmdDelSelCate"
-      Tab(4).Control(5).Enabled=   0   'False
+      Tab(4).Control(0)=   "cmdDelGroup"
+      Tab(4).Control(1)=   "cmdAddNewGroup"
+      Tab(4).Control(2)=   "cmdClearGroups"
+      Tab(4).Control(3)=   "txtNewGroup"
+      Tab(4).Control(4)=   "lvGroups"
+      Tab(4).Control(5)=   "lvCustomCates"
       Tab(4).Control(6)=   "cmdClearCates"
-      Tab(4).Control(6).Enabled=   0   'False
-      Tab(4).Control(7)=   "lvCustomCates"
-      Tab(4).Control(7).Enabled=   0   'False
-      Tab(4).Control(8)=   "lvGroups"
-      Tab(4).Control(8).Enabled=   0   'False
-      Tab(4).Control(9)=   "txtNewGroup"
-      Tab(4).Control(9).Enabled=   0   'False
-      Tab(4).Control(10)=   "cmdClearGroups"
-      Tab(4).Control(10).Enabled=   0   'False
-      Tab(4).Control(11)=   "cmdAddNewGroup"
-      Tab(4).Control(11).Enabled=   0   'False
-      Tab(4).Control(12)=   "cmdDelGroup"
-      Tab(4).Control(12).Enabled=   0   'False
+      Tab(4).Control(7)=   "cmdDelSelCate"
+      Tab(4).Control(8)=   "cmdAddNewCate"
+      Tab(4).Control(9)=   "txtCategory"
+      Tab(4).Control(10)=   "Label14"
+      Tab(4).Control(11)=   "Label11"
+      Tab(4).Control(12)=   "Label8"
       Tab(4).ControlCount=   13
       TabCaption(5)   =   "테마"
       TabPicture(5)   =   "frmOptions.frx":04CE
       Tab(5).ControlEnabled=   0   'False
       Tab(5).Control(0)=   "Frame7"
-      Tab(5).Control(0).Enabled=   0   'False
       Tab(5).ControlCount=   1
       TabCaption(6)   =   "비밀번호"
       TabPicture(6)   =   "frmOptions.frx":04EA
       Tab(6).ControlEnabled=   0   'False
-      Tab(6).Control(0)=   "Frame5"
-      Tab(6).Control(1)=   "chkPasswordRequired"
+      Tab(6).Control(0)=   "chkPasswordRequired"
+      Tab(6).Control(1)=   "Frame5"
       Tab(6).ControlCount=   2
       TabCaption(7)   =   "소리"
       TabPicture(7)   =   "frmOptions.frx":0506
       Tab(7).ControlEnabled=   0   'False
       Tab(7).Control(0)=   "Frame12"
-      Tab(7).Control(0).Enabled=   0   'False
       Tab(7).Control(1)=   "Frame34"
-      Tab(7).Control(1).Enabled=   0   'False
       Tab(7).Control(2)=   "cmdPlayNS"
-      Tab(7).Control(2).Enabled=   0   'False
       Tab(7).Control(3)=   "cmdPlayRT"
-      Tab(7).Control(3).Enabled=   0   'False
       Tab(7).ControlCount=   4
       Begin VB.Frame Frame14 
          Caption         =   "언어"
@@ -301,6 +275,16 @@ Begin VB.Form frmOptions
                TabIndex        =   68
                Top             =   0
                Width           =   5415
+               Begin VB.OptionButton optRingtone 
+                  Caption         =   "아기공룡 둘리"
+                  Height          =   255
+                  Index           =   2
+                  Left            =   3360
+                  TabIndex        =   80
+                  Top             =   0
+                  Visible         =   0   'False
+                  Width           =   1575
+               End
                Begin VB.OptionButton optRingtone 
                   Caption         =   "계단음"
                   Height          =   255
@@ -1013,7 +997,7 @@ Private Sub Command1_Click()
     
     SaveSetting "Calendar", "Options", "Ringtone", RTI
     
-    If Confirm(LoadLang("설정이 성공적으로 적용되었으며 효과를 적용하려면 프로그램을 재시작해야 합니다. 프로그램을 종료합니다.", "You must restart the application to take effect."), LoadLang("알림", "Information"), Me, 48) Then
+    If Confirm(LoadLang("설정이 성공적으로 적용되었으며 효과를 적용하려면 프로그램을 재시작해야 합니다. 프로그램을 종료합니다.", "You must restart the application to take effect.", "La configuracion se ha aplicado correctamente y debe reiniciar el programa para que surta efecto. Salga del programa."), LoadLang("알림", "Information", "Informacion"), Me, 48) Then
         End
     End If
     
@@ -1208,7 +1192,7 @@ Private Sub Form_Load()
     Label10.Caption = LoadLang("배경 색상", "Background Color") & ":"
     
     Frame34.Caption = LoadLang("일정 알림음", "Notification Sound")
-    Frame34.Caption = LoadLang("일람음", "Alarm Ringtone")
+    Frame12.Caption = LoadLang("알람음", "Alarm Ringtone")
     
     optNotificationSound(0).Caption = LoadLang("삐- 삐-", "Beep- Beep-")
     optNotificationSound(1).Caption = LoadLang("삐이이-", "Bee-eep-")
@@ -1223,6 +1207,9 @@ Private Sub Form_Load()
     
     cmbLanguage.AddItem "한국어"
     cmbLanguage.AddItem "English"
+    cmbLanguage.AddItem "Espanol (Beta)"
+    cmbLanguage.AddItem "中文 (Beta)"
+    
     cmbLanguage.ListIndex = GetSetting("Calendar", "Options", "Language", 0)
     
     MkDir "C:\CALPLANS"
@@ -1238,6 +1225,10 @@ Private Sub Form_Load()
     
     NSI = GetSetting("Calendar", "Options", "Notification", 0)
     RTI = GetSetting("Calendar", "Options", "Ringtone", 0)
+    
+    If GetSetting("Calendar", "Config", "EggEnabled", "0") = "1" Then
+        optRingtone(2).Visible = True
+    End If
     
     optNotificationSound.Item(NSI).Value = True
     optRingtone.Item(RTI).Value = True

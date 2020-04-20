@@ -4,7 +4,7 @@ Begin VB.Form frmWizard
    Caption         =   "frmMagic"
    ClientHeight    =   4800
    ClientLeft      =   45
-   ClientTop       =   705
+   ClientTop       =   765
    ClientWidth     =   8580
    ControlBox      =   0   'False
    Icon            =   "frmMagic.frx":0000
@@ -99,7 +99,7 @@ Begin VB.Form frmWizard
          Left            =   0
          TabIndex        =   24
          Top             =   0
-         Width           =   3855
+         Width           =   5535
       End
       Begin VB.Label Label4 
          Caption         =   "Label4"
@@ -159,7 +159,7 @@ Begin VB.Form frmWizard
          Left            =   0
          TabIndex        =   23
          Top             =   0
-         Width           =   2535
+         Width           =   5175
       End
    End
    Begin VB.Frame pgWizardPages 
@@ -199,28 +199,28 @@ Begin VB.Form frmWizard
    Begin VB.CommandButton cmdNext 
       Caption         =   "next"
       Height          =   375
-      Left            =   5880
+      Left            =   5640
       TabIndex        =   5
       Top             =   4320
-      Width           =   1215
+      Width           =   1335
    End
    Begin VB.CommandButton cmdBack 
       Caption         =   "back"
       Enabled         =   0   'False
       Height          =   375
-      Left            =   4560
+      Left            =   4200
       TabIndex        =   4
       Top             =   4320
-      Width           =   1215
+      Width           =   1335
    End
    Begin VB.CommandButton cmdStart 
       Caption         =   "start"
       Enabled         =   0   'False
       Height          =   375
-      Left            =   7200
+      Left            =   7080
       TabIndex        =   2
       Top             =   4320
-      Width           =   1215
+      Width           =   1335
    End
    Begin VB.CommandButton cmdExit 
       Caption         =   "exit"
@@ -228,7 +228,7 @@ Begin VB.Form frmWizard
       Left            =   2760
       TabIndex        =   1
       Top             =   4320
-      Width           =   1215
+      Width           =   1335
    End
    Begin VB.PictureBox Picture1 
       Height          =   4575
@@ -314,7 +314,7 @@ Private Sub cmbLanguageSelect_Click()
             lvCategories.Clear
             lvGroups.Clear
             
-            lvCategories.AddItem "Working"
+            lvCategories.AddItem "Work"
             lvCategories.AddItem "Leisure life"
             lvCategories.AddItem "Meeting"
             lvCategories.AddItem "Hobby"
@@ -323,6 +323,37 @@ Private Sub cmbLanguageSelect_Click()
             lvGroups.AddItem "Co-workers"
             lvGroups.AddItem "Friends"
             lvGroups.AddItem "Relatives"
+            
+        Case 2
+            cmdExit.Caption = "Terminar(&X)"
+            cmdBack.Caption = "< Anterior(&B)"
+            cmdNext.Caption = "Proximo(&N) >"
+            cmdStart.Caption = "Comienzo(&S)"
+            
+            Label2.Caption = "Ajustar el diseno"
+            
+            chkSimpleMode.Caption = "Modo simple: muestra solo la barra de menu y oculta la cinta."
+            chkTodaysPlan.Caption = "Plan de hoy: muestra una lista sobre el plan de hoy en la ventana."
+            
+            Label6.Caption = "Personalizar categorias"
+            
+            Label3.Caption = "Categoria:"
+            Label4.Caption = "Grupo:"
+            
+            Me.Caption = "Asistente de inicializacion"
+            
+            lvCategories.Clear
+            lvGroups.Clear
+            
+            lvCategories.AddItem "Trabajo"
+            lvCategories.AddItem "Vida de ocio"
+            lvCategories.AddItem "Reunion"
+            lvCategories.AddItem "Hobby"
+            
+            lvGroups.AddItem "Familia"
+            lvGroups.AddItem "Companeros de trabajo"
+            lvGroups.AddItem "Amigos"
+            lvGroups.AddItem "Parientes"
     End Select
 End Sub
 
@@ -431,6 +462,7 @@ Private Sub Form_Load()
     
     cmbLanguageSelect.AddItem "ÇÑ±¹¾î"
     cmbLanguageSelect.AddItem "English"
+    cmbLanguageSelect.AddItem "Espanol"
     
     cmbLanguageSelect.ListIndex = 0
     

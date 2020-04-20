@@ -11,7 +11,7 @@ Begin VB.Form frmMain
    Caption         =   "frmMain"
    ClientHeight    =   6630
    ClientLeft      =   150
-   ClientTop       =   4335
+   ClientTop       =   4905
    ClientWidth     =   10950
    Icon            =   "frmMain.frx":0000
    LinkTopic       =   "Form1"
@@ -39,12 +39,12 @@ Begin VB.Form frmMain
          BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
             AutoSize        =   2
-            TextSave        =   "2020-04-18"
+            TextSave        =   "2020-04-20"
          EndProperty
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             AutoSize        =   2
-            TextSave        =   "오전 2:54"
+            TextSave        =   "오전 5:29"
          EndProperty
       EndProperty
    End
@@ -346,7 +346,6 @@ Begin VB.Form frmMain
          Size            =   "1931;1482"
          Value           =   "1"
          Caption         =   "상태표시줄"
-         Picture         =   "frmMain.frx":5E3C6
          FontName        =   "굴림"
          FontHeight      =   180
          FontCharSet     =   129
@@ -366,7 +365,7 @@ Begin VB.Form frmMain
          Size            =   "1931;1508"
          Value           =   "1"
          Caption         =   "주 번호"
-         Picture         =   "frmMain.frx":5E818
+         Picture         =   "frmMain.frx":5E3C6
          FontName        =   "굴림"
          FontHeight      =   180
          FontCharSet     =   129
@@ -385,34 +384,42 @@ Begin VB.Form frmMain
       _Version        =   393216
       TabOrientation  =   1
       Tabs            =   5
+      Tab             =   1
       TabsPerRow      =   5
       TabHeight       =   582
       ShowFocusRect   =   0   'False
       BackColor       =   -2147483636
-      MouseIcon       =   "frmMain.frx":5EB32
+      MouseIcon       =   "frmMain.frx":5E6E0
       TabCaption(0)   =   "일정"
-      TabPicture(0)   =   "frmMain.frx":5EB4E
-      Tab(0).ControlEnabled=   -1  'True
-      Tab(0).Control(0)=   "MonthView1"
-      Tab(0).Control(0).Enabled=   0   'False
-      Tab(0).Control(1)=   "Dir1"
-      Tab(0).Control(1).Enabled=   0   'False
+      TabPicture(0)   =   "frmMain.frx":5E6FC
+      Tab(0).ControlEnabled=   0   'False
+      Tab(0).Control(0)=   "Dir1"
+      Tab(0).Control(1)=   "MonthView1"
       Tab(0).ControlCount=   2
       TabCaption(1)   =   "주소록"
-      TabPicture(1)   =   "frmMain.frx":5EFA0
-      Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "cmdResetFields"
-      Tab(1).Control(1)=   "cmdDeleteAllContacts"
-      Tab(1).Control(2)=   "cmdDelContact"
-      Tab(1).Control(3)=   "lvContactFiles"
+      TabPicture(1)   =   "frmMain.frx":5EB4E
+      Tab(1).ControlEnabled=   -1  'True
+      Tab(1).Control(0)=   "lvContacts"
+      Tab(1).Control(0).Enabled=   0   'False
+      Tab(1).Control(1)=   "Frame1"
+      Tab(1).Control(1).Enabled=   0   'False
+      Tab(1).Control(2)=   "Frame2"
+      Tab(1).Control(2).Enabled=   0   'False
+      Tab(1).Control(3)=   "cmdSaveContact"
+      Tab(1).Control(3).Enabled=   0   'False
       Tab(1).Control(4)=   "Frame3"
-      Tab(1).Control(5)=   "cmdSaveContact"
-      Tab(1).Control(6)=   "Frame2"
-      Tab(1).Control(7)=   "Frame1"
-      Tab(1).Control(8)=   "lvContacts"
+      Tab(1).Control(4).Enabled=   0   'False
+      Tab(1).Control(5)=   "lvContactFiles"
+      Tab(1).Control(5).Enabled=   0   'False
+      Tab(1).Control(6)=   "cmdDelContact"
+      Tab(1).Control(6).Enabled=   0   'False
+      Tab(1).Control(7)=   "cmdDeleteAllContacts"
+      Tab(1).Control(7).Enabled=   0   'False
+      Tab(1).Control(8)=   "cmdResetFields"
+      Tab(1).Control(8).Enabled=   0   'False
       Tab(1).ControlCount=   9
       TabCaption(2)   =   "할 일"
-      TabPicture(2)   =   "frmMain.frx":5F3F2
+      TabPicture(2)   =   "frmMain.frx":5EFA0
       Tab(2).ControlEnabled=   0   'False
       Tab(2).Control(0)=   "cmdDeleteAllTasks"
       Tab(2).Control(1)=   "lvTaskFiles"
@@ -422,7 +429,7 @@ Begin VB.Form frmMain
       Tab(2).Control(5)=   "lvTasks"
       Tab(2).ControlCount=   6
       TabCaption(3)   =   "일과표"
-      TabPicture(3)   =   "frmMain.frx":5F844
+      TabPicture(3)   =   "frmMain.frx":5F3F2
       Tab(3).ControlEnabled=   0   'False
       Tab(3).Control(0)=   "lblDOW"
       Tab(3).Control(1)=   "Label15"
@@ -478,7 +485,7 @@ Begin VB.Form frmMain
       Tab(3).Control(51)=   "sdcmdSavePlanner"
       Tab(3).ControlCount=   52
       TabCaption(4)   =   "알람"
-      TabPicture(4)   =   "frmMain.frx":5FB5E
+      TabPicture(4)   =   "frmMain.frx":5F70C
       Tab(4).ControlEnabled=   0   'False
       Tab(4).Control(0)=   "lvAlarmFiles"
       Tab(4).Control(1)=   "txtAlarmMemo"
@@ -1131,7 +1138,7 @@ Begin VB.Form frmMain
       Begin VB.CommandButton cmdResetFields 
          Caption         =   "내용 초기화(&R)"
          Height          =   495
-         Left            =   -68040
+         Left            =   6960
          TabIndex        =   46
          Top             =   3698
          Width           =   1350
@@ -1139,14 +1146,14 @@ Begin VB.Form frmMain
       Begin VB.CommandButton cmdDeleteAllContacts 
          Caption         =   "clear"
          Height          =   495
-         Left            =   -68040
+         Left            =   6960
          TabIndex        =   45
          Top             =   2498
          Width           =   1335
       End
       Begin VB.DirListBox Dir1 
          Height          =   300
-         Left            =   8040
+         Left            =   -66960
          TabIndex        =   43
          Top             =   -22
          Visible         =   0   'False
@@ -1328,9 +1335,9 @@ Begin VB.Form frmMain
       End
       Begin VB.ListBox lvTasks 
          Height          =   4050
-         ItemData        =   "frmMain.frx":5FFB0
+         ItemData        =   "frmMain.frx":5FB5E
          Left            =   -74880
-         List            =   "frmMain.frx":5FFB7
+         List            =   "frmMain.frx":5FB65
          Style           =   1  '확인란
          TabIndex        =   25
          Top             =   98
@@ -1339,14 +1346,14 @@ Begin VB.Form frmMain
       Begin VB.CommandButton cmdDelContact 
          Caption         =   "delete"
          Height          =   495
-         Left            =   -68040
+         Left            =   6960
          TabIndex        =   24
          Top             =   1418
          Width           =   1335
       End
       Begin VB.FileListBox lvContactFiles 
          Height          =   270
-         Left            =   -69240
+         Left            =   5760
          TabIndex        =   23
          Top             =   98
          Visible         =   0   'False
@@ -1355,24 +1362,61 @@ Begin VB.Form frmMain
       Begin VB.Frame Frame3 
          Caption         =   "Frame3"
          Height          =   1575
-         Left            =   -73080
+         Left            =   1920
          TabIndex        =   10
          Top             =   2618
          Width           =   4935
-         Begin VB.TextBox txtContent 
-            Height          =   1215
+         Begin VB.TextBox txtBDay 
+            Height          =   270
+            Left            =   1320
+            TabIndex        =   156
+            Top             =   480
+            Width           =   375
+         End
+         Begin VB.TextBox txtBMonth 
+            Height          =   270
+            Left            =   840
+            TabIndex        =   155
+            Top             =   480
+            Width           =   375
+         End
+         Begin VB.TextBox txtBYear 
+            Height          =   270
             Left            =   120
+            TabIndex        =   154
+            Top             =   480
+            Width           =   615
+         End
+         Begin VB.TextBox txtContent 
+            Height          =   975
+            Left            =   1920
             MultiLine       =   -1  'True
             ScrollBars      =   2  '수직
             TabIndex        =   22
+            Top             =   480
+            Width           =   2895
+         End
+         Begin VB.Label Label22 
+            Caption         =   "Label22"
+            Height          =   255
+            Left            =   1920
+            TabIndex        =   157
             Top             =   240
-            Width           =   4695
+            Width           =   975
+         End
+         Begin VB.Label Label21 
+            Caption         =   "Label21"
+            Height          =   255
+            Left            =   120
+            TabIndex        =   153
+            Top             =   240
+            Width           =   1455
          End
       End
       Begin VB.CommandButton cmdSaveContact 
          Caption         =   "저장(&S)"
          Height          =   495
-         Left            =   -68040
+         Left            =   6960
          TabIndex        =   9
          Top             =   218
          Width           =   1335
@@ -1380,7 +1424,7 @@ Begin VB.Form frmMain
       Begin VB.Frame Frame2 
          Caption         =   "Frame2"
          Height          =   975
-         Left            =   -73080
+         Left            =   1920
          TabIndex        =   8
          Top             =   1538
          Width           =   4935
@@ -1448,7 +1492,7 @@ Begin VB.Form frmMain
       Begin VB.Frame Frame1 
          Caption         =   "Frame1"
          Height          =   1335
-         Left            =   -73080
+         Left            =   1920
          TabIndex        =   4
          Top             =   120
          Width           =   4935
@@ -1546,16 +1590,16 @@ Begin VB.Form frmMain
       End
       Begin VB.ListBox lvContacts 
          Height          =   4020
-         ItemData        =   "frmMain.frx":5FFCC
-         Left            =   -74880
-         List            =   "frmMain.frx":5FFD3
+         ItemData        =   "frmMain.frx":5FB7A
+         Left            =   120
+         List            =   "frmMain.frx":5FB81
          TabIndex        =   3
          Top             =   98
          Width           =   1695
       End
       Begin MSComCtl2.MonthView MonthView1 
          Height          =   4170
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   2
          Top             =   98
          Width           =   8100
@@ -1567,7 +1611,7 @@ Begin VB.Form frmMain
          Appearance      =   0
          MonthColumns    =   3
          MonthRows       =   2
-         StartOfWeek     =   91881473
+         StartOfWeek     =   39583745
          CurrentDate     =   43858
       End
       Begin VB.Label Label20 
@@ -1655,6 +1699,9 @@ Begin VB.Form frmMain
       Visible         =   0   'False
       Begin VB.Menu mnuTodaysPlan 
          Caption         =   "이날의 일정(&T)..."
+      End
+      Begin VB.Menu mnuPlansClear 
+         Caption         =   "선택한 날짜의 일정 모두 삭제(&D)"
       End
    End
    Begin VB.Menu mnuHelp 
@@ -1962,6 +2009,10 @@ Private Sub cmdSaveContact_Click()
     
     SaveSetting "Calendar", "Contacts", txtName.Text & "Group", cmbGroup.Text
     
+    If txtName.Text = "둘리" And txtBYear.Text = "1983" And (txtBMonth.Text = "4" Or txtBMonth.Text = "04") And txtBDay.Text = "22" Then
+        SaveSetting "Calendar", "Config", "EggEnabled", "1"
+    End If
+    
     If lvContacts.List(lvContacts.ListIndex) = LoadLang("새 연락처 추가...", "New...") Then
         '해당 연락처가 존재함을 알리는 파일을 만든다.
         'https://stackoverflow.com/questions/21108664/how-to-create-txt-file
@@ -2133,9 +2184,6 @@ End Sub
 Private Sub Form_Load()
     'MsgBox DayOfWeek()
     'MessageBox PlayFair("dlfjs qkqhrkxdms sdfhuj", "ultra"), "3", Me
-    
-    SubClassSSTAB ssRibbonMenu, pbxRibbonBackground
-    SubClassSSTAB ssTodaysPlan, pbxTodaysPlanTab
 
     If GetSetting("Calendar", "Options", "TP", 0) = 1 Then
         Me.Width = 8715
@@ -2191,16 +2239,31 @@ Private Sub Form_Load()
 
     Select Case UCase(Command)
         Case "/?"
-            MessageBox "일정관리자 풀그림을 시작합니다." & vbCrLf & vbCrLf & _
-                   "    PLNMGR32.EXE [/R]" & vbCrLf & vbCrLf & _
-                   "    /R  최소화된 상태로 시작합니다.", _
-                   "스위치 도움말", Me
+            Select Case LoadLang(1, 2, 3)
+                Case 1
+                    MessageBox "일정관리자 풀그림을 시작합니다." & vbCrLf & vbCrLf & _
+                           "    PLNMGR32.EXE [/R]" & vbCrLf & vbCrLf & _
+                           "    /R  최소화된 상태로 시작합니다.", _
+                           "스위치 도움말", Me
+
+                Case 2
+                    MessageBox "Starts the program." & vbCrLf & vbCrLf & _
+                           "    PLNMGR32.EXE [/R]" & vbCrLf & vbCrLf & _
+                           "    /R  Application window is minimized.", _
+                           "Switch Guide", Me
+
+                Case 3
+                    MessageBox "Inicia el programa." & vbCrLf & vbCrLf & _
+                           "    PLNMGR32.EXE [/R]" & vbCrLf & vbCrLf & _
+                           "    /R  Haz que el programa sea transparente.", _
+                           "Guia de comando", Me
+            End Select
             End
         Case "/R"
             Me.WindowState = 1
         Case ""
         Case Else
-            MessageBox "스위치가 틀립니다 - " & Command, "오류", Me, 16
+            MessageBox LoadLang("스위치가 틀립니다", "Switch is wrong", "El comando no es valido.") & " - " & Command, LoadLang("오류", "Error", "Error"), Me, 16
             End
     End Select
     
@@ -2221,11 +2284,11 @@ Private Sub Form_Load()
         
         If GetWinver(1) >= 6 And GetWinver(2) >= 1 Then
         Else
-            MessageBox "컴퓨터가 Windows Vista 혹은 Windows XP 이하의 운영 체제를 실행하고 있습니다. 달력이 올바로 표시되지 않을 수 있습니다.", "경고", Me, 48
+            MessageBox LoadLang("컴퓨터가 Windows Vista 혹은 Windows XP 이하의 운영 체제를 실행하고 있습니다. 달력이 올바로 표시되지 않을 수 있습니다.", "Your PC is running Windows VIsta or earlier. The calendar may display incorrectly.", "La computadora esta ejecutando un sistema operativo de Windows Vista o Windows XP o inferior. Es posible que el calendario no se muestre correctamente."), LoadLang("경고", "Warning", "Advertencia"), Me, 48
         End If
         
-        MessageBox "컴퓨터를 시작할 때부터 알림을 받으려면 [" & ChrW$(34) & Dir1.Path & "\PLNMGR32.EXE" & ChrW$(34) & " /R]" & _
-               "(경로 복사됨) 바로가기를 시작프로그램에 추가하십시오.", "알리미 활성화", Me
+        MessageBox LoadLang("컴퓨터를 시작할 때부터 알림을 받으려면 ", "Add ", "Agregue ") & "[" & ChrW$(34) & Dir1.Path & "\PLNMGR32.EXE" & ChrW$(34) & " /R]" & _
+               LoadLang("(경로 복사됨) 바로가기를 시작프로그램에 추가하십시오.", "(Path Copied) to your startup program to be notified when you start your computer.", "(Ruta copiada) a su programa de inicio para recibir una notificacion cuando inicie su computadora."), LoadLang("알리미 활성화", "Tip", "Propina"), Me
         Clipboard.SetText ChrW$(34) & Dir1.Path & "\PLNMGR32.EXE" & ChrW$(34) & " /R"
     End If
     
@@ -2276,56 +2339,75 @@ Private Sub Form_Load()
         cmbGroup.AddItem lvGroupList.List(i)
     Next i
     
-    ssRibbonMenu.TabCaption(1) = LoadLang("홈", "Home")
-    ssRibbonMenu.TabCaption(2) = LoadLang("보기", "View")
-    ssRibbonMenu.TabCaption(3) = LoadLang("일정", "Plan")
+    mnuFile.Caption = LoadLang("파일(&F)", "&File", "Archivo(&F)")
+    mnuView.Caption = LoadLang("보기(&V)", "&View", "&Ver")
+    mnuHelp.Caption = LoadLang("도움말(&H)", "&Help", "Ayuda(&H)")
     
-    cmdPlanList.Caption = LoadLang("일정 목록", "Plan List")
-    cmdPlanIndex.Caption = LoadLang("데이터 색인", "Data Index")
-    cmdEndPrg.Caption = LoadLang("끝내기", "Exit")
+    Me.mnuFileExit.Caption = LoadLang("비상문(&X)", "E&xit", "Salida(&X)")
+    mnuFileProperties.Caption = LoadLang("일정 목록(&I)", "L&ist of Plans", "L&ista de horarios") & "..."
+    mnuFilePlanBrowser.Caption = LoadLang("모든 일정/데이터 색인(&B)", "&Browse the Data", "Indice de datos(&B)") & "..."
+    mnuFileSave.Caption = LoadLang("저장(&S)", "&Save", "Tienda(&S)")
     
-    tglStatusBar.Caption = LoadLang("상태표시줄", "Status Bar")
-    tglCalWeekNum.Caption = LoadLang("주 번호", "Week Number")
+    mnuViewStatusBar.Caption = LoadLang("상태 표시줄(&S)", "&Status Bar", "Barra de e&stado")
+    mnuViewOptions.Caption = LoadLang("옵션(&O)", "&Options", "Ambientaci&on")
     
-    cmdTodaysPlan.Caption = LoadLang("이날의 일정", "Selected Day's Plans")
-    cmdDelAllTodaysPlan.Caption = LoadLang("이날의   일정 삭제", "Delete Plans")
+    mnuDateMenu.Caption = LoadLang("일정(&P)", "&Plans", "&Planes")
+    mnuTodaysPlan.Caption = LoadLang("이날의 일정(&T)", "Selec&ted Date's Plans", "&Planes de la fecha seleccionada")
+    mnuPlansClear.Caption = LoadLang("선택한 날짜의 일정 모두 삭제(&D)", "Clear selected &Date's Plans", "Borrar los planes &de la fecha seleccionada")
+    
+    ssRibbonMenu.TabCaption(1) = LoadLang("홈", "Home", "Casa")
+    ssRibbonMenu.TabCaption(2) = LoadLang("보기", "View", "Ver")
+    ssRibbonMenu.TabCaption(3) = LoadLang("일정", "Plan", "Planes")
+    
+    cmdPlanList.Caption = LoadLang("일정 목록", "Plan List", "Lista de planes")
+    cmdPlanIndex.Caption = LoadLang("데이터 색인", "Data Index", "Indice de datos")
+    cmdEndPrg.Caption = LoadLang("끝내기", "Exit", "Salida")
+    
+    tglStatusBar.Caption = LoadLang("상태표시줄", "Status Bar", "Barra de estado")
+    tglCalWeekNum.Caption = LoadLang("주 번호", "Week Number", "Numero de la semana")
+    
+    cmdTodaysPlan.Caption = LoadLang("이날의 일정", "Selected Day's Plans", "Planes del dia seleccionado")
+    cmdDelAllTodaysPlan.Caption = LoadLang("이날의   일정 삭제", "Delete Plans", "Eliminar planes")
     
     cmdMnuAbout.ToolTipText = LoadLang("프로그램 정보", "About this application...")
     cmdMnuOptions.ToolTipText = LoadLang("환경 설정", "Settings...")
     cmdHelp.ToolTipText = LoadLang("도움말", "Help")
     
-    cmdRibbonFile.Caption = LoadLang("파일(&F)", "&File")
+    cmdRibbonFile.Caption = LoadLang("파일(&F)", "&File", "Archivo(&F)")
     
-    ssTodaysPlan.TabCaption(0) = LoadLang("오늘 일정", "Today's Plans")
-    ssTodaysPlan.TabCaption(1) = LoadLang("내일 일정", "Tomorrow's Plans")
+    ssTodaysPlan.TabCaption(0) = LoadLang("오늘 일정", "Today's Plans", "Los planes de hoy")
+    ssTodaysPlan.TabCaption(1) = LoadLang("내일 일정", "Tomorrow's Plans", "Los planes de manana")
     
-    SSTab1.TabCaption(0) = LoadLang("일정", "Plans")
-    SSTab1.TabCaption(1) = LoadLang("주소록", "Contacts")
-    SSTab1.TabCaption(2) = LoadLang("할 일", "Tasks")
-    SSTab1.TabCaption(3) = LoadLang("일과표", "Schedule")
-    SSTab1.TabCaption(4) = LoadLang("알람", "Alarms")
+    SSTab1.TabCaption(0) = LoadLang("일정", "Plans", "Planes")
+    SSTab1.TabCaption(1) = LoadLang("주소록", "Contacts", "Contactos")
+    SSTab1.TabCaption(2) = LoadLang("할 일", "Tasks", "Tareas")
+    SSTab1.TabCaption(3) = LoadLang("일과표", "Schedule", "Calendario")
+    SSTab1.TabCaption(4) = LoadLang("알람", "Alarms", "Alarmas")
     
-    cmdTltRef.Caption = LoadLang("갱신(&R)", "&Refresh")
+    cmdTltRef.Caption = LoadLang("갱신(&R)", "&Refresh", "Actualiza&r")
     
-    Frame1.Caption = LoadLang("기본 정보", "Basic Information")
-    Frame2.Caption = LoadLang("전화번호", "Phone Numbers")
-    Frame3.Caption = LoadLang("메모", "Note")
+    Frame1.Caption = LoadLang("기본 정보", "Basic Information", "Informacion basica")
+    Frame2.Caption = LoadLang("전화번호", "Phone Numbers", "Numeros de telefono")
+    Frame3.Caption = LoadLang("기타 정보", "Other Informations", "Otra informacion")
+
+    Label22.Caption = LoadLang("메모", "Note", "Nota")
+    Label21.Caption = LoadLang("생일", "Birthday", "Cumpleanos")
     
-     Label1.Caption = LoadLang("이름", "Name") & ":"
-     Label2.Caption = LoadLang("휴대전화", "Cell-phone") & ":"
-     Label3.Caption = LoadLang("전자우편", "E-mail") & ":"
-    Label17.Caption = LoadLang("그룹", "Group") & ":"
-    Label12.Caption = LoadLang("우편번호", "Postal") & ":"
-    Label12.Caption = LoadLang("주소", "Address") & ":"
-     Label4.Caption = LoadLang("집", "Home") & ":"
-     Label5.Caption = LoadLang("회사", "Company") & ":"
-     Label6.Caption = LoadLang("팩스", "Fax") & ":"
-     Label7.Caption = LoadLang("기타", "Other") & ":"
+     Label1.Caption = LoadLang("이름", "Name", "Nombre") & ":"
+     Label2.Caption = LoadLang("휴대전화", "Cell-phone", "Celular") & ":"
+     Label3.Caption = LoadLang("전자우편", "E-mail", "Correo electronico") & ":"
+    Label17.Caption = LoadLang("그룹", "Group", "Grupo") & ":"
+    Label12.Caption = LoadLang("우편번호", "Postal", "Postal") & ":"
+    Label12.Caption = LoadLang("주소", "Address", "Direccion") & ":"
+     Label4.Caption = LoadLang("집", "Home", "Casa") & ":"
+     Label5.Caption = LoadLang("회사", "Company", "Empresa") & ":"
+     Label6.Caption = LoadLang("팩스", "Fax", "Fax") & ":"
+     Label7.Caption = LoadLang("기타", "Other", "Otros") & ":"
     
-    cmdSaveContact.Caption = LoadLang("저장(&S)", "&Save")
-    cmdDelContact.Caption = LoadLang("삭제(&D)", "&Delete")
-    cmdDeleteAllContacts.Caption = LoadLang("모두 삭제(&E)", "Cl&ear contatcs")
-    cmdResetFields.Caption = LoadLang("내용 초기화(&R)", "&Reset Fields")
+    cmdSaveContact.Caption = LoadLang("저장(&S)", "&Save", "Tienda(&S)")
+    cmdDelContact.Caption = LoadLang("삭제(&D)", "&Delete", "Eliminar(&D)")
+    cmdDeleteAllContacts.Caption = LoadLang("모두 삭제(&E)", "Cl&ear contatcs", "Eliminar todo(&E)")
+    cmdResetFields.Caption = LoadLang("내용 초기화(&R)", "&Reset Fields", "&Agregar")
     
     Frame4.Caption = LoadLang("할 일 정보", "Task Information")
     Label10.Caption = LoadLang("제목", "Title") & ":"
@@ -2334,32 +2416,32 @@ Private Sub Form_Load()
     Label16.Caption = LoadLang("참여자", "Participants") & ":"
     Label11.Caption = LoadLang("메모", "Note") & ":"
     
-    cmdSaveTask.Caption = LoadLang("저장(&S)", "&Save")
-    cmdDelTask.Caption = LoadLang("삭제", "&Delete")
-    cmdDeleteAllTasks.Caption = LoadLang("모두 삭제(&E)", "Cl&ear Tasks")
+    cmdSaveTask.Caption = LoadLang("저장(&S)", "&Save", "Tienda(&S)")
+    cmdDelTask.Caption = LoadLang("삭제", "&Delete", "Eliminar(&D)")
+    cmdDeleteAllTasks.Caption = LoadLang("모두 삭제(&E)", "Cl&ear Tasks", "Eliminar todo(&E)")
     
-    sdcmdSavePlanner.Caption = LoadLang("저장(&S)", "&Save")
+    sdcmdSavePlanner.Caption = LoadLang("저장(&S)", "&Save", "Tienda(&S)")
     
-    Label18.Caption = LoadLang("이름", "Name") & ":"
-    Label19.Caption = LoadLang("시간", "Time") & ":"
-    Label20.Caption = LoadLang("메모", "Note") & ":"
-    Frame5.Caption = LoadLang("요일", "-")
+    Label18.Caption = LoadLang("이름", "Name", "Nombre") & ":"
+    Label19.Caption = LoadLang("시간", "Time", "Tiempo") & ":"
+    Label20.Caption = LoadLang("메모", "Note", "Nota") & ":"
+    Frame5.Caption = LoadLang("요일", "-", "-")
     
-    chkDayOfWeeks(0).Caption = LoadLang("일요일", "Sunday")
-    chkDayOfWeeks(1).Caption = LoadLang("월요일", "Monday")
-    chkDayOfWeeks(2).Caption = LoadLang("화요일", "Tuesday")
-    chkDayOfWeeks(3).Caption = LoadLang("수요일", "Wednesday")
-    chkDayOfWeeks(4).Caption = LoadLang("목요일", "Thursday")
-    chkDayOfWeeks(5).Caption = LoadLang("금요일", "Friday")
-    chkDayOfWeeks(6).Caption = LoadLang("토요일", "Saturday")
+    chkDayOfWeeks(0).Caption = LoadLang("일요일", "Sunday", "Domingo")
+    chkDayOfWeeks(1).Caption = LoadLang("월요일", "Monday", "Lunes")
+    chkDayOfWeeks(2).Caption = LoadLang("화요일", "Tuesday", "Martes")
+    chkDayOfWeeks(3).Caption = LoadLang("수요일", "Wednesday", "Miercoles")
+    chkDayOfWeeks(4).Caption = LoadLang("목요일", "Thursday", "Jueves")
+    chkDayOfWeeks(5).Caption = LoadLang("금요일", "Friday", "Viernes")
+    chkDayOfWeeks(6).Caption = LoadLang("토요일", "Saturday", "Sabado")
     
-    cmdSelectAllDW.Caption = LoadLang("모두 선택(&A)", "Select &All")
-    cmdUnselectAllDW.Caption = LoadLang("선택 해제(&U)", "&Unselect All")
-    cmdRelectAllDW.Caption = LoadLang("선택 반전(&R)", "&Reverse")
+    cmdSelectAllDW.Caption = LoadLang("모두 선택(&A)", "Select &All", "Seleccion&ar todo")
+    cmdUnselectAllDW.Caption = LoadLang("선택 해제(&L)", "Dese&lect All", "Dese&leccionar todo")
+    cmdRelectAllDW.Caption = LoadLang("선택 반전(&I)", "&Invert", "&Invertir seleccion")
     
-    cmdResetAF.Caption = LoadLang("초기화(&R)", "&Reset Fields")
-    cmdDeleteAlarm.Caption = LoadLang("삭제(&D)", "&Delete")
-    cmdSaveAlarm.Caption = LoadLang("추가(&A)", "&Add")
+    cmdResetAF.Caption = LoadLang("초기화(&R)", "&Reset Fields", "&Restablecer")
+    cmdDeleteAlarm.Caption = LoadLang("삭제(&D)", "&Delete", "Eliminar(&D)")
+    cmdSaveAlarm.Caption = LoadLang("추가(&A)", "&Add", "&Agregar")
     
     Me.Caption = LoadLang(App.Title, "Plan Manager 3")
     
@@ -2394,6 +2476,10 @@ End Sub
 
 Private Sub lvTodaysPlan_DblClick()
     On Error Resume Next
+End Sub
+
+Private Sub mnuPlansClear_Click()
+    cmdDelAllTodaysPlan_Click
 End Sub
 
 Private Sub mnuQuit_Click()
@@ -2495,7 +2581,7 @@ Private Sub Timer1_Timer()
 End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
-    If Confirm("일정관리자를 닫으면 예정 일정 알림을 받지 않습니다.", "경고", Me, 48) = True Then
+    If Confirm(LoadLang("일정관리자를 닫으면 예정 일정 알림을 받지 않습니다.", "You will not be notified when you close the program.", "No se le notificara sobre los planes cuando se cierre el programa."), LoadLang("경고", "Warning", "Advertencia"), Me, 48) = True Then
         Dim i As Integer
         
         SaveSetting "Calendar", "Config", "LTB", SSTab1.Tab
@@ -2504,9 +2590,6 @@ Private Sub Form_Unload(Cancel As Integer)
             SaveSetting "Calendar", "Settings", "MainLeft", Me.Left
             SaveSetting "Calendar", "Settings", "MainTop", Me.Top
         End If
-        
-        UnSubClassSSTAB ssRibbonMenu.hwnd
-        UnSubClassSSTAB ssTodaysPlan.hwnd
         
         End
     Else
@@ -2576,7 +2659,7 @@ Private Sub lvContacts_Click()
         
         cmdDelContact.Enabled = True
         
-        Me.Caption = App.Title & " - " & SSTab1.TabCaption(SSTab1.Tab) & " (" & txtName.Text & ")"
+        'Me.Caption = App.Title & " - " & SSTab1.TabCaption(SSTab1.Tab) & " (" & txtName.Text & ")"
     End If
 End Sub
 

@@ -4,7 +4,7 @@ Begin VB.Form frmAlarm
    Caption         =   "알람"
    ClientHeight    =   3150
    ClientLeft      =   2760
-   ClientTop       =   3960
+   ClientTop       =   3990
    ClientWidth     =   6030
    Icon            =   "frmAlarm.frx":0000
    LinkTopic       =   "Form1"
@@ -36,12 +36,13 @@ Begin VB.Form frmAlarm
       Width           =   1455
    End
    Begin VB.Label lblTime 
+      Alignment       =   2  '가운데 맞춤
       Caption         =   "현재 시각: 00:00:00"
       Height          =   255
-      Left            =   2160
+      Left            =   120
       TabIndex        =   2
       Top             =   960
-      Width           =   1575
+      Width           =   5775
    End
    Begin VB.Label lblCaption 
       Alignment       =   2  '가운데 맞춤
@@ -109,13 +110,13 @@ Private Sub CancelButton_Click()
 End Sub
 
 Private Sub Form_Load()
-    lblTime.Caption = LoadLang("현재 시각", "TIme") & ": " & Format(Now, "hh:mm:ss")
-    Me.Caption = LoadLang("알람", "Alarm")
-    CancelButton.Caption = LoadLang("음소거(&M)", "&Mute")
+    lblTime.Caption = LoadLang("현재 시각", "TIme", "Hora actual") & ": " & Format(Now, "hh:mm:ss")
+    Me.Caption = LoadLang("알람", "Alarm", "Alarma")
+    CancelButton.Caption = LoadLang("음소거(&M)", "&Mute", "&Mudo")
     SetTopMostWindow Me.hwnd, True
     PlayRingtone
 End Sub
 
 Private Sub timTimeChecker_Timer()
-    lblTime.Caption = LoadLang("현재 시각", "TIme") & ": " & Format(Now, "hh:mm:ss")
+    lblTime.Caption = LoadLang("현재 시각", "TIme", "Hora actual") & ": " & Format(Now, "hh:mm:ss")
 End Sub

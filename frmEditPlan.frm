@@ -5,7 +5,7 @@ Begin VB.Form frmEditPlan
    Caption         =   "일정 수정"
    ClientHeight    =   4185
    ClientLeft      =   2760
-   ClientTop       =   3810
+   ClientTop       =   3840
    ClientWidth     =   6030
    Icon            =   "frmEditPlan.frx":0000
    LinkTopic       =   "Form1"
@@ -213,7 +213,7 @@ Private Sub CancelButton_Click()
 End Sub
 
 Private Sub Form_Load()
-    Me.Caption = LoadLang("일정 수정", "Edit a Plan") & " - " & Title
+    Me.Caption = LoadLang("일정 수정", "Edit a Plan", "Editar un Plan") & " - " & Title
     
     Label1.Caption = LoadLang("제목", "Title") & ":"
     Label2.Caption = LoadLang("시간", "Time") & ":"

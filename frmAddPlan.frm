@@ -5,7 +5,7 @@ Begin VB.Form frmAddPlan
    Caption         =   "frmaddplan"
    ClientHeight    =   4410
    ClientLeft      =   2760
-   ClientTop       =   3900
+   ClientTop       =   3930
    ClientWidth     =   7095
    Icon            =   "frmAddPlan.frx":0000
    LinkTopic       =   "Form1"
@@ -345,7 +345,7 @@ Dim txtTime As String
 Dim Category As Integer
 
 Private Sub CancelButton_Click()
-    If Confirm("일정 추가를 취소하시겠습니까? 임시 저장되지 않습니다.", "일정 추가", Me) Then
+    If Confirm(LoadLang("일정 추가를 취소하시겠습니까? 임시 저장되지 않습니다.", "Are you sure you want to cancel? The information you wrote will not be saved.", "¿Estas seguro que quieres cancelar? La informacion que escribio no se guardara."), LoadLang("일정 추가", "Add a Plan", "Agregar horario"), Me) Then
         Unload Me
     End If
 End Sub

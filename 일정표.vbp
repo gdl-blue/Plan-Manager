@@ -26,7 +26,6 @@ Form=frmTip.frm
 Form=frmCheckDeactivatePassword.frm
 Module=ringtones; ringtnes.bas
 Form=frmAlarm.frm
-Module=SubClassControl; SubClassControl.bas
 Form=frmCredits.frm
 Form=frmMagic.frm
 IconForm="frmMain"

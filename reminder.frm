@@ -4,7 +4,7 @@ Begin VB.Form frmReminder
    Caption         =   "곧 시작하는 일정이 있습니다."
    ClientHeight    =   3195
    ClientLeft      =   2760
-   ClientTop       =   3840
+   ClientTop       =   3870
    ClientWidth     =   6030
    Icon            =   "reminder.frx":0000
    LinkTopic       =   "Form1"
@@ -123,11 +123,11 @@ End Sub
 Private Sub Form_Load()
     SetTopMostWindow Me.hwnd, True
     
-    Me.Caption = LoadLang("곧 시작하는 일정이 있습니다.", "Plan starting soon!")
-    cmdReAlert.Caption = LoadLang("다시 알림(&R)", "Snooze(&R)")
-    OKButton.Caption = LoadLang("닫기(&C)", "&Close")
+    Me.Caption = LoadLang("곧 시작하는 일정이 있습니다.", "Plan starting soon!", "Hay un horario que comienza pronto.")
+    cmdReAlert.Caption = LoadLang("다시 알림(&R)", "Snooze(&R)", "&Recordatorio")
+    OKButton.Caption = LoadLang("닫기(&C)", "&Close", "&Cerrar")
     
-    Label1.Caption = LoadLang("다음 일정이 곧 시작합니다.", "The following plan is starting soon.")
+    Label1.Caption = LoadLang("다음 일정이 곧 시작합니다.", "The following plan is starting soon.", "El siguiente plan comenzara pronto.")
     
     Me.Show vbModal, frmMain
     PlayNotification

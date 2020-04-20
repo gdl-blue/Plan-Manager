@@ -4,7 +4,7 @@ Begin VB.Form frmTip
    Caption         =   "알고 계십니까"
    ClientHeight    =   3390
    ClientLeft      =   2295
-   ClientTop       =   2355
+   ClientTop       =   2385
    ClientWidth     =   5415
    Icon            =   "frmTip.frx":0000
    LinkTopic       =   "Form1"
@@ -153,6 +153,8 @@ Private Sub cmdOK_Click()
 End Sub
 
 Private Sub Form_Load()
+    If LoadLang(1, 2, 3) <> 1 Then Unload Me
+
     Dim ShowAtStartup As Long
     
     ' 시작 시 표시할 것인지를 확인합니다.

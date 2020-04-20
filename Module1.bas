@@ -284,12 +284,24 @@ Function DayOfWeek() As Integer
     DayOfWeek = DOW
 End Function
 
-Function LoadLang(ByVal Korean, English)
+Function LoadLang(ByVal Korean, English, Optional Spanish = "", Optional Chinese = "")
     Select Case GetSetting("Calendar", "Options", "Language", 0)
         Case 0
             LoadLang = Korean
         Case 1
             LoadLang = English
+        Case 2
+            If Spanish = "" Then
+                LoadLang = English
+            Else
+                LoadLang = Spanish
+            End If
+        Case 3
+            If Chinese = "" Then
+                LoadLang = English
+            Else
+                LoadLang = Chinese
+            End If
     End Select
 End Function
 
