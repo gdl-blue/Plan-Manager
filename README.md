@@ -1,9 +1,33 @@
 # Plan-Manager
+
+- 한국어
+- English
+- Espanol
+
+- - -
+
 ~~깃허브가 VB6을 인식하는지 테스트하려고 만든 레보지토리~~
 
 VB6으로 만든 일정관리자 프로그램.
 
-VB6 특성상 95 이상의 모든 윈도우에서 실행 가능. (3.1에서는 WIN32 관련 프로그램 필요)
+VB6 특성상 95 이상의 모든 윈도우에서 실행 가능. (3.1에서는 WIN32 레이어/API 필요)
+
+- - -
+
+Plan manager based on Visual Basic 6.0 for Windows.
+
+It is compatible with Windows 9x, XP or higher.
+
+To download this program, click the "Releases" button, choose "3.0.0 시험판 24" or higher, click the link called "PLNMGR32.EXE" or "Setup.zip". To download the source code, click on the link called "Source Code (ZIP)".
+
+- - -
+
+Gerente de plan basado en Visual Basic 6.0 para Windows.
+
+Es compatible con Windows 9x, XP o superior.
+
+Para descargar este programa, haz clic "Releases" botón, elegir "3.0.0 시험판 24" o superior, haga clic en el enlace llamado "PLNMGR32.EXE" o "Setup.zip". Para descargar el código fuente, haga clic en el enlace llamado "Source Code (ZIP)".
+
 
 ## 사용한 자원/코드
 - ~~http://www.vbforums.com/showthread.php?595990-VB6-System-tray-icon-systray~~
