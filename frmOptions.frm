@@ -5,7 +5,7 @@ Begin VB.Form frmOptions
    Caption         =   "환경 설정"
    ClientHeight    =   4305
    ClientLeft      =   -75
-   ClientTop       =   2205
+   ClientTop       =   2985
    ClientWidth     =   8175
    Icon            =   "frmOptions.frx":0000
    MaxButton       =   0   'False
@@ -117,9 +117,13 @@ Begin VB.Form frmOptions
       TabPicture(7)   =   "frmOptions.frx":0506
       Tab(7).ControlEnabled=   0   'False
       Tab(7).Control(0)=   "Frame12"
+      Tab(7).Control(0).Enabled=   0   'False
       Tab(7).Control(1)=   "Frame34"
+      Tab(7).Control(1).Enabled=   0   'False
       Tab(7).Control(2)=   "cmdPlayNS"
+      Tab(7).Control(2).Enabled=   0   'False
       Tab(7).Control(3)=   "cmdPlayRT"
+      Tab(7).Control(3).Enabled=   0   'False
       Tab(7).ControlCount=   4
       Begin VB.Frame Frame14 
          Caption         =   "언어"
@@ -158,7 +162,7 @@ Begin VB.Form frmOptions
             Left            =   120
             TabIndex        =   77
             Top             =   300
-            Width           =   4215
+            Width           =   5895
          End
       End
       Begin VB.CommandButton cmdPlayRT 
@@ -203,21 +207,84 @@ Begin VB.Form frmOptions
                Appearance      =   0  '평면
                BorderStyle     =   0  '없음
                ForeColor       =   &H80000008&
-               Height          =   975
+               Height          =   1300
                Left            =   0
-               ScaleHeight     =   975
+               ScaleHeight     =   1305
                ScaleWidth      =   5415
                TabIndex        =   64
                Top             =   0
                Width           =   5415
                Begin VB.OptionButton optNotificationSound 
+                  Caption         =   "계단음 1"
+                  Height          =   495
+                  Index           =   5
+                  Left            =   3600
+                  TabIndex        =   84
+                  Top             =   240
+                  Width           =   1815
+               End
+               Begin VB.OptionButton optNotificationSound 
+                  Caption         =   "삐비- 삐- 삐비-"
+                  Height          =   495
+                  Index           =   4
+                  Left            =   1800
+                  TabIndex        =   83
+                  Top             =   240
+                  Width           =   1815
+               End
+               Begin VB.OptionButton optNotificationSound 
+                  Caption         =   "삐- 삐- 삐-"
+                  Height          =   495
+                  Index           =   3
+                  Left            =   0
+                  TabIndex        =   82
+                  Top             =   240
+                  Width           =   1815
+               End
+               Begin VB.OptionButton optNotificationSound 
+                  Caption         =   "삐비- 연속 3"
+                  Height          =   495
+                  Index           =   8
+                  Left            =   3600
+                  TabIndex        =   87
+                  Top             =   600
+                  Width           =   1815
+               End
+               Begin VB.OptionButton optNotificationSound 
+                  Caption         =   "계단음 2"
+                  Height          =   495
+                  Index           =   7
+                  Left            =   1800
+                  TabIndex        =   86
+                  Top             =   600
+                  Width           =   1815
+               End
+               Begin VB.OptionButton optNotificationSound 
+                  Caption         =   "삐- 삐비-"
+                  Height          =   495
+                  Index           =   6
+                  Left            =   0
+                  TabIndex        =   85
+                  Top             =   600
+                  Width           =   1815
+               End
+               Begin VB.OptionButton optNotificationSound 
+                  Caption         =   "삐비- 삐비-"
+                  Height          =   255
+                  Index           =   2
+                  Left            =   3600
+                  TabIndex        =   81
+                  Top             =   0
+                  Width           =   1815
+               End
+               Begin VB.OptionButton optNotificationSound 
                   Caption         =   "삐이이-"
                   Height          =   255
                   Index           =   1
-                  Left            =   1680
+                  Left            =   1800
                   TabIndex        =   71
                   Top             =   0
-                  Width           =   1575
+                  Width           =   1815
                End
                Begin VB.OptionButton optNotificationSound 
                   Caption         =   "삐- 삐-"
@@ -226,11 +293,10 @@ Begin VB.Form frmOptions
                   Left            =   0
                   TabIndex        =   65
                   Top             =   0
-                  Width           =   1575
+                  Width           =   1815
                End
             End
             Begin VB.VScrollBar VScroll1 
-               Enabled         =   0   'False
                Height          =   975
                Left            =   5400
                Max             =   1
@@ -279,20 +345,20 @@ Begin VB.Form frmOptions
                   Caption         =   "아기공룡 둘리"
                   Height          =   255
                   Index           =   2
-                  Left            =   3360
+                  Left            =   3600
                   TabIndex        =   80
                   Top             =   0
                   Visible         =   0   'False
-                  Width           =   1575
+                  Width           =   1815
                End
                Begin VB.OptionButton optRingtone 
                   Caption         =   "계단음"
                   Height          =   255
                   Index           =   1
-                  Left            =   1680
+                  Left            =   1800
                   TabIndex        =   70
                   Top             =   0
-                  Width           =   1575
+                  Width           =   1815
                End
                Begin VB.OptionButton optRingtone 
                   Caption         =   "기본음"
@@ -301,7 +367,7 @@ Begin VB.Form frmOptions
                   Left            =   0
                   TabIndex        =   69
                   Top             =   0
-                  Width           =   1575
+                  Width           =   1815
                End
             End
          End
@@ -520,10 +586,10 @@ Begin VB.Form frmOptions
          Begin VB.CheckBox chkNoRibbon 
             Caption         =   "리본 메뉴 비활성(&N)"
             Height          =   255
-            Left            =   3360
+            Left            =   3120
             TabIndex        =   30
             Top             =   240
-            Width           =   2415
+            Width           =   2655
          End
          Begin VB.CheckBox chkTP 
             Caption         =   "오늘의일정 숨기기(&O)"
@@ -531,7 +597,7 @@ Begin VB.Form frmOptions
             Left            =   120
             TabIndex        =   29
             Top             =   240
-            Width           =   3135
+            Width           =   3015
          End
       End
       Begin VB.Frame Frame7 
@@ -726,7 +792,7 @@ Begin VB.Form frmOptions
          End
       End
       Begin VB.Label Label14 
-         Caption         =   "Plan categories:               Contact groups:"
+         Caption         =   "Categorias:                      Grupo:"
          Height          =   255
          Left            =   -74880
          TabIndex        =   45
@@ -915,12 +981,10 @@ Private Sub cmdDelPlans_Click()
 End Sub
 
 Private Sub cmdDelSelCate_Click()
-    If Confirm("한번만 경고합니다. 정말로 삭제하시겠습니까?", "삭제", Me) Then
-        On Error Resume Next
-        Kill "C:\CALPLANS\CTGORIES\" & lvCustomCates.List(lvCustomCates.ListIndex)
-        
-        lvCustomCates.Refresh
-    End If
+    On Error Resume Next
+    Kill "C:\CALPLANS\CTGORIES\" & lvCustomCates.List(lvCustomCates.ListIndex)
+    
+    lvCustomCates.Refresh
 End Sub
 
 Sub cmdDelTasks_Click()
@@ -1073,12 +1137,10 @@ Private Sub Command4_Click()
 End Sub
 
 Private Sub cmdDelGroup_Click()
-    If Confirm("한번만 경고합니다. 정말로 삭제하시겠습니까?", "삭제", Me) Then
-        On Error Resume Next
-        Kill "C:\CALPLANS\CTGROUPS\" & lvGroups.List(lvGroups.ListIndex)
-        
-        lvGroups.Refresh
-    End If
+    On Error Resume Next
+    Kill "C:\CALPLANS\CTGROUPS\" & lvGroups.List(lvGroups.ListIndex)
+    
+    lvGroups.Refresh
 End Sub
 
 Private Sub Form_Load()
@@ -1106,109 +1168,119 @@ Private Sub Form_Load()
     
     
     On Error Resume Next
-    cmbWSD.AddItem LoadLang("일요일", "Sunday")
-    cmbWSD.AddItem LoadLang("월요일", "Monday")
-    cmbWSD.AddItem LoadLang("화요일", "Tuesday")
-    cmbWSD.AddItem LoadLang("수요일", "Wednesday")
-    cmbWSD.AddItem LoadLang("목요일", "Thursday")
-    cmbWSD.AddItem LoadLang("금요일", "Friday")
-    cmbWSD.AddItem LoadLang("토요일", "Saturday")
+    cmbWSD.AddItem LoadLang("일요일", "Sunday", "Domingo")
+    cmbWSD.AddItem LoadLang("월요일", "Monday", "Lunes")
+    cmbWSD.AddItem LoadLang("화요일", "Tuesday", "Martes")
+    cmbWSD.AddItem LoadLang("수요일", "Wednesday", "Miercoles")
+    cmbWSD.AddItem LoadLang("목요일", "Thursday", "Jueves")
+    cmbWSD.AddItem LoadLang("금요일", "Friday", "Viernes")
+    cmbWSD.AddItem LoadLang("토요일", "Saturday", "Sabado")
     
-    cmbStartPage.AddItem LoadLang("일정", "Plans")
-    cmbStartPage.AddItem LoadLang("주소록", "Contacts")
-    cmbStartPage.AddItem LoadLang("할 일", "Tasks")
-    cmbStartPage.AddItem LoadLang("일과표", "Schedule")
-    cmbStartPage.AddItem LoadLang("알람", "Alarms")
+    cmbStartPage.AddItem LoadLang("일정", "Plans", "Planes")
+    cmbStartPage.AddItem LoadLang("주소록", "Contacts", "Contactos")
+    cmbStartPage.AddItem LoadLang("할 일", "Tasks", "Tareas")
+    cmbStartPage.AddItem LoadLang("일과표", "Schedule", "Calendario")
+    cmbStartPage.AddItem LoadLang("알람", "Alarms", "Alarmas")
     
     cmbBGColor.AddItem LoadLang("시스템: 응용프로그램 작업영역", "System Scheme: Application Background")
     cmbBGColor.AddItem LoadLang("시스템: 단추 표면색", "System Scheme: Button Face")
-    cmbBGColor.AddItem LoadLang("빨강", "Red")
-    cmbBGColor.AddItem LoadLang("노랑", "Yellow")
-    cmbBGColor.AddItem LoadLang("초록", "Green")
-    cmbBGColor.AddItem LoadLang("옥색", "Cyan")
-    cmbBGColor.AddItem LoadLang("청록", "Dark Cyan")
-    cmbBGColor.AddItem LoadLang("파랑", "Blue")
-    cmbBGColor.AddItem LoadLang("검정", "Black")
+    cmbBGColor.AddItem LoadLang("빨강", "Red", "Rojo")
+    cmbBGColor.AddItem LoadLang("노랑", "Yellow", "Amarillo")
+    cmbBGColor.AddItem LoadLang("초록", "Green", "Verde")
+    cmbBGColor.AddItem LoadLang("옥색", "Cyan", "Cian")
+    cmbBGColor.AddItem LoadLang("청록", "Dark Cyan", "Cian oscuro")
+    cmbBGColor.AddItem LoadLang("파랑", "Blue", "Azul")
+    cmbBGColor.AddItem LoadLang("검정", "Black", "Negro")
     
-    Me.Caption = LoadLang("환경 설정", "Settings")
-    Command1.Caption = LoadLang("확인", "OK")
-    Command2.Caption = LoadLang("취소", "Cancel")
-    cmdOptionHelp.Caption = LoadLang("도움말(&H)", "&Help") & "..."
-    cmdTheSet.Caption = LoadLang("테마(&T)", "&Theme") & "..."
-    Frame8.Caption = LoadLang("레이아웃", "Layout")
-    chkTP.Caption = LoadLang("오늘의일정 숨기기(&O)", "Hide t&oday's plan list")
-    chkNoRibbon.Caption = LoadLang("리본 메뉴 비활성(&N)", "Disable ribbo&n menu")
-    Frame1.Caption = LoadLang("달력", "Calendar")
-    Frame10.Caption = LoadLang("테마", "Theme")
+    Me.Caption = LoadLang("환경 설정", "Settings", "Ambientacion")
+    Command1.Caption = LoadLang("확인", "OK", "Tienda")
+    Command2.Caption = LoadLang("취소", "Cancel", "Cancelar")
+    cmdOptionHelp.Caption = LoadLang("도움말(&H)", "&Help", "Ayuda(&H)") & "..."
+    cmdTheSet.Caption = LoadLang("테마(&T)", "&Theme", "&Tema") & "..."
+    Frame8.Caption = LoadLang("레이아웃", "Layout", "Diseno")
+    chkTP.Caption = LoadLang("오늘의일정 숨기기(&O)", "Hide t&oday's plan list", "Ocultar la lista de planes de h&oy")
+    chkNoRibbon.Caption = LoadLang("리본 메뉴 비활성(&N)", "Disable ribbo&n menu", "Deshabilitar me&nu de ribbon")
+    Frame1.Caption = LoadLang("달력", "Calendar", "Calendario")
+    Frame10.Caption = LoadLang("테마", "Theme", "Tema")
     
-    Frame14.Caption = LoadLang("언어", "Language")
+    Frame14.Caption = LoadLang("언어", "Language", "Idioma")
     
-    Label5.Caption = LoadLang("시작 요일", "Start of week") & ":"
-    Label13.Caption = LoadLang("테마를 적용하려면 다음 단추를 누르십시오.", "To apply theme, click the button.")
+    Label5.Caption = LoadLang("시작 요일", "Start of week", "Dia de inicio") & ":"
+    Label13.Caption = LoadLang("테마를 적용하려면 다음 단추를 누르십시오.", "To apply theme, click the button.", "Haga clic en el boton Siguiente para aplicar el tema.")
     
-    SSTab1.TabCaption(0) = LoadLang("화면표시", "Display")
-    SSTab1.TabCaption(1) = LoadLang("데이터", "User Data")
-    SSTab1.TabCaption(2) = LoadLang("기본 값", "Defaults")
-    SSTab1.TabCaption(3) = LoadLang("입력의 검사", "Value Checking")
-    SSTab1.TabCaption(4) = LoadLang("분류 및 그룹", "Categories")
-    SSTab1.TabCaption(5) = LoadLang("색상 테마", "Theme")
-    SSTab1.TabCaption(6) = LoadLang("암호", "Password")
-    SSTab1.TabCaption(7) = LoadLang("알림 소리", "Sound")
+    SSTab1.TabCaption(0) = LoadLang("화면표시", "Display", "Apariencia") 'Pantalla de visualizacion
+    SSTab1.TabCaption(1) = LoadLang("데이터", "User Data", "Datos del usuario")
+    SSTab1.TabCaption(2) = LoadLang("기본 값", "Defaults", "Predeterminados")
+    SSTab1.TabCaption(3) = LoadLang("입력의 검사", "Value Checking", "Comprobacion")
+    SSTab1.TabCaption(4) = LoadLang("분류 및 그룹", "Categories", "Categorias")
+    SSTab1.TabCaption(5) = LoadLang("테마", "Theme", "Tema")
+    SSTab1.TabCaption(6) = LoadLang("암호", "Password", "Contrasena")
+    SSTab1.TabCaption(7) = LoadLang("알림 소리", "Sounds", "Sonido")
     
-    Frame2.Caption = LoadLang("내 데이터", "My data")
-    Label1.Caption = LoadLang("내 일정", "My Plans") & ":"
-    Label2.Caption = LoadLang("내 주소록", "My Contacts") & ":"
-    Label3.Caption = LoadLang("내 작업", "My Tasks") & ":"
+    Frame2.Caption = LoadLang("내 데이터", "My data", "Mis datos")
+    Label1.Caption = LoadLang("내 일정", "My Plans", "Mis planes") & ":"
+    Label2.Caption = LoadLang("내 주소록", "My Contacts", "Mis contactos") & ":"
+    Label3.Caption = LoadLang("내 작업", "My Tasks", "Mis tareas") & ":"
     
-    cmdDelPlans.Caption = LoadLang("모두 삭제(&D)", "&Delete All")
-    cmdDelContacts.Caption = LoadLang("모두 삭제(&E)", "D&elete All")
-    cmdDelTasks.Caption = LoadLang("모두 삭제(&L)", "De&lete All")
+    cmdDelPlans.Caption = LoadLang("모두 삭제(&D)", "&Delete All", "Eliminar to&do")
+    cmdDelContacts.Caption = LoadLang("모두 삭제(&E)", "D&elete All", "&Eliminar todo")
+    cmdDelTasks.Caption = LoadLang("모두 삭제(&L)", "De&lete All", "E&liminar todo")
     
-    Frame4.Caption = LoadLang("시작 시 작업", "On startup")
-    Label7.Caption = LoadLang("시작 페이지", "Startup Page") & ":"
-    radSelST.Caption = LoadLang("페이지 선택(&T)", "Selec&t a page")
-    radCFQ.Caption = LoadLang("이전에 끝낸 지점에서 시작(&Q)", "Resume where you &quited")
+    Frame4.Caption = LoadLang("시작 시 작업", "On startup", "En el arranque")
+    Label7.Caption = LoadLang("시작 페이지", "Startup Page", "Pagina de inicio") & ":"
+    radSelST.Caption = LoadLang("페이지 선택(&T)", "Selec&t a page", "Selecciona una pagina(&T)")
+    radCFQ.Caption = LoadLang("이전에 끝낸 지점에서 시작(&Q)", "Resume where you &quited", "Reanudar donde dejo(&Q)")
     
-    Frame11.Caption = LoadLang("팁 상자", "Tip Alert")
+    Frame11.Caption = LoadLang("팁 상자")
     
-    Frame6.Caption = LoadLang("시간", "Time")
-    chkNoTimeCHeck.Caption = LoadLang("일정 추가 시 시간이 올바르지 검사 안함(&T)", "Do not check if the &time is invalid")
-    Label9.Caption = "[*] " & LoadLang("이 설정을 변경하면 프로그램이 올바로 작동하지 않을 수 있습니다.", "Changing settings in this page may cause internal errors")
+    If LoadLang(1, 2, 3) <> 1 Then Frame11.Visible = False
     
-    Label14.Caption = LoadLang("일정 분류 목록:                 그룹 목록:", "Plan categories:               Contact groups:")
-    cmdDelSelCate.Caption = LoadLang("선택 삭제(&S)", "Delete &selected")
-    cmdDelGroup.Caption = LoadLang("선택 삭제(&E)", "Delete s&elected")
+    Frame6.Caption = LoadLang("시간", "Time", "Hora")
+    chkNoTimeCHeck.Caption = LoadLang("일정 추가 시 시간이 올바르지 검사 안함(&T)", "Do not check if the &time is invalid", "No verifique si el &tiempo no es valido")
+    Label9.Caption = "[*] " & LoadLang("이 설정을 변경하면 프로그램이 올바로 작동하지 않을 수 있습니다.", "Changing settings in this page may cause internal errors", "Cambiar la configuracion en esta pagina puede causar errores internos")
     
-    cmdClearCates.Caption = LoadLang("분류 전체삭제", "Clear Categories")
-    cmdClearGroups.Caption = LoadLang("그룹 전체삭제", "Clear Groups")
+    Label14.Caption = LoadLang("일정 분류 목록:                 그룹 목록:", "Plan categories:               Contact groups:", "Categorias:                      Grupo:")
+    cmdDelSelCate.Caption = LoadLang("선택 삭제(&S)", "Delete &selected", "Eliminar &seleccionado")
+    cmdDelGroup.Caption = LoadLang("선택 삭제(&E)", "Delete s&elected", "&Eliminar seleccionado")
     
-    Label8.Caption = LoadLang("새 일정 분류 추가", "New Category") & ":"
-    Label11.Caption = LoadLang("새 그룹 추가", "New Group") & ":"
+    cmdClearCates.Caption = LoadLang("분류 전체삭제", "Clear Categories", "Eliminar todo categorias")
+    cmdClearGroups.Caption = LoadLang("그룹 전체삭제", "Clear Groups", "Eliminar todo grupos")
     
-    cmdAddNewCate.Caption = LoadLang("추가(&A)", "&Add")
-    cmdAddNewGroup.Caption = LoadLang("추가(&D)", "A&dd")
+    Label8.Caption = LoadLang("새 일정 분류 추가", "New Category", "Nueva categoria") & ":"
+    Label11.Caption = LoadLang("새 그룹 추가", "New Group", "Nueva grupo") & ":"
     
-    Frame7.Caption = LoadLang("테마", "Theme")
-    Label10.Caption = LoadLang("배경 색상", "Background Color") & ":"
+    cmdAddNewCate.Caption = LoadLang("추가(&A)", "&Add", "&Anadir")
+    cmdAddNewGroup.Caption = LoadLang("추가(&D)", "A&dd", "Ana&dir")
     
-    Frame34.Caption = LoadLang("일정 알림음", "Notification Sound")
-    Frame12.Caption = LoadLang("알람음", "Alarm Ringtone")
+    Frame7.Caption = LoadLang("테마", "Theme", "Tema")
+    Label10.Caption = LoadLang("배경 색상", "Background Color", "Color de fondo") & ":"
+    
+    Frame34.Caption = LoadLang("일정 알림음", "Notification Sound", "Sonido de notificacion")
+    Frame12.Caption = LoadLang("알람음", "Alarm Ringtone", "Tono de alarma")
     
     optNotificationSound(0).Caption = LoadLang("삐- 삐-", "Beep- Beep-")
     optNotificationSound(1).Caption = LoadLang("삐이이-", "Bee-eep-")
+    optNotificationSound(2).Caption = LoadLang("삐비- 삐비-", "Beepbeep-")
+    optNotificationSound(3).Caption = LoadLang("삐- 삐- 삐-", "Beep- beep- beep-")
+    optNotificationSound(4).Caption = LoadLang("삐비- 삐- 삐비-", "Beepeep- Beep- Beepeep-")
+    optNotificationSound(5).Caption = LoadLang("계단음", "Stair Tone", "Tono de escalera") & " 1"
+    optNotificationSound(6).Caption = LoadLang("삐- 삐비-", "Beep- Beepeep-")
+    optNotificationSound(7).Caption = LoadLang("계단음", "Stair Tone", "Tono de escalera") & " 2"
+    optNotificationSound(8).Caption = LoadLang("삐비- 연속 3", "Beep-beep- ×3")
     
-    cmdPlayNS.Caption = LoadLang("듣기(&P)", "&Preview")
-    cmdPlayRT.Caption = LoadLang("듣기(&R)", "P&review")
+    cmdPlayNS.Caption = LoadLang("듣기(&P)", "&Preview", "Vista &previa")
+    cmdPlayRT.Caption = LoadLang("듣기(&R)", "P&review", "Vista p&revia")
     
-    optRingtone(0).Caption = LoadLang("기본음", "Basic Tone")
-    optRingtone(1).Caption = LoadLang("계단음", "Stair Tone")
+    optRingtone(0).Caption = LoadLang("기본음", "Basic Tone", "Tono basico")
+    optRingtone(1).Caption = LoadLang("계단음", "Stair Tone", "Tono de escalera")
+    optRingtone(2).Caption = LoadLang("아기공룡 둘리", "Dooly theme", "Tema del Dooly")
     
     cmbBGColor.ListIndex = GetSetting("Calendar", "Options", "BGColor", 0)
     
     cmbLanguage.AddItem "한국어"
     cmbLanguage.AddItem "English"
-    cmbLanguage.AddItem "Espanol (Beta)"
-    cmbLanguage.AddItem "中文 (Beta)"
+    cmbLanguage.AddItem "Espanol"
+    cmbLanguage.AddItem "中文"
     
     cmbLanguage.ListIndex = GetSetting("Calendar", "Options", "Language", 0)
     

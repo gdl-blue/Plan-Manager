@@ -11,7 +11,7 @@ Begin VB.Form frmMain
    Caption         =   "frmMain"
    ClientHeight    =   6630
    ClientLeft      =   150
-   ClientTop       =   4905
+   ClientTop       =   5265
    ClientWidth     =   10950
    Icon            =   "frmMain.frx":0000
    LinkTopic       =   "Form1"
@@ -39,12 +39,12 @@ Begin VB.Form frmMain
          BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
             AutoSize        =   2
-            TextSave        =   "2020-04-20"
+            TextSave        =   "2020-04-21"
          EndProperty
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             AutoSize        =   2
-            TextSave        =   "오전 5:29"
+            TextSave        =   "오전 2:24"
          EndProperty
       EndProperty
    End
@@ -384,7 +384,6 @@ Begin VB.Form frmMain
       _Version        =   393216
       TabOrientation  =   1
       Tabs            =   5
-      Tab             =   1
       TabsPerRow      =   5
       TabHeight       =   582
       ShowFocusRect   =   0   'False
@@ -392,31 +391,24 @@ Begin VB.Form frmMain
       MouseIcon       =   "frmMain.frx":5E6E0
       TabCaption(0)   =   "일정"
       TabPicture(0)   =   "frmMain.frx":5E6FC
-      Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "Dir1"
-      Tab(0).Control(1)=   "MonthView1"
+      Tab(0).ControlEnabled=   -1  'True
+      Tab(0).Control(0)=   "MonthView1"
+      Tab(0).Control(0).Enabled=   0   'False
+      Tab(0).Control(1)=   "Dir1"
+      Tab(0).Control(1).Enabled=   0   'False
       Tab(0).ControlCount=   2
       TabCaption(1)   =   "주소록"
       TabPicture(1)   =   "frmMain.frx":5EB4E
-      Tab(1).ControlEnabled=   -1  'True
+      Tab(1).ControlEnabled=   0   'False
       Tab(1).Control(0)=   "lvContacts"
-      Tab(1).Control(0).Enabled=   0   'False
       Tab(1).Control(1)=   "Frame1"
-      Tab(1).Control(1).Enabled=   0   'False
       Tab(1).Control(2)=   "Frame2"
-      Tab(1).Control(2).Enabled=   0   'False
       Tab(1).Control(3)=   "cmdSaveContact"
-      Tab(1).Control(3).Enabled=   0   'False
       Tab(1).Control(4)=   "Frame3"
-      Tab(1).Control(4).Enabled=   0   'False
       Tab(1).Control(5)=   "lvContactFiles"
-      Tab(1).Control(5).Enabled=   0   'False
       Tab(1).Control(6)=   "cmdDelContact"
-      Tab(1).Control(6).Enabled=   0   'False
       Tab(1).Control(7)=   "cmdDeleteAllContacts"
-      Tab(1).Control(7).Enabled=   0   'False
       Tab(1).Control(8)=   "cmdResetFields"
-      Tab(1).Control(8).Enabled=   0   'False
       Tab(1).ControlCount=   9
       TabCaption(2)   =   "할 일"
       TabPicture(2)   =   "frmMain.frx":5EFA0
@@ -1138,7 +1130,7 @@ Begin VB.Form frmMain
       Begin VB.CommandButton cmdResetFields 
          Caption         =   "내용 초기화(&R)"
          Height          =   495
-         Left            =   6960
+         Left            =   -68040
          TabIndex        =   46
          Top             =   3698
          Width           =   1350
@@ -1146,14 +1138,14 @@ Begin VB.Form frmMain
       Begin VB.CommandButton cmdDeleteAllContacts 
          Caption         =   "clear"
          Height          =   495
-         Left            =   6960
+         Left            =   -68040
          TabIndex        =   45
          Top             =   2498
          Width           =   1335
       End
       Begin VB.DirListBox Dir1 
          Height          =   300
-         Left            =   -66960
+         Left            =   8040
          TabIndex        =   43
          Top             =   -22
          Visible         =   0   'False
@@ -1346,14 +1338,14 @@ Begin VB.Form frmMain
       Begin VB.CommandButton cmdDelContact 
          Caption         =   "delete"
          Height          =   495
-         Left            =   6960
+         Left            =   -68040
          TabIndex        =   24
          Top             =   1418
          Width           =   1335
       End
       Begin VB.FileListBox lvContactFiles 
          Height          =   270
-         Left            =   5760
+         Left            =   -69240
          TabIndex        =   23
          Top             =   98
          Visible         =   0   'False
@@ -1362,7 +1354,7 @@ Begin VB.Form frmMain
       Begin VB.Frame Frame3 
          Caption         =   "Frame3"
          Height          =   1575
-         Left            =   1920
+         Left            =   -73080
          TabIndex        =   10
          Top             =   2618
          Width           =   4935
@@ -1416,7 +1408,7 @@ Begin VB.Form frmMain
       Begin VB.CommandButton cmdSaveContact 
          Caption         =   "저장(&S)"
          Height          =   495
-         Left            =   6960
+         Left            =   -68040
          TabIndex        =   9
          Top             =   218
          Width           =   1335
@@ -1424,7 +1416,7 @@ Begin VB.Form frmMain
       Begin VB.Frame Frame2 
          Caption         =   "Frame2"
          Height          =   975
-         Left            =   1920
+         Left            =   -73080
          TabIndex        =   8
          Top             =   1538
          Width           =   4935
@@ -1492,7 +1484,7 @@ Begin VB.Form frmMain
       Begin VB.Frame Frame1 
          Caption         =   "Frame1"
          Height          =   1335
-         Left            =   1920
+         Left            =   -73080
          TabIndex        =   4
          Top             =   120
          Width           =   4935
@@ -1591,7 +1583,7 @@ Begin VB.Form frmMain
       Begin VB.ListBox lvContacts 
          Height          =   4020
          ItemData        =   "frmMain.frx":5FB7A
-         Left            =   120
+         Left            =   -74880
          List            =   "frmMain.frx":5FB81
          TabIndex        =   3
          Top             =   98
@@ -1599,9 +1591,9 @@ Begin VB.Form frmMain
       End
       Begin MSComCtl2.MonthView MonthView1 
          Height          =   4170
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   2
-         Top             =   98
+         Top             =   105
          Width           =   8100
          _ExtentX        =   14288
          _ExtentY        =   7355
@@ -1611,7 +1603,7 @@ Begin VB.Form frmMain
          Appearance      =   0
          MonthColumns    =   3
          MonthRows       =   2
-         StartOfWeek     =   39583745
+         StartOfWeek     =   37945345
          CurrentDate     =   43858
       End
       Begin VB.Label Label20 
@@ -1743,8 +1735,6 @@ Dim Task As Integer
 ' The following code is required:
 Option Explicit
 
-'출처: http://www.vbforums.com/showthread.php?546633-VB6-Sleep-Function
-Private Declare Sub Sleep Lib "kernel32" (ByVal dwMilliseconds As Long)
 
 
 Sub ClearAlarmFields()
@@ -1764,21 +1754,7 @@ Sub ClearAlarmFields()
     txtAlarmTitle.Enabled = True
 End Sub
 
-' Credits: (Milk (Sleep+Pause Sub)). (Wayne Spangler (Pause Sub))
-Private Sub Pause(ByVal Delay As Single)
-   Delay = Timer + Delay
-   If Delay > 86400 Then 'more than number of seconds in a day
-      Delay = Delay - 86400
-      Do
-          DoEvents ' to process events.
-          Sleep 1 ' to not eat cpu
-      Loop Until Timer < 1
-   End If
-   Do
-       DoEvents ' to process events.
-       Sleep 1 ' to not eat cpu
-   Loop While Delay > Timer
-End Sub
+
 
 Private Sub cmdDeleteAlarm_Click()
     On Error Resume Next
@@ -1928,6 +1904,15 @@ Private Sub cmdDelContact_Click()
         DeleteSetting "Calendar", "Contacts", lvContacts.List(lvContacts.ListIndex) & "Addr"
         DeleteSetting "Calendar", "Contacts", lvContacts.List(lvContacts.ListIndex) & "Postal"
         LoadContacts
+        
+        If lvContacts.List(lvContacts.ListIndex) = "둘리" Then
+            SaveSetting "Calendar", "Config", "EggEnabled", 0
+            DeleteSetting "Calendar", "Config", "EggEnabled"
+            
+            If GetSetting("Calendar", "Options", "Ringtone", 0) = 2 Then
+                SaveSetting "Calendar", "Options", "Ringtone", 0
+            End If
+        End If
     End If
 End Sub
 
@@ -2009,6 +1994,10 @@ Private Sub cmdSaveContact_Click()
     
     SaveSetting "Calendar", "Contacts", txtName.Text & "Group", cmbGroup.Text
     
+    SaveSetting "Calendar", "Contacts", txtName.Text & "BY", txtBYear.Text
+    SaveSetting "Calendar", "Contacts", txtName.Text & "BM", txtBMonth.Text
+    SaveSetting "Calendar", "Contacts", txtName.Text & "BD", txtBDay.Text
+    
     If txtName.Text = "둘리" And txtBYear.Text = "1983" And (txtBMonth.Text = "4" Or txtBMonth.Text = "04") And txtBDay.Text = "22" Then
         SaveSetting "Calendar", "Config", "EggEnabled", "1"
     End If
@@ -2039,6 +2028,10 @@ Private Sub cmdSaveContact_Click()
         txtContent.Text = ""
         
         txtPostalCode.Text = ""
+        
+        txtBMonth.Text = ""
+        txtBYear.Text = ""
+        txtBDay.Text = ""
         
         cmbGroup.ListIndex = 0
     End If
@@ -2355,7 +2348,7 @@ Private Sub Form_Load()
     mnuTodaysPlan.Caption = LoadLang("이날의 일정(&T)", "Selec&ted Date's Plans", "&Planes de la fecha seleccionada")
     mnuPlansClear.Caption = LoadLang("선택한 날짜의 일정 모두 삭제(&D)", "Clear selected &Date's Plans", "Borrar los planes &de la fecha seleccionada")
     
-    ssRibbonMenu.TabCaption(1) = LoadLang("홈", "Home", "Casa")
+    ssRibbonMenu.TabCaption(1) = LoadLang("홈", "Home", "Inicio")
     ssRibbonMenu.TabCaption(2) = LoadLang("보기", "View", "Ver")
     ssRibbonMenu.TabCaption(3) = LoadLang("일정", "Plan", "Planes")
     
@@ -2373,7 +2366,7 @@ Private Sub Form_Load()
     cmdMnuOptions.ToolTipText = LoadLang("환경 설정", "Settings...")
     cmdHelp.ToolTipText = LoadLang("도움말", "Help")
     
-    cmdRibbonFile.Caption = LoadLang("파일(&F)", "&File", "Archivo(&F)")
+    cmdRibbonFile.Caption = LoadLang("파일", "File", "Archivo")
     
     ssTodaysPlan.TabCaption(0) = LoadLang("오늘 일정", "Today's Plans", "Los planes de hoy")
     ssTodaysPlan.TabCaption(1) = LoadLang("내일 일정", "Tomorrow's Plans", "Los planes de manana")
@@ -2390,8 +2383,8 @@ Private Sub Form_Load()
     Frame2.Caption = LoadLang("전화번호", "Phone Numbers", "Numeros de telefono")
     Frame3.Caption = LoadLang("기타 정보", "Other Informations", "Otra informacion")
 
-    Label22.Caption = LoadLang("메모", "Note", "Nota")
-    Label21.Caption = LoadLang("생일", "Birthday", "Cumpleanos")
+    Label22.Caption = LoadLang("메모", "Note", "Nota") & ":"
+    Label21.Caption = LoadLang("생일", "Birthday", "Cumpleanos") & ":"
     
      Label1.Caption = LoadLang("이름", "Name", "Nombre") & ":"
      Label2.Caption = LoadLang("휴대전화", "Cell-phone", "Celular") & ":"
@@ -2624,6 +2617,10 @@ Private Sub lvContacts_Click()
         
         txtContent.Text = ""
         
+        txtBMonth.Text = ""
+        txtBYear.Text = ""
+        txtBDay.Text = ""
+        
         cmbGroup.ListIndex = 0
         
         cmdDelContact.Enabled = False
@@ -2647,6 +2644,10 @@ Private Sub lvContacts_Click()
         txtContent.Text = GetSetting("Calendar", "Contacts", lvContacts.List(lvContacts.ListIndex) & "Content", "")
         
         txtContent.Text = GetSetting("Calendar", "Contacts", lvContacts.List(lvContacts.ListIndex) & "Content", "")
+        
+        txtBYear.Text = GetSetting("Calendar", "Contacts", lvContacts.List(lvContacts.ListIndex) & "BY", "")
+        txtBMonth.Text = GetSetting("Calendar", "Contacts", lvContacts.List(lvContacts.ListIndex) & "BM", "")
+        txtBDay.Text = GetSetting("Calendar", "Contacts", lvContacts.List(lvContacts.ListIndex) & "BD", "")
         
         Dim i As Integer
         

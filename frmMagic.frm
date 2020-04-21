@@ -4,7 +4,7 @@ Begin VB.Form frmWizard
    Caption         =   "frmMagic"
    ClientHeight    =   4800
    ClientLeft      =   45
-   ClientTop       =   765
+   ClientTop       =   795
    ClientWidth     =   8580
    ControlBox      =   0   'False
    Icon            =   "frmMagic.frx":0000
@@ -332,7 +332,7 @@ Private Sub cmbLanguageSelect_Click()
             
             Label2.Caption = "Ajustar el diseno"
             
-            chkSimpleMode.Caption = "Modo simple: muestra solo la barra de menu y oculta la cinta."
+            chkSimpleMode.Caption = "Modo simple: muestra solo la barra de menu y oculta la ribbon."
             chkTodaysPlan.Caption = "Plan de hoy: muestra una lista sobre el plan de hoy en la ventana."
             
             Label6.Caption = "Personalizar categorias"

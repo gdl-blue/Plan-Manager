@@ -5,6 +5,7 @@ Public MSGRS As Boolean
 
 Public fMainForm As frmMain
 
+
 'http://www.vbforums.com/showthread.php?447184-Check-For-Running-Process
 Option Explicit
 Private Declare Function OpenProcess Lib "kernel32" ( _
@@ -25,6 +26,7 @@ Private Declare Function GetModuleBaseName Lib "PSAPI.DLL" Alias "GetModuleBaseN
 Private Const PROCESS_VM_READ = &H10
 Private Const PROCESS_QUERY_INFORMATION = &H400
 
+Declare Sub Sleep Lib "kernel32" (ByVal dwMilliseconds As Long)
 '파일 존재 확인 함수
 'http://www.vbforums.com/showthread.php?349990-Classic-VB-How-can-I-check-if-a-file-exists
 'In a standard Module: Module1.bas
@@ -284,12 +286,16 @@ Function DayOfWeek() As Integer
     DayOfWeek = DOW
 End Function
 
-Function LoadLang(ByVal Korean, English, Optional Spanish = "", Optional Chinese = "")
+Function LoadLang(ByVal Korean, Optional English = "", Optional Spanish = "", Optional Chinese = "")
     Select Case GetSetting("Calendar", "Options", "Language", 0)
         Case 0
             LoadLang = Korean
         Case 1
-            LoadLang = English
+            If English = "" Then
+                LoadLang = Korean
+            Else
+                LoadLang = English
+            End If
         Case 2
             If Spanish = "" Then
                 LoadLang = English
@@ -317,6 +323,24 @@ Sub CreateFile(ByVal FilePath As String, Optional Content As String = "")
     
     '파일을 닫는다.
     Close #iFileNo
+End Sub
+
+'출처: http://www.vbforums.com/showthread.php?546633-VB6-Sleep-Function
+
+' Credits: (Milk (Sleep+Pause Sub)). (Wayne Spangler (Pause Sub))
+Sub Pause(ByVal Delay As Single)
+   Delay = Timer + Delay
+   If Delay > 86400 Then 'more than number of seconds in a day
+      Delay = Delay - 86400
+      Do
+          DoEvents ' to process events.
+          Sleep 1 ' to not eat cpu
+      Loop Until Timer < 1
+   End If
+   Do
+       DoEvents ' to process events.
+       Sleep 1 ' to not eat cpu
+   Loop While Delay > Timer
 End Sub
 
 Sub Main()
