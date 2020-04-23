@@ -26,7 +26,7 @@ Gerente de plan basado en Visual Basic 6.0 para Windows.
 
 Es compatible con Windows 9x, XP o superior.
 
-Para descargar este programa, haz clic "Releases" botón, elegir "3.0.0 시험판 24" o superior, haga clic en el enlace llamado "PLNMGR32.EXE" o "Setup.zip". Para descargar el código fuente, haga clic en el enlace llamado "Source Code (ZIP)".
+Para descargar este programa, haz clic "Releases" botón, elegir "3.0.0 시험판 24" o superior, haga clic en el enlace llamado "PLNMGR32.EXE" o "Setup.zip". Para descargar el código, haga clic en el enlace llamado "Source Code (ZIP)".
 
 
 ## 사용한 자원/코드
