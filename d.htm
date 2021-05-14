@@ -1,0 +1,71 @@
+<body style="background: url(bg.png);">
+<style>
+.glossy-round-btn {
+	border: 2px solid rgb(127, 166, 214);
+	border-radius: 12345678px;
+	padding: 4px;
+	background: linear-gradient(to bottom, rgb(108, 154, 211) 30%, rgb(237, 244, 254) 100%);
+	color: rgb(27, 75, 143);
+	position: relative;
+	font-size: 16pt;
+	box-shadow: 2px 2px 2px rgb(0, 64, 128);
+}
+
+.glossy-round-btn.sm {
+	font-size: 10pt;
+}
+
+.glossy-round-btn.xsm {
+	font-size: 8pt;
+	border-width: 1px;
+	padding: 2px;
+}
+
+.glossy-round-btn::before {
+	background: linear-gradient(to bottom, #fff, rgba(255, 255, 255, 0.1));
+	position: absolute;
+	width: 100%;
+	height: 50%;
+	content: "";
+	left: 0px;
+	top: 0px;
+	border-top-left-radius: 2463px 2159px;
+	border-top-right-radius: 2463px 2159px;
+	border-bottom-left-radius: 2500px 258px;
+	border-bottom-right-radius: 2500px 258px;
+}
+
+.glossy-round-btn:hover {
+	background: linear-gradient(to bottom, rgb(125, 184, 236) 30%, rgb(234, 244, 253) 100%);
+	color: rgb(51, 128, 206);
+}
+
+.glossy-round-btn:active {
+	background: linear-gradient(to bottom, rgb(108, 154, 211) 30%, rgb(237, 244, 254) 100%);
+	box-shadow: inset 4px 4px 2px rgb(0, 64, 128);
+}
+
+.glossy-round-btn[disabled] {
+	background: linear-gradient(to bottom, rgb(108, 154, 211) 30%, rgb(237, 244, 254) 100%);
+	color: rgb(122, 155, 201);
+	box-shadow: 2px 2px 2px rgb(0, 64, 128);
+}
+
+</style>
+
+<div style="position: absolute;width: 388px;height: 10px;background: linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .2));top: 55px;left: 30px;border-radius: 5px;"></div>
+<div style="position: absolute;width: 270px;height: 29px;background: linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .2));top: 5px;left: 459px;border-radius: 60px;"></div>
+<div style="position: absolute;width: 636px;height: 7px;background: linear-gradient(rgba(255, 255, 255, .4), rgba(255, 255, 255, .1));top: 486px;left: 24px;border-radius: 5px;"></div>
+
+<div class=glossy-round-btn style="box-shadow: none;position: absolute; width: 50px; height: 50px;top: 438px;left: 679px;">
+<span style="position: absolute;width: 55px;
+height: 55px;
+border-radius: 999px;
+margin: -25px 0 0 -1px;font-size: 70pt;">*</span>
+<div style="box-shadow: inset 4px 4px 2px rgb(0, 64, 128);width: 55px;
+height: 55px;
+border-radius: 999px;
+margin: -3px 0 0 -5px;"></div>
+</div>
+
+</body>

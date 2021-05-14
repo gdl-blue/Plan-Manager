@@ -117,13 +117,9 @@ Begin VB.Form frmOptions
       TabPicture(7)   =   "frmOptions.frx":0506
       Tab(7).ControlEnabled=   0   'False
       Tab(7).Control(0)=   "Frame12"
-      Tab(7).Control(0).Enabled=   0   'False
       Tab(7).Control(1)=   "Frame34"
-      Tab(7).Control(1).Enabled=   0   'False
       Tab(7).Control(2)=   "cmdPlayNS"
-      Tab(7).Control(2).Enabled=   0   'False
       Tab(7).Control(3)=   "cmdPlayRT"
-      Tab(7).Control(3).Enabled=   0   'False
       Tab(7).ControlCount=   4
       Begin VB.Frame Frame14 
          Caption         =   "언어"
@@ -583,12 +579,21 @@ Begin VB.Form frmOptions
          TabIndex        =   28
          Top             =   720
          Width           =   5895
+         Begin VB.CheckBox chkAlwaysRm 
+            Caption         =   "메뉴 항상 보이기(&A)"
+            Height          =   255
+            Left            =   120
+            TabIndex        =   88
+            Top             =   1320
+            Width           =   2055
+         End
          Begin VB.CheckBox chkNoRibbon 
             Caption         =   "리본 메뉴 비활성(&N)"
             Height          =   255
             Left            =   3120
             TabIndex        =   30
             Top             =   240
+            Visible         =   0   'False
             Width           =   2655
          End
          Begin VB.CheckBox chkTP 
@@ -597,6 +602,7 @@ Begin VB.Form frmOptions
             Left            =   120
             TabIndex        =   29
             Top             =   240
+            Visible         =   0   'False
             Width           =   3015
          End
       End
@@ -1041,6 +1047,8 @@ Private Sub Command1_Click()
     
     SaveSetting "Calendar", "Options", "NoRibbon", chkNoRibbon.Value
     
+    SaveSetting "Calendar", "Options", "AlwaysRibbon", chkAlwaysRm.Value
+    
     SaveSetting "Calendar", "Options", "Language", cmbLanguage.ListIndex
     
     If radSelST.Value = False Then
@@ -1157,6 +1165,7 @@ Private Sub Form_Load()
     chkNoTimeCHeck.Value = GetSetting("Calendar", "Options", "NoTimeCheck", 0)
     
     chkTP.Value = GetSetting("Calendar", "Options", "TP", 0)
+    chkAlwaysRm.Value = GetSetting("Calendar", "Options", "AlwaysRibbon", 0)
     
     If GetSetting("Calendar", "Options", "SST", True) = True Then
         radSelST.Value = True

@@ -300,7 +300,7 @@ Private Sub Form_Load()
     cmdDelBtn.Caption = LoadLang("ªË¡¶(&D)", "&Delete")
     cmdViewPlan.Caption = LoadLang("∫∏±‚(&E)...", "D&etails")
     
-    cmdClose.Caption = LoadLang("¥›±‚(&C)...", "&Close")
+    cmdClose.Caption = LoadLang("¥›±‚(&C)", "&Close")
     
     On Error Resume Next
     

@@ -344,7 +344,6 @@ Sub Pause(ByVal Delay As Single)
 End Sub
 
 Sub Main()
-    Set fMainForm = New frmMain
-    fMainForm.Show
+    frmMain.Show
 End Sub
 
