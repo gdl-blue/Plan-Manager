@@ -443,7 +443,7 @@ Private Sub Form_Load()
     Label5.Caption = LoadLang("분류", "Category") & ":"
     Label6.Caption = LoadLang("내용", "Memo") & ":"
     
-    Frame1.Caption = LoadLang("이 일정이 있는 날짜", "Plan Date") & ":"
+    Frame1.Caption = LoadLang("이 일정 복제", "Duplicate Plan Date") & ":"
     
     CancelButton.Caption = LoadLang("취소", "Cancel")
     OKButton.Caption = LoadLang("추가(&A)", "&Add")

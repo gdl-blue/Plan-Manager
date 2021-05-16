@@ -105,7 +105,7 @@ Public Function LenH(ByVal strValue As String) As Integer
     LenH = LenB(StrConv(strValue, vbFromUnicode))
 End Function
                         
-Sub MessageBox(Content As String, Title As String, Optional OwnerForm As Form = 1, Optional Icon As Long = 64) 'Windows Vista 이상 윈도우에서 Windws 2000 스타일 메시지 상자 표시
+Sub MessageBox(Content As String, Title As String, Optional OwnerForm As Form = 1, Optional Icon As Long = 64, Optional timeout As Integer = -1, Optional modal As Boolean = True) 'Windows Vista 이상 윈도우에서 Windws 2000 스타일 메시지 상자 표시
     'http://www.vbforums.com/showthread.php?353910-Read-registry-key-SOLVED
     '사용중인 윈도우가 XP 이하이면 이 메시지 상자 표시이유가 없으므로 실제 메시지상자 표시
     On Error Resume Next
@@ -114,7 +114,7 @@ Sub MessageBox(Content As String, Title As String, Optional OwnerForm As Form = 
     
     Set Registry = CreateObject("WScript.Shell")
     
-    If CDec(Registry.RegRead("HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\CurrentVersion")) < 6 Then
+    If CDec(Registry.RegRead("HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\CurrentVersion")) < 6 And timeout = -1 Then
         MsgBox Content, Icon, Title
         Exit Sub
     End If
@@ -155,7 +155,15 @@ Sub MessageBox(Content As String, Title As String, Optional OwnerForm As Form = 
     msgXPMB.cmdOK.Left = msgXPMB.Width / 2 - 810
     msgXPMB.cmdOK.Top = 840 + ((LineCount - 1) * 240) - 200
     msgXPMB.BeepSnd = Icon
-    msgXPMB.Show vbModal, OwnerForm
+    If modal Then
+        msgXPMB.Show vbModal, OwnerForm
+    Else
+        msgXPMB.Show
+    End If
+    If timeout >= 0 Then
+        msgXPMB.timeout.Interval = timeout
+        msgXPMB.timeout.Enabled = -1
+    End If
 End Sub
 
 Function Confirm(Content As String, Title As String, Optional OwnerForm As Form = 1, Optional Icon As Long = 32, Optional BtnReversed As Boolean = False) As Boolean 'Windows Vista 이상 윈도우에서 Windws 2000 스타일 메시지 상자 표시
@@ -200,7 +208,7 @@ Function Confirm(Content As String, Title As String, Optional OwnerForm As Form 
     msgXPOC.cmdCancel.Top = 840 + ((LineCount - 1) * 240) - 200
     msgXPOC.BeepSnd = Icon
     
-    If BtnReversed = True Then
+    If BtnReversed = True And 0 Then
         Dim LB As Integer
         LB = msgXPOC.cmdOK.Left
         Dim RB As Integer
@@ -228,8 +236,8 @@ Public Function FileExists(ByVal Fname As String) As Boolean
     
 End Function
 
-Public Function StringAt(ByVal Text As String, Pos) As String
-    StringAt = Mid$(Text, Pos, 1)
+Public Function StringAt(ByVal Text As String, pos) As String
+    StringAt = Mid$(Text, pos, 1)
 End Function
 
 Public Function PlayFair(ByVal Text As String, Key As String, Optional Mode As Integer = 1) As String

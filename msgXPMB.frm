@@ -14,6 +14,11 @@ Begin VB.Form msgXPMB
    ScaleWidth      =   28440
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  '화면 가운데
+   Begin VB.Timer timeout 
+      Enabled         =   0   'False
+      Left            =   480
+      Top             =   840
+   End
    Begin VB.CommandButton cmdOK 
       Cancel          =   -1  'True
       Caption         =   "확인"
@@ -86,4 +91,8 @@ Private Sub Form_Load()
     MessageBeep BeepSnd '나만 안 되나
     
     'Beep 600, 3
+End Sub
+
+Private Sub timeout_Timer()
+    cmdOK_Click
 End Sub

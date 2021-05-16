@@ -1,6 +1,7 @@
 VERSION 5.00
 Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.Form frmOptions 
+   BackColor       =   &H8000000C&
    BorderStyle     =   3  '크기 고정 대화 상자
    Caption         =   "환경 설정"
    ClientHeight    =   4305
@@ -51,10 +52,11 @@ Begin VB.Form frmOptions
       _ExtentX        =   13996
       _ExtentY        =   7223
       _Version        =   393216
-      Tabs            =   8
-      TabsPerRow      =   4
+      Tabs            =   10
+      TabsPerRow      =   5
       TabHeight       =   520
       ShowFocusRect   =   0   'False
+      BackColor       =   -2147483636
       TabCaption(0)   =   "화면 표시"
       TabPicture(0)   =   "frmOptions.frx":0442
       Tab(0).ControlEnabled=   -1  'True
@@ -70,37 +72,37 @@ Begin VB.Form frmOptions
       TabCaption(1)   =   "사용자 데이터"
       TabPicture(1)   =   "frmOptions.frx":045E
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "Frame2"
-      Tab(1).Control(1)=   "Frame3"
+      Tab(1).Control(0)=   "Frame3"
+      Tab(1).Control(1)=   "Frame2"
       Tab(1).ControlCount=   2
       TabCaption(2)   =   "표준"
       TabPicture(2)   =   "frmOptions.frx":047A
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "Frame4"
-      Tab(2).Control(1)=   "Frame11"
+      Tab(2).Control(0)=   "Frame11"
+      Tab(2).Control(1)=   "Frame4"
       Tab(2).ControlCount=   2
       TabCaption(3)   =   "검사"
       TabPicture(3)   =   "frmOptions.frx":0496
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "Label9"
-      Tab(3).Control(1)=   "Frame6"
+      Tab(3).Control(0)=   "Frame6"
+      Tab(3).Control(1)=   "Label9"
       Tab(3).ControlCount=   2
       TabCaption(4)   =   "사용자 분류"
       TabPicture(4)   =   "frmOptions.frx":04B2
       Tab(4).ControlEnabled=   0   'False
-      Tab(4).Control(0)=   "cmdDelGroup"
-      Tab(4).Control(1)=   "cmdAddNewGroup"
-      Tab(4).Control(2)=   "cmdClearGroups"
-      Tab(4).Control(3)=   "txtNewGroup"
-      Tab(4).Control(4)=   "lvGroups"
-      Tab(4).Control(5)=   "lvCustomCates"
+      Tab(4).Control(0)=   "Label8"
+      Tab(4).Control(1)=   "Label11"
+      Tab(4).Control(2)=   "Label14"
+      Tab(4).Control(3)=   "txtCategory"
+      Tab(4).Control(4)=   "cmdAddNewCate"
+      Tab(4).Control(5)=   "cmdDelSelCate"
       Tab(4).Control(6)=   "cmdClearCates"
-      Tab(4).Control(7)=   "cmdDelSelCate"
-      Tab(4).Control(8)=   "cmdAddNewCate"
-      Tab(4).Control(9)=   "txtCategory"
-      Tab(4).Control(10)=   "Label14"
-      Tab(4).Control(11)=   "Label11"
-      Tab(4).Control(12)=   "Label8"
+      Tab(4).Control(7)=   "lvCustomCates"
+      Tab(4).Control(8)=   "lvGroups"
+      Tab(4).Control(9)=   "txtNewGroup"
+      Tab(4).Control(10)=   "cmdClearGroups"
+      Tab(4).Control(11)=   "cmdAddNewGroup"
+      Tab(4).Control(12)=   "cmdDelGroup"
       Tab(4).ControlCount=   13
       TabCaption(5)   =   "테마"
       TabPicture(5)   =   "frmOptions.frx":04CE
@@ -110,17 +112,66 @@ Begin VB.Form frmOptions
       TabCaption(6)   =   "비밀번호"
       TabPicture(6)   =   "frmOptions.frx":04EA
       Tab(6).ControlEnabled=   0   'False
-      Tab(6).Control(0)=   "chkPasswordRequired"
-      Tab(6).Control(1)=   "Frame5"
+      Tab(6).Control(0)=   "Frame5"
+      Tab(6).Control(1)=   "chkPasswordRequired"
       Tab(6).ControlCount=   2
       TabCaption(7)   =   "소리"
       TabPicture(7)   =   "frmOptions.frx":0506
       Tab(7).ControlEnabled=   0   'False
-      Tab(7).Control(0)=   "Frame12"
-      Tab(7).Control(1)=   "Frame34"
-      Tab(7).Control(2)=   "cmdPlayNS"
-      Tab(7).Control(3)=   "cmdPlayRT"
+      Tab(7).Control(0)=   "cmdPlayRT"
+      Tab(7).Control(1)=   "cmdPlayNS"
+      Tab(7).Control(2)=   "Frame34"
+      Tab(7).Control(3)=   "Frame12"
       Tab(7).ControlCount=   4
+      TabCaption(8)   =   "Tab 8"
+      TabPicture(8)   =   "frmOptions.frx":0522
+      Tab(8).ControlEnabled=   0   'False
+      Tab(8).ControlCount=   0
+      TabCaption(9)   =   "고급설정"
+      TabPicture(9)   =   "frmOptions.frx":053E
+      Tab(9).ControlEnabled=   0   'False
+      Tab(9).Control(0)=   "Frame15"
+      Tab(9).Control(1)=   "txtAdvancedSetting"
+      Tab(9).ControlCount=   2
+      Begin VB.ComboBox txtAdvancedSetting 
+         Height          =   300
+         Left            =   -74280
+         TabIndex        =   90
+         Top             =   680
+         Width           =   2175
+      End
+      Begin VB.Frame Frame15 
+         Caption         =   "항목:    "
+         Height          =   2055
+         Left            =   -74880
+         TabIndex        =   89
+         Top             =   720
+         Width           =   5895
+         Begin VB.CommandButton cmdApplyAdvanced 
+            Appearance      =   0  '평면
+            Caption         =   "적용"
+            Height          =   255
+            Left            =   4920
+            TabIndex        =   93
+            Top             =   600
+            Width           =   855
+         End
+         Begin VB.TextBox txtAdvancedValue 
+            Height          =   270
+            Left            =   240
+            TabIndex        =   92
+            Top             =   600
+            Width           =   4575
+         End
+         Begin VB.Label Label6 
+            Caption         =   "설정값:"
+            Height          =   255
+            Left            =   240
+            TabIndex        =   91
+            Top             =   360
+            Width           =   2055
+         End
+      End
       Begin VB.Frame Frame14 
          Caption         =   "언어"
          Height          =   615
@@ -584,24 +635,24 @@ Begin VB.Form frmOptions
             Height          =   255
             Left            =   120
             TabIndex        =   88
-            Top             =   1320
+            Top             =   240
             Width           =   2055
          End
          Begin VB.CheckBox chkNoRibbon 
             Caption         =   "리본 메뉴 비활성(&N)"
             Height          =   255
-            Left            =   3120
+            Left            =   3960
             TabIndex        =   30
-            Top             =   240
+            Top             =   840
             Visible         =   0   'False
             Width           =   2655
          End
          Begin VB.CheckBox chkTP 
             Caption         =   "오늘의일정 숨기기(&O)"
             Height          =   255
-            Left            =   120
+            Left            =   3840
             TabIndex        =   29
-            Top             =   240
+            Top             =   1080
             Visible         =   0   'False
             Width           =   3015
          End
@@ -911,6 +962,11 @@ Private Sub cmdCalSet_Click()
     SSTab1.Tab = 7
 End Sub
 
+Private Sub cmdApplyAdvanced_Click()
+    If txtAdvancedSetting.Text = "" Then Exit Sub
+    SaveSetting "Calendar", "Options", txtAdvancedSetting.Text, txtAdvancedValue.Text
+End Sub
+
 Private Sub cmdClearCates_Click()
     If Confirm("정말로 " & lvCustomCates.ListCount & "개의 분류를 *모두* 삭제하시겠습니까?", "삭제", Me) Then
         On Error Resume Next
@@ -1140,10 +1196,6 @@ Private Sub cmdAddNewGroup_Click()
     End If
 End Sub
 
-Private Sub Command4_Click()
-
-End Sub
-
 Private Sub cmdDelGroup_Click()
     On Error Resume Next
     Kill "C:\CALPLANS\CTGROUPS\" & lvGroups.List(lvGroups.ListIndex)
@@ -1217,7 +1269,7 @@ Private Sub Form_Load()
     Label5.Caption = LoadLang("시작 요일", "Start of week", "Dia de inicio") & ":"
     Label13.Caption = LoadLang("테마를 적용하려면 다음 단추를 누르십시오.", "To apply theme, click the button.", "Haga clic en el boton Siguiente para aplicar el tema.")
     
-    SSTab1.TabCaption(0) = LoadLang("화면표시", "Display", "Apariencia") 'Pantalla de visualizacion
+    SSTab1.TabCaption(0) = LoadLang("화면 표시", "Display", "Apariencia") 'Pantalla de visualizacion
     SSTab1.TabCaption(1) = LoadLang("데이터", "User Data", "Datos del usuario")
     SSTab1.TabCaption(2) = LoadLang("기본 값", "Defaults", "Predeterminados")
     SSTab1.TabCaption(3) = LoadLang("입력의 검사", "Value Checking", "Comprobacion")
@@ -1331,6 +1383,11 @@ End Sub
 
 Private Sub radSelST_Click()
     cmbStartPage.Enabled = True
+End Sub
+
+Private Sub txtAdvancedSetting_Change()
+    On Error Resume Next
+    txtAdvancedValue.Text = GetSetting("Calendar", "Options", txtAdvancedSetting.Text)
 End Sub
 
 Private Sub VScroll1_Change()
