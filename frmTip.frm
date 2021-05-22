@@ -153,7 +153,10 @@ Private Sub cmdOK_Click()
 End Sub
 
 Private Sub Form_Load()
-    If LoadLang(1, 2, 3) <> 1 Then Unload Me
+    If LoadLang("1", "2", "3") <> "1" Then
+        Unload Me
+        Exit Sub
+    End If
 
     Dim ShowAtStartup As Long
     

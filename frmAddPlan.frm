@@ -441,7 +441,7 @@ Private Sub Form_Load()
     Label9.Caption = LoadLang("중요도", "Importance") & ":"
     Label10.Caption = LoadLang("참여자", "Participants") & ":"
     Label5.Caption = LoadLang("분류", "Category") & ":"
-    Label6.Caption = LoadLang("내용", "Memo") & ":"
+    Label6.Caption = LoadLang("내용", "Notes") & ":"
     
     Frame1.Caption = LoadLang("이 일정 복제", "Duplicate Plan Date") & ":"
     

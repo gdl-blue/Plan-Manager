@@ -17,8 +17,94 @@ Begin VB.Form frmWizard
    StartUpPosition =   3  'Windows 기본값
    Begin VB.Frame pgWizardPages 
       BorderStyle     =   0  '없음
+      Height          =   3015
+      Index           =   0
+      Left            =   2760
+      TabIndex        =   6
+      Top             =   1200
+      Width           =   4215
+      Begin VB.ListBox cmbLanguageSelect 
+         Height          =   1140
+         Left            =   0
+         TabIndex        =   25
+         Top             =   600
+         Width           =   3975
+      End
+      Begin VB.ComboBox cmbLanguageSelect1 
+         Height          =   300
+         Left            =   0
+         Style           =   2  '드롭다운 목록
+         TabIndex        =   9
+         Top             =   600
+         Visible         =   0   'False
+         Width           =   3255
+      End
+      Begin VB.Label Label5 
+         Caption         =   "Select your language..."
+         BeginProperty Font 
+            Name            =   "굴림"
+            Size            =   18
+            Charset         =   129
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   495
+         Left            =   0
+         TabIndex        =   22
+         Top             =   0
+         Width           =   3855
+      End
+   End
+   Begin VB.CommandButton cmdNext 
+      Caption         =   "next"
+      Height          =   375
+      Left            =   5640
+      TabIndex        =   5
+      Top             =   4320
+      Width           =   1335
+   End
+   Begin VB.CommandButton cmdBack 
+      Caption         =   "back"
+      Enabled         =   0   'False
+      Height          =   375
+      Left            =   4200
+      TabIndex        =   4
+      Top             =   4320
+      Width           =   1335
+   End
+   Begin VB.CommandButton cmdStart 
+      Caption         =   "start"
+      Enabled         =   0   'False
+      Height          =   375
+      Left            =   7080
+      TabIndex        =   2
+      Top             =   4320
+      Width           =   1335
+   End
+   Begin VB.CommandButton cmdExit 
+      Caption         =   "exit"
+      Height          =   375
+      Left            =   2760
+      TabIndex        =   1
+      Top             =   4320
+      Width           =   1335
+   End
+   Begin VB.PictureBox Picture1 
+      Height          =   4575
+      Left            =   120
+      Picture         =   "frmMagic.frx":0442
+      ScaleHeight     =   4515
+      ScaleWidth      =   2475
+      TabIndex        =   0
+      Top             =   120
+      Width           =   2535
+   End
+   Begin VB.Frame pgWizardPages 
+      BorderStyle     =   0  '없음
       Height          =   2055
-      Index           =   2
+      Index           =   1
       Left            =   2760
       TabIndex        =   8
       Top             =   1200
@@ -121,7 +207,7 @@ Begin VB.Form frmWizard
    Begin VB.Frame pgWizardPages 
       BorderStyle     =   0  '없음
       Height          =   1695
-      Index           =   1
+      Index           =   9
       Left            =   2760
       TabIndex        =   7
       Top             =   1200
@@ -162,86 +248,8 @@ Begin VB.Form frmWizard
          Width           =   5175
       End
    End
-   Begin VB.Frame pgWizardPages 
-      BorderStyle     =   0  '없음
-      Height          =   3015
-      Index           =   0
-      Left            =   2760
-      TabIndex        =   6
-      Top             =   1200
-      Width           =   3375
-      Begin VB.ComboBox cmbLanguageSelect 
-         Height          =   300
-         Left            =   0
-         Style           =   2  '드롭다운 목록
-         TabIndex        =   9
-         Top             =   600
-         Width           =   3255
-      End
-      Begin VB.Label Label5 
-         Caption         =   "Select a language..."
-         BeginProperty Font 
-            Name            =   "굴림"
-            Size            =   18
-            Charset         =   129
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   495
-         Left            =   0
-         TabIndex        =   22
-         Top             =   0
-         Width           =   3375
-      End
-   End
-   Begin VB.CommandButton cmdNext 
-      Caption         =   "next"
-      Height          =   375
-      Left            =   5640
-      TabIndex        =   5
-      Top             =   4320
-      Width           =   1335
-   End
-   Begin VB.CommandButton cmdBack 
-      Caption         =   "back"
-      Enabled         =   0   'False
-      Height          =   375
-      Left            =   4200
-      TabIndex        =   4
-      Top             =   4320
-      Width           =   1335
-   End
-   Begin VB.CommandButton cmdStart 
-      Caption         =   "start"
-      Enabled         =   0   'False
-      Height          =   375
-      Left            =   7080
-      TabIndex        =   2
-      Top             =   4320
-      Width           =   1335
-   End
-   Begin VB.CommandButton cmdExit 
-      Caption         =   "exit"
-      Height          =   375
-      Left            =   2760
-      TabIndex        =   1
-      Top             =   4320
-      Width           =   1335
-   End
-   Begin VB.PictureBox Picture1 
-      Height          =   4575
-      Left            =   120
-      Picture         =   "frmMagic.frx":0442
-      ScaleHeight     =   4515
-      ScaleWidth      =   2475
-      TabIndex        =   0
-      Top             =   120
-      Width           =   2535
-   End
    Begin VB.Label Label1 
-      Caption         =   $"frmMagic.frx":24BB4
+      Caption         =   "일정관리자 3에 오신 것을 환영합니다."
       Height          =   975
       Left            =   2760
       TabIndex        =   3
@@ -293,6 +301,8 @@ Private Sub cmbLanguageSelect_Click()
             lvGroups.AddItem "친구"
             lvGroups.AddItem "친척"
             
+            Label1.Caption = "일정관리자 3에 오신 것을 환영합니다."
+            
         Case 1
             cmdExit.Caption = "E&xit"
             cmdBack.Caption = "< &Back"
@@ -324,6 +334,8 @@ Private Sub cmbLanguageSelect_Click()
             lvGroups.AddItem "Friends"
             lvGroups.AddItem "Relatives"
             
+            Label1.Caption = "Welcome to Plan Manager 3!"
+            
         Case 2
             cmdExit.Caption = "Terminar(&X)"
             cmdBack.Caption = "< Anterior(&B)"
@@ -354,6 +366,8 @@ Private Sub cmbLanguageSelect_Click()
             lvGroups.AddItem "Companeros de trabajo"
             lvGroups.AddItem "Amigos"
             lvGroups.AddItem "Parientes"
+            
+            Label1.Caption = "Welcome to Plan Manager 3!"
     End Select
 End Sub
 
@@ -377,12 +391,12 @@ Private Sub cmdBack_Click()
     cmdNext.Enabled = True
     cmdStart.Enabled = False
     
-    If CurrentPage = 2 Then
+    If CurrentPage = 1 Then
         cmdNext.Enabled = False
         cmdStart.Enabled = True
     End If
     
-    If CurrentPage <= 1 Then
+    If CurrentPage < 1 Then
         cmdBack.Enabled = False
     End If
     
@@ -401,12 +415,12 @@ Private Sub cmdNext_Click()
     cmdNext.Enabled = True
     cmdStart.Enabled = False
     
-    If CurrentPage = 2 Then
+    If CurrentPage = 1 Then
         cmdNext.Enabled = False
         cmdStart.Enabled = True
     End If
     
-    If CurrentPage <= 1 Then
+    If CurrentPage < 1 Then
         cmdBack.Enabled = False
     End If
     
@@ -454,17 +468,20 @@ Private Sub cmdStart_Click()
         CreateFile "C:\CALPLANS\CTGROUPS\" & lvGroups.List(i)
     Next i
     
+    SaveSetting "Calendar", "Config", "FirstRun", "1"
+    
     Unload Me
 End Sub
 
 Private Sub Form_Load()
     CurrentPage = 0
     
-    cmbLanguageSelect.AddItem "한국어"
-    cmbLanguageSelect.AddItem "English"
-    cmbLanguageSelect.AddItem "Espanol"
+    cmbLanguageSelect.AddItem "한국어 (Korean)"
+    cmbLanguageSelect.AddItem "English - United States (English)"
+    cmbLanguageSelect.AddItem "Espanol (Spanish)"
     
     cmbLanguageSelect.ListIndex = 0
     
     cmbLanguageSelect_Click
 End Sub
+

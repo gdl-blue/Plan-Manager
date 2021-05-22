@@ -40,15 +40,19 @@
 	color: rgb(51, 128, 206);
 }
 
-.glossy-round-btn:active {
-	background: linear-gradient(to bottom, rgb(108, 154, 211) 30%, rgb(237, 244, 254) 100%);
-	box-shadow: inset 4px 4px 2px rgb(0, 64, 128);
-}
-
 .glossy-round-btn[disabled] {
 	background: linear-gradient(to bottom, rgb(108, 154, 211) 30%, rgb(237, 244, 254) 100%);
 	color: rgb(122, 155, 201);
 	box-shadow: 2px 2px 2px rgb(0, 64, 128);
+}
+
+.glossy-round-btn:active {
+	background: linear-gradient(to bottom, rgb(0, 68, 152) 30%, rgb(138, 162, 197) 100%);
+	color: rgb(27, 75, 143);
+}
+
+.glossy-round-btn:active::before {
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.1));
 }
 
 </style>
@@ -57,7 +61,7 @@
 <div style="position: absolute;width: 270px;height: 29px;background: linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .2));top: 5px;left: 459px;border-radius: 60px;"></div>
 <div style="position: absolute;width: 636px;height: 7px;background: linear-gradient(rgba(255, 255, 255, .4), rgba(255, 255, 255, .1));top: 486px;left: 24px;border-radius: 5px;"></div>
 
-<div class=glossy-round-btn style="box-shadow: none;position: absolute; width: 50px; height: 50px;top: 438px;left: 679px;">
+<div class=glossy-round-btn style="box-shadow: none;position: absolute; width: 50px; height: 50px;top: 368px;left: 679px;">
 <span style="position: absolute;width: 55px;
 height: 55px;
 border-radius: 999px;

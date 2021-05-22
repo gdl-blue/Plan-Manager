@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin VB.Form frmCheckDeactivatePassword 
    BorderStyle     =   3  '크기 고정 대화 상자
-   Caption         =   "비밀번호 비활성화"
+   Caption         =   "암호 입력 비활성화"
    ClientHeight    =   1470
    ClientLeft      =   2760
    ClientTop       =   3990
@@ -65,5 +65,10 @@ Private Sub CancelButton_Click()
 End Sub
 
 Private Sub OKButton_Click()
-    Unload Me
+    If GetSetting("Calendar", "Options", "Password", "") = Text1.Text Then
+        SaveSetting "Calendar", "Options", "Password", ""
+        Unload Me
+    Else
+        MsgBox "암호가 올바르지 않습니다.", 16, "암호 비활성화"
+    End If
 End Sub

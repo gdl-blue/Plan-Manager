@@ -6,7 +6,7 @@ Begin VB.Form frmOptions
    Caption         =   "환경 설정"
    ClientHeight    =   4305
    ClientLeft      =   -75
-   ClientTop       =   2985
+   ClientTop       =   3000
    ClientWidth     =   8175
    Icon            =   "frmOptions.frx":0000
    MaxButton       =   0   'False
@@ -107,9 +107,10 @@ Begin VB.Form frmOptions
       TabCaption(5)   =   "테마"
       TabPicture(5)   =   "frmOptions.frx":04CE
       Tab(5).ControlEnabled=   0   'False
-      Tab(5).Control(0)=   "Frame7"
-      Tab(5).ControlCount=   1
-      TabCaption(6)   =   "비밀번호"
+      Tab(5).Control(0)=   "Frame16"
+      Tab(5).Control(1)=   "Frame7"
+      Tab(5).ControlCount=   2
+      TabCaption(6)   =   "보안"
       TabPicture(6)   =   "frmOptions.frx":04EA
       Tab(6).ControlEnabled=   0   'False
       Tab(6).Control(0)=   "Frame5"
@@ -130,9 +131,33 @@ Begin VB.Form frmOptions
       TabCaption(9)   =   "고급설정"
       TabPicture(9)   =   "frmOptions.frx":053E
       Tab(9).ControlEnabled=   0   'False
-      Tab(9).Control(0)=   "Frame15"
-      Tab(9).Control(1)=   "txtAdvancedSetting"
+      Tab(9).Control(0)=   "txtAdvancedSetting"
+      Tab(9).Control(1)=   "Frame15"
       Tab(9).ControlCount=   2
+      Begin VB.Frame Frame16 
+         Caption         =   "화면배색"
+         Height          =   975
+         Left            =   -74880
+         TabIndex        =   94
+         Top             =   1800
+         Width           =   5775
+         Begin VB.ComboBox cmbThemeSelect 
+            Height          =   300
+            Left            =   120
+            Style           =   2  '드롭다운 목록
+            TabIndex        =   95
+            Top             =   480
+            Width           =   5535
+         End
+         Begin VB.Label Label12 
+            Caption         =   "프로그램 테마:"
+            Height          =   255
+            Left            =   120
+            TabIndex        =   96
+            Top             =   240
+            Width           =   3855
+         End
+      End
       Begin VB.ComboBox txtAdvancedSetting 
          Height          =   300
          Left            =   -74280
@@ -450,7 +475,7 @@ Begin VB.Form frmOptions
          TabIndex        =   49
          Top             =   720
          Width           =   6015
-         Begin VB.CommandButton Command3 
+         Begin VB.CommandButton cmdChangePassword 
             Caption         =   "변경(&C)"
             Height          =   375
             Left            =   4680
@@ -458,7 +483,7 @@ Begin VB.Form frmOptions
             Top             =   2040
             Width           =   1215
          End
-         Begin VB.TextBox Text3 
+         Begin VB.TextBox txtConfirmPassword 
             Height          =   270
             IMEMode         =   3  '사용 못함
             Left            =   120
@@ -467,7 +492,7 @@ Begin VB.Form frmOptions
             Top             =   2040
             Width           =   2535
          End
-         Begin VB.TextBox Text2 
+         Begin VB.TextBox txtNewPassword 
             Height          =   270
             IMEMode         =   3  '사용 못함
             Left            =   120
@@ -476,7 +501,7 @@ Begin VB.Form frmOptions
             Top             =   1320
             Width           =   2535
          End
-         Begin VB.TextBox Text1 
+         Begin VB.TextBox txtCurrentPassword 
             Height          =   270
             IMEMode         =   3  '사용 못함
             Left            =   120
@@ -658,7 +683,7 @@ Begin VB.Form frmOptions
          End
       End
       Begin VB.Frame Frame7 
-         Caption         =   "색 테마"
+         Caption         =   "리본 메뉴"
          Height          =   975
          Left            =   -74880
          TabIndex        =   25
@@ -673,7 +698,7 @@ Begin VB.Form frmOptions
             Width           =   5535
          End
          Begin VB.Label Label10 
-            Caption         =   "프로그램 배경 테마:"
+            Caption         =   "리본 탭 배경색:"
             Height          =   255
             Left            =   120
             TabIndex        =   26
@@ -908,7 +933,7 @@ Private Sub Check2_Click()
 End Sub
 
 Private Sub chkPasswordRequired_Click()
-    If chkPasswordRequired.Value = 0 Then
+    If chkPasswordRequired.Value = 0 And GetSetting("Calendar", "Options", "Password", "") <> "" Then
         frmCheckDeactivatePassword.Show vbModal, Me
     End If
     
@@ -925,6 +950,11 @@ Private Sub chkPasswordRequired_Click()
                 ctrl.Enabled = True
             End If
         Next ctrl
+        
+        If GetSetting("Calendar", "Options", "Password", "") = "" Then
+            txtCurrentPassword.Enabled = 0
+            Label15.Enabled = 0
+        End If
     End If
 End Sub
 
@@ -964,7 +994,26 @@ End Sub
 
 Private Sub cmdApplyAdvanced_Click()
     If txtAdvancedSetting.Text = "" Then Exit Sub
+    If UCase(txtAdvancedSetting.Text) = "PASSWORD" Then Exit Sub
     SaveSetting "Calendar", "Options", txtAdvancedSetting.Text, txtAdvancedValue.Text
+End Sub
+
+Private Sub cmdChangePassword_Click()
+    If GetSetting("Calendar", "Options", "Password", "") <> txtCurrentPassword.Text Then
+        MsgBox "현재 암호가 올바르지 않습니다.", 16, "암호"
+    ElseIf txtConfirmPassword.Text <> txtNewPassword.Text Then
+        MsgBox "암호 확인이 일치하기 않습니다.", 16, "암호"
+    ElseIf txtConfirmPassword.Text = "" Then
+        MsgBox "암호의 값은 필수입니다.", 16, "암호"
+    Else
+        SaveSetting "Calendar", "Options", "Password", txtNewPassword.Text
+        MsgBox "암호가 변경되었습니다.", 64, "암호"
+        txtCurrentPassword.Enabled = -1
+        Label15.Enabled = -1
+        txtConfirmPassword.Text = ""
+        txtNewPassword.Text = ""
+        txtCurrentPassword.Text = ""
+    End If
 End Sub
 
 Private Sub cmdClearCates_Click()
@@ -1099,6 +1148,8 @@ Private Sub Command1_Click()
     
     SaveSetting "Calendar", "Options", "BGColor", cmbBGColor.ListIndex
     
+    SaveSetting "Calendar", "Options", "Theme2", cmbThemeSelect.ListIndex
+    
     SaveSetting "Calendar", "Options", "TP", chkTP.Value
     
     SaveSetting "Calendar", "Options", "NoRibbon", chkNoRibbon.Value
@@ -1114,9 +1165,9 @@ Private Sub Command1_Click()
     End If
     
     If GetSetting("Calendar", "Options", "TP", 0) = 1 Then
-        frmMain.Width = 8715
+        frmMain.width = 8715
     Else
-        frmMain.Width = 11040
+        frmMain.width = 11040
     End If
     
     Dim i As Integer
@@ -1203,13 +1254,17 @@ Private Sub cmdDelGroup_Click()
     lvGroups.Refresh
 End Sub
 
+Private Sub Command3_Click()
+
+End Sub
+
 Private Sub Form_Load()
     Loaded = False
     lngOriginalTop = grpNotificationContainer.Top
-    lngIncrement = (grpNotificationContainer.Height - Frame9.Height) / VScroll1.Max
+    lngIncrement = (grpNotificationContainer.height - Frame9.height) / VScroll1.Max
     
     lngOriginalTop2 = grpRingtoneContainer.Top
-    lngIncrement2 = (grpRingtoneContainer.Height - Frame12.Height) / VScroll2.Max
+    lngIncrement2 = (grpRingtoneContainer.height - Frame12.height) / VScroll2.Max
    
     ResetCount = 7
     'chkNoResize.Value = GetSetting("Calendar", "Options", "NoResize", "0")
@@ -1226,6 +1281,13 @@ Private Sub Form_Load()
     End If
     
     chkNoRibbon.Value = GetSetting("Calendar", "Options", "NoRibbon", 0)
+    
+    Dim ctrl2 As Control
+    For Each ctrl2 In Me.Controls
+        If ctrl2.Container.Name = Frame5.Name Then
+            ctrl2.Enabled = False
+        End If
+    Next ctrl2
     
     
     On Error Resume Next
@@ -1253,7 +1315,10 @@ Private Sub Form_Load()
     cmbBGColor.AddItem LoadLang("파랑", "Blue", "Azul")
     cmbBGColor.AddItem LoadLang("검정", "Black", "Negro")
     
-    Me.Caption = LoadLang("환경 설정", "Settings", "Ambientacion")
+    cmbThemeSelect.AddItem "푸른 겨울"
+    cmbThemeSelect.AddItem "오렌지"
+    
+    Me.Caption = LoadLang("환경설정", "Settings", "Ambientacion")
     Command1.Caption = LoadLang("확인", "OK", "Tienda")
     Command2.Caption = LoadLang("취소", "Cancel", "Cancelar")
     cmdOptionHelp.Caption = LoadLang("도움말(&H)", "&Help", "Ayuda(&H)") & "..."
@@ -1275,7 +1340,7 @@ Private Sub Form_Load()
     SSTab1.TabCaption(3) = LoadLang("입력의 검사", "Value Checking", "Comprobacion")
     SSTab1.TabCaption(4) = LoadLang("분류 및 그룹", "Categories", "Categorias")
     SSTab1.TabCaption(5) = LoadLang("테마", "Theme", "Tema")
-    SSTab1.TabCaption(6) = LoadLang("암호", "Password", "Contrasena")
+    SSTab1.TabCaption(6) = LoadLang("보안", "Security", "Contrasena")
     SSTab1.TabCaption(7) = LoadLang("알림 소리", "Sounds", "Sonido")
     
     Frame2.Caption = LoadLang("내 데이터", "My data", "Mis datos")
@@ -1313,8 +1378,8 @@ Private Sub Form_Load()
     cmdAddNewCate.Caption = LoadLang("추가(&A)", "&Add", "&Anadir")
     cmdAddNewGroup.Caption = LoadLang("추가(&D)", "A&dd", "Ana&dir")
     
-    Frame7.Caption = LoadLang("테마", "Theme", "Tema")
-    Label10.Caption = LoadLang("배경 색상", "Background Color", "Color de fondo") & ":"
+    Frame7.Caption = LoadLang("리본 메뉴", "Theme", "Tema")
+    Label10.Caption = LoadLang("리본 탭 배경색", "Background Color", "Color de fondo") & ":"
     
     Frame34.Caption = LoadLang("일정 알림음", "Notification Sound", "Sonido de notificacion")
     Frame12.Caption = LoadLang("알람음", "Alarm Ringtone", "Tono de alarma")
@@ -1337,6 +1402,7 @@ Private Sub Form_Load()
     optRingtone(2).Caption = LoadLang("아기공룡 둘리", "Dooly theme", "Tema del Dooly")
     
     cmbBGColor.ListIndex = GetSetting("Calendar", "Options", "BGColor", 0)
+    cmbThemeSelect.ListIndex = GetSetting("Calendar", "Options", "Theme2", 0)
     
     cmbLanguage.AddItem "한국어"
     cmbLanguage.AddItem "English"
@@ -1367,6 +1433,17 @@ Private Sub Form_Load()
     optRingtone.Item(RTI).Value = True
     
     Loaded = True
+    
+    If GetSetting("Calendar", "Options", "Password", "") <> "" Then
+        chkPasswordRequired.Value = 1
+        
+        Dim ctrl As Control
+        For Each ctrl In Me.Controls
+            If ctrl.Container.Name = Frame5.Name Then
+                ctrl.Enabled = True
+            End If
+        Next ctrl
+    End If
 End Sub
 
 Private Sub optNotificationSound_Click(Index As Integer)
@@ -1387,7 +1464,11 @@ End Sub
 
 Private Sub txtAdvancedSetting_Change()
     On Error Resume Next
-    txtAdvancedValue.Text = GetSetting("Calendar", "Options", txtAdvancedSetting.Text)
+    If UCase(txtAdvancedSetting.Text) = "PASSWORD" Then
+        txtAdvancedValue.Text = ""
+    Else
+        txtAdvancedValue.Text = GetSetting("Calendar", "Options", txtAdvancedSetting.Text)
+    End If
 End Sub
 
 Private Sub VScroll1_Change()

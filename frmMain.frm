@@ -68,12 +68,12 @@ Begin VB.Form frmMainOld
          BeginProperty Panel2 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   6
             AutoSize        =   2
-            TextSave        =   "2021-05-15"
+            TextSave        =   "2021-05-21"
          EndProperty
          BeginProperty Panel3 {8E3867AB-8586-11D1-B16A-00C0F0283628} 
             Style           =   5
             AutoSize        =   2
-            TextSave        =   "오후 6:50"
+            TextSave        =   "오후 10:51"
          EndProperty
       EndProperty
    End
@@ -403,7 +403,6 @@ Begin VB.Form frmMainOld
          Size            =   "1931;1508"
          Value           =   "1"
          Caption         =   "주 번호"
-         Picture         =   "frmMain.frx":5E3C6
          FontName        =   "굴림"
          FontHeight      =   180
          FontCharSet     =   129
@@ -427,15 +426,15 @@ Begin VB.Form frmMainOld
       TabHeight       =   582
       ShowFocusRect   =   0   'False
       BackColor       =   -2147483636
-      MouseIcon       =   "frmMain.frx":5E6E0
+      MouseIcon       =   "frmMain.frx":5E3C6
       TabCaption(0)   =   "일정"
-      TabPicture(0)   =   "frmMain.frx":5E6FC
+      TabPicture(0)   =   "frmMain.frx":5E3E2
       Tab(0).ControlEnabled=   0   'False
       Tab(0).Control(0)=   "MonthView1"
       Tab(0).Control(1)=   "Dir1"
       Tab(0).ControlCount=   2
       TabCaption(1)   =   "주소록"
-      TabPicture(1)   =   "frmMain.frx":5EB4E
+      TabPicture(1)   =   "frmMain.frx":5E834
       Tab(1).ControlEnabled=   0   'False
       Tab(1).Control(0)=   "cmdResetFields"
       Tab(1).Control(1)=   "cmdDeleteAllContacts"
@@ -448,7 +447,7 @@ Begin VB.Form frmMainOld
       Tab(1).Control(8)=   "lvContacts"
       Tab(1).ControlCount=   9
       TabCaption(2)   =   "할 일"
-      TabPicture(2)   =   "frmMain.frx":5EFA0
+      TabPicture(2)   =   "frmMain.frx":5EC86
       Tab(2).ControlEnabled=   0   'False
       Tab(2).Control(0)=   "cmdDeleteAllTasks"
       Tab(2).Control(1)=   "lvTaskFiles"
@@ -458,7 +457,7 @@ Begin VB.Form frmMainOld
       Tab(2).Control(5)=   "lvTasks"
       Tab(2).ControlCount=   6
       TabCaption(3)   =   "일과표"
-      TabPicture(3)   =   "frmMain.frx":5F3F2
+      TabPicture(3)   =   "frmMain.frx":5F0D8
       Tab(3).ControlEnabled=   0   'False
       Tab(3).Control(0)=   "sdcmdSavePlanner"
       Tab(3).Control(1)=   "txtPlannerTF(48)"
@@ -514,7 +513,7 @@ Begin VB.Form frmMainOld
       Tab(3).Control(51)=   "lblDOW"
       Tab(3).ControlCount=   52
       TabCaption(4)   =   "알람"
-      TabPicture(4)   =   "frmMain.frx":5F70C
+      TabPicture(4)   =   "frmMain.frx":5F3F2
       Tab(4).ControlEnabled=   0   'False
       Tab(4).Control(0)=   "lvAlarmFiles"
       Tab(4).Control(1)=   "txtAlarmMemo"
@@ -531,7 +530,7 @@ Begin VB.Form frmMainOld
       Tab(4).Control(12)=   "Label18"
       Tab(4).ControlCount=   13
       TabCaption(5)   =   " 메모"
-      TabPicture(5)   =   "frmMain.frx":5FB5E
+      TabPicture(5)   =   "frmMain.frx":5F844
       Tab(5).ControlEnabled=   -1  'True
       Tab(5).Control(0)=   "Text1"
       Tab(5).Control(0).Enabled=   0   'False
@@ -558,7 +557,7 @@ Begin VB.Form frmMainOld
          Appearance      =   1
          MonthColumns    =   3
          MonthRows       =   2
-         StartOfWeek     =   62390273
+         StartOfWeek     =   63569921
          CurrentDate     =   44330
       End
       Begin VB.FileListBox lvAlarmFiles 
@@ -1395,9 +1394,9 @@ Begin VB.Form frmMainOld
       End
       Begin VB.ListBox lvTasks 
          Height          =   4050
-         ItemData        =   "frmMain.frx":5FFB0
+         ItemData        =   "frmMain.frx":5FC96
          Left            =   -74880
-         List            =   "frmMain.frx":5FFB7
+         List            =   "frmMain.frx":5FC9D
          Style           =   1  '확인란
          TabIndex        =   24
          Top             =   76
@@ -1650,9 +1649,9 @@ Begin VB.Form frmMainOld
       End
       Begin VB.ListBox lvContacts 
          Height          =   4020
-         ItemData        =   "frmMain.frx":5FFCC
+         ItemData        =   "frmMain.frx":5FCB2
          Left            =   -74880
-         List            =   "frmMain.frx":5FFD3
+         List            =   "frmMain.frx":5FCB9
          TabIndex        =   2
          Top             =   76
          Width           =   1695
@@ -1714,7 +1713,7 @@ Begin VB.Form frmMainOld
    Begin VB.Image Image1 
       Height          =   7740
       Left            =   0
-      Picture         =   "frmMain.frx":5FFEA
+      Picture         =   "frmMain.frx":5FCD0
       Top             =   0
       Width           =   11385
    End
@@ -1805,17 +1804,17 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 'https://www.vbforums.com/showthread.php?396385-Making-A-Form-Transparent-(But-with-visible-controls)
-Private Declare Function GetWindowLong Lib "user32" Alias "GetWindowLongA" ( _
-                ByVal hwnd As Long, _
+Private Declare Function GetWindowLong Lib "User32" Alias "GetWindowLongA" ( _
+                ByVal hWnd As Long, _
                 ByVal nIndex As Long) As Long
  
-Private Declare Function SetWindowLong Lib "user32" Alias "SetWindowLongA" ( _
-                ByVal hwnd As Long, _
+Private Declare Function SetWindowLong Lib "User32" Alias "SetWindowLongA" ( _
+                ByVal hWnd As Long, _
                 ByVal nIndex As Long, _
                 ByVal dwNewLong As Long) As Long
                 
-Private Declare Function SetLayeredWindowAttributes Lib "user32" ( _
-                ByVal hwnd As Long, _
+Private Declare Function SetLayeredWindowAttributes Lib "User32" ( _
+                ByVal hWnd As Long, _
                 ByVal crKey As Long, _
                 ByVal bAlpha As Byte, _
                 ByVal dwFlags As Long) As Long
@@ -1827,7 +1826,7 @@ Private Const LWA_COLORKEY = &H1
 Private Const LWA_ALPHA = &H2
 
 
-Private Declare Function OSWinHelp% Lib "user32" Alias "WinHelpA" (ByVal hwnd&, ByVal HelpFile$, ByVal wCommand%, dwData As Any)
+Private Declare Function OSWinHelp% Lib "User32" Alias "WinHelpA" (ByVal hWnd&, ByVal HelpFile$, ByVal wCommand%, dwData As Any)
 Dim Contact As Integer
 Dim iFileNo As Integer
 Dim Task As Integer
@@ -2043,9 +2042,9 @@ End Sub
 
 Private Sub cmdHelp_Click()
     If GetSetting("Calendar", "Options", "TP", 0) = 0 Then
-        PopupMenu mnuHelp, , Me.Width - 2350 - ssTodaysPlan.Width + 100, 400
+        PopupMenu mnuHelp, , Me.width - 2350 - ssTodaysPlan.width + 100, 400
     Else
-        PopupMenu mnuHelp, , Me.Width - 2350, 400
+        PopupMenu mnuHelp, , Me.width - 2350, 400
     End If
 End Sub
 
@@ -2280,7 +2279,7 @@ Private Sub cmdUnselectAllDW_Click()
 End Sub
 
 Private Sub cmdRibbonFile_Click()
-    PopupMenu mnuFile, , cmdRibbonFile.Left, cmdRibbonFile.Top + cmdRibbonFile.Height
+    PopupMenu mnuFile, , cmdRibbonFile.Left, cmdRibbonFile.Top + cmdRibbonFile.height
 End Sub
 
 Private Sub Command1_Click()
@@ -2295,19 +2294,19 @@ Private Sub Form_Load()
     'MsgBox DayOfWeek()
     'MessageBox PlayFair("dlfjs qkqhrkxdms sdfhuj", "ultra"), "3", Me
     
-    SetWindowLong Me.hwnd, GWL_EXSTYLE, GetWindowLong(Me.hwnd, GWL_EXSTYLE) Or WS_EX_LAYERED
-    SetLayeredWindowAttributes Me.hwnd, vbMagenta, 0&, LWA_COLORKEY
+    SetWindowLong Me.hWnd, GWL_EXSTYLE, GetWindowLong(Me.hWnd, GWL_EXSTYLE) Or WS_EX_LAYERED
+    SetLayeredWindowAttributes Me.hWnd, vbMagenta, 0&, LWA_COLORKEY
 
     If GetSetting("Calendar", "Options", "TP", 0) = 1 Then
-        Me.Width = 8715
+        Me.width = 8715
     End If
     
     If GetSetting("Calendar", "Options", "NoRibbon", 0) = 1 Then
         SSTab1.Top = 120
-        ssTodaysPlan.Height = 4695
-        lvTodaysPlan.Height = 3870
+        ssTodaysPlan.height = 4695
+        lvTodaysPlan.height = 3870
         cmdTltRef.Top = 4440
-        Me.Height = 5900
+        Me.height = 5900
         
         ssRibbonMenu.Visible = False
         cmdHelp.Visible = False
@@ -2456,7 +2455,7 @@ Private Sub Form_Load()
     mnuView.Caption = LoadLang("보기(&V)", "&View", "&Ver")
     mnuHelp.Caption = LoadLang("도움말(&H)", "&Help", "Ayuda(&H)")
     
-    Me.mnuFileExit.Caption = LoadLang("비상문(&X)", "E&xit", "Salida(&X)")
+    Me.mnuFileExit.Caption = LoadLang("끝내기(&X)", "E&xit", "Salida(&X)")
     mnuFileProperties.Caption = LoadLang("일정 목록(&I)", "L&ist of Plans", "L&ista de horarios") & "..."
     mnuFilePlanBrowser.Caption = LoadLang("모든 일정/데이터 색인(&B)", "&Browse the Data", "Indice de datos(&B)") & "..."
     mnuFileSave.Caption = LoadLang("저장(&S)", "&Save", "Tienda(&S)")
@@ -2567,12 +2566,20 @@ Private Sub Form_Load()
     Me.Caption = Me.Caption
 End Sub
 
-Private Sub Form_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Debug.Print "1"
 End Sub
 
 Private Sub Image1_Click()
     cmdTltRef_Click
+End Sub
+
+Private Sub Image1_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+    Dim lngReturnValue As Long
+    If Button = 1 Then
+        'Call ReleaseCapture
+        'lngReturnValue = SendMessage(Form1.hWnd, WM_NCLBUTTONDOWN, HTCAPTION, 0&)
+    End If
 End Sub
 
 Private Sub lvAlarms_ItemClick(ByVal Item As ComctlLib.ListItem)
@@ -2602,7 +2609,7 @@ Private Sub lvTodaysPlan_DblClick()
     On Error Resume Next
 End Sub
 
-Private Sub menuhover_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub menuhover_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
     timHidemenu.Enabled = False
     timHidemenu.Enabled = True
     ssRibbonMenu.Visible = True
@@ -2871,7 +2878,7 @@ Private Sub mnuHelpSearchForHelpOn_Click()
             Exit Sub
         End If
         
-        nRet = OSWinHelp(Me.hwnd, Dir1.Path & "\PLNMGR32.HLP", 261, 0)
+        nRet = OSWinHelp(Me.hWnd, Dir1.Path & "\PLNMGR32.HLP", 261, 0)
         If Err Then
             MsgBox Err.Description
         End If
@@ -2897,7 +2904,7 @@ Private Sub mnuHelpContents_Click()
             Exit Sub
         End If
         
-        nRet = OSWinHelp(Me.hwnd, Dir1.Path & "\PLNMGR32.HLP", 3, 0)
+        nRet = OSWinHelp(Me.hWnd, Dir1.Path & "\PLNMGR32.HLP", 3, 0)
         If Err Then
             MsgBox Err.Description
         End If
@@ -2931,9 +2938,9 @@ Private Sub mnuViewStatusBar_Click()
     sbStatusBar.Visible = mnuViewStatusBar.Checked
     
     If sbStatusBar.Visible Then
-        Me.Height = 7080
+        Me.height = 7080
     Else
-        Me.Height = 6810
+        Me.height = 6810
     End If
 End Sub
 
@@ -3049,14 +3056,14 @@ Private Sub mnuFileNew_Click()
     MsgBox "'mnuFileNew_Click' 코드를 추가하십시오."
 End Sub
 
-Private Sub MonthView1_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub MonthView1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
     If Button = 2 Then
         mnuTodaysPlan.Caption = MonthView1.SelStart & "의 일정"
         PopupMenu mnuDateMenu
     End If
 End Sub
 
-Private Sub ssRibbonMenu_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub ssRibbonMenu_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
     If Button = 2 Then
     
     End If
