@@ -372,12 +372,14 @@ Private Sub cmbLanguageSelect_Click()
 End Sub
 
 Private Sub cmdAddCategory_Click()
+    If txtNewCateName.Text = "" Then Exit Sub
     lvCategories.AddItem txtNewCateName.Text
     
     txtNewCateName.Text = ""
 End Sub
 
 Private Sub cmdAddGroup_Click()
+    If txtNewGroupName.Text = "" Then Exit Sub
     lvGroups.AddItem txtNewGroupName.Text
     
     txtNewGroupName.Text = ""
